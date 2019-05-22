@@ -51,7 +51,7 @@ class PageTemplate extends React.Component {
           {...rest}
         />
         {/* <Parallax small filter image={fluid.src} /> */}
-        //todo : Setup with a default image for fluid to use in case of no featured media
+        {/* //todo : Setup with a default image for fluid to use in case of no featured media */}
         <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
