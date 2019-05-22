@@ -23,6 +23,8 @@ import Parallax from 'components/Parallax/Parallax.jsx';
 
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
 
+//todo: Add SEO
+
 const NavLink = props => {
   if (!props.test) {
     return <Link to={props.url}>{props.text}</Link>;
@@ -32,6 +34,8 @@ const NavLink = props => {
 };
 
 const dashboardRoutes = [];
+
+//todo: Fix component formatting fo 
 
 class IndexPage extends React.Component {
   render() {
