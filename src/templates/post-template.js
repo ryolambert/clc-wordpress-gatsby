@@ -24,6 +24,7 @@ import Button from 'components/CustomButtons/Button.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
+import fillerBackground from 'assets/img/profile-bg.jpg';
 import profilePageStyle from 'assets/jss/material-kit-react/views/profilePage.jsx';
 
 const dashboardRoutes = [];
@@ -35,10 +36,10 @@ class PostTemplate extends React.Component {
     // const { data } = this.props;
     const fluid = post.featured_media
       ? post.featured_media.localFile.childImageSharp.fluid
-      : null;
+      : { fillerBackground };
 
     // Testing if featured_media fluid works
-    console.log(fluid); 
+    console.log(fluid);
 
     return (
       <div>
@@ -55,11 +56,13 @@ class PostTemplate extends React.Component {
           {...rest}
         />
         {/* <Parallax filter image ={require(`<Img fluid={post.featured_media.localFile.childImageSharp.fluid} style={{ maxHeight: 680}}/>`)}> */}
-        {/* <div className={classes.container}> */}
+        {/* //todo: fix default parallax image for specific gatsby query filler bg image */}
         <Parallax small filter image={fluid.src} />
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <GridContainer>
-            {/* <GridItem xs={12} sm={12} md={12}>
+          <div>
+            <div className={classes.container}>
+              <GridContainer justify="center">
+                {/* <GridItem xs={12} sm={12} md={12}>
             {fluid &&
                     <div>
                         <Img fluid={fluid}/>
@@ -68,24 +71,22 @@ class PostTemplate extends React.Component {
                 }
 
             </GridItem> */}
-            <GridItem xs={12} sm={12} md={6}>
-              <h1>{post.title}</h1>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: post.content
-                }}
-              />
-              <p
-                dangerouslySetInnerHTML={{ __html: post.date }}
-              />
-              <p
-                dangerouslySetInnerHTML={{ __html: post.slug }}
-              />
-            </GridItem>
-          </GridContainer>
+                <GridItem xs={12} sm={12} md={10}>
+                  <h1>{post.title}</h1>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.content
+                    }}
+                  />
+                  <p dangerouslySetInnerHTML={{ __html: post.date }} />
+                  <p dangerouslySetInnerHTML={{ __html: post.slug }} />
+                </GridItem>
+              </GridContainer>
+            </div>
+            {/* </Parallax> */}
+            <Footer />
+          </div>
         </div>
-        {/* </Parallax> */}
-        <Footer />
       </div>
     );
   }
@@ -96,9 +97,9 @@ export const query = graphql`
     wordpressPost(id: { eq: $id }) {
       title
       content
-      featured_media{
-        localFile{
-          childImageSharp{
+      featured_media {
+        localFile {
+          childImageSharp {
             fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
