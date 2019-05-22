@@ -31,6 +31,10 @@ class PageTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     const { data } = this.props;
+    // const post = this.props.data.wordpressPost;
+    // const fluid = post.featured_media
+    //   ? post.featured_media.localFile.childImageSharp.fluid
+    //   : null;
 
     return (
       <div>
@@ -46,7 +50,9 @@ class PageTemplate extends React.Component {
           }}
           {...rest}
         />
-        <Parallax small filter image={fluid.src} />
+        {/* <Parallax small filter image={fluid.src} /> */}
+        //todo : Setup with a default image for fluid to use in case of no featured media
+        <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
           <div className={classes.container}>
@@ -82,6 +88,7 @@ export const query = graphql`
       slug
       id
       date(formatString: "MMMM DD, YYYY")
+      
     }
     site {
       id
