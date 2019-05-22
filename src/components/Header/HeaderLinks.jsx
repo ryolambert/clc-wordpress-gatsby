@@ -28,7 +28,7 @@ function HeaderLinks({ ...props }) {
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
-          buttonText="Components"
+          buttonText="About"
           buttonProps={{
             className: classes.navLink,
             color: 'transparent'
