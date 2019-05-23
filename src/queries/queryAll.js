@@ -26,8 +26,10 @@ module.exports = `
                     featured_media{
                         localFile{
                             childImageSharp{
-                                fluid(maxWidth: 1200){
-                                    ...GatsbyImageSharpFluid
+                                resolutions(width:500, height: 500){
+                                    src
+                                    width
+                                    height
                                 }
                             }
                         }
