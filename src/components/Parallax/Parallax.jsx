@@ -9,6 +9,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import parallaxStyle from 'assets/jss/material-kit-react/components/parallaxStyle.jsx';
 
+import Img from 'gatsby-image';
+
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
