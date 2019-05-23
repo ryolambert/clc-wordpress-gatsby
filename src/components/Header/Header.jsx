@@ -16,7 +16,8 @@ import Drawer from '@material-ui/core/Drawer';
 import Menu from '@material-ui/icons/Menu';
 // core components
 import headerStyle from 'assets/jss/material-kit-react/components/headerStyle.jsx';
-import { Link, withRouter } from 'react-router-dom';
+// import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'gatsby';
 
 class Header extends React.Component {
   constructor(props) {
@@ -83,8 +84,10 @@ class Header extends React.Component {
     //todo: Figure out adding in Brand SVG or Image
     const brandComponent = (
       <Button className={classes.title}>
-        <img width={180} src={logo} alt="" />
-        {brand}
+        <Link to="/">
+          <img width={180} src={logo} alt="" />
+          {brand}
+        </Link>
       </Button>
     );
     return (
