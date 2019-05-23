@@ -24,7 +24,7 @@ import Button from 'components/CustomButtons/Button.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
-import fillerBackground from 'assets/img/profile-bg.jpg';
+import Image from 'components/image.js';
 import profilePageStyle from 'assets/jss/material-kit-react/views/profilePage.jsx';
 
 const dashboardRoutes = [];
@@ -36,7 +36,11 @@ class PostTemplate extends React.Component {
     // const { data } = this.props;
     const fluid = post.featured_media
       ? post.featured_media.localFile.childImageSharp.fluid
-      : { fillerBackground };
+      : { Image };
+    // const imagesFluid = post.featured_media.map(
+    //   featured_media => featured_media.localFile.childImageSharp.fluid
+    // );
+    // const imgFluid = imagesFluid.map(imageFlu => ( <Img fluid={imageFlu} key={imageFlu.src} />)) };
 
     // Testing if featured_media fluid works
     console.log(fluid);
@@ -57,7 +61,29 @@ class PostTemplate extends React.Component {
         />
         {/* <Parallax filter image ={require(`<Img fluid={post.featured_media.localFile.childImageSharp.fluid} style={{ maxHeight: 680}}/>`)}> */}
         {/* //todo: fix default parallax image for specific gatsby query filler bg image */}
-        <Parallax small filter image={fluid.src} />
+        <Parallax small filter image={fluid.src}>
+          <div className={classes.container}>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={6}>
+                <h1
+                  style={{
+                    display: 'inline-block',
+                    position: 'relative',
+                    marginTop: '30px',
+                    minHeight: '32px',
+                    color: '#FFFFFF',
+                    textDecoration: 'none',
+                    zIndex: '12',
+                    fontFamily: 'Roboto Slab',
+                    fontWeight: '700'
+                  }}>
+                  {post.title}
+                </h1>
+                <h4>{post.author}</h4>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
             <div className={classes.container}>
@@ -73,6 +99,12 @@ class PostTemplate extends React.Component {
             </GridItem> */}
                 <GridItem xs={12} sm={12} md={10}>
                   <h1>{post.title}</h1>
+                  <Img
+                    title={post.title}
+                    alt="Screenshot of Project"
+                    sizes={fluid}
+                    className="card-img_src center-block"
+                  />
                   <div
                     dangerouslySetInnerHTML={{
                       __html: post.content
@@ -83,7 +115,6 @@ class PostTemplate extends React.Component {
                 </GridItem>
               </GridContainer>
             </div>
-            {/* </Parallax> */}
             <Footer />
           </div>
         </div>
@@ -101,7 +132,8 @@ export const query = graphql`
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
+              src
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
