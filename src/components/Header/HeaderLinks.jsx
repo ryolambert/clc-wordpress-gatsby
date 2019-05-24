@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 // react components for routing our app without refresh
-import { Link } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -21,103 +21,127 @@ import Button from 'components/CustomButtons/Button.jsx';
 
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 
-class HeaderLinks extends React.Component {
-  render() {
-    const { classes } = this.props;
+const HEADERLINK_QUERY = graphql`
+  fragment menuFields on wordpress__wp_api_menus_menus_items {
+    slug
+    items {
+      title
+      url
+      object_id
+      object_slug
+      wordpress_children {
+        title
+        url
+        object_id
+        object_slug
+      }
+    }
+  }
+  query headerLinkQuery {
+    # about: wordpressWpApiMenusMenusItems(wordpress_id: {eq: 110}) {
+    #   ...menuFields
+    # }
+    # media: wordpressWpApiMenusMenusItems(wordpress_id: {eq: 111}) {
+    #   ...menuFields
+    # }
+    # resources: wordpressWpApiMenusMenusItems(wordpress_id: {eq: 111}) {
+    #   ...menuFields
+    # }
+    wordpressWpApiMenusMenusItems(name: { eq: "Main Menu" }) {
+      ...menuFields
+    }
+  }
+`;
+
+const renderLink = item => {
+  return (
+    <ListItem>
+      <Link
+        to={`/${item.object_slug}`}
+        className={headerLinksStyle.dropdownLink}>
+        {item.title}
+      </Link>
+    </ListItem>
+  );
+};
+
+const renderHeaderLink = item => {
+  if (item.wordpress_children && item.wordpress_children.length) {
+    return renderHeaderDropLinks(item);
+  } else {
     return (
-      <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <CustomDropdown
-            noLiPadding
-            buttonText="About"
-            buttonProps={{
-              className: classes.navLink,
-              color: 'transparent'
-            }}
-            buttonIcon={Apps}
-            dropdownList={[
-              <Link
-                to="/Components/Components/"
-                className={classes.dropdownLink}>
-                All components
-              </Link>,
-              <a
-                href="https://creativetimofficial.github.io/material-kit-react/#/documentation"
-                target="_blank"
-                className={classes.dropdownLink}>
-                Documentation
-              </a>
-            ]}
-          />
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Button
-            href="https://www.creative-tim.com/product/material-kit-react"
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}>
-            <CloudDownload className={classes.icons} /> Download
-          </Button>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Tooltip
-            id="instagram-twitter"
-            title="Follow us on twitter"
-            placement={
-              typeof window !== 'undefined' && window.innerWidth > 959
-                ? 'top'
-                : 'left'
-            }
-            classes={{ tooltip: classes.tooltip }}>
-            <Button
-              href="https://twitter.com/CreativeTim"
-              target="_blank"
-              color="transparent"
-              className={classes.navLink}>
-              <FaTwitter />
-            </Button>
-          </Tooltip>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Tooltip
-            id="instagram-facebook"
-            title="Follow us on facebook"
-            placement={
-              typeof window !== 'undefined' && window.innerWidth > 959
-                ? 'top'
-                : 'left'
-            }
-            classes={{ tooltip: classes.tooltip }}>
-            <Button
-              color="transparent"
-              href="https://www.facebook.com/CreativeTim"
-              target="_blank"
-              className={classes.navLink}>
-              <FaFacebook />
-            </Button>
-          </Tooltip>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Tooltip
-            id="instagram-tooltip"
-            title="Follow us on instagram"
-            placement={
-              typeof window !== 'undefined' && window.innerWidth > 959
-                ? 'top'
-                : 'left'
-            }
-            classes={{ tooltip: classes.tooltip }}>
-            <Button
-              color="transparent"
-              href="https://www.instagram.com/CreativeTimOfficial"
-              target="_blank"
-              className={classes.navLink}>
-              <FaInstagram />
-            </Button>
-          </Tooltip>
-        </ListItem>
-      </List>
+      <ListItem className="listItem" key={item.object_slug}>
+        {renderLink(item)}
+      </ListItem>
     );
   }
+};
+
+const renderDropMap = item => {};
+
+const renderHeaderDropLinks = item => {
+  return (
+    <ListItem className="listItem" key={item.object_slug}>
+      {/* {renderLink(item)} */}
+      <CustomDropdown
+        noLiPadding
+        buttonText={item.object_slug}
+        buttonProps={{
+          className: headerLinksStyle.navLink,
+          color: 'transparent'
+        }}
+        dropdownList={[
+          <ListItem>
+            {item.wordpress_children.map(child => (
+              <Link to={`/${child.object_slug}`}>{child.title}</Link>
+            ))}
+          </ListItem>
+        ]}
+      />
+    </ListItem>
+  );
+};
+
+function HeaderLinks({ ...props }) {
+  const { classes } = props;
+  console.table(...props);
+  return (
+    <StaticQuery
+      query={HEADERLINK_QUERY}
+      render={data => (
+        <List className={headerLinksStyle.list}>
+          {data.wordpressWpApiMenusMenusItems.items.map(item => {
+            if (item.wordpress_children) {
+              return renderHeaderDropLinks(item);
+            } else {
+              return renderHeaderLink(item);
+            }
+          })}
+        </List>
+      )}
+    />
+  );
 }
+
 export default withStyles(headerLinksStyle)(HeaderLinks);
+
+// <ListItem className={headerLinksStyle.listItem} key={item.object_slug}>
+//   {/* <Link to={`/${item.object_slug}`} className={headerLinksStyle.listItem}>
+//   {item.title}
+// </Link> */}
+//   <CustomDropdown
+//     noLiPadding
+//     buttonText={item.object_slug}
+//     buttonProps={{
+//       className: headerLinksStyle.navLink,
+//       color: 'transparent'
+//     }}
+//     dropdownList={[
+//       <Link
+//         to={`/${item.object_slug}`}
+//         className={headerLinksStyle.dropdownLink}>
+//         {item.title}
+//       </Link>
+//     ]}
+//   />
+// </ListItem>
