@@ -96,7 +96,8 @@ const customDropdownStyle = theme => ({
   },
   warningHover: {
     '&:hover': {
-      backgroundColor: warningColor,
+      // backgroundColor: warningColor,
+      background: 'linear-gradient(to right, #feb970 50%,#fd9551 100%)',
       color: '#FFFFFF',
       ...warningBoxShadow
     }
