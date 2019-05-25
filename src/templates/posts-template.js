@@ -64,7 +64,7 @@ class IndexPage extends React.Component {
         />
         <div>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={10}>
               <h4>{pageCount} Pages</h4>
 
               {group.map(({ node }) => (

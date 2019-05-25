@@ -57,7 +57,7 @@ class PageTemplate extends React.Component {
           <div>
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={6}>
+              <GridItem xs={12} sm={12} md={10}>
                <h1>{data.wordpressPage.title}</h1>
                <div
                   dangerouslySetInnerHTML={{

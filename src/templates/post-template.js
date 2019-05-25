@@ -64,7 +64,7 @@ class PostTemplate extends React.Component {
         <Parallax small filter image={fluid.src}>
           <div className={classes.container}>
             <GridContainer>
-              <GridItem xs={12} sm={12} md={6}>
+              <GridItem xs={12} sm={12} md={10}>
                 <h1
                   style={{
                     display: 'inline-block',
