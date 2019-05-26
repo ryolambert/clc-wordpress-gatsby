@@ -19,6 +19,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPage.jsx';
+import '../../assets/scss/material-kit-react.scss';
 
 // Sections for this page
 import ProductSection from './Sections/ProductSection.jsx';
