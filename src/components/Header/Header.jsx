@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
 // import Avatar from '@material-ui/core/Avatar';
 // @material-ui/icons
 import Menu from '@material-ui/icons/Menu';
@@ -116,7 +116,7 @@ class Header extends React.Component {
           </Hidden>
         </Toolbar>
         <Hidden mdUp implementation="css">
-          <SwipeableDrawer
+          <Drawer
             variant="temporary"
             anchor={'right'}
             open={this.state.mobileOpen}
@@ -128,7 +128,7 @@ class Header extends React.Component {
               {leftLinks}
               {rightLinks}
             </div>
-          </SwipeableDrawer>
+          </Drawer>
         </Hidden>
       </AppBar>
     );
