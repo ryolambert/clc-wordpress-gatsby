@@ -5,6 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-exports.onInitialClientRender = () => {
-  require("./src/assets/scss/material-kit-react.scss");
-};
+// exports.onInitialClientRender = () => {
+//   require("./src/assets/scss/material-kit-react.scss");
+// };
