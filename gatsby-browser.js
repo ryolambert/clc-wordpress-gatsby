@@ -8,4 +8,4 @@
 // exports.onInitialClientRender = () => {
 //   require("./src/assets/scss/material-kit-react.scss");
 // };
-import "./src/assets/scss/material-kit-react";
+import "./src/assets/scss/material-kit-react.scss";
