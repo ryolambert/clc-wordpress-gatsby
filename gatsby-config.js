@@ -87,6 +87,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -136,9 +137,8 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-sitemap`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    
   ]
 };
