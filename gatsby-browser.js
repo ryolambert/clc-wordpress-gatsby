@@ -9,7 +9,7 @@
 //   require("./src/assets/scss/material-kit-react.scss");
 // };
 import "./src/assets/scss/material-kit-react.scss";
-import Layout from './src/components/general/Layout'
+import Layout from './src/components/Layout'
 
 export const wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>
