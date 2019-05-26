@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`
+    title: `Longbeach City Lights Church Website`,
+    description: `🙏Community through faith! Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.`,
+    author: `@ryolambert`,
+    siteUrl: `https://gifted-minsky-8fe3ce.netlify.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,7 +32,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        // I have created a dummy site for us to use with the plugins we discussed
+        // Longbeach City Lights Church WP Demo from Matt
         // baseUrl: 'localhost:8080',
         baseUrl: 'longbeach.citylightschurch.org',
         protocol: 'http',
@@ -44,7 +45,7 @@ module.exports = {
         searchAndReplaceContentUrls: {
           // sourceUrl: 'http://localhost:8080/',
           sourceURL: 'http://longbeach.citylightschurch.org',
-          replacementUrl: 'http://localhost:8000'
+          replacementUrl: 'https://gifted-minsky-8fe3ce.netlify.com'
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
