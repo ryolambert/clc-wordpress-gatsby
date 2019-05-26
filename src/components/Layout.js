@@ -7,7 +7,7 @@ import '../assets/scss/material-kit-react.scss';
 const Layout = ({ children }) => (
   <>
     <Header />
-    <div className="site-content">{children}</div>
+    {children}
     <Footer />
   </>
 );
