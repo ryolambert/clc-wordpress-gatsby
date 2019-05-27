@@ -25,7 +25,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
 import Image from 'components/image.js';
-import profilePageStyle from 'assets/jss/material-kit-react/views/profilePage.jsx';
+import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
 
 const dashboardRoutes = [];
 

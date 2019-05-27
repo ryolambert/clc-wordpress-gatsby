@@ -21,7 +21,7 @@ import Button from 'components/CustomButtons/Button.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
-import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
+import landingPageStyle from 'assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
 //todo: Add SEO
 
