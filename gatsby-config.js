@@ -3,9 +3,22 @@ module.exports = {
     title: `Longbeach City Lights Church Website`,
     description: `🙏Community through faith! Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.`,
     author: `@ryolambert`,
-    siteUrl: `localhost:8000`
+    siteUrl: `https://gifted-minsky-8fe3ce.netlify.com`
   },
   plugins: [
+    'gatsby-plugin-top-layout',
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      // If you want to use styled components you should change the injection order.
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    // If you want to use styled components you should add the plugin here.
+    // 'gatsby-plugin-styled-components',
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
     {
@@ -14,9 +27,10 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/assets/img`
       }
-    },
+    }
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -32,7 +46,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        // I have created a dummy site for us to use with the plugins we discussed
+        // Longbeach City Lights Church WP Demo from Matt
         // baseUrl: 'localhost:8080',
         baseUrl: 'longbeach.citylightschurch.org',
         protocol: 'http',
@@ -45,7 +59,7 @@ module.exports = {
         searchAndReplaceContentUrls: {
           // sourceUrl: 'http://localhost:8080/',
           sourceURL: 'http://longbeach.citylightschurch.org',
-          replacementUrl: 'http://localhost:8000'
+          replacementUrl: 'https://gifted-minsky-8fe3ce.netlify.com'
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
@@ -65,11 +79,9 @@ module.exports = {
           return entities;
         }
       }
-    },
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap`
+    }
+    // `gatsby-plugin-sitemap`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline',
   ]
 };

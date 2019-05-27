@@ -23,7 +23,7 @@ import Button from 'components/CustomButtons/Button.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 
-import profilePageStyle from 'assets/jss/material-kit-react/views/profilePage.jsx';
+import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
 
 const dashboardRoutes = [];
 
@@ -80,7 +80,7 @@ class PageTemplate extends React.Component {
   }
 }
 
-export const query = graphql`
+export const CURRENT_PAGE_QUERY = graphql`
   query currentPageQuery($id: String!) {
     wordpressPage(id: { eq: $id }) {
       title
