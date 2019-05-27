@@ -14,3 +14,6 @@
 // export const wrapPageElement = ({ element, props }) => {
 //   return <Layout {...props}>{element}</Layout>
 // }
+
+import 'typeface-roboto';
+import 'typeface-roboto-slab';
