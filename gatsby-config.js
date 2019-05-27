@@ -82,9 +82,21 @@ module.exports = {
     siteUrl: `https://gifted-minsky-8fe3ce.netlify.com`
   },
   plugins: [
+    'gatsby-plugin-top-layout',
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      // If you want to use styled components you should change the injection order.
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    // If you want to use styled components you should add the plugin here.
+    // 'gatsby-plugin-styled-components',
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
-    `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
