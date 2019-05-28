@@ -16,20 +16,20 @@ module.exports = {
         // },
       },
     },
-    {
-      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-      options: {
-        // Fields to index
-        fields: [`title`, `excerpt`, `content`],
-        // How to resolve each field's value for a supported node type
-        resolvers: {
-          // For any node of type wordPressPost, 
-          wordPressPost: {
-            title: node => node.title,
-            excerpt: node => node.excerpt,
-          },
-        }
-      }
+    // {
+    //   resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+    //   options: {
+    //     // Fields to index
+    //     fields: [`title`, `excerpt`, `content`],
+    //     // How to resolve each field's value for a supported node type
+    //     resolvers: {
+    //       // For any node of type wordPressPost, 
+    //       wordPressPost: {
+    //         title: node => node.title,
+    //         excerpt: node => node.excerpt,
+    //       },
+    //     }
+    //   }
     },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
@@ -97,8 +97,8 @@ module.exports = {
           '**/wordpress__acf_tags',
           // No tribe event tags
           '**/wordpress__acf_tribe_events_cat',
-          //
-          '**/',
+          // Only 1 user atm
+          '**/wordpress__wp_users',
 
         ],
         normalizer: function({ entities }) {
