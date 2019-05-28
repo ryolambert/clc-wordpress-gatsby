@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `https://gifted-minsky-8fe3ce.netlify.com`
   },
   plugins: [
-    'gatsby-plugin-top-layout',
+    `gatsby-plugin-top-layout`,
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
@@ -15,6 +15,21 @@ module.exports = {
         //   injectFirst: true,
         // },
       },
+    },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `excerpt`, `content`],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type wordPressPost, 
+          wordPressPost: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+          },
+        }
+      }
     },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
@@ -74,7 +89,18 @@ module.exports = {
           '**/events',
           '**/menus'
         ],
-        excludedRoutes: [],
+        excludedRoutes: [
+          '**/wordpress__tribe',
+          // May remove later
+          '**/wordpress__acf_block',
+          // No tags currently
+          '**/wordpress__acf_tags',
+          // No tribe event tags
+          '**/wordpress__acf_tribe_events_cat',
+          //
+          '**/',
+
+        ],
         normalizer: function({ entities }) {
           return entities;
         }
