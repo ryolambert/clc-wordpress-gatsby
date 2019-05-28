@@ -41,6 +41,11 @@ class PostTemplate extends React.Component {
     //   featured_media => featured_media.localFile.childImageSharp.fluid
     // );
     // const imgFluid = imagesFluid.map(imageFlu => ( <Img fluid={imageFlu} key={imageFlu.src} />)) };
+    const imageClasses = classNames(
+      classes.imgRaised,
+      classes.imgRounded,
+      classes.imgFluid
+    );
 
     // Testing if featured_media fluid works
     console.log(fluid);
@@ -98,12 +103,12 @@ class PostTemplate extends React.Component {
 
             </GridItem> */}
                 <GridItem xs={12} sm={12} md={10}>
-                  <h1>{post.title}</h1>
                   <Img
                     title={post.title}
                     alt="Screenshot of Project"
                     sizes={fluid}
-                    className="card-img_src center-block"
+                    className={imageClasses}
+                    style={{marginTop: '20px', marginBottom: '20px'}}
                   />
                   <div
                     dangerouslySetInnerHTML={{
@@ -113,7 +118,7 @@ class PostTemplate extends React.Component {
                   <p dangerouslySetInnerHTML={{ __html: post.date }} />
                   <p dangerouslySetInnerHTML={{ __html: post.slug }} />
                 </GridItem>
-              </GridContainer>
+              </GridContainer>g
             </div>
             <Footer />
           </div>
