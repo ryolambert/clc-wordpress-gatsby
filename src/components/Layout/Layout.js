@@ -36,7 +36,7 @@ export default class Layout extends React.Component {
         <Header
           color="transparent"
           routes={dashboardRoutes}
-          brand=""
+          brand="Citylights Church"
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{

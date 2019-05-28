@@ -9,7 +9,8 @@ import {
   roseColor,
   transition,
   boxShadow,
-  drawerWidth
+  drawerWidth,
+  warningBoxShadow
 } from 'assets/jss/material-kit-react.jsx';
 
 const headerStyle = {
@@ -59,6 +60,26 @@ const headerStyle = {
     textTransform: 'none',
     color: 'inherit',
     padding: '8px 16px',
+    fontFamily: 'Roboto Slab',
+    fontWeight: '400',
+    '&:hover,&:focus': {
+      color: 'inherit',
+      background: 'transparent'
+    }
+  },
+  brandTitle: {
+    ...defaultFont,
+    // lineHeight: '30px',
+    fontSize: '18px',
+    // borderRadius: '3px',
+    textTransform: 'none',
+    color: 'inherit',
+    // padding: '8px 16px',
+    // margin: '10px 10px'
+    fontFamily: 'Roboto Slab',
+    fontWeight: '400',
+    textShadow: '0 0 .5em rgba(255,255,255,.4)',
+    animation: 'floatingText 2s ease alternate infinite',
     '&:hover,&:focus': {
       color: 'inherit',
       background: 'transparent'
@@ -145,7 +166,8 @@ const headerStyle = {
     paddingRight: '0px',
     paddingLeft: '0',
     ...transition
-  }
+  },
+  warningBoxShadow
 };
 
 export default headerStyle;

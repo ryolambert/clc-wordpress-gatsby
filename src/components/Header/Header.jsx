@@ -78,15 +78,29 @@ class Header extends React.Component {
       [classes.absolute]: absolute,
       [classes.fixed]: fixed
     });
-    const logo = require('../../assets/img/cropped-citylights_logo3.png');
+    const logo = require('../../assets/img/clc-logo-svg.svg');
 
     //* Branding Component on Appbar Header
     //todo: Figure out adding in Brand SVG or Image
     const brandComponent = (
       <Button className={classes.title}>
-        <Link to="/">
-          <img width={180} src={logo} alt="City Lights Church Logo" />
-          {brand}
+        <Link
+          to="/"
+          className={classes.title}
+          style={{
+            display: 'flex',
+            flexFlow: 'row nowrap',
+            alignItems: 'center'
+          }}>
+          <img
+            width={30}
+            src={logo}
+            style={{
+              marginRight: '10px'
+            }}
+            alt="City Lights Church Logo"
+          />
+          <h3 className={classes.brandTitle}>Citylights Church</h3>
         </Link>
       </Button>
     );
