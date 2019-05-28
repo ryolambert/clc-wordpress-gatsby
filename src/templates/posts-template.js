@@ -13,13 +13,16 @@ import PropTypes from 'prop-types';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Header from 'components/Header/Header.jsx';
-import Footer from 'components/Footer/Footer.jsx';
+import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
+import Card from 'components/Card/Card.jsx';
+import CardBody from 'components/Card/CardBody.jsx';
+import CardHeader from 'components/Card/CardHeader.jsx';
+import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
-import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
+
 
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
@@ -35,7 +38,7 @@ const NavLink = props => {
 
 const dashboardRoutes = [];
 
-//todo: Fix component formatting fo 
+//todo: Fix component formatting fo
 
 class IndexPage extends React.Component {
   render() {
@@ -44,79 +47,69 @@ class IndexPage extends React.Component {
     const { group, index, first, last, pageCount } = pageContext;
     const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
     const nextUrl = (index + 1).toString();
-    
 
     console.log(group);
 
     return (
-      <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand=""
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: 'white'
-          }}
-          {...rest}
-        />
-        <div>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={10}>
-              <h4>{pageCount} Pages</h4>
-
+      <Layout>
+        <Parallax small filter image={require('assets/img/elysian-park.jpg')} />
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={10} justify="center">
+              <h4 style={{textAlign: 'center'}}>{pageCount} Pages</h4>
               {group.map(({ node }) => (
-                <div
+                <Card
                   key={node.slug}
-                  className={'post'}
+                  classes="card"
+                  className=""
                   style={{ marginBottom: 50 }}>
                   {node.featured_media &&
                     node.featured_media.localFile.childImageSharp
                       .resolutions && (
-                      <div>
+                      <CardHeader>
                         <Img
+                          className={classes.imgRoundedCircle}
                           resolutions={
                             node.featured_media.localFile.childImageSharp
                               .resolutions
                           }
                         />
-                      </div>
+                      </CardHeader>
                     )}
 
                   <Link to={'/post/' + node.slug}>
                     <h3>{node.title}</h3>
                   </Link>
 
-                  <div
+                  <CardBody
                     className={'post-content'}
                     dangerouslySetInnerHTML={{ __html: node.excerpt }}
                   />
-
-                  {node.date}
-                </div>
+                  <CardFooter>{node.date}</CardFooter>
+                </Card>
               ))}
-              <div className="previousLink">
-                <NavLink
-                  test={first}
-                  url={'/posts/' + previousUrl}
-                  text="Go to Previous Page"
-                />
-              </div>
-              <div className="nextLink">
-                <NavLink
-                  test={last}
-                  url={'/posts/' + nextUrl}
-                  text="Go to Next Page"
-                />
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button color="warning">
+                  <NavLink
+                    test={first}
+                    url={'/posts/' + previousUrl}
+                    text="Go to Previous Page"
+                  />
+                </Button>
+                <Button color="warning">
+                  <NavLink
+                    test={last}
+                    url={'/posts/' + nextUrl}
+                    text="Go to Next Page"
+                  />
+                </Button>
               </div>
             </GridItem>
           </GridContainer>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
 
-export default withStyles(landingPageStyle)(IndexPage);
+export default withStyles({landingPageStyle, })(IndexPage);
