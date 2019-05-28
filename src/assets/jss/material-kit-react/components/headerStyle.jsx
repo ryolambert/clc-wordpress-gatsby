@@ -78,6 +78,8 @@ const headerStyle = {
     // margin: '10px 10px'
     fontFamily: 'Roboto Slab',
     fontWeight: '400',
+    justifyContent: 'center',
+    marginBottom: '10px',
     textShadow: '0 0 .5em rgba(255,255,255,.4)',
     animation: 'floatingText 2s ease alternate infinite',
     '&:hover,&:focus': {
@@ -148,6 +150,11 @@ const headerStyle = {
   drawerPaper: {
     border: 'none',
     bottom: '0',
+    borderRadius: '21px 0px 0px 21px/300px 0px 0px 300px',
+    // borderRadius: '20px 0px 0px 20px',
+    // background: 'linear-gradient(to right, #fd9551 10%,#feb970 100%)',
+    // opacity: '0.95',
+    boxShadow: '-5px 3px 20px -4px rgba(89,89,89,0.69)',
     transitionProperty: 'top, bottom, width',
     transitionDuration: '.2s, .2s, .35s',
     transitionTimingFunction: 'linear, linear, ease',

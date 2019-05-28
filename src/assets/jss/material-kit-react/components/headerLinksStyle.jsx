@@ -40,9 +40,9 @@ const headerLinksStyle = theme => ({
     color: 'inherit',
     position: 'relative',
     padding: '0.9375rem',
-    fontWeight: '400',
+    fontWeight: '700',
     fontSize: '12px',
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
     borderRadius: '3px',
     lineHeight: '20px',
     textDecoration: 'none',
@@ -50,7 +50,8 @@ const headerLinksStyle = theme => ({
     display: 'inline-flex',
     '&:hover,&:focus': {
       color: 'inherit',
-      background: 'rgba(200, 200, 200, 0.2)'
+      // background: 'rgba(200, 200, 200, 0.2)',
+      background: 'linear-gradient(to right, #fd9551 10%,#feb970 100%)'
     },
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 30px)',
@@ -58,8 +59,17 @@ const headerLinksStyle = theme => ({
       marginBottom: '8px',
       marginTop: '8px',
       textAlign: 'left',
+      // color: '#fff',
+      fontFamily: 'Roboto Slab',
+      fontWeight: '700',
+      // textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
+      transform: 'translate(0,-.07em)',
       '& > span:first-child': {
         justifyContent: 'flex-start'
+      },
+      '&:hover, &:focus': {
+        color: 'inherit',
+        textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
       }
     }
   },
@@ -68,7 +78,7 @@ const headerLinksStyle = theme => ({
     padding: '0.9375rem',
     fontWeight: '400',
     fontSize: '12px',
-    textTransform: 'uppercase',
+    // textTransform: 'uppercase',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
@@ -80,7 +90,7 @@ const headerLinksStyle = theme => ({
     position: 'relative',
     fontWeight: '400',
     fontSize: '12px',
-    textTransform: 'uppercase',
+    // textTransform: 'uppercase',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
@@ -101,11 +111,18 @@ const headerLinksStyle = theme => ({
     marginRight: '4px'
   },
   dropdownLink: {
-    '&,&:hover,&:focus': {
+    // textShadow: '0.05em 0.05em 0.05em rgba(0, 0, 0,.55)',
+    textDecoration: 'none',
+    display: 'block',
+    padding: '10px 20px',
+    verticalAlign: 'middle',
+    color: 'inherit',
+    '&:hover, &:focus': {
       color: 'inherit',
       textDecoration: 'none',
       display: 'block',
-      padding: '10px 20px'
+      padding: '10px 20px',
+      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)'
     }
   },
   ...tooltip,
