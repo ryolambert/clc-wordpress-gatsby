@@ -23,7 +23,7 @@ module.exports = {
       options: {
         // Longbeach City Lights Church WP Demo from Matt
         // baseUrl: 'localhost:8080',
-        baseUrl: 'longbeach.citylightschurch.com',
+        baseUrl: 'longbeach.citylightschurch.org',
         protocol: 'http',
         hostingWPCOM: false,
         // We will be using some advanced custom fields
