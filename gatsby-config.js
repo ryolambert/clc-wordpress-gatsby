@@ -3,7 +3,7 @@ module.exports = {
     title: `Longbeach City Lights Church Website`,
     description: `🙏Community through faith! Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.`,
     author: `@ryolambert`,
-    siteUrl: `https://gifted-minsky-8fe3ce.netlify.com`
+    siteUrl: `https://citylightschurch.netlify.com`
   },
   plugins: [
     `gatsby-plugin-top-layout`,
@@ -14,25 +14,76 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
-      },
+      }
     },
-    // {
-    //   resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-    //   options: {
-    //     // Fields to index
-    //     fields: [`title`, `excerpt`, `content`],
-    //     // How to resolve each field's value for a supported node type
-    //     resolvers: {
-    //       // For any node of type wordPressPost, 
-    //       wordPressPost: {
-    //         title: node => node.title,
-    //         excerpt: node => node.excerpt,
-    //       },
-    //     }
-    //   }
-    // },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-source-wordpress',
+      options: {
+        // Longbeach City Lights Church WP Demo from Matt
+        // baseUrl: 'localhost:8080',
+        baseUrl: 'clc-gatsby-demo.000webhostapp.com',
+        protocol: 'https',
+        hostingWPCOM: false,
+        // We will be using some advanced custom fields
+        useACF: true,
+        acfOptionPageIds: [],
+        verboseOutput: false,
+        perPage: 100,
+        searchAndReplaceContentUrls: {
+          // sourceUrl: 'http://localhost:8080/',
+          sourceURL: 'https://clc-gatsby-demo.000webhostapp.com',
+          replacementUrl: 'https://citylightschurch.netlify.com'
+        },
+        // Set how many simultaneous requests are sent at once.
+        concurrentRequests: 15,
+        includedRoutes: [
+          // '**/categories',
+          '**/posts',
+          '**/pages',
+          '**/media',
+          // '**/tags',
+          // '**/taxonomies',
+          // '**/users',
+          // '**/events',
+          '**/menus'
+        ],
+        excludedRoutes: [
+          '**/wordpress__tribe/events',
+          // May remove later
+          '**/wordpress__acf_block',
+          // No tags currently
+          '**/wordpress__acf_tags',
+          // No tribe event tags
+          '**/wordpress__acf_tribe_events_cat',
+          // Only 1 user atm
+          '**/wordpress__wp_users',
+          '**/events_categories',
+          '**/events_tags',
+
+        ],
+        normalizer: function({ entities }) {
+          return entities;
+        }
+      }
+    },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `excerpt`],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type wordPressPost,
+          wordpress__POST: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+            slug: node => node.slug
+          }
+        }
+      }
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
@@ -56,54 +107,6 @@ module.exports = {
         theme_color: `#ffffff`,
         display: `minimal-ui`,
         icon: 'src/assets/img/favicon.png' // This path is relative to the root of the site.
-      }
-    },
-    {
-      resolve: 'gatsby-source-wordpress',
-      options: {
-        // Longbeach City Lights Church WP Demo from Matt
-        // baseUrl: 'localhost:8080',
-        baseUrl: 'longbeach.citylightschurch.org',
-        protocol: 'http',
-        hostingWPCOM: false,
-        // We will be using some advanced custom fields
-        useACF: true,
-        acfOptionPageIds: [],
-        verboseOutput: true,
-        perPage: 100,
-        searchAndReplaceContentUrls: {
-          // sourceUrl: 'http://localhost:8080/',
-          sourceURL: 'http://longbeach.citylightschurch.org',
-          replacementUrl: 'https://gifted-minsky-8fe3ce.netlify.com'
-        },
-        // Set how many simultaneous requests are sent at once.
-        concurrentRequests: 10,
-        includedRoutes: [
-          '**/categories',
-          '**/posts',
-          '**/pages',
-          '**/media',
-          '**/tags',
-          '**/taxonomies',
-          '**/users',
-          '**/events',
-          '**/menus'
-        ],
-        excludedRoutes: [
-          '**/wordpress__tribe',
-          // May remove later
-          '**/wordpress__acf_block',
-          // No tags currently
-          '**/wordpress__acf_tags',
-          // No tribe event tags
-          '**/wordpress__acf_tribe_events_cat',
-          // Only 1 user atm
-          '**/wordpress__wp_users',
-
-        ],
-        normalizer: function({ entities }) {
-          return entities;
-        }
       }
     },
     `gatsby-plugin-sitemap`
