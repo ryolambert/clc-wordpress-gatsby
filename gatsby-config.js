@@ -23,8 +23,8 @@ module.exports = {
       options: {
         // Longbeach City Lights Church WP Demo from Matt
         // baseUrl: 'localhost:8080',
-        baseUrl: 'clc-gatsby-demo.000webhostapp.com',
-        protocol: 'https',
+        baseUrl: 'longbeach.citylightschurch.com',
+        protocol: 'http',
         hostingWPCOM: false,
         // We will be using some advanced custom fields
         useACF: true,
@@ -33,7 +33,7 @@ module.exports = {
         perPage: 100,
         searchAndReplaceContentUrls: {
           // sourceUrl: 'http://localhost:8080/',
-          sourceURL: 'https://clc-gatsby-demo.000webhostapp.com',
+          sourceURL: 'http://longbeach.citylightschurch.org',
           replacementUrl: 'https://citylightschurch.netlify.com'
         },
         // Set how many simultaneous requests are sent at once.
