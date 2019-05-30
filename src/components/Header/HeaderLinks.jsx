@@ -10,6 +10,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
+import Search from '../Search/Search.jsx';
 
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 
@@ -42,6 +43,9 @@ const HEADERLINK_QUERY = graphql`
     wordpressWpApiMenusMenusItems(name: { eq: "Main Menu" }) {
       ...menuFields
     }
+    siteSearchIndex {
+      index
+    }
   }
 `;
 
@@ -58,7 +62,6 @@ function renderHeaderLink(item, props) {
 
 function renderDropMap(item, props) {
   const { classes } = props;
-  const comma = ',';
   let mapDrop = item.wordpress_children.map(child => (
     <Link to={`/${child.object_slug}`} className={classes.dropdownLink}>
       {child.title}
@@ -79,7 +82,7 @@ function renderDropMap(item, props) {
 
 function HeaderLinks({ ...props }) {
   const { classes } = props;
-  console.table(...props);
+  // console.table(...props);
   return (
     <StaticQuery
       query={HEADERLINK_QUERY}
@@ -91,7 +94,7 @@ function HeaderLinks({ ...props }) {
                 <ListItem className={classes.listItem} key={item.object_slug}>
                   <CustomDropdown
                     noLiPadding
-                    buttonText={item.object_slug}
+                    buttonText={item.title}
                     buttonProps={{
                       className: classes.navLink,
                       color: 'transparent'
@@ -107,6 +110,7 @@ function HeaderLinks({ ...props }) {
           <Link to="/posts/" className={classes.navLink}>
             Blog
           </Link>
+          <Search searchIndex={data.siteSearchIndex.index} />
         </List>
       )}
     />
