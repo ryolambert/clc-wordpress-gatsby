@@ -22,14 +22,20 @@ module.exports = `
                     template
                     format
                     title
-                    date
+                    date(formatString: "MMMM DD, YYYY")
                     featured_media{
                         localFile{
                             childImageSharp{
-                                resolutions(width:500, height: 500){
+                                fluid(maxWidth: 1200, traceSVG: {
+                                    color: "lightgray",
+                                    optTolerance: 0.4,
+                                    turdSize: 100,
+                                    turnPolicy: TURNPOLICY_MAJORITY,
+                                }){
                                     src
-                                    width
-                                    height
+                                    srcSet
+                                    srcWebp
+                                    tracedSVG
                                 }
                             }
                         }
