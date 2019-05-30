@@ -9,8 +9,7 @@ import { Router, Link } from '@reach/router';
 // pages for this product
 import Components from './Components/Components.jsx';
 import LandingPage from './LandingPage/LandingPage.jsx';
-import ProfilePage from './ProfilePage/ProfilePage.jsx';
-import LoginPage from './LoginPage/LoginPage.jsx';
+
 
 let hist = createMemoryHistory();
 
@@ -25,8 +24,6 @@ export default () => (
   // </Router>
   <Router>
     <LandingPage path="/" />
-    <ProfilePage path="/profile-page" />
-    <LoginPage path="/login-page" />
     <Components path="/component-page" />
   </Router>
 );
