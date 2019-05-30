@@ -21,10 +21,9 @@ import CardBody from 'components/Card/CardBody.jsx';
 import CardHeader from 'components/Card/CardHeader.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
-import Parallax from 'components/Parallax/Parallax.jsx';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 
-
-import landingPageStyle from 'assets/jss/material-kit-react/views/landingPageStyle.jsx';
+import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
 
 //todo: Add SEO
 
@@ -36,53 +35,90 @@ const NavLink = props => {
   }
 };
 
-const dashboardRoutes = [];
-
 //todo: Fix component formatting fo
 
 class IndexPage extends React.Component {
   render() {
-    const { data, pageContext } = this.props;
-    const { classes, ...rest } = this.props;
+    const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
     const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
     const nextUrl = (index + 1).toString();
+    // const { classes, ...rest } = this.props;
+    // const group = this.props.data.wordpressPage;
+    const blogParallax = this.props.data.blogParallaxImg.edges[0].node.featured_media.localFile.childImageSharp.fluid;
+    const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
+    const fluid = blogParallax
+      ? blogParallax
+      : fallBackParallax;
 
-    console.log(group);
+    const post = {title: "Blog", date: "Bless Yourself Up 🙏 Read or Listen to our latest! 🙌"};
 
+    const imageClasses = classNames(
+      classes.imgRaised,
+      classes.imgRounded,
+      classes.imgFluid
+    );
+
+    // console.log('Dynamic Blog Object');
+    // console.table(blogParallax);
+    // console.log('Ternary Fallback Object');
+    // console.table(fluid);
+    // console.log('Fallback Object');
+    // console.table(fallBackParallax);
+    // Testing group is being grabbed
+    console.table({classes});
+    
     return (
       <Layout>
-        <Parallax small filter image={require('assets/img/elysian-park.jpg')} />
+        <ParallaxLazy small filter fluid={fluid} post={post}>
+          <div className={classes.container}>
+            <GridContainer justify="center">
+              <GridItem xs={10} sm={10} md={6}>
+                <h1
+                  style={{
+                    display: 'inline-block',
+                    position: 'relative',
+                    marginTop: '30px',
+                    minHeight: '32px',
+                    color: '#FFFFFF',
+                    textDecoration: 'none',
+                    zIndex: '12',
+                    fontFamily: 'Roboto Slab',
+                    fontWeight: '700'
+                  }}
+                  className={classes.title}>
+                  Blog
+                </h1>
+                <h4>Take a read or a listen!</h4>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={10} justify="center">
-              <h4 style={{textAlign: 'center'}}>{pageCount} Pages</h4>
+            <GridItem xs={10} sm={10} md={10} justify="center">
+              <h4 style={{ textAlign: 'center' }}>{pageCount} Pages</h4>
               {group.map(({ node }) => (
                 <Card
                   key={node.slug}
-                  classes="card"
-                  className=""
+                  className={classes.card}
                   style={{ marginBottom: 50 }}>
                   {node.featured_media &&
-                    node.featured_media.localFile.childImageSharp
-                      .resolutions && (
+                    node.featured_media.localFile.childImageSharp.fluid && (
                       <CardHeader>
                         <Img
-                          className={classes.imgRoundedCircle}
-                          resolutions={
-                            node.featured_media.localFile.childImageSharp
-                              .resolutions
-                          }
+                          className={imageClasses}
+                          fluid={node.featured_media.localFile.childImageSharp.fluid}
                         />
                       </CardHeader>
                     )}
 
-                  <Link to={'/post/' + node.slug}>
+                  <Link to={'/post/' + node.slug} className={classes.cardTitle}>
                     <h3>{node.title}</h3>
                   </Link>
 
                   <CardBody
-                    className={'post-content'}
+                    className={classes.cardBody}
                     dangerouslySetInnerHTML={{ __html: node.excerpt }}
                   />
                   <CardFooter>{node.date}</CardFooter>
@@ -112,4 +148,78 @@ class IndexPage extends React.Component {
   }
 }
 
-export default withStyles({landingPageStyle, })(IndexPage);
+export default withStyles(profilePageStyle)(IndexPage);
+
+export const query = graphql`
+  query allPostsQuery {
+    allWordpressPost {
+      edges {
+        node {
+          id
+          slug
+          status
+          template
+          format
+          title
+          date
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 1200
+                  traceSVG: {
+                    color: "lightgray"
+                    optTolerance: 0.4
+                    turdSize: 100
+                    turnPolicy: TURNPOLICY_MAJORITY
+                  }
+                ) {
+                  src
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    blogParallaxImg: allWordpressPost(sort: {order: DESC, fields: date}, filter: {featured_media: {id: {regex: "/./"}}}) {
+    edges {
+      node {
+        featured_media {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1200) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  # blogOne: {
+
+  # }
+  # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
+  #   edges {
+  #     node {
+  #       localFile {
+  #         childImageSharp {
+  #           fluid(maxWidth: 1200) {
+  #             src
+  #             ...GatsbyImageSharpFluid
+  #           }
+  #         }
+  #       }
+  #     }
+  #   }
+  # }
+  fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
+      fluid(maxWidth: 1200) {
+        src
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+`;

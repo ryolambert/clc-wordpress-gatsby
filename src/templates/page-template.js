@@ -90,12 +90,12 @@ export const CURRENT_PAGE_QUERY = graphql`
       date(formatString: "MMMM DD, YYYY")
       
     }
-    site {
-      id
-      siteMetadata {
-        title
-      }
-    }
+    # site {
+    #   id
+    #   siteMetadata {
+    #     title
+    #   }
+    # }
   }
 `;
 
