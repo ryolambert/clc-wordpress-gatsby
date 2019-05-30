@@ -2,17 +2,8 @@ import { container, title } from 'assets/jss/material-kit-react.jsx';
 
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
 
-const profilePageStyle = {
+const postsPageStyle = {
   container,
-  profile: {
-    textAlign: 'center',
-    '& img': {
-      maxWidth: '160px',
-      width: '100%',
-      margin: '0 auto',
-      transform: 'translate3d(0, -50%, 0)'
-    }
-  },
   description: {
     margin: '1.071rem auto 0',
     maxWidth: '600px',
@@ -56,7 +47,15 @@ const profilePageStyle = {
   navWrapper: {
     margin: '20px auto 50px auto',
     textAlign: 'center'
+  },
+  cardContent: {
+    padding: '0.9375rem 1.875rem',
+    flex: '1 1 auto'
+  },
+  content: {
+    padding: 'auto',
+    alignItems: 'center'
   }
 };
 
-export default profilePageStyle;
+export default postsPageStyle;

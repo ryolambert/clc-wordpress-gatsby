@@ -2,7 +2,7 @@ import { container, title } from 'assets/jss/material-kit-react.jsx';
 
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
 
-const profilePageStyle = {
+const postsPageStyle = {
   container,
   profile: {
     textAlign: 'center',
@@ -56,7 +56,11 @@ const profilePageStyle = {
   navWrapper: {
     margin: '20px auto 50px auto',
     textAlign: 'center'
+  },
+  cardContent: {
+    padding: '0.9375rem 1.875rem',
+    flex: '1 1 auto'
   }
 };
 
-export default profilePageStyle;
+export default postsPageStyle;

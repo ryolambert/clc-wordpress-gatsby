@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -120,7 +120,22 @@ small {
 img {
   vertical-align: middle;
   border-style: none;
+  align-self: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 form {
   margin-bottom: 1.125rem;
+}
+
+figure {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  img {
+    border-radius: 5px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+      0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  }
 }
