@@ -68,22 +68,22 @@ module.exports = {
         }
       }
     },
-    // {
-    //   resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-    //   options: {
-    //     // Fields to index
-    //     fields: [`title`, `excerpt`],
-    //     // How to resolve each field's value for a supported node type
-    //     resolvers: {
-    //       // For any node of type wordPressPost,
-    //       wordpress__POST: {
-    //         title: node => node.title,
-    //         excerpt: node => node.excerpt,
-    //         slug: node => node.slug
-    //       }
-    //     }
-    //   }
-    // },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `excerpt`],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type wordPressPost,
+          wordpress__POST: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+            slug: node => node.slug
+          }
+        }
+      }
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
