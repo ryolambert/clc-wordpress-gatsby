@@ -72,12 +72,17 @@ class PostTemplate extends React.Component {
 
             </GridItem> */}
                   <GridItem xs={12} sm={12} md={10}>
-                    {/* <Img
-                      alt="Screenshot of Project"
-                      fluid={fluidContent}
-                      className={imageClasses}
-                      style={{ marginTop: '20px', marginBottom: '20px' }}
-                    /> */}
+                    {fluidContent && 
+                      <div>
+                        <Img
+                          alt="Screenshot of Project"
+                          fluid={post.featured_media.localFile.childImageSharp.fluid}
+                          className={imageClasses}
+                          style={{ marginTop: '20px', marginBottom: '20px' }}
+                        />
+                        {/* < img src={fluidContent.src} alt=""/> */}
+                      </div>
+                    }
                     <div 
                       className={classes.content}
                       dangerouslySetInnerHTML={{
