@@ -29,7 +29,16 @@ import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageSty
 
 const NavLink = props => {
   if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>;
+    return (
+      <Link
+        style={{
+          color: '#fff',
+          textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
+        }}
+        to={props.url}>
+        {props.text}
+      </Link>
+    );
   } else {
     return <span>{props.text}</span>;
   }
@@ -41,17 +50,20 @@ class IndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
+
+    // const currentUrl = index.toString();
     const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
     const nextUrl = (index + 1).toString();
-    // const { classes, ...rest } = this.props;
-    // const group = this.props.data.wordpressPage;
-    const blogParallax = this.props.data.blogParallaxImg.edges[0].node.featured_media.localFile.childImageSharp.fluid;
-    const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
-    const fluid = blogParallax
-      ? blogParallax
-      : fallBackParallax;
 
-    const post = {title: "Blog", date: "Bless Yourself Up 🙏 Read or Listen to our latest! 🙌"};
+    const blogParallax = this.props.data.blogParallaxImg.edges[0].node
+      .featured_media.localFile.childImageSharp.fluid;
+    const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
+    const fluid = blogParallax ? blogParallax : fallBackParallax;
+
+    const post = {
+      title: 'Blog',
+      date: 'Bless Yourself Up 🙏 Read or Listen to our latest! 🙌'
+    };
 
     const imageClasses = classNames(
       classes.imgRaised,
@@ -66,8 +78,8 @@ class IndexPage extends React.Component {
     // console.log('Fallback Object');
     // console.table(fallBackParallax);
     // Testing group is being grabbed
-    console.table({classes});
-    
+    // console.table({classes});
+
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>
@@ -98,6 +110,22 @@ class IndexPage extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={10} sm={10} md={10} justify="center">
               <h4 style={{ textAlign: 'center' }}>{pageCount} Pages</h4>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button color="warning">
+                  <NavLink
+                    style={{
+                      color: '#fff',
+                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
+                    }}
+                    test={first}
+                    url={'/posts/' + previousUrl}
+                    text="⬅"
+                  />
+                </Button>
+                <Button color="warning">
+                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
+                </Button>
+              </div>
               {group.map(({ node }) => (
                 <Card
                   key={node.slug}
@@ -108,7 +136,9 @@ class IndexPage extends React.Component {
                       <CardHeader>
                         <Img
                           className={imageClasses}
-                          fluid={node.featured_media.localFile.childImageSharp.fluid}
+                          fluid={
+                            node.featured_media.localFile.childImageSharp.fluid
+                          }
                         />
                       </CardHeader>
                     )}
@@ -127,17 +157,17 @@ class IndexPage extends React.Component {
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button color="warning">
                   <NavLink
+                    style={{
+                      color: '#fff',
+                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
+                    }}
                     test={first}
                     url={'/posts/' + previousUrl}
-                    text="Go to Previous Page"
+                    text="⬅"
                   />
                 </Button>
                 <Button color="warning">
-                  <NavLink
-                    test={last}
-                    url={'/posts/' + nextUrl}
-                    text="Go to Next Page"
-                  />
+                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
                 </Button>
               </div>
             </GridItem>
@@ -183,39 +213,42 @@ export const query = graphql`
         }
       }
     }
-    blogParallaxImg: allWordpressPost(sort: {order: DESC, fields: date}, filter: {featured_media: {id: {regex: "/./"}}}) {
-    edges {
-      node {
-        featured_media {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid
+    blogParallaxImg: allWordpressPost(
+      sort: { order: DESC, fields: date }
+      filter: { featured_media: { id: { regex: "/./" } } }
+    ) {
+      edges {
+        node {
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
       }
     }
-  }
-  # blogOne: {
+    # blogOne: {
 
-  # }
-  # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
-  #   edges {
-  #     node {
-  #       localFile {
-  #         childImageSharp {
-  #           fluid(maxWidth: 1200) {
-  #             src
-  #             ...GatsbyImageSharpFluid
-  #           }
-  #         }
-  #       }
-  #     }
-  #   }
-  # }
-  fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
+    # }
+    # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
+    #   edges {
+    #     node {
+    #       localFile {
+    #         childImageSharp {
+    #           fluid(maxWidth: 1200) {
+    #             src
+    #             ...GatsbyImageSharpFluid
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
+    fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
         src
         ...GatsbyImageSharpFluid

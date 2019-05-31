@@ -30,8 +30,6 @@ import CardFooter from 'components/Card/CardFooter.jsx';
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
 
-const dashboardRoutes = [];
-
 class PostTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
