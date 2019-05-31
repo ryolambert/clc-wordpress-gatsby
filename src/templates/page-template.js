@@ -15,66 +15,54 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Header from 'components/Header/Header.jsx';
-import Footer from 'components/Footer/Footer.jsx';
+import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
-import HeaderLinks from 'components/Header/HeaderLinks.jsx';
-import Parallax from 'components/Parallax/Parallax.jsx';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 
 import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
-
-const dashboardRoutes = [];
 
 class PageTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
-    const { data } = this.props;
-    // const post = this.props.data.wordpressPost;
-    // const fluid = post.featured_media
-    //   ? post.featured_media.localFile.childImageSharp.fluid
-    //   : null;
+    const page = this.props.data.wordpressPage;
+    const placeHolder = this.props.data.placeHolderImg.fluid;
+    const fluid = page.featured_media
+      ? page.featured_media.localFile.childImageSharp.fluid
+      : placeHolder;
 
     return (
       <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand=""
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: 'white'
-          }}
-          {...rest}
-        />
-        {/* <Parallax small filter image={fluid.src} /> */}
-        {/* //todo : Setup with a default image for fluid to use in case of no featured media */}
-        <Parallax small filter image={require("assets/img/huntingtonbeach-pier-2.jpg")} />
-        <div className={classNames(classes.main, classes.mainRaised)}>
-          <div>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={10}>
-               <h1>{data.wordpressPage.title}</h1>
-               <div
-                  dangerouslySetInnerHTML={{
-                   __html: data.wordpressPage.content
-                  }}
-               />
-                <p
-                  dangerouslySetInnerHTML={{ __html: data.wordpressPage.date }}
-               />
-               <p
-                 dangerouslySetInnerHTML={{ __html: data.wordpressPage.slug }}
-               />
-              </GridItem>
-            </GridContainer>
+        <Layout>
+          <ParallaxLazy small filter fluid={fluid} post={page} />
+          <div className={classNames(classes.main, classes.mainRaised)}>
+            <div>
+              <div className={classes.container}>
+                <GridContainer justify="center">
+                  <GridItem xs={12} sm={12} md={10}>
+                    <h1>{page.title}</h1>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: page.content
+                      }}
+                    />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: page.date
+                      }}
+                    />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: page.slug
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </Layout>
       </div>
     );
   }
@@ -82,13 +70,31 @@ class PageTemplate extends React.Component {
 
 export const CURRENT_PAGE_QUERY = graphql`
   query currentPageQuery($id: String!) {
+    #Searching for wordpressPage with field of id equal to $id
     wordpressPage(id: { eq: $id }) {
       title
       content
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1200) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
       slug
       id
       date(formatString: "MMMM DD, YYYY")
-      
+    }
+    #Searching for aliased placeHolderImg in imageSharp with field of id equal to $id
+    placeHolderImg: imageSharp(
+      original: { src: { regex: "/you-are-loved/" } }
+    ) {
+      fluid(maxWidth: 1200) {
+        src
+        ...GatsbyImageSharpFluid
+      }
     }
     # site {
     #   id

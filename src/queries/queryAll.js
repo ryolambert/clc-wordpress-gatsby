@@ -6,6 +6,23 @@ module.exports = `
             edges {
                 node {
                     id
+                    featured_media {
+                        localFile {
+                            childImageSharp {
+                                fluid(maxWidth: 1200, traceSVG: {
+                                    color: "lightgray",
+                                    optTolerance: 0.4,
+                                    turdSize: 100,
+                                    turnPolicy: TURNPOLICY_MAJORITY,
+                                }){
+                                    src
+                                    srcSet
+                                    srcWebp
+                                    tracedSVG
+                                }
+                            }
+                        }
+                    }
                     slug
                     status
                     template
