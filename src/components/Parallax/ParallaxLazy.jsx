@@ -98,9 +98,9 @@ class Parallax extends React.Component {
                     // fontSize: '2em',
                     // fontWeight: '700'
                   }
-                }>
-                {post.title}
-              </h1>
+                }
+                dangerouslySetInnerHTML={{ __html: post.title }}
+              />
               {/* <h4 style={{ flexFlow: 'row' }}>{fluid.author}</h4> */}
               <h4 style={{}} className={classes.subtitle}>
                 {post.date}
