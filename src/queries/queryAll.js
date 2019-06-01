@@ -60,5 +60,36 @@ module.exports = `
                 }
             }
         }
+
+        allSermonPost: allWordpressPost(filter: { acf: { category: { eq: "Sermon" } } }) {
+            edges {
+              node {
+                id
+                slug
+                status
+                template
+                format
+                title
+                date
+                featured_media {
+                  localFile {
+                    childImageSharp {
+                      fluid(
+                        maxWidth: 1200
+                        traceSVG: {
+                          color: "#fd9551"
+                          optTolerance: 0.4
+                          turdSize: 100
+                          turnPolicy: TURNPOLICY_MAJORITY
+                        }
+                      ) {
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
     }
 `

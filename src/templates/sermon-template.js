@@ -30,7 +30,7 @@ import CardFooter from 'components/Card/CardFooter.jsx';
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
 
-class PostTemplate extends React.Component {
+class SermonTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     const post = this.props.data.wordpressPost;
@@ -69,7 +69,6 @@ class PostTemplate extends React.Component {
                           className={imageClasses}
                           style={{ marginTop: '20px', marginBottom: '20px' }}
                         />
-                        {/* < img src={fluidContent.src} alt=""/> */}
                       </div>
                     }
                     <div 
@@ -92,7 +91,7 @@ class PostTemplate extends React.Component {
 }
 
 export const query = graphql`
-  query currentPostQuery($id: String!) {
+  query currentSermonQuery($id: String!) {
     wordpressPost(id: { eq: $id }) {
       title
       content
@@ -109,7 +108,7 @@ export const query = graphql`
       id
       date(formatString: "MMMM DD, YYYY")
     }
-    placeHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
+    placeHolderImg: imageSharp(original: { src: { regex: "/sermons-background/" } }) {
       fluid(maxWidth: 1200) {
         src
         ...GatsbyImageSharpFluid
@@ -118,4 +117,4 @@ export const query = graphql`
   }
 `;
 
-export default withStyles(postPageStyle)(PostTemplate);
+export default withStyles(postPageStyle)(SermonTemplate);

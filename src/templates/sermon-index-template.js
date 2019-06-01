@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
@@ -46,7 +47,7 @@ const NavLink = props => {
 
 //todo: Fix component formatting fo
 
-class IndexPage extends React.Component {
+class SermonIndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
@@ -55,14 +56,14 @@ class IndexPage extends React.Component {
     const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
     const nextUrl = (index + 1).toString();
 
-    const blogParallax = this.props.data.blogParallaxImg.edges[0].node
+    const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0].node
       .featured_media.localFile.childImageSharp.fluid;
-    const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
-    const fluid = blogParallax ? blogParallax : fallBackParallax;
+    const fallBackParallax = this.props.data.fallBackSermonParallaxImg.fluid;
+    const fluid = sermonIndexParallax ? sermonIndexParallax : fallBackParallax;
 
     const post = {
       title: 'Blog',
-      date: 'Bless Yourself Up 🙏 Read or Listen to our latest! 🙌'
+      date: 'Bless Up 🙏 Read or Listen to our latest! 🙌'
     };
 
     const imageClasses = classNames(
@@ -71,6 +72,7 @@ class IndexPage extends React.Component {
       classes.imgFluid
     );
 
+    console.table(pageContext);
     // console.log('Dynamic Blog Object');
     // console.table(blogParallax);
     // console.log('Ternary Fallback Object');
@@ -109,7 +111,6 @@ class IndexPage extends React.Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={10} sm={10} md={10} justify="center">
-              <h4 style={{ textAlign: 'center' }}>{pageCount} Pages</h4>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button color="warning">
                   <NavLink
@@ -122,6 +123,9 @@ class IndexPage extends React.Component {
                     text="⬅"
                   />
                 </Button>
+                <h4 style={{ textAlign: 'center' }}>
+                  Page {index} of {pageCount}
+                </h4>
                 <Button color="warning">
                   <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
                 </Button>
@@ -166,6 +170,9 @@ class IndexPage extends React.Component {
                     text="⬅"
                   />
                 </Button>
+                <h4 style={{ textAlign: 'center' }}>
+                  Page {index} of {pageCount}
+                </h4>
                 <Button color="warning">
                   <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
                 </Button>
@@ -178,11 +185,11 @@ class IndexPage extends React.Component {
   }
 }
 
-export default withStyles(profilePageStyle)(IndexPage);
+export default withStyles(profilePageStyle)(SermonIndexPage);
 
 export const query = graphql`
-  query allPostsQuery {
-    allWordpressPost {
+  query allSermonsQuery {
+    allWordpressPost(filter: { acf: { category: { eq: "Sermon" } } }) {
       edges {
         node {
           id
@@ -198,7 +205,7 @@ export const query = graphql`
                 fluid(
                   maxWidth: 1200
                   traceSVG: {
-                    color: "lightgray"
+                    color: "#fd9551"
                     optTolerance: 0.4
                     turdSize: 100
                     turnPolicy: TURNPOLICY_MAJORITY
@@ -213,42 +220,24 @@ export const query = graphql`
         }
       }
     }
-    blogParallaxImg: allWordpressPost(
-      sort: { order: DESC, fields: date }
-      filter: { featured_media: { id: { regex: "/./" } } }
-    ) {
-      edges {
-        node {
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
-                }
+    sermonIndexParallaxImg:  allWordpressPost(sort: {order: DESC, fields: date}, filter: {featured_media: {id: {regex: "/./"}}, acf: {category: {eq: "Sermon"}}}) {
+    edges {
+      node {
+        featured_media {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1200) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
         }
       }
     }
-    # blogOne: {
-
-    # }
-    # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
-    #   edges {
-    #     node {
-    #       localFile {
-    #         childImageSharp {
-    #           fluid(maxWidth: 1200) {
-    #             src
-    #             ...GatsbyImageSharpFluid
-    #           }
-    #         }
-    #       }
-    #     }
-    #   }
-    # }
-    fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
+  }
+    fallBackSermonParallaxImg: imageSharp(
+      original: { src: { regex: "/sermons-background/" } }
+    ) {
       fluid(maxWidth: 1200) {
         src
         ...GatsbyImageSharpFluid

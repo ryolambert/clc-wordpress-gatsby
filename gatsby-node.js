@@ -6,6 +6,14 @@
 
 // You can delete this file if you're not using it
 
+//TODO-
+// 1️⃣: sermonTemplate
+// 2️⃣: sermonsTemplate
+// 3️⃣: albumTemplate
+// 4️⃣: albumsTemplate
+// 5️⃣: eventTemplate
+// 6️⃣: eventsTemplate
+
 const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
@@ -21,6 +29,8 @@ exports.createPages = ({ graphql, actions }) => {
     // Templates
     const pageTemplate = path.resolve('./src/templates/page-template.js');
     const postTemplate = path.resolve('./src/templates/post-template.js');
+    const sermonTemplate = path.resolve('./src/templates/sermon-template.js');
+    
 
     resolve(
       graphql(queryAll).then(result => {
@@ -45,8 +55,8 @@ exports.createPages = ({ graphql, actions }) => {
         createPaginatedPages({
           edges: posts,
           createPage: createPage,
-          pageTemplate: 'src/templates/posts-template.js',
-          pageLength: 5,
+          pageTemplate: 'src/templates/post-index-template.js',
+          pageLength: 10,
           pathPrefix: 'posts'
         });
 
@@ -54,6 +64,27 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: `/post/${edge.node.slug}/`,
             component: slash(postTemplate),
+            context: {
+              id: edge.node.id
+            }
+          });
+        });
+
+        //Sermons detail
+        const sermons = result.data.allSermonPost.edges;
+
+        createPaginatedPages({
+          edges: sermons,
+          createPage: createPage,
+          pageTemplate: 'src/templates/sermon-index-template.js',
+          pageLength: 10,
+          pathPrefix: 'sermons'
+        });
+
+        sermons.forEach(edge => {
+          createPage({
+            path: `/sermon/${edge.node.slug}/`,
+            component: slash(sermonTemplate),
             context: {
               id: edge.node.id
             }

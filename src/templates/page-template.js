@@ -70,7 +70,6 @@ class PageTemplate extends React.Component {
 
 export const CURRENT_PAGE_QUERY = graphql`
   query currentPageQuery($id: String!) {
-    #Searching for wordpressPage with field of id equal to $id
     wordpressPage(id: { eq: $id }) {
       title
       content
@@ -87,7 +86,6 @@ export const CURRENT_PAGE_QUERY = graphql`
       id
       date(formatString: "MMMM DD, YYYY")
     }
-    #Searching for aliased placeHolderImg in imageSharp with field of id equal to $id
     placeHolderImg: imageSharp(
       original: { src: { regex: "/you-are-loved/" } }
     ) {
