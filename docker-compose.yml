@@ -4,6 +4,9 @@ services:
   wordpress:
     image: wordpress
     restart: always
+    volumes:
+      - ./wp-content:/var/www/wp-content
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - 8080:80
     environment:
