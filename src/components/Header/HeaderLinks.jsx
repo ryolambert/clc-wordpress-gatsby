@@ -109,29 +109,40 @@ function HeaderLinks({ ...props }) {
               return renderHeaderLink(item, props);
             }
           })}
-          <CustomDropdown
-            noLiPadding
-            buttonText="Media"
-            buttonProps={{
-              className: classes.navLink,
-              color: 'transparent'
-            }}
-            dropdownList={[
-              <Link to="/sermons/" className={classes.dropdownLink}>
-                Sermons
-              </Link>,
-              <Link to="/gallery" className={classes.dropdownLink}>
-                Gallery
-              </Link>
-            ]}
-          />
-          <Link to="/calendar/" className={classes.navLink}>
-            Calendar
-          </Link>
-          <Link to="/posts/" className={classes.navLink}>
-            Blog
-          </Link>
-          <Search searchIndex={data.siteSearchIndex.index} />
+          <ListItem className={classes.listItem} key="media">
+            <CustomDropdown
+              noLiPadding
+              buttonText="Media"
+              buttonProps={{
+                className: classes.navLink,
+                color: 'transparent'
+              }}
+              dropdownList={[
+                <Link to="/sermons/" className={classes.dropdownLink}>
+                  Sermons
+                </Link>,
+                <Link to="/gallery" className={classes.dropdownLink}>
+                  Gallery
+                </Link>
+              ]}
+            />
+          </ListItem>
+          <ListItem className={classes.listItem} key="calendar">
+            <Link to="/calendar/" className={classes.navLink}>
+              Calendar
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem} key="blog">
+            <Link to="/posts/" className={classes.navLink}>
+              Blog
+            </Link>
+          </ListItem>
+          <ListItem className={classes.listItem} key="search">
+            <Search
+              className={classes.navLink}
+              searchIndex={data.siteSearchIndex.index}
+            />
+          </ListItem>
         </List>
       )}
     />
