@@ -75,7 +75,8 @@ class Parallax extends React.Component {
           fluid={fluid}
           post={post}
           style={{
-            filter: 'brightness(60%)',
+            filter: 'brightness(50%)',
+
             ...style,
             ...this.state
           }}
