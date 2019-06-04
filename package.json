@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "gatsby-wp-mui-starter",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "🙏Gatsby-WP-MUI-build, Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
