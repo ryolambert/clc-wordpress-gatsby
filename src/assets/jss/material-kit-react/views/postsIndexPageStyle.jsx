@@ -1,8 +1,13 @@
 import { container, title } from 'assets/jss/material-kit-react.jsx';
 
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
+import { cardTitle } from 'assets/jss/material-kit-react.jsx';
 
-const profilePageStyle = {
+const postsIndexPageStyle = {
+  cardTitle,
+  textMuted: {
+    color: '#6c757d'
+  },
   container,
   profile: {
     textAlign: 'center',
@@ -59,17 +64,35 @@ const profilePageStyle = {
   },
   card: {
     display: 'flex',
+    flexWrap: 'wrap',
+    minHeight: '200px'
   },
   details: {
     display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
   content: {
-    flex: '1 0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    minHeight: '100%',
+    paddingLeft: '20px',
+    paddingBottom: '10px',
+    minWidth: '400px',
+    flexGrow: 3,
+    flexBasis: '400px'
   },
   cover: {
-    width: 151,
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    height: '100%',
+    maxHeight: '250px'
+  },
+  coverImg: {
+    height: '100%',
+    maxHeight: '250px'
   }
 };
 
-export default profilePageStyle;
+export default postsIndexPageStyle;
