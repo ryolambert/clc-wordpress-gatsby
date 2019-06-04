@@ -1,4 +1,4 @@
-#  ![](C:\Users\ryola\Desktop\bootcamp\git\clc-wordpress-gatsby\src\assets\img\cropped-citylights_logo3.png)
+#  ![CLC logo](.\src\assets\img\cropped-citylights_logo3.png)
 
 ---
 
