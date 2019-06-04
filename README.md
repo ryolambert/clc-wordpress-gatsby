@@ -1,4 +1,4 @@
-#  ![CLC logo](.\src\assets\img\cropped-citylights_logo3.png)
+#  ![CLC logo](./src/assets/img/cropped-citylights_logo3.png)
 
 ---
 
