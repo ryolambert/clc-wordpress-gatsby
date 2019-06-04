@@ -20,12 +20,14 @@ import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardHeader from 'components/Card/CardHeader.jsx';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 
-import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
+import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class SermonIndexPage extends React.Component {
   render() {
@@ -36,6 +38,9 @@ class SermonIndexPage extends React.Component {
       .node.featured_media.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackSermonParallaxImg.fluid;
     const fluid = sermonIndexParallax ? sermonIndexParallax : fallBackParallax;
+    // const fluidCardImage = this.props.group.node.featured_media
+    //   ? this.props.group.node.featured_media.localFile.childImageSharp.fluid
+    //   : null;
 
     const post = {
       title: 'Sermons',
@@ -48,7 +53,7 @@ class SermonIndexPage extends React.Component {
       classes.imgFluid
     );
 
-    console.table(pageContext);
+    console.table({ group });
     // console.log('Dynamic Blog Object');
     // console.table(blogParallax);
     // console.log('Ternary Fallback Object');
@@ -79,14 +84,13 @@ class SermonIndexPage extends React.Component {
                   className={classes.title}>
                   Sermons
                 </h1>
-                
               </GridItem>
             </GridContainer>
           </div>
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={8} sm={8} md={8}>
+            <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -96,40 +100,46 @@ class SermonIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
           <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={8}>
+            <GridItem xs={11} sm={11} md={8}>
               {group.map(({ node }) => (
-                <Card
-                  key={node.slug}
-                  className={classes.card}
-                  style={{ marginBottom: 50 }}>
-                  {node.featured_media &&
-                    node.featured_media.localFile.childImageSharp.fluid && (
-                      <CardHeader>
-                        <Img
-                          className={imageClasses}
-                          fluid={
-                            node.featured_media.localFile.childImageSharp.fluid
-                          }
+                <Link to={'/post/' + node.slug} className={classes.cardTitle}>
+                  <Card key={node.slug}
+                    className={classes.card}
+                    style={{ marginBottom: 50 }}>
+                       {node.featured_media &&
+                      node.featured_media.localFile.childImageSharp
+                        .fluid && (
+                        
+                          <Img
+                            className={classes.imgCardTop}
+                            style={{ backgroundSize: '100%' }}
+                            fluid={
+                              node.featured_media.localFile.childImageSharp
+                                .fluid
+                            }
+                          />
+                      )}
+                    <CardBody>
+                      <h4
+                        className={classes.cardTitle}
+                        dangerouslySetInnerHTML={{ __html: node.title }}
+                      />
+                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      <p>
+                        <small
+                          className={classes.textMuted}
+                          dangerouslySetInnerHTML={{ __html: node.date }}
                         />
-                      </CardHeader>
-                    )}
-
-                  <Link to={'/post/' + node.slug} className={classes.cardTitle}>
-                    <h3>{node.title}</h3>
-                  </Link>
-
-                  <CardBody
-                    className={classes.cardBody}
-                    dangerouslySetInnerHTML={{ __html: node.excerpt }}
-                  />
-                  <CardFooter>{node.date}</CardFooter>
-                </Card>
+                      </p>
+                    </CardBody>
+                  </Card>
+                </Link>
               ))}
             </GridItem>
           </GridContainer>
 
           <GridContainer justify="center">
-            <GridItem xs={8} sm={8} md={8}>
+            <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -144,7 +154,7 @@ class SermonIndexPage extends React.Component {
   }
 }
 
-export default withStyles(profilePageStyle)(SermonIndexPage);
+export default withStyles(postsIndexPageStyle)(SermonIndexPage);
 
 export const query = graphql`
   query allSermonsQuery {
@@ -157,7 +167,7 @@ export const query = graphql`
           template
           format
           title
-          date
+          date(formatString: "MMMM DD, YYYY")
           featured_media {
             localFile {
               childImageSharp {
@@ -170,7 +180,6 @@ export const query = graphql`
                     turnPolicy: TURNPOLICY_MAJORITY
                   }
                 ) {
-                  src
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
@@ -204,7 +213,6 @@ export const query = graphql`
       original: { src: { regex: "/sermons-background/" } }
     ) {
       fluid(maxWidth: 1200) {
-        src
         ...GatsbyImageSharpFluid
       }
     }
