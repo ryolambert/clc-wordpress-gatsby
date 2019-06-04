@@ -51,7 +51,7 @@ const headerLinksStyle = theme => ({
     '&:hover,&:focus': {
       color: 'inherit',
       // background: 'rgba(200, 200, 200, 0.2)',
-      background: 'linear-gradient(to right, #fd9551 10%,#feb970 100%)'
+      background: 'linear-gradient(25deg, #ff6600 0%, #ffc526 110%)'
     },
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 30px)',
