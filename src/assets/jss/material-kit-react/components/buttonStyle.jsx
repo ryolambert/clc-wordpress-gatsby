@@ -106,7 +106,7 @@ const buttonStyle = {
     }
   },
   warning: {
-    background: 'linear-gradient(to right, #feb970 50%,#fd9551 100%)',
+    background: 'linear-gradient(25deg, #ff6600 0%, #ffc526 130%)',
     backgroundColor: warningColor,
     boxShadow:
       '0 2px 2px 0 rgba(255, 152, 0, 0.14), 0 3px 1px -2px rgba(255, 152, 0, 0.2), 0 1px 5px 0 rgba(255, 152, 0, 0.12)',
