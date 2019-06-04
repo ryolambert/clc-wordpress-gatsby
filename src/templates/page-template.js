@@ -27,22 +27,27 @@ class PageTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     const page = this.props.data.wordpressPage;
+    const pageTitle = this.props.data.wordpressPage.title;
     const placeHolder = this.props.data.placeHolderImg.fluid;
     const fluid = page.featured_media
       ? page.featured_media.localFile.childImageSharp.fluid
       : placeHolder;
+    const post = {
+      title: pageTitle,
+      date: ''
+    };
 
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid} post={page} />
+          <ParallaxLazy small filter fluid={fluid} post={post} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div>
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
-                    <h1 dangerouslySetInnerHTML={{ __html: page.title}}/>
-                    <div
+                    {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
+                    <div style={{ marginTop: '2vh'}}
                       dangerouslySetInnerHTML={{
                         __html: page.content
                       }}
