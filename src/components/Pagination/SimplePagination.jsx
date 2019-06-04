@@ -19,7 +19,7 @@ function SimplePagination({ color, pageContext, ...props }) {
       return (
         <Button
           size="sm"
-          round="true"
+          round
           color={`${color}`}
           className={classes.paginationLink}>
           <Link
@@ -37,7 +37,7 @@ function SimplePagination({ color, pageContext, ...props }) {
       return (
         <Button
           size="sm"
-          round="true"
+          round
           color={`${color}`}
           className={classes.paginationLink}>
           <span style={{ filter: 'brightness(50%)' }}>{props.text}</span>
