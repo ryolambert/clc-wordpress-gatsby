@@ -34,6 +34,7 @@ module.exports = {
         searchAndReplaceContentUrls: {
           // sourceUrl: 'http://localhost:8080/',
           sourceURL: 'http://longbeach.citylightschurch.org',
+          // replacementUrl: 'http://localhost:8000/'
           replacementUrl: 'https://citylightschurch.netlify.com'
         },
         // Set how many simultaneous requests are sent at once.
