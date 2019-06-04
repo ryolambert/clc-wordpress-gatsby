@@ -109,7 +109,7 @@ class PostIndexPage extends React.Component {
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={8} sm={8} md={8}>
+            <GridItem xs={10} sm={10} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -151,7 +151,7 @@ class PostIndexPage extends React.Component {
                 </Link>
               ))}
             </GridItem>
-            <GridItem xs={8} sm={8} md={8}>
+            <GridItem xs={10} sm={10} md={8}>
               <br />
               <SimplePagination
                 route="posts"
