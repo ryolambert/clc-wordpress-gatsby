@@ -96,11 +96,14 @@ class Header extends React.Component {
             width={30}
             src={logo}
             style={{
-              marginRight: '10px'
+              marginRight: '10px',
+              marginTop: '10px'
             }}
             alt="City Lights Church Logo"
           />
-          <h3 className={classes.brandTitle}>Citylights Church</h3>
+          <h3 className={classes.brandTitle}>
+            <strong>Citylights Church</strong>
+          </h3>
         </Link>
       </Button>
     );
