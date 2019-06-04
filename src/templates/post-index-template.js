@@ -26,7 +26,7 @@ import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 
-import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
+import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 import { Grid } from '@material-ui/core';
 
 const NavLink = props => {
@@ -67,7 +67,8 @@ class PostIndexPage extends React.Component {
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid
+      classes.imgFluid,
+      classes.cover
     );
 
     // console.log(last);
@@ -80,6 +81,7 @@ class PostIndexPage extends React.Component {
     // console.table(fallBackParallax);
     // Testing group is being grabbed
     // console.table({classes});
+    console.table({ group });
 
     return (
       <Layout>
@@ -109,7 +111,7 @@ class PostIndexPage extends React.Component {
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={8}>
+            <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -117,41 +119,50 @@ class PostIndexPage extends React.Component {
                 color="primary"
               />
             </GridItem>
-            </GridContainer>
-            <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={8}>
+          </GridContainer>
+          <GridContainer justify="center">
+            <GridItem xs={11} sm={11} md={6}>
               {group.map(({ node }) => (
                 <Link to={'/post/' + node.slug} className={classes.cardTitle}>
                   <Card
-                    key={node.slug}
+                    key={node.id}
                     className={classes.card}
-                    style={{ marginBottom: 50 }}>
-                      <CardMedia></CardMedia>
+                    style={{ marginBottom: 50, display: 'flex' }}>
                     {node.featured_media &&
                       node.featured_media.localFile.childImageSharp.fluid && (
-                          <Img
-                            className={imageClasses}
-                            fluid={
-                              node.featured_media.localFile.childImageSharp
-                                .fluid
-                            }
-                          />
+                        <Img
+                          className={classes.imgCardTop}
+                          style={{ height: '25%', marginRight: 20 }}
+                          objectFit="cover"
+                          objectPosition="50% 50%"
+                          fluid={
+                            node.featured_media.localFile.childImageSharp.fluid
+                          }
+                        />
                       )}
-
-
-                    <CardBody
-                      className={classes.cardBody}
-                      dangerouslySetInnerHTML={{ __html: node.excerpt }}>
-                        
-                      </CardBody>
-                    <h3 dangerouslySetInnerHTML={{ __html: node.title }} />
-                    
-                    <CardFooter>{node.date}</CardFooter>
+                    <CardBody>
+                      <h4 className={classes.cardTitle}>
+                      {/* <h4> */}
+                        <strong
+                          dangerouslySetInnerHTML={{ __html: node.title }}
+                        />
+                      </h4>
+                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      <p>
+                        <small
+                          className={classes.textMuted}
+                          dangerouslySetInnerHTML={{ __html: node.date }}
+                        />
+                      </p>
+                    </CardBody>
+                    {/* <CardFooter className={classes.details}>
+                      {node.date}
+                    </CardFooter> */}
                   </Card>
                 </Link>
               ))}
             </GridItem>
-            <GridItem xs={12} sm={12} md={8}>
+            <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -166,7 +177,7 @@ class PostIndexPage extends React.Component {
   }
 }
 
-export default withStyles(profilePageStyle)(PostIndexPage);
+export default withStyles(postsIndexPageStyle)(PostIndexPage);
 
 export const query = graphql`
   query allPostsQuery {
@@ -179,7 +190,10 @@ export const query = graphql`
           template
           format
           title
-          date
+          tags {
+            name
+          }
+          date(formatString: "MMMM DD, YYYY")
           featured_media {
             localFile {
               childImageSharp {
@@ -192,8 +206,7 @@ export const query = graphql`
                     turnPolicy: TURNPOLICY_MAJORITY
                   }
                 ) {
-                  src
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -219,8 +232,6 @@ export const query = graphql`
         }
       }
     }
-    # blogOne: {
-
     # }
     # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
     #   edges {
