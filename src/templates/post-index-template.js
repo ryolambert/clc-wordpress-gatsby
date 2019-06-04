@@ -86,7 +86,7 @@ class PostIndexPage extends React.Component {
         <ParallaxLazy small filter fluid={fluid} post={post}>
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={10} sm={10} md={6}>
+              <GridItem xs={12} sm={12} md={6}>
                 <h1
                   style={{
                     display: 'inline-block',
@@ -109,7 +109,7 @@ class PostIndexPage extends React.Component {
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={8}>
+            <GridItem xs={12} sm={12} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -119,7 +119,7 @@ class PostIndexPage extends React.Component {
             </GridItem>
             </GridContainer>
             <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={8}>
+            <GridItem xs={12} sm={12} md={8}>
               {group.map(({ node }) => (
                 <Link to={'/post/' + node.slug} className={classes.cardTitle}>
                   <Card
@@ -151,7 +151,7 @@ class PostIndexPage extends React.Component {
                 </Link>
               ))}
             </GridItem>
-            <GridItem xs={10} sm={10} md={8}>
+            <GridItem xs={12} sm={12} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -188,7 +188,7 @@ export const query = graphql`
                   traceSVG: {
                     color: "lightgray"
                     optTolerance: 0.4
-                    turdSize: 100
+                    turdSize: 120
                     turnPolicy: TURNPOLICY_MAJORITY
                   }
                 ) {
