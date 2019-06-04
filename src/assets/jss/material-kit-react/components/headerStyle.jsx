@@ -150,7 +150,12 @@ const headerStyle = {
   drawerPaper: {
     border: 'none',
     bottom: '0',
-    borderRadius: '21px 0px 0px 21px/300px 0px 0px 300px',
+    overflowY: 'scroll',
+    borderBottom: '200px',
+    borderLeft: '15px',
+    borderRight: '75px',
+    // borderRadius: '21px 0px 0px 21px/300px 0px 0px 300px',
+    // clipPath: 'polygon(20% 10%, 100% 0%, 100% 90%, 20% 100%);',
     // borderRadius: '20px 0px 0px 20px',
     // background: 'linear-gradient(to right, #fd9551 10%,#feb970 100%)',
     // opacity: '0.95',
