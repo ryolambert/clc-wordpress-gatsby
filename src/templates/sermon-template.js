@@ -110,7 +110,6 @@ export const query = graphql`
     }
     placeHolderImg: imageSharp(original: { src: { regex: "/sermons-background/" } }) {
       fluid(maxWidth: 1200) {
-        src
         ...GatsbyImageSharpFluid
       }
     }
