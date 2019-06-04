@@ -19,14 +19,15 @@ import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardHeader from 'components/Card/CardHeader.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 
 import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
-
-//todo: Add SEO
+import { Grid } from '@material-ui/core';
 
 const NavLink = props => {
   if (!props.test) {
@@ -45,14 +46,11 @@ const NavLink = props => {
   }
 };
 
-//todo: Fix component formatting fo
-
 class PostIndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
 
-    // const currentUrl = index.toString();
     const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
     const nextUrl = (index + 1).toString();
 
@@ -72,7 +70,8 @@ class PostIndexPage extends React.Component {
       classes.imgFluid
     );
 
-    console.table(pageContext);
+    // console.log(last);
+
     // console.log('Dynamic Blog Object');
     // console.table(blogParallax);
     // console.log('Ternary Fallback Object');
@@ -110,73 +109,55 @@ class PostIndexPage extends React.Component {
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={10} justify="center">
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button color="warning">
-                  <NavLink
-                    style={{
-                      color: '#fff',
-                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-                    }}
-                    test={first}
-                    url={'/posts/' + previousUrl}
-                    text="⬅"
-                  />
-                </Button>
-                <h4 style={{ textAlign: 'center' }}>
-                  Page {index} of {pageCount}
-                </h4>
-                <Button color="warning">
-                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
-                </Button>
-              </div>
+            <GridItem xs={8} sm={8} md={8}>
+              <br />
+              <SimplePagination
+                route="posts"
+                pageContext={pageContext}
+                color="primary"
+              />
+            </GridItem>
+            </GridContainer>
+            <GridContainer justify="center">
+            <GridItem xs={10} sm={10} md={8}>
               {group.map(({ node }) => (
-                <Card
-                  key={node.slug}
-                  className={classes.card}
-                  style={{ marginBottom: 50 }}>
-                  {node.featured_media &&
-                    node.featured_media.localFile.childImageSharp.fluid && (
-                      <CardHeader>
-                        <Img
-                          className={imageClasses}
-                          fluid={
-                            node.featured_media.localFile.childImageSharp.fluid
-                          }
-                        />
-                      </CardHeader>
-                    )}
+                <Link to={'/post/' + node.slug} className={classes.cardTitle}>
+                  <Card
+                    key={node.slug}
+                    className={classes.card}
+                    style={{ marginBottom: 50 }}>
+                      <CardMedia></CardMedia>
+                    {node.featured_media &&
+                      node.featured_media.localFile.childImageSharp.fluid && (
+                          <Img
+                            className={imageClasses}
+                            fluid={
+                              node.featured_media.localFile.childImageSharp
+                                .fluid
+                            }
+                          />
+                      )}
 
-                  <Link to={'/post/' + node.slug} className={classes.cardTitle}>
-                    <h3 dangerouslySetInnerHTML={{ __html: node.title }}/>
-                  </Link>
 
-                  <CardBody
-                    className={classes.cardBody}
-                    dangerouslySetInnerHTML={{ __html: node.excerpt }}
-                  />
-                  <CardFooter>{node.date}</CardFooter>
-                </Card>
+                    <CardBody
+                      className={classes.cardBody}
+                      dangerouslySetInnerHTML={{ __html: node.excerpt }}>
+                        
+                      </CardBody>
+                    <h3 dangerouslySetInnerHTML={{ __html: node.title }} />
+                    
+                    <CardFooter>{node.date}</CardFooter>
+                  </Card>
+                </Link>
               ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button color="warning">
-                  <NavLink
-                    style={{
-                      color: '#fff',
-                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-                    }}
-                    test={first}
-                    url={'/posts/' + previousUrl}
-                    text="⬅"
-                  />
-                </Button>
-                <h4 style={{ textAlign: 'center' }}>
-                  Page {index} of {pageCount}
-                </h4>
-                <Button color="warning">
-                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
-                </Button>
-              </div>
+            </GridItem>
+            <GridItem xs={8} sm={8} md={8}>
+              <br />
+              <SimplePagination
+                route="posts"
+                pageContext={pageContext}
+                color="primary"
+              />
             </GridItem>
           </GridContainer>
         </div>

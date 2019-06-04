@@ -23,47 +23,23 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 
 import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
-
-//todo: Add SEO
-
-const NavLink = props => {
-  if (!props.test) {
-    return (
-      <Link
-        style={{
-          color: '#fff',
-          textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-        }}
-        to={props.url}>
-        {props.text}
-      </Link>
-    );
-  } else {
-    return <span>{props.text}</span>;
-  }
-};
-
-//todo: Fix component formatting fo
 
 class SermonIndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
 
-    // const currentUrl = index.toString();
-    const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
-    const nextUrl = (index + 1).toString();
-
-    const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0].node
-      .featured_media.localFile.childImageSharp.fluid;
+    const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0]
+      .node.featured_media.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackSermonParallaxImg.fluid;
     const fluid = sermonIndexParallax ? sermonIndexParallax : fallBackParallax;
 
     const post = {
-      title: 'Blog',
-      date: 'Bless Up 🙏 Read or Listen to our latest! 🙌'
+      title: 'Sermons',
+      date: 'Take a listen 👂 to our latest Sermons⛪'
     };
 
     const imageClasses = classNames(
@@ -101,35 +77,26 @@ class SermonIndexPage extends React.Component {
                     fontWeight: '700'
                   }}
                   className={classes.title}>
-                  Blog
+                  Sermons
                 </h1>
-                <h4>Take a read or a listen!</h4>
+                
               </GridItem>
             </GridContainer>
           </div>
         </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={10} sm={10} md={10} justify="center">
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button color="warning">
-                  <NavLink
-                    style={{
-                      color: '#fff',
-                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-                    }}
-                    test={first}
-                    url={'/posts/' + previousUrl}
-                    text="⬅"
-                  />
-                </Button>
-                <h4 style={{ textAlign: 'center' }}>
-                  Page {index} of {pageCount}
-                </h4>
-                <Button color="warning">
-                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
-                </Button>
-              </div>
+            <GridItem xs={8} sm={8} md={8}>
+              <br />
+              <SimplePagination
+                route="posts"
+                pageContext={pageContext}
+                color="primary"
+              />
+            </GridItem>
+          </GridContainer>
+          <GridContainer justify="center">
+            <GridItem xs={10} sm={10} md={8}>
               {group.map(({ node }) => (
                 <Card
                   key={node.slug}
@@ -158,25 +125,17 @@ class SermonIndexPage extends React.Component {
                   <CardFooter>{node.date}</CardFooter>
                 </Card>
               ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button color="warning">
-                  <NavLink
-                    style={{
-                      color: '#fff',
-                      textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-                    }}
-                    test={first}
-                    url={'/posts/' + previousUrl}
-                    text="⬅"
-                  />
-                </Button>
-                <h4 style={{ textAlign: 'center' }}>
-                  Page {index} of {pageCount}
-                </h4>
-                <Button color="warning">
-                  <NavLink test={last} url={'/posts/' + nextUrl} text="➡" />
-                </Button>
-              </div>
+            </GridItem>
+          </GridContainer>
+
+          <GridContainer justify="center">
+            <GridItem xs={8} sm={8} md={8}>
+              <br />
+              <SimplePagination
+                route="posts"
+                pageContext={pageContext}
+                color="primary"
+              />
             </GridItem>
           </GridContainer>
         </div>
@@ -220,21 +179,27 @@ export const query = graphql`
         }
       }
     }
-    sermonIndexParallaxImg:  allWordpressPost(sort: {order: DESC, fields: date}, filter: {featured_media: {id: {regex: "/./"}}, acf: {category: {eq: "Sermon"}}}) {
-    edges {
-      node {
-        featured_media {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid
+    sermonIndexParallaxImg: allWordpressPost(
+      sort: { order: DESC, fields: date }
+      filter: {
+        featured_media: { id: { regex: "/./" } }
+        acf: { category: { eq: "Sermon" } }
+      }
+    ) {
+      edges {
+        node {
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
       }
     }
-  }
     fallBackSermonParallaxImg: imageSharp(
       original: { src: { regex: "/sermons-background/" } }
     ) {
