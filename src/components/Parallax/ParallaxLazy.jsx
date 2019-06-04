@@ -86,7 +86,7 @@ class Parallax extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={12}>
               <h1
-                className={classes.title}
+                // className={classes.title}
                 style={
                   {
                     // marginTop: '5em',
@@ -98,13 +98,18 @@ class Parallax extends React.Component {
                     // fontFamily: 'Roboto Slab',
                     // fontSize: '2em',
                     // fontWeight: '700'
+                    // left: '50%',
+                    // right: '50%',
+                    // top: '80vh',
+                    // marginBottom: '80%',
+                    // paddingBottom: '20%'
                   }
-                }
-                dangerouslySetInnerHTML={{ __html: post.title }}
-              />
+                }>
+                <strong dangerouslySetInnerHTML={{ __html: post.title }} />
+              </h1>
               {/* <h4 style={{ flexFlow: 'row' }}>{fluid.author}</h4> */}
               <h4 style={{}} className={classes.subtitle}>
-                {post.date}
+                <strong dangerouslySetInnerHTML={{ __html: post.date }} />
               </h4>
             </GridItem>
           </GridContainer>
