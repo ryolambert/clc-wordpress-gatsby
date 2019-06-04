@@ -22,8 +22,8 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // Longbeach City Lights Church WP Demo from Matt
-        // baseUrl: 'localhost:8080',
         baseUrl: 'longbeach.citylightschurch.org',
+        // baseUrl: 'localhost:8080',
         protocol: 'http',
         hostingWPCOM: false,
         // We will be using some advanced custom fields
@@ -32,22 +32,22 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          // sourceUrl: 'http://localhost:8080/',
           sourceURL: 'http://longbeach.citylightschurch.org',
-          // replacementUrl: 'http://localhost:8000/'
+          // sourceUrl: 'http://localhost:8080/',
           replacementUrl: 'https://citylightschurch.netlify.com'
+          // replacementUrl: 'http://localhost:8000/'
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 15,
         includedRoutes: [
-          // '**/categories',
+          '**/categories',
           '**/posts',
           '**/pages',
           '**/media',
-          // '**/tags',
-          // '**/taxonomies',
-          // '**/users',
-          // '**/events',
+          '**/tags',
+          '**/taxonomies',
+          '**/users',
+          '**/events',
           '**/menus'
         ],
         excludedRoutes: [
