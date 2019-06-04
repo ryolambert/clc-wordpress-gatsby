@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports = `
     {
@@ -8,20 +8,17 @@ module.exports = `
                     id
                     featured_media {
                         localFile {
-                            childImageSharp {
-                                fluid(maxWidth: 1200, traceSVG: {
-                                    color: "lightgray",
-                                    optTolerance: 0.4,
-                                    turdSize: 100,
-                                    turnPolicy: TURNPOLICY_MAJORITY,
-                                }){
+                            childImageSharp{
+                                fluid (maxHeight:200, quality:80){
                                     src
                                     srcSet
-                                    srcWebp
-                                    tracedSVG
+                                    aspectRatio
+                                    sizes
+                                    base64
+                                  }
                                 }
                             }
-                        }
+                            source_url
                     }
                     slug
                     status
@@ -41,21 +38,18 @@ module.exports = `
                     title
                     date(formatString: "MMMM DD, YYYY")
                     featured_media{
-                        localFile{
+                        localFile {
                             childImageSharp{
-                                fluid(maxWidth: 1200, traceSVG: {
-                                    color: "lightgray",
-                                    optTolerance: 0.4,
-                                    turdSize: 100,
-                                    turnPolicy: TURNPOLICY_MAJORITY,
-                                }){
+                                fluid (maxHeight:200, quality:80){
                                     src
                                     srcSet
-                                    srcWebp
-                                    tracedSVG
+                                    aspectRatio
+                                    sizes
+                                    base64
+                                  }
                                 }
                             }
-                        }
+                            source_url
                     }
                 }
             }
@@ -72,24 +66,21 @@ module.exports = `
                 title
                 date
                 featured_media {
-                  localFile {
-                    childImageSharp {
-                      fluid(
-                        maxWidth: 1200
-                        traceSVG: {
-                          color: "#fd9551"
-                          optTolerance: 0.4
-                          turdSize: 100
-                          turnPolicy: TURNPOLICY_MAJORITY
+                    localFile {
+                        childImageSharp{
+                            fluid (maxHeight:200, quality:80){
+                                src
+                                srcSet
+                                aspectRatio
+                                sizes
+                                base64
+                              }
+                            }
                         }
-                      ) {
-                        src
-                      }
-                    }
-                  }
+                        source_url
                 }
               }
             }
           }
     }
-`
+`;
