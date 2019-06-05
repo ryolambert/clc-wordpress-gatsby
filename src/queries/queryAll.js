@@ -55,7 +55,8 @@ module.exports = `
             }
         }
 
-        allSermonPost: allWordpressPost(filter: { acf: { category: { eq: "Sermon" } } }) {
+        allSermonPost: allWordpressPost(filter: {categories: {elemMatch: {name: {eq: "Sermon"}}}}) {
+
             edges {
               node {
                 id

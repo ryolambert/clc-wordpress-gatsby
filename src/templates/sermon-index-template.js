@@ -103,21 +103,19 @@ class SermonIndexPage extends React.Component {
             <GridItem xs={11} sm={11} md={8}>
               {group.map(({ node }) => (
                 <Link to={'/post/' + node.slug} className={classes.cardTitle}>
-                  <Card key={node.slug}
+                  <Card
+                    key={node.slug}
                     className={classes.card}
                     style={{ marginBottom: 50 }}>
-                       {node.featured_media &&
-                      node.featured_media.localFile.childImageSharp
-                        .fluid && (
-                        
-                          <Img
-                            className={classes.imgCardTop}
-                            style={{ backgroundSize: '100%' }}
-                            fluid={
-                              node.featured_media.localFile.childImageSharp
-                                .fluid
-                            }
-                          />
+                    {node.featured_media &&
+                      node.featured_media.localFile.childImageSharp.fluid && (
+                        <Img
+                          className={classes.imgCardTop}
+                          style={{ backgroundSize: '100%' }}
+                          fluid={
+                            node.featured_media.localFile.childImageSharp.fluid
+                          }
+                        />
                       )}
                     <CardBody>
                       <h4
@@ -158,7 +156,9 @@ export default withStyles(postsIndexPageStyle)(SermonIndexPage);
 
 export const query = graphql`
   query allSermonsQuery {
-    allWordpressPost(filter: { acf: { category: { eq: "Sermon" } } }) {
+    allWordpressPost(
+      filter: { categories: { elemMatch: { name: { eq: "Sermon" } } } }
+    ) {
       edges {
         node {
           id
@@ -190,10 +190,7 @@ export const query = graphql`
     }
     sermonIndexParallaxImg: allWordpressPost(
       sort: { order: DESC, fields: date }
-      filter: {
-        featured_media: { id: { regex: "/./" } }
-        acf: { category: { eq: "Sermon" } }
-      }
+      filter: { categories: { elemMatch: { name: { eq: "Sermon" } } } }
     ) {
       edges {
         node {
