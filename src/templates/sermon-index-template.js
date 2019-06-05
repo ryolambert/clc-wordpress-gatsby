@@ -93,7 +93,7 @@ class SermonIndexPage extends React.Component {
             <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
-                route="posts"
+                route="sermons"
                 pageContext={pageContext}
                 color="primary"
               />
@@ -140,7 +140,7 @@ class SermonIndexPage extends React.Component {
             <GridItem xs={11} sm={11} md={8}>
               <br />
               <SimplePagination
-                route="posts"
+                route="sermons"
                 pageContext={pageContext}
                 color="primary"
               />
