@@ -20,12 +20,12 @@ import Parallax from 'components/Parallax/Parallax.jsx';
 import Layout from '../../components/Layout/Layout';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
-// import '../../assets/scss/material-kit-react.scss';
 
 // Sections for this page
 import ProductSection from './Sections/ProductSection.jsx';
 import TeamSection from './Sections/TeamSection.jsx';
-import WorkSection from './Sections/WorkSection.jsx';
+// import WorkSection from './Sections/WorkSection.jsx';
+import ContactForm from '../../components/ContactForm/ContactForm';
 
 // graphql query access to modify page content
 import { graphql } from 'gatsby';
@@ -70,7 +70,8 @@ class LandingPage extends React.Component {
           <div className={classes.container}>
             <ProductSection />
             <TeamSection />
-            <WorkSection />
+            {/* <WorkSection /> */}
+            <ContactForm />
           </div>
         </div>
       </Layout>
