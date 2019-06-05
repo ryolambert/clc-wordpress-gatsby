@@ -56,7 +56,6 @@ module.exports = `
         }
 
         allSermonPost: allWordpressPost(filter: {categories: {elemMatch: {name: {eq: "Sermon"}}}}) {
-
             edges {
               node {
                 id
@@ -65,7 +64,7 @@ module.exports = `
                 template
                 format
                 title
-                date
+                date(formatString: "MMMM DD, YYYY")
                 featured_media {
                     localFile {
                         childImageSharp{
