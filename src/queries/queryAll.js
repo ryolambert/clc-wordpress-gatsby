@@ -55,7 +55,9 @@ module.exports = `
             }
         }
 
-        allSermonPost: allWordpressPost(filter: {categories: {elemMatch: {name: {eq: "Sermon"}}}}) {
+        allSermonPost:  allWordpressPost(
+            filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
+          ) {
             edges {
               node {
                 id

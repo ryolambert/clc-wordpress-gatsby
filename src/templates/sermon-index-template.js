@@ -157,7 +157,7 @@ export default withStyles(postsIndexPageStyle)(SermonIndexPage);
 export const query = graphql`
   query allSermonsQuery {
     allWordpressPost(
-      filter: { categories: { elemMatch: { name: { eq: "Sermon" } } } }
+      filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
     ) {
       edges {
         node {
@@ -190,7 +190,7 @@ export const query = graphql`
     }
     sermonIndexParallaxImg: allWordpressPost(
       sort: { order: DESC, fields: date }
-      filter: { categories: { elemMatch: { name: { eq: "Sermon" } } } }
+      filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
     ) {
       edges {
         node {
