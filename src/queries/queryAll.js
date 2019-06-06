@@ -27,11 +27,11 @@ module.exports = `
                 }
             }
         }
-        
+
         allWordpressPost {
             edges {
                 node {
-                    id  
+                    id
                     slug
                     status
                     template
@@ -89,6 +89,7 @@ module.exports = `
         allGalleryMedia: allWordpressWpMedia(filter: {mime_type: {regex: "/image/"}}) {
             edges {
               node {
+                id
                 alt_text
                 caption
                 description

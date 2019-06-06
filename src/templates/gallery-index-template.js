@@ -64,7 +64,6 @@ class GalleryIndexPage extends React.Component {
       ? galleryIndexParallax
       : fallBackParallax;
 
-    console.table(galleryIndexParallax);
     const post = {
       title: 'Galleries',
       date: "See what we're all about 👍"
@@ -84,10 +83,7 @@ class GalleryIndexPage extends React.Component {
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={10} sm={10} md={6}>
-                <h1
-                  className={classes.title}>
-                  Galleries
-                </h1>
+                <h1 className={classes.title}>Galleries</h1>
               </GridItem>
             </GridContainer>
           </div>
@@ -109,9 +105,9 @@ class GalleryIndexPage extends React.Component {
                 images={group.map(({ node }) => ({
                   id: node.id,
                   ...node.localFile.childImageSharp.fluid,
-                  caption: `${node.title} – ${node.description}`
+                  //!! Figure out html entities decoding...
+                  caption: `${node.title} – ${node.caption} - ${node.date}`
                 }))}
-                
                 itemsPerRow={[2, 3]}
               />
             </GridItem>
@@ -147,16 +143,8 @@ export const query = graphql`
           media_type
           localFile {
             childImageSharp {
-              fluid(
-                maxWidth: 1200
-                traceSVG: {
-                  color: "#fd9551"
-                  optTolerance: 0.4
-                  turdSize: 100
-                  turnPolicy: TURNPOLICY_MAJORITY
-                }
-              ) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              fluid(maxWidth: 1200) {
+                ...GatsbyImageSharpFluid_withWebp
                 originalImg
               }
             }

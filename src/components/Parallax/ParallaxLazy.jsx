@@ -75,7 +75,6 @@ class Parallax extends React.Component {
           className={parallaxClasses}
           fluid={fluid}
           post={post}
-          durationFadeIn="1000"
           backgroundColor="#ff6600"
           style={{
             filter: 'brightness(50%)',

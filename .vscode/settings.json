@@ -2,7 +2,7 @@
   "editor.fontFamily": "Operator Mono, monospace",
   "workbench.colorCustomizations": {
     "titleBar.activeForeground": "#fff",
-    "titleBar.activeBackground": "#da532c"
+    "titleBar.activeBackground": "#ff8801"
     // "titleBar.inactiveBackground": "#fff",
     // "titleBar.inactiveForeground": "#026ddf"
   },

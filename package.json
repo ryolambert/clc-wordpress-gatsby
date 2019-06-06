@@ -47,7 +47,7 @@
     "react-helmet": "^5.2.1",
     "react-icon": "^1.0.0",
     "react-icons": "^3.7.0",
-    "react-images-z-index-fix": "^1.0.2-alpha.5",
+    "react-images-z-index-fix": "^1.0.3-alpha.5",
     "react-router-dom": "^5.0.0",
     "react-slick": "^0.24.0",
     "react-swipeable-views": "^0.13.3",
