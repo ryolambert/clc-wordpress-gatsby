@@ -5,6 +5,9 @@
  */
 
 // You can delete this file if you're not using it
-//!!! ⚠⚠⚠ USE GATSBY-PLUGIN-TOP-LAYOUT
-    //* TO PASS IN HIGHER PROPS/STYLING FUNCTIONALTY
-        //.. USE PLUGIN/GATSBY-PLUGIN-TOP-LAYOUT/gatsby-browser.js
+import React from "react";
+import Transition from "./src/components/Transitions/Transition.jsx";
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Transition {...props}>{element}</Transition>;
+};

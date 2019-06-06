@@ -96,12 +96,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     {
-      resolve: 'gatsby-plugin-layout',
-      options: {
-        component: require.resolve(`./plugins/gatsby-plugin-top-layout/TopLayout.js`),
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
@@ -220,12 +214,6 @@ module.exports = {
 //     `gatsby-transformer-sharp`,
 //     `gatsby-plugin-sharp`,
 //     `gatsby-plugin-offline`,
-//     {
-//       resolve: 'gatsby-plugin-layout',
-//       options: {
-//         component: require.resolve(`./plugins/gatsby-plugin-top-layout/TopLayout.js`),
-//       },
-//     },
 //     {
 //       resolve: `gatsby-plugin-manifest`,
 //       options: {
