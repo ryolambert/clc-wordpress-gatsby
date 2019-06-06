@@ -9,15 +9,6 @@ const postsIndexPageStyle = {
     color: '#6c757d'
   },
   container,
-  profile: {
-    textAlign: 'center',
-    '& img': {
-      maxWidth: '160px',
-      width: '100%',
-      margin: '0 auto',
-      transform: 'translate3d(0, -50%, 0)'
-    }
-  },
   description: {
     margin: '1.071rem auto 0',
     maxWidth: '600px',
@@ -30,8 +21,7 @@ const postsIndexPageStyle = {
   ...imagesStyle,
   main: {
     background: '#FFFFFF',
-    position: 'relative',
-    zIndex: '20'
+    position: 'relative'
   },
   mainRaised: {
     margin: '-60px 30px 0px',

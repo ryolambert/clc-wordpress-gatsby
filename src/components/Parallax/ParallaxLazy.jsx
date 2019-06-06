@@ -70,51 +70,32 @@ class Parallax extends React.Component {
 
     return (
       <div>
+        {/* <div className={classes.container}> */}
         <Img
           className={parallaxClasses}
           fluid={fluid}
           post={post}
+          durationFadeIn="1000"
+          backgroundColor="#ff6600"
           style={{
             filter: 'brightness(50%)',
-
             ...style,
             ...this.state
           }}
           ref="parallax"
         />
-        <div className={classes.container}>
-          <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={12}>
-              <h1
-                // className={classes.title}
-                style={
-                  {
-                    // marginTop: '5em',
-                    // marginRight: '30vw',
-                    // minHeight: '32px',
-                    // color: '#FFFFFF',
-                    // textDecoration: 'none',
-                    // zIndex: '12',
-                    // fontFamily: 'Roboto Slab',
-                    // fontSize: '2em',
-                    // fontWeight: '700'
-                    // left: '50%',
-                    // right: '50%',
-                    // top: '80vh',
-                    // marginBottom: '80%',
-                    // paddingBottom: '20%'
-                  }
-                }>
-                <strong dangerouslySetInnerHTML={{ __html: post.title }} />
-              </h1>
-              {/* <h4 style={{ flexFlow: 'row' }}>{fluid.author}</h4> */}
-              <h4 style={{}} className={classes.subtitle}>
-                <strong dangerouslySetInnerHTML={{ __html: post.date }} />
-              </h4>
-            </GridItem>
-          </GridContainer>
-        </div>
+        <GridContainer className={classes.container} justify="center">
+          <GridItem xs={10} sm={8} md={8} className={classes.gridItem}>
+            <h1 className={classes.title}>
+              <strong dangerouslySetInnerHTML={{ __html: post.title }} />
+            </h1>
+            <h4 style={{}} className={classes.subtitle}>
+              <strong dangerouslySetInnerHTML={{ __html: post.date }} />
+            </h4>
+          </GridItem>
+        </GridContainer>
       </div>
+      // </div>
     );
   }
 }
