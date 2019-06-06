@@ -34,11 +34,11 @@ const headerStyle = {
   },
   absolute: {
     position: 'absolute',
-    zIndex: '1100'
+    zIndex: '1000'
   },
   fixed: {
     position: 'fixed',
-    zIndex: '1100'
+    zIndex: '1000'
   },
   container: {
     ...container,
