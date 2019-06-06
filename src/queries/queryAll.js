@@ -1,3 +1,4 @@
+//GQL Page Templating Queries for WP Pages, Blog Posts, Sermons, Galleries, and Events
 'use strict';
 
 module.exports = `
@@ -70,7 +71,7 @@ module.exports = `
                 featured_media {
                     localFile {
                         childImageSharp{
-                            fluid (maxHeight:200, quality:80){
+                            fluid (maxWidth: 500, quality:80){
                                 src
                                 srcSet
                                 aspectRatio
@@ -80,6 +81,36 @@ module.exports = `
                             }
                         }
                         source_url
+                }
+              }
+            }
+          }
+
+        allGalleryMedia: allWordpressWpMedia(filter: {mime_type: {regex: "/image/"}}) {
+            edges {
+              node {
+                alt_text
+                caption
+                description
+                date(formatString: "MMMM DD, YYYY")
+                slug
+                source_url
+                title
+                mime_type
+                media_type
+                localFile {
+                    id
+                  childImageSharp {
+                    fluid(maxWidth: 1200, traceSVG: {color: "#fd9551", optTolerance: 0.4, turdSize: 100, turnPolicy: TURNPOLICY_MAJORITY}) {
+                        src
+                        srcSet
+                        aspectRatio
+                        tracedSVG
+                        sizes
+                        base64
+                        originalImg
+                    }
+                  }
                 }
               }
             }

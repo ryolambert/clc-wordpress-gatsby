@@ -69,7 +69,7 @@ function renderDropMap(item, props) {
       dangerouslySetInnerHTML={{ __html: child.title }}
     />
   ));
-
+  //!! Reassignment on mapDrop
   let splicedMapDrop = mapDrop.splice(
     0,
     0,
@@ -77,9 +77,7 @@ function renderDropMap(item, props) {
       {item.title}
     </Link>
   );
-  // console.table(splicedMapDrop);
   return mapDrop;
-  // return mapDrop.flatMap(flat => [flat, ',']);
 }
 
 function HeaderLinks({ ...props }) {
@@ -121,7 +119,7 @@ function HeaderLinks({ ...props }) {
                 <Link to="/sermons/" className={classes.dropdownLink}>
                   Sermons
                 </Link>,
-                <Link to="/gallery" className={classes.dropdownLink}>
+                <Link to="/galleries/" className={classes.dropdownLink}>
                   Gallery
                 </Link>
               ]}

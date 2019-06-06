@@ -150,7 +150,7 @@ const headerStyle = {
   drawerPaper: {
     border: 'none',
     bottom: '0',
-    overflowY: 'scroll',
+    // overflowY: 'scroll',
     borderBottom: '200px',
     borderLeft: '15px',
     borderRight: '75px',

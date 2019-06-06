@@ -89,6 +89,19 @@ exports.createPages = ({ graphql, actions }) => {
               id: edge.node.id
             }
           });
+
+        //Galleries detail
+        const galleries = result.data.allGalleryMedia.edges;
+
+        createPaginatedPages({
+          edges: galleries,
+          createPage: createPage,
+          pageTemplate: 'src/templates/gallery-index-template.js',
+          pageLength: 30,
+          pathPrefix: 'galleries'
+        });
+
+        // galleries.forEach(edge =>)
         });
       })
     );
