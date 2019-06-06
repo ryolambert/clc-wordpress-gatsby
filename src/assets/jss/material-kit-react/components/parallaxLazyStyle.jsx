@@ -67,11 +67,11 @@ const parallaxStyle = theme => ({
       marginTop: '0',
       marginBottom: '30%'
     },
-    // [theme.breakpoints.up('xl')]: {
-    //   top: '-10vh',
-    //   marginTop: '0',
-    //   marginBottom: '30%'
-    // },
+    [theme.breakpoints.up('xl')]: {
+      top: '-10vh',
+      marginTop: '0',
+      marginBottom: '30%'
+    },
     ...container
   },
   gridItem: {
