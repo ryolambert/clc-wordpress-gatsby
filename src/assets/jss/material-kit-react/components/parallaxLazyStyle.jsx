@@ -1,6 +1,6 @@
 import { container, title } from 'assets/jss/material-kit-react.jsx';
 
-const parallaxStyle = {
+const parallaxStyle = theme => ({
   parallax: {
     height: '90vh',
     maxHeight: '1000px',
@@ -12,19 +12,20 @@ const parallaxStyle = {
     padding: '0',
     border: '0',
     display: 'flex',
+    alignItems: 'center',
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
-    // position: 'absolute',
-    zIndex: '1'
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: '20vh'
   },
   filter: {
     '&:before': {
-      background: 'rgba(0, 0, 0, 0.7)'
+      background: 'rgba(0, 0, 0, 0.6)'
     },
     '&:after,&:before': {
       position: 'absolute',
-      zIndex: '-1',
+      zIndex: '1',
       width: '100%',
       height: '100%',
       display: 'block',
@@ -38,34 +39,65 @@ const parallaxStyle = {
   },
   //TODO: 📏📐This parallax effect to keep text within the middle of the 📸
   container: {
-    zIndex: '12',
+    zIndex: '1',
     color: '#FFFFFF',
     position: 'absolute',
     padding: 'auto',
     top: '0',
-    left: '20%',
-    marginRight: '50%',
-    marginLeft: '50%',
-    marginTop: '20%',
+    right: '0',
+    left: '0',
     width: '100%',
-    height: '100%',
+    height: '20%',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '25%',
+      marginBottom: '10%',
+      top: '10vh'
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '0%',
+      marginBottom: '80%'
+    },
+    [theme.breakpoints.up('md')]: {
+      top: '-2vh',
+      marginTop: '0',
+      marginBottom: '30%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      top: '-5vh',
+      marginTop: '0',
+      marginBottom: '30%'
+    },
+    // [theme.breakpoints.up('xl')]: {
+    //   top: '-10vh',
+    //   marginTop: '0',
+    //   marginBottom: '30%'
+    // },
     ...container
+  },
+  gridItem: {
+    top: '0%',
+    bottom: '80%',
+    marginBottom: '90vh'
   },
   title: {
     ...title,
-    display: 'inline-block',
-    position: 'relative',
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // marginTop: '20%',
-    // minHeight: '50%',
+    display: 'block',
+    zIndex: '12',
+    padding: 'auto',
+    marginTop: '35%',
     textAlign: 'left',
-    fontSize: '2em',
+    fontSize: '3em',
     color: '#FFFFFF',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '3em',
+      '&:after': {
+        fontSize: '2em'
+      }
+    }
   },
   subtitle: {
-    // fontSize: '1.313rem',
+    fontSize: '1.313rem',
     maxWidth: '500px',
     display: 'block',
     // position: 'relative',
@@ -75,8 +107,13 @@ const parallaxStyle = {
     color: '#FFFFFF',
     textDecoration: 'none',
     zIndex: '12',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1em',
+      '&:after': {
+        fontSize: '0.8em'
+      }
+    },
     fontFamily: 'Roboto',
-    fontSize: '1em',
     margin: '5px auto 0'
   },
   main: {
@@ -90,6 +127,6 @@ const parallaxStyle = {
     boxShadow:
       '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)'
   }
-};
+});
 
 export default parallaxStyle;

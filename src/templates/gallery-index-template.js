@@ -17,44 +17,43 @@ import { FaPlay } from 'react-icons/fa';
 import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
-import Lightbox from 'react-images';
+import Lightbox from "react-images";
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 import Gallery from 'components/Gallery/Gallery.jsx';
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class GalleryIndexPage extends React.Component {
-  constructor() {
-    super();
-    this.state = { currentImage: 0 };
-    this.closeLightbox = this.closeLightbox.bind(this);
-    this.openLightbox = this.openLightbox.bind(this);
-    this.gotoNext = this.gotoNext.bind(this);
-    this.gotoPrevious = this.gotoPrevious.bind(this);
-  }
-  openLightbox(event, obj) {
-    this.setState({
-      currentImage: obj.index,
-      lightboxIsOpen: true
-    });
-    console.log('Opened');
-  }
-  closeLightbox() {
-    this.setState({
-      currentImage: 0,
-      lightboxIsOpen: false
-    });
-  }
-  gotoPrevious() {
-    this.setState({
-      currentImage: this.state.currentImage - 1
-    });
-  }
-  gotoNext() {
-    this.setState({
-      currentImage: this.state.currentImage + 1
-    });
-  }
+  // constructor() {
+  //   super();
+  //   this.state = { currentImage: 0 };
+  //   this.closeLightbox = this.closeLightbox.bind(this);
+  //   this.openLightbox = this.openLightbox.bind(this);
+  //   this.gotoNext = this.gotoNext.bind(this);
+  //   this.gotoPrevious = this.gotoPrevious.bind(this);
+  // }
+  // openLightbox(event, obj) {
+  //   this.setState({
+  //     currentImage: obj.index,
+  //     lightboxIsOpen: true
+  //   });
+  // }
+  // closeLightbox() {
+  //   this.setState({
+  //     currentImage: 0,
+  //     lightboxIsOpen: false
+  //   });
+  // }
+  // gotoPrevious() {
+  //   this.setState({
+  //     currentImage: this.state.currentImage - 1
+  //   });
+  // }
+  // gotoNext() {
+  //   this.setState({
+  //     currentImage: this.state.currentImage + 1
+  //   });
+  // }
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
@@ -66,7 +65,7 @@ class GalleryIndexPage extends React.Component {
       ? galleryIndexParallax
       : fallBackParallax;
 
-    // console.table(galleryIndexParallax);
+    console.table(galleryIndexParallax);
     const post = {
       title: 'Galleries',
       date: "See what we're all about 👍"
@@ -78,7 +77,7 @@ class GalleryIndexPage extends React.Component {
       classes.imgFluid
     );
 
-    // console.table({ group });
+    console.table({ group });
 
     return (
       <Layout>
@@ -120,23 +119,25 @@ class GalleryIndexPage extends React.Component {
             <GridItem xs={11} sm={11} md={8}>
               <Gallery
                 images={group.map(({ node }) => ({
-                  id: node.localFile.id,
+                  id: node.id,
                   ...node.localFile.childImageSharp.fluid,
                   caption: `${node.title} – ${node.description}`
                 }))}
-                imageClick={this.openLightbox}
+                
                 itemsPerRow={[2, 3]}
               />
-              <Lightbox
+              {/* <Lightbox
                 images={group.map(({ node }) => ({
-                  src: node.localFile.childImageSharp.fluid,
+                  id: node.id,
+                  ...node.localFile.childImageSharp.fluid,
+                  caption: `${node.title} – ${node.description}`
                 }))}
                 onClose={this.closeLightbox}
                 onClickPrev={this.gotoPrevious}
                 onClickNext={this.gotoNext}
                 currentImage={this.state.currentImage}
                 isOpen={this.state.lightboxIsOpen}
-              />
+              /> */}
             </GridItem>
           </GridContainer>
 
@@ -163,12 +164,12 @@ export const query = graphql`
     allWordpressWpMedia(filter: { mime_type: { regex: "/image/" } }) {
       edges {
         node {
+          id
           title
           description
           mime_type
           media_type
           localFile {
-            id
             childImageSharp {
               fluid(
                 maxWidth: 1200
