@@ -1,10 +1,10 @@
 import Img from 'gatsby-image';
 import { chunk, sum } from 'lodash';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Carousel, { Modal, ModalGateway } from 'react-images';
+import Carousel, { Modal, ModalGateway } from 'react-images-z-index-fix';
 import { Box, Link } from 'rebass';
 import carouselFormatters from '../../utils/carouselFormatters';
-import PropTypes from 'prop-types';
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
   const aspectRatios = images.map(image => image.aspectRatio);
@@ -65,20 +65,17 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
       ))}
 
       {ModalGateway && (
-        <ModalGateway style={{ zIndex: '100', position: 'inherit' }}>
+        <ModalGateway>
           {modalIsOpen && (
-            <Modal
-              onClose={closeModal}
-              style={{ zIndex: '1000', position: 'inherit' }}>
+            <Modal onClose={closeModal} style={{}}>
               <Carousel
-                style={{ zIndex: '1000', position: 'inherit' }}
                 views={images.map(({ originalImg, caption }) => ({
                   source: originalImg,
                   caption
                 }))}
                 currentIndex={modalCurrentIndex}
                 formatters={carouselFormatters}
-                components={{ FooterCount: () => null }}
+                // components={{ FooterCount: () => null }}
               />
             </Modal>
           )}

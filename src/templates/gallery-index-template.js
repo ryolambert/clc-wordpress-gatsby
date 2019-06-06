@@ -17,7 +17,6 @@ import { FaPlay } from 'react-icons/fa';
 import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
-import Lightbox from "react-images";
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 import Gallery from 'components/Gallery/Gallery.jsx';
@@ -86,17 +85,6 @@ class GalleryIndexPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={10} sm={10} md={6}>
                 <h1
-                  style={{
-                    display: 'inline-block',
-                    position: 'relative',
-                    marginTop: '30px',
-                    minHeight: '32px',
-                    color: '#FFFFFF',
-                    textDecoration: 'none',
-                    zIndex: '12',
-                    fontFamily: 'Roboto Slab',
-                    fontWeight: '700'
-                  }}
                   className={classes.title}>
                   Galleries
                 </h1>
@@ -126,18 +114,6 @@ class GalleryIndexPage extends React.Component {
                 
                 itemsPerRow={[2, 3]}
               />
-              {/* <Lightbox
-                images={group.map(({ node }) => ({
-                  id: node.id,
-                  ...node.localFile.childImageSharp.fluid,
-                  caption: `${node.title} – ${node.description}`
-                }))}
-                onClose={this.closeLightbox}
-                onClickPrev={this.gotoPrevious}
-                onClickNext={this.gotoNext}
-                currentImage={this.state.currentImage}
-                isOpen={this.state.lightboxIsOpen}
-              /> */}
             </GridItem>
           </GridContainer>
 
