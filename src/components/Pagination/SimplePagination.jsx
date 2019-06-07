@@ -52,7 +52,14 @@ function SimplePagination({ color, pageContext, ...props }) {
   return (
     <div
       className={classes.pagination}
-      style={{ display: 'flex', justifyContent: 'space-between' }}>
+      style={
+        {
+          // display: 'flex',
+          // justifyContent: 'space-between',
+          // position: 'relative',
+          // zIndex: '10'
+        }
+      }>
       <NavLink test={first} url={`/${route}/`} text="<<" />
       <NavLink test={first} url={`/${route}/` + previousUrl} text="<" />
       <h4 className={classes.paginationItem}>

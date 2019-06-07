@@ -9,10 +9,14 @@ import {
 
 const paginationStyle = {
   pagination: {
-    display: 'inline-block',
+    // display: 'inline-block',
     paddingLeft: '0',
     margin: '0 0 20px 0',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    zIndex: '10'
   },
   paginationItem: {
     display: 'inline'
