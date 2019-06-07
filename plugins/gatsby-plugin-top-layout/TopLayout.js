@@ -6,7 +6,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../src/theme.js';
 import Transition from './Transition.jsx';
 
-export default function TopLayout(props) {
+export default function TopLayout(props, location) {
   return (
     <React.Fragment>
       <Helmet>
