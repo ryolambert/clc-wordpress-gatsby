@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../src/theme.js';
+import Transition from './Transition.jsx';
 
 export default function TopLayout(props) {
   return (
@@ -21,12 +22,12 @@ export default function TopLayout(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {props.children}
+        <Transition location={location}>{props.children}</Transition>
       </ThemeProvider>
     </React.Fragment>
   );
 }
 
 TopLayout.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
