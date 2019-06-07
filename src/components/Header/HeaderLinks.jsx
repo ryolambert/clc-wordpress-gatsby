@@ -88,6 +88,11 @@ function HeaderLinks({ ...props }) {
       query={HEADERLINK_QUERY}
       render={data => (
         <List className={classes.list}>
+          <ListItem className={classes.listItem} key="home">
+            <Link to="/" className={classes.navLink}>
+              Home
+            </Link>
+          </ListItem>
           {data.wordpressWpApiMenusMenusItems.items.map(item => {
             if (item.wordpress_children) {
               return (
@@ -107,7 +112,7 @@ function HeaderLinks({ ...props }) {
               return renderHeaderLink(item, props);
             }
           })}
-          <ListItem className={classes.listItem} key="media">
+          <ListItem className={classes.listItem} key="media-deadlink">
             <CustomDropdown
               noLiPadding
               buttonText="Media"
@@ -116,10 +121,16 @@ function HeaderLinks({ ...props }) {
                 color: 'transparent'
               }}
               dropdownList={[
-                <Link to="/sermons/" className={classes.dropdownLink}>
+                <Link
+                  to="/sermons/"
+                  className={classes.dropdownLink}
+                  key="sermons">
                   Sermons
                 </Link>,
-                <Link to="/galleries/" className={classes.dropdownLink}>
+                <Link
+                  to="/galleries/"
+                  className={classes.dropdownLink}
+                  key="galleries">
                   Gallery
                 </Link>
               ]}
