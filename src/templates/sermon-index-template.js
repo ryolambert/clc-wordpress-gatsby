@@ -102,7 +102,10 @@ class SermonIndexPage extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>
               {group.map(({ node }) => (
-                <Link to={'/post/' + node.slug} className={classes.cardTitle} key={node.id}>
+                <Link
+                  to={'/post/' + node.slug}
+                  className={classes.cardTitle}
+                  key={node.id}>
                   <Card
                     key={node.slug}
                     className={classes.card}
@@ -118,10 +121,11 @@ class SermonIndexPage extends React.Component {
                         />
                       )}
                     <CardBody>
-                      <h4
-                        className={classes.cardTitle}
-                        dangerouslySetInnerHTML={{ __html: node.title }}
-                      />
+                      <h4 className={classes.cardTitle}>
+                      <strong
+                          dangerouslySetInnerHTML={{ __html: node.title }}
+                        />
+                      </h4>
                       <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
                       <p>
                         <small
@@ -171,16 +175,8 @@ export const query = graphql`
           featured_media {
             localFile {
               childImageSharp {
-                fluid(
-                  maxWidth: 1200
-                  traceSVG: {
-                    color: "#fd9551"
-                    optTolerance: 0.4
-                    turdSize: 100
-                    turnPolicy: TURNPOLICY_MAJORITY
-                  }
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

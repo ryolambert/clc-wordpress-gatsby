@@ -106,7 +106,6 @@ module.exports = `
                         src
                         srcSet
                         aspectRatio
-                        tracedSVG
                         sizes
                         base64
                         originalImg

@@ -11,14 +11,14 @@ class Transition extends React.PureComponent {
       enter: {
         opacity: 1,
         filter: 'blur(0px)',
-        y: 0,
-        delay: timeout,
-        delayChildren: timeout
+        x: 0,
+        delay: 150,
+        delayChildren: 250
       },
       exit: {
         opacity: 0,
         filter: 'blur(20px)',
-        y: 30
+        x: 10
       }
     });
 
