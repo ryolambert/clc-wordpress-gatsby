@@ -102,7 +102,7 @@ class SermonIndexPage extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>
               {group.map(({ node }) => (
-                <Link to={'/post/' + node.slug} className={classes.cardTitle}>
+                <Link to={'/post/' + node.slug} className={classes.cardTitle} key={node.id}>
                   <Card
                     key={node.slug}
                     className={classes.card}
