@@ -65,7 +65,7 @@ class GalleryIndexPage extends React.Component {
       : fallBackParallax;
 
     const post = {
-      title: 'Galleries',
+      title: 'Gallery',
       date: "See what we're all about 👍"
     };
 
@@ -163,16 +163,8 @@ export const query = graphql`
           media_type
           localFile {
             childImageSharp {
-              fluid(
-                maxWidth: 1200
-                traceSVG: {
-                  color: "#fd9551"
-                  optTolerance: 0.4
-                  turdSize: 100
-                  turnPolicy: TURNPOLICY_MAJORITY
-                }
-              ) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              fluid(maxWidth: 1200) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
