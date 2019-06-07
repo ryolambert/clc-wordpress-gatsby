@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 
-import infoStyle from "assets/jss/material-kit-react/components/infoStyle.jsx";
+import infoStyle from 'assets/jss/material-kit-react/components/infoStyle.jsx';
 
 function InfoArea({ ...props }) {
   const { classes, title, description, iconColor, vertical } = props;
@@ -33,22 +33,22 @@ function InfoArea({ ...props }) {
 }
 
 InfoArea.defaultProps = {
-  iconColor: "gray"
+  iconColor: 'gray'
 };
 
 InfoArea.propTypes = {
   classes: PropTypes.object.isRequired,
-  icon: PropTypes.func.isRequired,
+  icon: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   iconColor: PropTypes.oneOf([
-    "primary",
-    "warning",
-    "danger",
-    "success",
-    "info",
-    "rose",
-    "gray"
+    'primary',
+    'warning',
+    'danger',
+    'success',
+    'info',
+    'rose',
+    'gray'
   ]),
   vertical: PropTypes.bool
 };
