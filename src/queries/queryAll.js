@@ -102,7 +102,7 @@ module.exports = `
                 localFile {
                     id
                   childImageSharp {
-                    fluid(maxWidth: 1200, traceSVG: {color: "#fd9551", optTolerance: 0.4, turdSize: 100, turnPolicy: TURNPOLICY_MAJORITY}) {
+                    fluid(maxWidth: 1200) {
                         src
                         srcSet
                         aspectRatio
