@@ -5,15 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-// exports.onInitialClientRender = () => {
-//   require("./src/assets/scss/material-kit-react.scss");
-// };
-// import "./src/assets/scss/material-kit-react.scss";
-// import Layout from './src/components/Layout'
-
-// export const wrapPageElement = ({ element, props }) => {
-//   return <Layout {...props}>{element}</Layout>
-// }
-
-import 'typeface-roboto';
-import 'typeface-roboto-slab';
+//!!! ⚠⚠⚠ USE GATSBY-PLUGIN-TOP-LAYOUT
+    //* TO PASS IN HIGHER PROPS/STYLING FUNCTIONALTY
+        //.. USE PLUGIN/GATSBY-PLUGIN-TOP-LAYOUT/gatsby-browser.js
