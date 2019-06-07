@@ -96,6 +96,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve(`./plugins/gatsby-plugin-top-layout/TopLayout.js`),
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
@@ -127,9 +133,9 @@ module.exports = {
 //       resolve: 'gatsby-plugin-material-ui',
 //       // If you want to use styled components you should change the injection order.
 //       options: {
-//         // stylesProvider: {
-//         //   injectFirst: true,
-//         // },
+//         stylesProvider: {
+//           injectFirst: true,
+//         },
 //       }
 //     },
 //     // If you want to use styled components you should add the plugin here.
@@ -214,6 +220,12 @@ module.exports = {
 //     `gatsby-transformer-sharp`,
 //     `gatsby-plugin-sharp`,
 //     `gatsby-plugin-offline`,
+//     {
+//       resolve: 'gatsby-plugin-layout',
+//       options: {
+//         component: require.resolve(`./plugins/gatsby-plugin-top-layout/TopLayout.js`),
+//       },
+//     },
 //     {
 //       resolve: `gatsby-plugin-manifest`,
 //       options: {
