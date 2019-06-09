@@ -39,8 +39,7 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
             e.preventDefault();
             openModal(i);
           }}
-          // style={{ position: 'relative', zIndex: '100' }}
-        >
+          style={{ position: 'relative', zIndex: '10' }}>
           <Box
             as={Img}
             fluid={image}
