@@ -4,7 +4,7 @@
  * Material Kit React - v1.4.0 based on Material Kit - v2.0.2
  =========================================================
 
- * Product Page: 
+ * Product Page:
  * Copyright 2019 Ryo Lambert (https://www.relevantdesign.org)
  * Licensed under MIT (https://github.com/ryolambert/)
 
@@ -18,7 +18,7 @@
 // // // Variables - Styles that are used on more than one component
 // #############################
 
-const drawerWidth = 260;
+const drawerWidth = '85vh';
 
 const transition = {
   transition: 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)'
