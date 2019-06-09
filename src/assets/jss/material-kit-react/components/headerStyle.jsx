@@ -38,7 +38,7 @@ const headerStyle = {
   },
   fixed: {
     position: 'fixed',
-    zIndex: '1000'
+    zIndex: '10000'
   },
   container: {
     ...container,
@@ -150,7 +150,6 @@ const headerStyle = {
   drawerPaper: {
     border: 'none',
     bottom: '0',
-    // overflowY: 'scroll',
     borderBottom: '200px',
     borderLeft: '15px',
     borderRight: '75px',

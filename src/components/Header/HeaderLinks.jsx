@@ -10,7 +10,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
-import Search from '../Search/Search.jsx';
+import SearchBar from '../Search/SearchBar.jsx';
 
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 
@@ -145,12 +145,6 @@ function HeaderLinks({ ...props }) {
             <Link to="/posts/" className={classes.navLink}>
               Blog
             </Link>
-          </ListItem>
-          <ListItem className={classes.listItem} key="search">
-            <Search
-              className={classes.navLink}
-              searchIndex={data.siteSearchIndex.index}
-            />
           </ListItem>
         </List>
       )}

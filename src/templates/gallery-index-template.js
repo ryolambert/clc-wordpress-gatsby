@@ -23,36 +23,6 @@ import Gallery from 'components/Gallery/Gallery.jsx';
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class GalleryIndexPage extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = { currentImage: 0 };
-  //   this.closeLightbox = this.closeLightbox.bind(this);
-  //   this.openLightbox = this.openLightbox.bind(this);
-  //   this.gotoNext = this.gotoNext.bind(this);
-  //   this.gotoPrevious = this.gotoPrevious.bind(this);
-  // }
-  // openLightbox(event, obj) {
-  //   this.setState({
-  //     currentImage: obj.index,
-  //     lightboxIsOpen: true
-  //   });
-  // }
-  // closeLightbox() {
-  //   this.setState({
-  //     currentImage: 0,
-  //     lightboxIsOpen: false
-  //   });
-  // }
-  // gotoPrevious() {
-  //   this.setState({
-  //     currentImage: this.state.currentImage - 1
-  //   });
-  // }
-  // gotoNext() {
-  //   this.setState({
-  //     currentImage: this.state.currentImage + 1
-  //   });
-  // }
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;

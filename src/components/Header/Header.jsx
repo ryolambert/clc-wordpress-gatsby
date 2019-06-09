@@ -14,9 +14,10 @@ import Drawer from '@material-ui/core/Drawer';
 // import Avatar from '@material-ui/core/Avatar';
 // @material-ui/icons
 import Menu from '@material-ui/icons/Menu';
+import Close from '@material-ui/icons/Close';
 // core components
+import SearchBar from 'components/Search/SearchBar.jsx';
 import headerStyle from 'assets/jss/material-kit-react/components/headerStyle.jsx';
-// import { Link, withRouter } from 'react-router-dom';
 import { Link } from 'gatsby';
 
 class Header extends React.Component {
@@ -142,6 +143,12 @@ class Header extends React.Component {
             }}
             onClose={this.handleDrawerToggle}>
             <div className={classes.appResponsive}>
+              {/* <IconButton
+                color="inherit"
+                aria-label="close drawer"
+                onClick={this.handleDrawerToggle}>
+                <Close />
+              </IconButton> */}
               {leftLinks}
               {rightLinks}
             </div>
