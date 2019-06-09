@@ -18,7 +18,7 @@
 // // // Variables - Styles that are used on more than one component
 // #############################
 
-const drawerWidth = '85vh';
+const drawerWidth = '85vw';
 
 const transition = {
   transition: 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)'
@@ -119,7 +119,7 @@ const dangerCardHeader = {
 };
 const infoCardHeader = {
   color: '#fff',
-  background: 'linear-gradient(60deg, #26c6da, #00acc1)',
+  background: 'linear-gradient(60deg, #26c6da, #1c8dff)',
   ...infoBoxShadow
 };
 const primaryCardHeader = {
