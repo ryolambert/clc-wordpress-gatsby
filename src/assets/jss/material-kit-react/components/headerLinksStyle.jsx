@@ -12,11 +12,6 @@ const headerLinksStyle = theme => ({
     paddingTop: '0',
     paddingBottom: '0',
     color: 'inherit'
-    // [theme.breakpoints.down('md')]: {
-    //   overflowY: 'scroll',
-    //   overflowScrolling: 'touch',
-    //   maxHeight: '80vh'
-    // }
   },
   listItem: {
     float: 'left',
