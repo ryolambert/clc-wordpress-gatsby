@@ -87,66 +87,71 @@ function HeaderLinks({ ...props }) {
     <StaticQuery
       query={HEADERLINK_QUERY}
       render={data => (
-        <List className={classes.list}>
-          <ListItem className={classes.listItem} key="home">
-            <Link to="/" className={classes.navLink}>
-              Home
-            </Link>
-          </ListItem>
-          {data.wordpressWpApiMenusMenusItems.items.map(item => {
-            if (item.wordpress_children) {
-              return (
-                <ListItem className={classes.listItem} key={item.object_slug}>
-                  <CustomDropdown
-                    noLiPadding
-                    buttonText={item.title}
-                    buttonProps={{
-                      className: classes.navLink,
-                      color: 'transparent'
-                    }}
-                    dropdownList={renderDropMap(item, props)}
-                  />
-                </ListItem>
-              );
-            } else {
-              return renderHeaderLink(item, props);
-            }
-          })}
-          <ListItem className={classes.listItem} key="media-deadlink">
-            <CustomDropdown
-              noLiPadding
-              buttonText="Media"
-              buttonProps={{
-                className: classes.navLink,
-                color: 'transparent'
-              }}
-              dropdownList={[
-                <Link
-                  to="/sermons/"
-                  className={classes.dropdownLink}
-                  key="sermons">
-                  Sermons
-                </Link>,
-                <Link
-                  to="/galleries/"
-                  className={classes.dropdownLink}
-                  key="galleries">
-                  Gallery
-                </Link>
-              ]}
-            />
-          </ListItem>
-          <ListItem className={classes.listItem} key="calendar">
-            <Link to="/calendar/" className={classes.navLink}>
-              Calendar
-            </Link>
-          </ListItem>
-          <ListItem className={classes.listItem} key="blog">
-            <Link to="/posts/" className={classes.navLink}>
-              Blog
-            </Link>
-          </ListItem>
-        </List>
+        <div>
+          <List className={classes.list}>
+            <ListItem className={classes.listItem} key="home">
+              <Link to="/" className={classes.navLink}>
+                Home
+              </Link>
+            </ListItem>
+            {data.wordpressWpApiMenusMenusItems.items.map(item => {
+              if (item.wordpress_children) {
+                return (
+                  <ListItem className={classes.listItem} key={item.object_slug}>
+                    <CustomDropdown
+                      noLiPadding
+                      buttonText={item.title}
+                      buttonProps={{
+                        className: classes.navLink,
+                        color: 'transparent'
+                      }}
+                      dropdownList={renderDropMap(item, props)}
+                    />
+                  </ListItem>
+                );
+              } else {
+                return renderHeaderLink(item, props);
+              }
+            })}
+            <ListItem className={classes.listItem} key="media-deadlink">
+              <CustomDropdown
+                noLiPadding
+                buttonText="Media"
+                buttonProps={{
+                  className: classes.navLink,
+                  color: 'transparent'
+                }}
+                dropdownList={[
+                  <Link
+                    to="/sermons/"
+                    className={classes.dropdownLink}
+                    key="sermons">
+                    Sermons
+                  </Link>,
+                  <Link
+                    to="/galleries/"
+                    className={classes.dropdownLink}
+                    key="galleries">
+                    Gallery
+                  </Link>
+                ]}
+              />
+            </ListItem>
+            <ListItem className={classes.listItem} key="calendar">
+              <Link to="/calendar/" className={classes.navLink}>
+                Calendar
+              </Link>
+            </ListItem>
+            <ListItem className={classes.listItem} key="blog">
+              <Link to="/posts/" className={classes.navLink}>
+                Blog
+              </Link>
+            </ListItem>
+            <ListItem className={classes.listItem} key="searchbar">
+              <SearchBar searchIndex={data.siteSearchIndex.index} />
+            </ListItem>
+          </List>
+        </div>
       )}
     />
   );

@@ -81,8 +81,6 @@ class Header extends React.Component {
     });
     const logo = require('../../assets/img/clc-logo-svg.svg');
 
-    //* Branding Component on Appbar Header
-    //todo: Figure out adding in Brand SVG or Image
     const brandComponent = (
       <Button className={classes.title}>
         <Link
@@ -143,12 +141,12 @@ class Header extends React.Component {
             }}
             onClose={this.handleDrawerToggle}>
             <div className={classes.appResponsive}>
-              {/* <IconButton
+              <IconButton
                 color="inherit"
                 aria-label="close drawer"
                 onClick={this.handleDrawerToggle}>
                 <Close />
-              </IconButton> */}
+              </IconButton>
               {leftLinks}
               {rightLinks}
             </div>

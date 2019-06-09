@@ -61,11 +61,10 @@ class SearchBar extends React.Component {
           }) => (
             <div>
               <Input
-                style={{ width: '100%', color: 'inherit' }}
+                style={{ width: '98%', marginTop: '10px' }}
                 {...getInputProps({
                   placeholder: '🔍Ask & Ye Shall Receive',
                   className: this.state.loading ? 'loading' : '',
-                  value: this.state.query,
                   onChange: this.search
                 })}
               />
@@ -79,7 +78,10 @@ class SearchBar extends React.Component {
                           key={item.id}
                           highlighted={index === highlightedIndex}>
                           <Link to={`/post/` + item.slug}>
-                            <h6>{item.title}</h6>
+                            <h5
+                              dangerouslySetInnerHTML={{ __html: item.title }}
+                            />
+
                             <p
                               dangerouslySetInnerHTML={{ __html: item.excerpt }}
                             />
@@ -93,15 +95,26 @@ class SearchBar extends React.Component {
                           key={item.id}
                           highlighted={index === highlightedIndex}>
                           <Link to={`/` + item.slug}>
-                            <h6>{item.title}</h6>
+                            <h5
+                              dangerouslySetInnerHTML={{ __html: item.title }}
+                            />
                             <p
-                              dangerouslySetInnerHTML={{ __html: item.exceprt }}
+                              dangerouslySetInnerHTML={{ __html: item.excerpt }}
                             />
                           </Link>
                         </DropDownItem>
                       );
                     } else {
-                      return <p>Hmm, maybe try something else 🤷‍♂</p>;
+                      return (
+                        <DropDownItem
+                          {...getItemProps({ item })}
+                          key={Math.random()}
+                          highlighted={index === highlightedIndex}>
+                          <Link to={`/` + item.slug}>
+                            <h6>😭Sorry, it seems we couldn't find that! 🤷‍♂️</h6>
+                          </Link>
+                        </DropDownItem>
+                      );
                     }
                   })}
                 </DropDown>

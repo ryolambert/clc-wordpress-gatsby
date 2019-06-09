@@ -115,5 +115,8 @@ module.exports = `
               }
             }
           }
+          siteSearchIndex{
+            index
+          }
     }
 `;
