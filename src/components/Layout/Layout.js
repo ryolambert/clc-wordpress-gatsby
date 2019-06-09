@@ -1,6 +1,6 @@
 //*__________________________Layout Wrapper Component_________________________*/
 //⚛ Component wraps up header, headerLinks, footer, and children for Appbar
-//TODO: Get react-helmet setup for gql to inject siteMetadata 
+//TODO: Get react-helmet setup for gql to inject siteMetadata
 
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -14,22 +14,23 @@ import 'typeface-roboto';
 import 'typeface-roboto-slab';
 
 const LANDING_PAGE_QUERY = graphql`
-query landingPageQuery {
-  site {
-    id
-    siteMetadata {
-      title
-      description
+  query landingPageQuery {
+    site {
+      id
+      siteMetadata {
+        title
+        description
+      }
+    }
+    siteSearchIndex {
+      index
     }
   }
-}
 `;
 
 export default class Layout extends React.Component {
   render() {
     const { children, ...rest } = this.props;
-    const site= this.props;
-    const data = this.props.data;
     const dashboardRoutes = [];
     return (
       <div>

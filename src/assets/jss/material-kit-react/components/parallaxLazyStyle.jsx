@@ -51,9 +51,10 @@ const parallaxStyle = theme => ({
     [theme.breakpoints.down('xs')]: {
       marginTop: '25%',
       marginBottom: '10%',
-      top: '10vh'
+      top: '0vh'
     },
     [theme.breakpoints.down('sm')]: {
+      top: '5vh',
       marginTop: '0%',
       marginBottom: '80%'
     },
@@ -90,9 +91,9 @@ const parallaxStyle = theme => ({
     color: '#FFFFFF',
     textDecoration: 'none',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '3em',
+      fontSize: '2em',
       '&:after': {
-        fontSize: '2em'
+        fontSize: '1.5em'
       }
     }
   },
