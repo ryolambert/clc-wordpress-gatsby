@@ -53,9 +53,11 @@ function renderHeaderLink(item, props) {
   const { classes } = props;
   return (
     <ListItem className={classes.listItem} key={item.object_slug}>
-      <Link to={`/${item.object_slug}`} className={classes.navLink}>
-        {item.title}
-      </Link>
+      <Link
+        to={`/${item.object_slug}`}
+        className={classes.navLink}
+        dangerouslySetInnerHTML={{ __html: item.title }}
+      />
     </ListItem>
   );
 }
@@ -73,9 +75,11 @@ function renderDropMap(item, props) {
   let splicedMapDrop = mapDrop.splice(
     0,
     0,
-    <Link to={`/${item.object_slug}`} className={classes.dropdownLink}>
-      {item.title}
-    </Link>
+    <Link
+      to={`/${item.object_slug}`}
+      className={classes.dropdownLink}
+      dangerouslySetInnerHTML={{ __html: item.title }}
+    />
   );
   return mapDrop;
 }
@@ -87,8 +91,13 @@ function HeaderLinks({ ...props }) {
     <StaticQuery
       query={HEADERLINK_QUERY}
       render={data => (
-        <div>
+        <div style={{ overflow: 'hidden' }}>
           <List className={classes.list}>
+            <SearchBar
+              className={classes.listItemSearch}
+              key="searchbar"
+              searchIndex={data.siteSearchIndex.index}
+            />
             <ListItem className={classes.listItem} key="home">
               <Link to="/" className={classes.navLink}>
                 Home
@@ -99,6 +108,7 @@ function HeaderLinks({ ...props }) {
                 return (
                   <ListItem className={classes.listItem} key={item.object_slug}>
                     <CustomDropdown
+                      className={classes.listItem}
                       noLiPadding
                       buttonText={item.title}
                       buttonProps={{
@@ -116,7 +126,7 @@ function HeaderLinks({ ...props }) {
             <ListItem className={classes.listItem} key="media-deadlink">
               <CustomDropdown
                 noLiPadding
-                buttonText="Media"
+                buttonText={'Media'}
                 buttonProps={{
                   className: classes.navLink,
                   color: 'transparent'
@@ -146,9 +156,6 @@ function HeaderLinks({ ...props }) {
               <Link to="/posts/" className={classes.navLink}>
                 Blog
               </Link>
-            </ListItem>
-            <ListItem className={classes.listItem} key="searchbar">
-              <SearchBar searchIndex={data.siteSearchIndex.index} />
             </ListItem>
           </List>
         </div>

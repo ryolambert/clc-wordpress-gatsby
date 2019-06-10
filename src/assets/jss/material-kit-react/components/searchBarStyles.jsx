@@ -43,7 +43,7 @@ const DropDownItem = styled.div`
     font-family: 'Roboto Slab';
     margin-right: 10px;
     flex: 0 1 50px;
-    background-image: linear-gradient(120deg, #952bff 0%, #9c27b0 100%);
+    background-image: linear-gradient(120deg, #0080ff 0%, #00d2d2 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.2em;
     background-position: 0 88%;
@@ -60,7 +60,15 @@ const DropDownItem = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     flex: 1 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-height: 1rem; /* fallback */
+    max-height: 2rem; /* fallback */
   }
+  text-overflow: ellipsis;
 `;
 
 const glow = keyframes`

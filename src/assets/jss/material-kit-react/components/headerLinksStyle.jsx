@@ -5,32 +5,57 @@ import tooltip from 'assets/jss/material-kit-react/tooltipsStyle.jsx';
 const headerLinksStyle = theme => ({
   list: {
     ...defaultFont,
-    fontSize: '14px',
+    fontSize: '0.5rem',
     margin: 0,
     paddingLeft: '0',
     listStyle: 'none',
     paddingTop: '0',
     paddingBottom: '0',
-    color: 'inherit'
+    color: 'inherit',
+    display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      maxHeight: '80vh',
+      width: '100%',
+      height: '90%',
+      boxSizing: 'content-box',
+      marginBottom: '10vh',
+      paddingBottom: '10vh',
+      overflow: 'auto',
+      paddingRight: '17px'
+    }
   },
   listItem: {
     float: 'left',
     color: 'inherit',
     position: 'relative',
-    display: 'block',
     width: 'auto',
     margin: '0',
     padding: '0',
+    order: '-1',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
-      '&:after': {
-        width: 'calc(100% - 30px)',
-        content: '""',
-        display: 'block',
-        height: '1px',
-        marginLeft: '15px',
-        backgroundColor: '#e5e5e5'
-      }
+      marginTop: '5px',
+      order: '1'
+    },
+    '&:hover, &:focus': {
+      color: 'inherit',
+      textDecoration: 'none',
+      textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
+    }
+  },
+  listItemSearch: {
+    float: 'left',
+    color: 'inherit',
+    position: 'relative',
+    width: 'auto',
+    margin: '0',
+    padding: '0',
+    order: '',
+    [theme.breakpoints.down('sm')]: {
+      width: '80vw',
+      order: '-1',
+      marginLeft: '15px'
     }
   },
   listItemText: {
@@ -40,18 +65,24 @@ const headerLinksStyle = theme => ({
     color: 'inherit',
     position: 'relative',
     padding: '0.9375rem',
-    fontWeight: '700',
+    fontWeight: 'bold',
     fontSize: '14px',
     textTransform: 'capitalize',
     borderRadius: '3px',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    display: 'inline-flex',
+    display: 'inline-block',
+    '&:strong': {
+      fontWeight: 'bold'
+    },
     '&:hover,&:focus': {
+      color: 'white',
+      background: 'rgba(200, 200, 200, 0.2)',
+      background: 'linear-gradient(25deg, #ff6600 0%, #ffc526 110%)',
       color: 'inherit',
-      // background: 'rgba(200, 200, 200, 0.2)',
-      background: 'linear-gradient(25deg, #ff6600 0%, #ffc526 110%)'
+      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)'
+      // textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
     },
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 30px)',
@@ -62,7 +93,6 @@ const headerLinksStyle = theme => ({
       // color: '#fff',
       fontFamily: 'Roboto Slab',
       fontWeight: '700',
-      // textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
       transform: 'translate(0,-.07em)',
       '& > span:first-child': {
         justifyContent: 'flex-start'
@@ -79,12 +109,12 @@ const headerLinksStyle = theme => ({
     padding: '0.9375rem',
     fontWeight: '400',
     fontSize: '12px',
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
     borderRadius: '3px',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    display: 'inline-flex',
+    display: 'inline-block',
     '&:hover,&:focus': {
       color: 'inherit',
       background: 'rgba(200, 200, 200, 0.2)'
@@ -108,11 +138,11 @@ const headerLinksStyle = theme => ({
     padding: '0.9375rem',
     fontWeight: '400',
     fontSize: '12px',
-    // textTransform: 'uppercase',
+    // textTransform: 'capitalize',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    display: 'inline-flex',
+    display: 'inline-block',
     top: '4px'
   },
   registerNavLink: {
@@ -120,11 +150,11 @@ const headerLinksStyle = theme => ({
     position: 'relative',
     fontWeight: '400',
     fontSize: '12px',
-    // textTransform: 'uppercase',
+    // textTransform: 'capitalize',
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    display: 'inline-flex'
+    display: ''
   },
   navLinkActive: {
     color: 'inherit',
@@ -141,7 +171,6 @@ const headerLinksStyle = theme => ({
     marginRight: '4px'
   },
   dropdownLink: {
-    // textShadow: '0.05em 0.05em 0.05em rgba(0, 0, 0,.55)',
     textDecoration: 'none',
     display: 'block',
     padding: '10px 20px',
