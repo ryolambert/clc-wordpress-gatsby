@@ -9,8 +9,6 @@ import Img from 'gatsby-image';
 import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-import WPGBlocks from 'react-gutenberg';
-// import { IWPGBlock } from 'react-gutenberg/src/types';
 
 // @material-ui/icons
 
@@ -28,13 +26,14 @@ import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 
+
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
 
 class PostTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
-    const post = this.props.data.post;
+    const post = this.props.data.wordpressPost;
     const placeHolder = this.props.data.placeHolderImg.fluid;
     const fluid = post.featured_media
       ? post.featured_media.localFile.childImageSharp.fluid
@@ -48,6 +47,7 @@ class PostTemplate extends React.Component {
       classes.imgFluid
     );
 
+    console.table(placeHolder);
     // Testing if featured_media fluid works
     // console.log(fluid);
     // console.table(classes.container);
@@ -61,28 +61,23 @@ class PostTemplate extends React.Component {
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
-                    {fluidContent && (
+                    {fluidContent &&
                       <div>
                         <Img
                           alt="Screenshot of Project"
-                          fluid={
-                            post.featured_media.localFile.childImageSharp.fluid
-                          }
+                          fluid={post.featured_media.localFile.childImageSharp.fluid}
                           className={imageClasses}
                           style={{ marginTop: '20px', marginBottom: '20px' }}
                         />
+                        {/* < img src={fluidContent.src} alt=""/> */}
                       </div>
-                    )}
+                    }
                     <div
                       className={classes.content}
                       dangerouslySetInnerHTML={{
                         __html: post.content
                       }}
                     />
-                    {/* <article data-id={post.id}>
-                      <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
-                      <WPGBlocks blocks={post.blocks} />
-                    </article> */}
                     <p dangerouslySetInnerHTML={{ __html: post.date }} />
                     <p dangerouslySetInnerHTML={{ __html: post.slug }} />
                   </GridItem>
@@ -97,13 +92,11 @@ class PostTemplate extends React.Component {
 }
 
 export const query = graphql`
-  fragment WPPost on wordpress__POST {
-    wordpress_id
-    id
-    title
-    content
-    excerpt
-    featured_media {
+  query currentPostQuery($id: String!) {
+    wordpressPost(id: { eq: $id }) {
+      title
+      content
+      featured_media {
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {
@@ -112,43 +105,9 @@ export const query = graphql`
           }
         }
       }
-    slug
-    type
-    date(formatString: "MMMM DD, YYYY")
-    categories {
-      name
       slug
-    }
-  }
-
-  fragment Blocks on wordpress__POSTBlocks {
-    attrs {
-      align
-      ids
-      level
-      wordpress_id
-    }
-    innerBlocks {
-      attrs {
-        align
-        placeholder
-        fontSize
-      }
-      innerContent
-      innerHTML
-      blockName
-    }
-    blockName
-    innerContent
-    innerHTML
-  }
-
-  query currentPostQuery($id: String!) {
-    post: wordpressPost(id: { eq: $id }) {
-      ...WPPost
-      blocks {
-        ...Blocks
-      }
+      id
+      date(formatString: "MMMM DD, YYYY")
     }
     placeHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
