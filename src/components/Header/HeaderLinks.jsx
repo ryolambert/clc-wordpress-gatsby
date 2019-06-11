@@ -91,7 +91,7 @@ function HeaderLinks({ ...props }) {
     <StaticQuery
       query={HEADERLINK_QUERY}
       render={data => (
-        <div style={{ overflow: 'hidden' }}>
+        <div>
           <List className={classes.list}>
             <SearchBar
               className={classes.listItemSearch}
