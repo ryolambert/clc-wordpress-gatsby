@@ -1,52 +1,111 @@
-# Build Notes
-
 ![](https://media.giphy.com/media/iXDe1s3spQUZG/giphy.gif)
 
 ## TODO:
 
-- [ ]  Blog Index
-    - [x]  Pagination
-        - [x]  Use MUI pagination component
-    - [ ]  Filtering
-    - [ ]  Search
-    - [ ]  Hero Title Centering/Styling
-- [ ]  Blog Post
-    - [ ]  Title Styling
-    - [ ]  Comments?
-    - [ ]  Sharing
-    - [ ]  Content WP-BLOCK styling...
-        - [ ]  Add image styling
-        - [ ]  Add toLeft and toRight organization with text
-        - [ ]  Add gallery arrangement
-        - [ ]  Add Css filter Gradient?
-- [ ]  Cards
-    - [ ]  Card Styling
-    - [ ]  Add preview images
-- [ ]  Sermon Index
-- [ ]  Sermon Post
-- [ ]  Gallery Index
-    - [ ]  Setup instagram like infinite scroll: LOAD THUMBNAILS!!! SMALL
-    - [ ]  Modal popup with selected image?
-        - [ ]  Share functionality
-- [ ]  Gallery Post
-    - [ ]  Sharing Disqus?
-    - [ ]  Comments?
-- [ ]  Contact Form
+- [ ]  Testing/Optimizations
+    - [ ]  Tests
+        - [ ]  Husky (Pre-commit)
+        - [ ]  Cypress
+        - [ ]  Jest
+    - [ ]  gatsby-plugin-netlify-cache
+    - [ ]
+
+[How to write tests for your Gatsby sites and apps with Kent C. Dodds - Learn With Jason](https://youtu.be/BzRAYt7BHRw)
+
+- [x]  ⭐Search
+    - [x]  Downshift w/Elastic Lunr Index
+    - [x]  Styling
+        - [x]  Title ⇒ blue gradient
+        - [x]  Flex: format 2 column rows
+        - [x]  AppBar location media queries
+            - [x]  Order last desktop
+            - [x]  Order first mobile
+        - [ ]  ✨Add flex columns to split the title from description?
+- [ ]  🌟Events
+    - [ ]  Events Pages
+        - [ ]  Events Index
+        - [ ]  Event Post
+        - [ ]  MapBox integration
+            - [ ]  API key
+            - [ ]  Custom Styles
+        - [ ]  Event Location Geocoding?
+        - [x]  WP-BLOCK STYLING
+        - [ ]  Calendar View
+            - [ ]  GQL ➡ Event Post Data, Title, and Description
+            - [ ]  Map over map coordinates?
+    - [ ]
+- [ ]  🌟Contact Form
     - [ ]  Zapier - Gmail Integration
+        - [x]  Setup form
+        - [x]  Setup Zap
+        - [x]  Integrate Components
+        - [ ]  Testing...
+        - [ ]  Debug
     - [ ]  Zapier - Disqus?
     - [ ]  Contact Component
     - [ ]  Disqus Integration?
-- [ ]  Events Pages
-    - [ ]  Events Index
-    - [ ]  Event Post
-    - [ ]  MapBox integration
-        - [ ]  API key
-        - [ ]  Custom Styles
-    - [ ]  Event Location Geocoding?
-    - [ ]  WP-BLOCK STYLING
-    - [ ]  Calendar View
-        - [ ]  GQL ➡ Event Post Data, Title, and Description
-        - [ ]  Map over map coordinates?
+- [ ]  🌟Landing Page
+    - [ ]  ACF fields
+    - [ ]  Hero Design
+        - [ ]  Carousel?
+    - [ ]  Video modal?
+    - [ ]  Testimonial
+    - [ ]  Staff
+    - [ ]  Contact Form
+    - [ ]  Map box map
+    - [ ]  Footer
+- [ ]  Sermons
+    - [ ]  Sermon Cards Slim
+    - [ ]  Embed audio player
+    - [ ]  Podcast integration
+    - [x]  Sermon Index
+        - [x]  🚫 Sermon Post (Dont need kill from templates)
+- [ ]  Gallery
+    - [ ]  Gallery Index
+        - [x]  Setup instagram like infinite scroll: LOAD THUMBNAILS!!! SMALL
+        - [x]  Modal popup with selected image?
+    - [ ]  Gallery Post → Gallery Modal for popup
+        - [ ]  Sharing Disqus?
+        - [ ]  Comments?
+- [ ]  General Components
+    - [ ]  ⚡️SEO Header Component
+    - [ ]  ⚡️Back Button
+    - [ ]  ⚡️Scroll Top Button
+    - [ ]
+    - [ ]  ⭐Cards
+        - [ ]  Card Styling Landscape
+        - [ ]  Add tags
+        - [ ]  Add Grid view
+        - [x]  Add preview images
+    - [ ]  ⭐Filtering
+        - [ ]  Tags
+        - [ ]  Categories
+    - [x]  ⭐Content WP-BLOCK styling...
+        - [x]  Add image styling
+        - [x]  Add toLeft and toRight organization with text
+        - [x]  Add gallery arrangement
+        - [x]  Add Css filter Gradient?
+    - [ ]  ✨Comments
+    - [ ]  ✨Share
+        - [ ]  Twitter
+        - [ ]  Facebook
+        - [ ]  Pinterest
+        - [ ]  Instagram? 🤵
+    - [x]  Pagination
+        - [x]  Use MUI pagination component
+    - [ ]  ⭐️Animations
+        - [x]  🌟Page Transitions
+            - [ ]  ✨Gradient shape/swipe
+        - [ ]  ✨Custom Hover
+        - [ ]  ✨Static Animations
+            - [ ]  ✨Shapes/Art
+- [ ]  Blog
+    - [ ]  Blog Index
+        - [ ]  Hero Title Centering/Styling Bump from -5vh to 0vh?
+    - [ ]  Blog Post
+        - [x]  Title Styling
+        - [ ]  Comments?
+        - [ ]  Sharing
 
 ---
 
@@ -70,3 +129,8 @@
         - No needed styling mods of CMS content by user or dev.
         - Great use case to wean the aging PHP platform into the enlightened land of JS!!! 🙌🙌🙌
         -
+7. 🌟Gatsby's use of higher order directory structures to pass state/props into statically generated components.
+    - I.e. Differences in build/develop compiling
+        - ⚠ Browser APIs like window or document are unavailable to the SSR compilation.
+        - 💥💥💥Use gatsby-browser and ssr files to circumvent those build constraints and give access to logic or wrappers that otherwise are inaccessible to the server side of things when generating static files?
+        - They're basically a Gatsby's version of a HoC/Context provider that work around React's one-way data-binding, from what I can gather.
