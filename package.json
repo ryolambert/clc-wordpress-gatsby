@@ -4,6 +4,10 @@
   "description": "🙏Gatsby-WP-MUI-build, Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.",
   "version": "0.1.0",
   "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "export ENABLE_GATSBY_REFRESH_ENDPOINT=true && gatsby develop",
@@ -59,6 +63,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "cypress": "^3.3.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-graphql": "3.0.3",
@@ -68,13 +74,10 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint": "^5.16.0",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.11.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
