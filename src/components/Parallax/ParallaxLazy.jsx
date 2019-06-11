@@ -1,44 +1,44 @@
-import React from 'react';
+import React from "react";
 // nodejs library that concatenates classes
-import classNames from 'classnames';
+import classNames from "classnames";
 // nodejs library to set properties for components
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles';
+import withStyles from "@material-ui/core/styles/withStyles";
 
 // core components
-import parallaxLazyStyle from 'assets/jss/material-kit-react/components/parallaxLazyStyle.jsx';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+import parallaxLazyStyle from "assets/jss/material-kit-react/components/parallaxLazyStyle.jsx";
+import GridContainer from "components/Grid/GridContainer.jsx";
+import GridItem from "components/Grid/GridItem.jsx";
 
-import Img from 'gatsby-image';
+import Img from "gatsby-image";
 
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
     var windowScrollTop =
-      typeof window !== 'undefined' && window.pageYOffset / 3;
+      typeof window !== "undefined" && window.pageYOffset / 3;
     this.state = {
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: "translate3d(0," + windowScrollTop + "px,0)"
     };
     this.resetTransform = this.resetTransform.bind(this);
   }
   componentDidMount() {
     var windowScrollTop = window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: "translate3d(0," + windowScrollTop + "px,0)"
     });
-    window.addEventListener('scroll', this.resetTransform);
+    window.addEventListener("scroll", this.resetTransform);
   }
   componentWillUnmount() {
-    typeof window !== 'undefined' &&
-      window.removeEventListener('scroll', this.resetTransform);
+    typeof window !== "undefined" &&
+      window.removeEventListener("scroll", this.resetTransform);
   }
   resetTransform() {
     var windowScrollTop =
-      typeof window !== 'undefined' && window.pageYOffset / 3;
+      typeof window !== "undefined" && window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: "translate3d(0," + windowScrollTop + "px,0)"
     });
   }
   render() {
@@ -77,7 +77,7 @@ class Parallax extends React.Component {
           post={post}
           backgroundColor="#ff6600"
           style={{
-            filter: 'brightness(50%)',
+            filter: "brightness(50%)",
             ...style,
             ...this.state
           }}
@@ -88,13 +88,13 @@ class Parallax extends React.Component {
             <h1 className={classes.title}>
               <strong dangerouslySetInnerHTML={{ __html: post.title }} />
             </h1>
-            <h4 style={{}} className={classes.subtitle}>
+            <h4 className={classes.subtitle}>
               <strong dangerouslySetInnerHTML={{ __html: post.date }} />
             </h4>
           </GridItem>
         </GridContainer>
+        {/* </div> */}
       </div>
-      // </div>
     );
   }
 }
