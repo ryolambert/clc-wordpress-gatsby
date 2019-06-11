@@ -103,6 +103,15 @@ export const query = graphql`
     title
     content
     excerpt
+    featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1200) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     slug
     type
     date(formatString: "MMMM DD, YYYY")
@@ -140,18 +149,6 @@ export const query = graphql`
       blocks {
         ...Blocks
       }
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-      slug
-      id
-      date(formatString: "MMMM DD, YYYY")
     }
     placeHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
