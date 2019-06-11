@@ -93,8 +93,6 @@ class PostIndexPage extends React.Component {
                   style={{
                     display: 'inline-block',
                     position: 'relative',
-                    marginTop: '30px',
-                    minHeight: '32px',
                     color: '#FFFFFF',
                     textDecoration: 'none',
                     zIndex: '12',
