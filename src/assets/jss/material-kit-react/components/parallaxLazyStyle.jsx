@@ -47,53 +47,34 @@ const parallaxStyle = theme => ({
     right: '0',
     left: '0',
     width: '100%',
-    height: '20%',
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '25%',
-      marginBottom: '10%',
-      top: '0vh'
-    },
-    [theme.breakpoints.down('sm')]: {
-      top: '5vh',
-      marginTop: '0%',
-      marginBottom: '80%'
-    },
-    [theme.breakpoints.up('md')]: {
-      top: '-2vh',
-      marginTop: '0',
-      marginBottom: '30%'
-    },
-    [theme.breakpoints.up('lg')]: {
-      top: '-5vh',
-      marginTop: '0',
-      marginBottom: '30%'
-    },
-    [theme.breakpoints.up('xl')]: {
-      top: '-10vh',
-      marginTop: '0',
-      marginBottom: '30%'
-    },
+    height: '380px',
     ...container
   },
   gridItem: {
     top: '0%',
-    bottom: '80%',
-    marginBottom: '90vh'
+    margin: 'auto',
+    alignContent: 'center',
+    flexDirection: 'column',
+    verticalAlign: 'middle'
   },
   title: {
     ...title,
-    display: 'block',
     zIndex: '12',
-    padding: 'auto',
-    marginTop: '35%',
+    order: '-1',
     textAlign: 'left',
     fontSize: '3em',
     color: '#FFFFFF',
     textDecoration: 'none',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '2em',
       '&:after': {
-        fontSize: '1.5em'
+        fontSize: '2em'
+      }
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.5em',
+      '&:after': {
+        fontSize: '1em'
       }
     }
   },
@@ -101,9 +82,6 @@ const parallaxStyle = theme => ({
     fontSize: '1.313rem',
     maxWidth: '500px',
     display: 'block',
-    // position: 'relative',
-    // marginTop: '5px',
-    // marginRight: '50vw',
     minHeight: '32px',
     color: '#FFFFFF',
     textDecoration: 'none',
@@ -115,7 +93,7 @@ const parallaxStyle = theme => ({
       }
     },
     fontFamily: 'Roboto',
-    margin: '5px auto 0'
+    margin: '0px 10% 0'
   },
   main: {
     background: '#FFFFFF',
