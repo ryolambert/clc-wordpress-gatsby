@@ -36,6 +36,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Testing Suite Directories
+cypress/screenshots/
+
 # Typescript v1 declaration files
 typings/
 
