@@ -70,7 +70,7 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: [`title`, `excerpt`],
+        fields: [`title`, `excerpt`, `slug`, `type`],
         // How to resolve each field's value for a supported node type
         resolvers: {
           // For any node of type wordPressPost,
@@ -80,12 +80,13 @@ module.exports = {
             slug: node => node.slug,
             type: node => node.type,
           },
-          wordpress__PAGE: {
-            title: node => node.title,
-            excerpt: node => node.excerpt,
-            slug: node => node.slug,
-            type: node => node.type,
-          },
+          // TODO: Debug Page Search Feature
+          // wordpress__PAGE: {
+          //   title: node => node.title,
+          //   excerpt: node => node.excerpt,
+          //   slug: node => node.slug,
+          //   type: node => node.type,
+          // },
         }
       }
     },

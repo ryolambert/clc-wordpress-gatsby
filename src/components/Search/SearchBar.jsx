@@ -20,15 +20,20 @@ const SEARCH_QUERY = graphql`
   }
 `;
 
+// TODO: Debug Page Search Feature Breaking IOS Page styling
+// function routeToResult(item) {
+//   if (item.type === 'post') {
+//     return navigate(`/post/${item.slug}`);
+//   } else if (item.type === 'page') {
+//     return navigate(`/${item.slug}`);
+//   } else {
+//     return navigate(`/`);
+//   }
+//   return console.table({ item });
+// }
+
 function routeToResult(item) {
-  if (item.type === 'post') {
-    return navigate(`/post/${item.slug}`);
-  } else if (item.type === 'page') {
-    return navigate(`/${item.slug}`);
-  } else {
-    return navigate(`/`);
-  }
-  return console.table({ item });
+  return navigate(`/post/${item.slug}`);
 }
 
 class SearchBar extends React.Component {
@@ -48,9 +53,7 @@ class SearchBar extends React.Component {
     return (
       // <div className={classes.searchStyles}>
       <SearchStyles>
-        <Downshift
-          onChange={routeToResult}
-          itemToString={item => (item === null ? '' : item.title)}>
+        <Downshift onChange={routeToResult}>
           {({
             getInputProps,
             getItemProps,
@@ -63,7 +66,7 @@ class SearchBar extends React.Component {
               <Input
                 style={{ width: '98%', marginTop: '10px' }}
                 {...getInputProps({
-                  placeholder: '🔍Ask & Ye Shall Receive',
+                  placeholder: '🔍Search',
                   className: this.state.loading ? 'loading' : '',
                   onChange: this.search
                 })}
@@ -88,23 +91,26 @@ class SearchBar extends React.Component {
                           </Link>
                         </DropDownItem>
                       );
-                    } else if (item.type === 'page') {
-                      return (
-                        <DropDownItem
-                          {...getItemProps({ item })}
-                          key={item.id}
-                          highlighted={index === highlightedIndex}>
-                          <Link to={`/` + item.slug}>
-                            <h5
-                              dangerouslySetInnerHTML={{ __html: item.title }}
-                            />
-                            <p
-                              dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                            />
-                          </Link>
-                        </DropDownItem>
-                      );
-                    } else {
+                    }
+                    // TODO: Debug Page Search Feature Breaking IOS Page styling
+                    // else if (item.type === 'page') {
+                    //   return (
+                    //     <DropDownItem
+                    //       {...getItemProps({ item })}
+                    //       key={item.id}
+                    //       highlighted={index === highlightedIndex}>
+                    //       <Link to={`/` + item.slug}>
+                    //         <h5
+                    //           dangerouslySetInnerHTML={{ __html: item.title }}
+                    //         />
+                    //         <p
+                    //           dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                    //         />
+                    //       </Link>
+                    //     </DropDownItem>
+                    //   );
+                    // }
+                    else {
                       return (
                         <DropDownItem
                           {...getItemProps({ item })}
