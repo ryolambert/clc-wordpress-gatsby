@@ -1,10 +1,12 @@
+# Build Notes
+
 ![](https://media.giphy.com/media/iXDe1s3spQUZG/giphy.gif)
 
 ## TODO:
 
 - [ ]  Testing/Optimizations
     - [ ]  Tests
-        - [ ]  Husky (Pre-commit)
+        - [x]  Husky (Pre-commit)
         - [ ]  Cypress
         - [ ]  Jest
     - [ ]  gatsby-plugin-netlify-cache
@@ -27,6 +29,7 @@
         - [ ]  Event Post
         - [ ]  MapBox integration
             - [ ]  API key
+                - [ ]  AIzaSyCp8aJ6-c7UwVvh-tVeXsWQ3nYQrQ4c3r4
             - [ ]  Custom Styles
         - [ ]  Event Location Geocoding?
         - [x]  WP-BLOCK STYLING
