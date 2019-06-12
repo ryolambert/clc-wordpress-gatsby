@@ -77,8 +77,15 @@ module.exports = {
           wordpress__POST: {
             title: node => node.title,
             excerpt: node => node.excerpt,
-            slug: node => node.slug
-          }
+            slug: node => node.slug,
+            type: node => node.type,
+          },
+          wordpress__PAGE: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+            slug: node => node.slug,
+            type: node => node.type,
+          },
         }
       }
     },
