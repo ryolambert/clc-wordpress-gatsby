@@ -58,36 +58,30 @@ module.exports = {
           // Only 1 user atm
           '**/wordpress__wp_users',
           '**/events_categories',
-          '**/events_tags'
+          '**/events_tags',
+
         ],
         normalizer: function({ entities }) {
           return entities;
         }
       }
     },
-{
-  resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-  options: {
-    // Fields to index
-    fields: [`title`, `excerpt`],
-    // How to resolve each field's value for a supported node type
-    resolvers: {
-      // For any node of type wordPressPost,
-      wordpress__POST: {
-        title: node => node.title,
-        excerpt: node => node.excerpt,
-        slug: node => node.slug,
-        type: node => node.type
-      },
-      wordpress__PAGE: {
-        title: node => node.title,
-        excerpt: node => node.excerpt,
-        slug: node => node.slug,
-        type: node => node.type
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `excerpt`],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type wordPressPost,
+          wordpress__POST: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+            slug: node => node.slug
+          }
+        }
       }
-    }
-  }
-},
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
@@ -119,6 +113,7 @@ module.exports = {
   ]
 };
 
+
 // module.exports = {
 //   siteMetadata: {
 //     title: `Longbeach City Lights Church Website`,
@@ -127,7 +122,7 @@ module.exports = {
 //     siteUrl: `https://citylightschurch.netlify.com`
 //   },
 //   plugins: [
-//     'gatsby-plugin-top-layout',
+//     `gatsby-plugin-top-layout`,
 //     {
 //       resolve: 'gatsby-plugin-material-ui',
 //       // If you want to use styled components you should change the injection order.
@@ -135,8 +130,8 @@ module.exports = {
 //         stylesProvider: {
 //           injectFirst: true,
 //         },
+//       }
 //     },
-//       },
 //     // If you want to use styled components you should add the plugin here.
 //     // 'gatsby-plugin-styled-components',
 //     {
@@ -190,29 +185,22 @@ module.exports = {
 //         }
 //       }
 //     },
-// {
-//   resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-//   options: {
-//     // Fields to index
-//     fields: [`title`, `excerpt`],
-//     // How to resolve each field's value for a supported node type
-//     resolvers: {
-//       // For any node of type wordPressPost,
-//       wordpress__POST: {
-//         title: node => node.title,
-//         excerpt: node => node.excerpt,
-//         slug: node => node.slug,
-//         type: node => node.type
-//       },
-//       wordpress__PAGE: {
-//         title: node => node.title,
-//         excerpt: node => node.excerpt,
-//         slug: node => node.slug,
-//         type: node => node.type
+//     {
+//       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+//       options: {
+//         // Fields to index
+//         fields: [`title`, `excerpt`],
+//         // How to resolve each field's value for a supported node type
+//         resolvers: {
+//           // For any node of type wordPressPost,
+//           wordpress__POST: {
+//             title: node => node.title,
+//             excerpt: node => node.excerpt,
+//             slug: node => node.slug
+//           }
+//         }
 //       }
-//     }
-//   }
-// },
+//     },
 //     `gatsby-plugin-sass`,
 //     `gatsby-plugin-react-helmet`,
 //     `gatsby-plugin-resolve-src`,
