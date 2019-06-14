@@ -80,22 +80,23 @@ export const query = graphql`
           id
           slug
           title
-          acf {
-            event_start
-            event_end
-            event_description
-            event_location
-            event_title
-            event_image {
-              id
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 1200) {
-                    ...GatsbyImageSharpFluid
-                  }
+          tags {
+            name
+          }
+          featured_media {
+            id
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
+          }
+          acf {
+            event_start
+            event_end
+            event_location
           }
           categories {
             name

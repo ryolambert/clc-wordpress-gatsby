@@ -66,7 +66,6 @@ module.exports = `
               format
               title
               date(formatString: "MMMM DD, YYYY")
-
             }
           }
         }

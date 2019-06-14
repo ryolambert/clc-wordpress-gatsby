@@ -65,13 +65,10 @@ export default props => (
               id
               slug
               title
-              acf {
-                event_start
-                event_end
-                event_description
-                event_location
-                event_title
-                event_image {
+              tags {
+                name
+              }
+              featured_media {
                   id
                   localFile {
                     childImageSharp {
@@ -81,6 +78,10 @@ export default props => (
                     }
                   }
                 }
+              acf {
+                event_start
+                event_end
+                event_location
               }
               categories {
                 name
