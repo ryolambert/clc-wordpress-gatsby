@@ -11,18 +11,22 @@ const DisplayCalendar = ({ events }) => {
   }
 
   events.forEach(function(event) {
-    const startDate = moment(
-      `${event.node.acf.event_start}`,
-      'DD/MM/YYYY hh:mm a'
-    ).format('MM/DD/YYYY, hh:mm a');
-    console.log(startDate);
-    const endDate = moment(
-      `${event.node.acf.event_end}`,
-      'DD/MM/YYYY hh:mm a'
-    ).format('MM/DD/YYYY, hh:mm a');
-    console.log(endDate);
-    event.start = new Date(startDate);
-    event.end = new Date(endDate);
+    // const startDate = moment(
+    //   `${event.node.acf.event_start}`,
+    //   'DD/MM/YYYY hh:mm a'
+    // ).format('MM/DD/YYYY, hh:mm a');
+    // console.log(startDate);
+    // const endDate = moment(
+    //   `${event.node.acf.event_end}`,
+    //   'DD/MM/YYYY hh:mm a'
+    // ).format('MM/DD/YYYY, hh:mm a');
+    // console.log(endDate);
+    // event.start = new Date(startDate);
+    // event.end = new Date(endDate);
+    // event.title = event.node.title;
+
+    event.start = new Date(event.node.acf.event_start);
+    event.end = new Date(event.node.acf.event_end);
     event.title = event.node.title;
     // console.table(event.start);
   });
