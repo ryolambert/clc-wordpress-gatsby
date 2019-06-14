@@ -9,29 +9,25 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
 // @material-ui/icons
-
-// React icons
-import { FaPlay } from 'react-icons/fa';
-
 // Component Imports
 import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
+import Calendar from 'components/Calendar/Calendar.jsx';
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class EventIndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
-    const { group, index, first, last, pageCount } = pageContext;
+    // const { group, index, first, last, pageCount } = pageContext;
+    const events = this.props.data.eventsIndex.edges;
 
-    const eventIndexParallax = this.props.data.eventIndexParallaxImg
-      .edges[0].node.localFile.childImageSharp.fluid;
+    const eventIndexParallax = this.props.data.eventIndexParallaxImg.edges[0]
+      .node.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackEventParallaxImg.fluid;
-    const fluid = eventIndexParallax
-      ? eventIndexParallax
-      : fallBackParallax;
+    const fluid = eventIndexParallax ? eventIndexParallax : fallBackParallax;
 
     const post = {
       title: 'Event',
@@ -44,7 +40,7 @@ class EventIndexPage extends React.Component {
       classes.imgFluid
     );
 
-    console.table({ group });
+    console.table({ events });
 
     return (
       <Layout>
@@ -60,36 +56,9 @@ class EventIndexPage extends React.Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>
-              <br />
-              <SimplePagination
-                route="galleries"
-                pageContext={pageContext}
-                color="primary"
-              />
-            </GridItem>
-          </GridContainer>
-          <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
-              <Event
-                images={group.map(({ node }) => ({
-                  id: node.id,
-                  ...node.localFile.childImageSharp.fluid,
-                  //!! Figure out html entities decoding...
-                  caption: `${node.title} – ${node.caption} - ${node.date}`
-                }))}
-                itemsPerRow={[2, 3]}
-              />
-            </GridItem>
-          </GridContainer>
-
-          <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
-              <br />
-              <SimplePagination
-                route="galleries"
-                pageContext={pageContext}
-                color="primary"
-              />
+              <div className="calendarContainer">
+                <Calendar events={events} />
+              </div>
             </GridItem>
           </GridContainer>
         </div>
@@ -102,27 +71,42 @@ export default withStyles(postsIndexPageStyle)(EventIndexPage);
 
 export const query = graphql`
   query allEventsQuery {
-    allWordpressWpMedia(filter: { mime_type: { regex: "/image/" } }) {
+    eventsIndex: allWordpressPost(
+      sort: { order: DESC, fields: [acf___event_start] }
+      filter: { categories: { elemMatch: { name: { eq: "Events" } } } }
+    ) {
       edges {
         node {
           id
+          slug
           title
-          description
-          mime_type
-          media_type
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid_withWebp
-                originalImg
+          acf {
+            event_start
+            event_end
+            event_description
+            event_location
+            event_title
+            event_image {
+              id
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1200) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
               }
             }
           }
+          categories {
+            name
+          }
+          content
         }
       }
     }
+
     eventIndexParallaxImg: allWordpressWpMedia(
-      sort: { order: DESC, fields: date }
+      sort: { order: ASC, fields: date }
       filter: { mime_type: { regex: "/image/" } }
     ) {
       edges {

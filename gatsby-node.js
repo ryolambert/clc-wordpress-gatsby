@@ -21,7 +21,6 @@ const slash = require(`slash`);
 const queryAll = require(`./src/queries/queryAll.js`);
 const createPaginatedPages = require('gatsby-paginate');
 
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -30,7 +29,6 @@ exports.createPages = ({ graphql, actions }) => {
     const pageTemplate = path.resolve('./src/templates/page-template.js');
     const postTemplate = path.resolve('./src/templates/post-template.js');
     const sermonTemplate = path.resolve('./src/templates/sermon-template.js');
-    
 
     resolve(
       graphql(queryAll).then(result => {
@@ -89,6 +87,7 @@ exports.createPages = ({ graphql, actions }) => {
               id: edge.node.id
             }
           });
+        });
 
         //Galleries detail
         const galleries = result.data.allGalleryMedia.edges;
@@ -101,65 +100,17 @@ exports.createPages = ({ graphql, actions }) => {
           pathPrefix: 'galleries'
         });
 
-        // galleries.forEach(edge =>)
+        //Events detail
+        const events = result.data.allEventPost.edges;
+
+        createPaginatedPages({
+          edges: events,
+          createPage: createPage,
+          pageTemplate: 'src/templates/event-index-template.js',
+          pageLength: 1,
+          pathPrefix: 'calendar'
         });
       })
     );
   });
 };
-
-// const path = require(`path`);
-// const { createFilePath } = require(`gatsby-source-filesystem`);
-
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPage } = actions;
-//   const BlogPostTemplate = path.resolve('./src/templates/BlogPost.js');
-//   const PageTemplate = path.resolve('./src/templates/Page.js');
-
-//   return graphql(`
-//     {
-//       allWordpressPost {
-//         edges {
-//           node {
-//             slug
-//             wordpress_id
-//           }
-//         }
-//       }
-//       allWordpressPage {
-//         edges {
-//           node {
-//             slug
-//             wordpress_id
-//           }
-//         }
-//       }
-//     }
-//   `).then(result => {
-//     if (result.errors) {
-//       throw result.errors;
-//     }
-
-//     const BlogPosts = result.data.allWordpressPost.edges;
-//     BlogPosts.forEach(post => {
-//       createPage({
-//         path: `/post/${post.node.slug}`,
-//         component: BlogPostTemplate,
-//         context: {
-//           id: post.node.wordpress_id
-//         }
-//       });
-
-//       const Pages = result.data.allWordpressPage.edges;
-//       Pages.forEach(page => {
-//         createPage({
-//           path: `/${page.node.slug}`,
-//           component: PageTemplate,
-//           context: {
-//             id: page.node.wordpress_id
-//           }
-//         });
-//       });
-//     });
-//   });
-// };

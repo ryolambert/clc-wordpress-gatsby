@@ -121,7 +121,10 @@ class PostIndexPage extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={6}>
               {group.map(({ node }) => (
-                <Link to={'/post/' + node.slug} className={classes.cardTitle} key={node.id}>
+                <Link
+                  to={'/post/' + node.slug}
+                  className={classes.cardTitle}
+                  key={node.id}>
                   <Card
                     key={node.id}
                     className={classes.card}
@@ -140,7 +143,7 @@ class PostIndexPage extends React.Component {
                       )}
                     <CardBody>
                       <h4 className={classes.cardTitle}>
-                      {/* <h4> */}
+                        {/* <h4> */}
                         <strong
                           dangerouslySetInnerHTML={{ __html: node.title }}
                         />
@@ -195,15 +198,7 @@ export const query = graphql`
           featured_media {
             localFile {
               childImageSharp {
-                fluid(
-                  maxWidth: 1200
-                  traceSVG: {
-                    color: "lightgray"
-                    optTolerance: 0.4
-                    turdSize: 120
-                    turnPolicy: TURNPOLICY_MAJORITY
-                  }
-                ) {
+                fluid(maxWidth: 1200) {
                   ...GatsbyImageSharpFluid
                 }
               }

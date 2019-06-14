@@ -10,7 +10,7 @@ module.exports = `
                     featured_media {
                         localFile {
                             childImageSharp{
-                                fluid (maxHeight:200, quality:80){
+                                fluid (maxHeight:600, quality:75){
                                     src
                                     srcSet
                                     aspectRatio
@@ -41,7 +41,7 @@ module.exports = `
                     featured_media{
                         localFile {
                             childImageSharp{
-                                fluid (maxHeight:200, quality:80){
+                                fluid (maxHeight:600, quality:75){
                                     src
                                     srcSet
                                     aspectRatio
@@ -54,6 +54,21 @@ module.exports = `
                     }
                 }
             }
+        }
+
+        allEventPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Events"}}}}) {
+          edges {
+            node {
+              id
+              slug
+              status
+              template
+              format
+              title
+              date(formatString: "MMMM DD, YYYY")
+
+            }
+          }
         }
 
         allSermonPost:  allWordpressPost(
@@ -71,7 +86,7 @@ module.exports = `
                 featured_media {
                     localFile {
                         childImageSharp{
-                            fluid (maxWidth: 500, quality:80){
+                            fluid (maxWidth: 200, quality:80){
                                 src
                                 srcSet
                                 aspectRatio
@@ -102,7 +117,7 @@ module.exports = `
                 localFile {
                     id
                   childImageSharp {
-                    fluid(maxWidth: 1200) {
+                    fluid(maxWidth: 600) {
                         src
                         srcSet
                         aspectRatio

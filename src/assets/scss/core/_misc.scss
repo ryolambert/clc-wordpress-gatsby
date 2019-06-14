@@ -159,3 +159,13 @@ strong::before {
   z-index: -1;
   transform: rotate(-1deg);
 }
+
+.calendar {
+  height: 40vh;
+  margin-top: 5vh;
+}
+
+.calendarContainer {
+  height: 50vh;
+  z-index: 12;
+}
