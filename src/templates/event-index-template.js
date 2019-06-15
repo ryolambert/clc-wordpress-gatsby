@@ -47,7 +47,7 @@ class EventIndexPage extends React.Component {
         <ParallaxLazy small filter fluid={fluid} post={post}>
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={10} sm={10} md={6}>
+              <GridItem xs={11} sm={11} md={6}>
                 <h1 className={classes.title}>Events</h1>
               </GridItem>
             </GridContainer>
