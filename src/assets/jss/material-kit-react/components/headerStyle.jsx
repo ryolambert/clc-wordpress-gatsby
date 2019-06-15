@@ -18,7 +18,7 @@ const headerStyle = {
     display: 'flex',
     border: '0',
     borderRadius: '3px',
-    padding: '0.625rem 0',
+    padding: '0.5rem 0',
     marginBottom: '20px',
     color: '#555',
     width: '100%',
@@ -29,12 +29,12 @@ const headerStyle = {
     alignItems: 'center',
     flexFlow: 'row nowrap',
     justifyContent: 'flex-start',
-    position: 'relative',
+    position: 'fixed',
     zIndex: 'unset'
   },
   absolute: {
     position: 'absolute',
-    zIndex: '1000'
+    zIndex: '10000'
   },
   fixed: {
     position: 'fixed',
@@ -42,7 +42,7 @@ const headerStyle = {
   },
   container: {
     ...container,
-    minHeight: '50px',
+    minHeight: '5vh',
     flex: '1',
     alignItems: 'center',
     justifyContent: 'space-between',

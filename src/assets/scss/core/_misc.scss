@@ -1,3 +1,4 @@
+@import './variables/variables';
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -161,11 +162,57 @@ strong::before {
 }
 
 .calendar {
-  height: 40vh;
-  margin-top: 5vh;
+  height: 100%;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+
+.rbc-calendar {
+  width: 100%;
+}
+
+.rbc-time-view {
+  box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
+    0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.rbc-agenda-view {
+  border-radius: 5px;
+}
+
+.rbc-agenda-content table {
+  border-radius: 5px;
+  box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
+    0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.rbc-month-view {
+  box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24),
+    0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: auto;
+}
+
+.rbc-toolbar {
+  // max-width: 90%;
+  flex-flow: row nowrap;
+  z-index: 12;
+  @media (max-width: 576px) {
+    flex-flow: column;
+  }
 }
 
 .calendarContainer {
-  height: 50vh;
+  height: 700px;
   z-index: 12;
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }

@@ -35,7 +35,7 @@ const parallaxStyle = theme => ({
     }
   },
   small: {
-    height: '380px'
+    height: '340px'
   },
   //TODO: 📏📐This parallax effect to keep text within the middle of the 📸
   container: {
@@ -47,7 +47,7 @@ const parallaxStyle = theme => ({
     right: '0',
     left: '0',
     width: '100%',
-    height: '380px',
+    height: '340px',
     ...container
   },
   gridItem: {
