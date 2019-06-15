@@ -54,7 +54,7 @@ exports.createPages = ({ graphql, actions }) => {
           edges: posts,
           createPage: createPage,
           pageTemplate: 'src/templates/post-index-template.js',
-          pageLength: 10,
+          pageLength: 12,
           pathPrefix: 'posts'
         });
 
@@ -75,7 +75,7 @@ exports.createPages = ({ graphql, actions }) => {
           edges: sermons,
           createPage: createPage,
           pageTemplate: 'src/templates/sermon-index-template.js',
-          pageLength: 10,
+          pageLength: 12,
           pathPrefix: 'sermons'
         });
 
@@ -96,7 +96,7 @@ exports.createPages = ({ graphql, actions }) => {
           edges: galleries,
           createPage: createPage,
           pageTemplate: 'src/templates/gallery-index-template.js',
-          pageLength: 30,
+          pageLength: 24,
           pathPrefix: 'galleries'
         });
 
