@@ -4,6 +4,9 @@ import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
 import { cardTitle } from 'assets/jss/material-kit-react.jsx';
 
 const postsIndexPageStyle = {
+  root: {
+    flexGrow: 1
+  },
   cardTitle,
   textMuted: {
     color: '#6c757d'

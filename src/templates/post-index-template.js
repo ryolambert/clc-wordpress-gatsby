@@ -71,45 +71,14 @@ class PostIndexPage extends React.Component {
       classes.cover
     );
 
-    // console.log(last);
-
-    // console.log('Dynamic Blog Object');
-    // console.table(blogParallax);
-    // console.log('Ternary Fallback Object');
-    // console.table(fluid);
-    // console.log('Fallback Object');
-    // console.table(fallBackParallax);
-    // Testing group is being grabbed
-    // console.table({classes});
     console.table({ group });
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={6}>
-                <h1
-                  style={{
-                    display: 'inline-block',
-                    position: 'relative',
-                    color: '#FFFFFF',
-                    textDecoration: 'none',
-                    zIndex: '12',
-                    fontFamily: 'Roboto Slab',
-                    fontWeight: '700'
-                  }}
-                  className={classes.title}>
-                  Blog
-                </h1>
-                <h4>Take a read or a listen!</h4>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter fluid={fluid} post={post} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
+            <GridItem xs={11} sm={10} md={8}>
               <br />
               <SimplePagination
                 route="posts"
@@ -118,9 +87,9 @@ class PostIndexPage extends React.Component {
               />
             </GridItem>
           </GridContainer>
-          <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={6}>
-              {group.map(({ node }) => (
+          <GridContainer justify="center" spacing={2}>
+            {group.map(({ node }) => (
+              <GridItem xs={11} sm={5} md={3}>
                 <Link
                   to={'/post/' + node.slug}
                   className={classes.cardTitle}
@@ -133,7 +102,7 @@ class PostIndexPage extends React.Component {
                       node.featured_media.localFile.childImageSharp.fluid && (
                         <Img
                           className={classes.imgCardTop}
-                          style={{ height: '25%', marginRight: 20 }}
+                          style={{ height: '200px', maxHeight: '25%', overflow: 'hidden', marginRight: 20 }}
                           objectFit="cover"
                           objectPosition="50% 50%"
                           fluid={
@@ -161,9 +130,11 @@ class PostIndexPage extends React.Component {
                     </CardFooter> */}
                   </Card>
                 </Link>
-              ))}
-            </GridItem>
-            <GridItem xs={11} sm={11} md={8}>
+              </GridItem>
+            ))}
+          </GridContainer>
+          <GridContainer justify="center">
+            <GridItem xs={11} sm={10} md={8}>
               <br />
               <SimplePagination
                 route="posts"
