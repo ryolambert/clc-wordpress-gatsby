@@ -69,7 +69,6 @@ class PostTemplate extends React.Component {
                           className={imageClasses}
                           style={{ marginTop: '20px', marginBottom: '20px' }}
                         />
-                        {/* < img src={fluidContent.src} alt=""/> */}
                       </div>
                     }
                     <div

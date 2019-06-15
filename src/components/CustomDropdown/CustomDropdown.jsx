@@ -84,7 +84,7 @@ class CustomDropdown extends React.Component {
         break;
     }
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <div>
           <Button
             aria-label="Notifications"
