@@ -8,7 +8,7 @@ import Header from '../Header/Header.jsx';
 import HeaderLinks from '../Header/HeaderLinks.jsx';
 import Footer from '../Footer/Footer.jsx';
 import { graphql } from 'gatsby';
-import SEO from '../Seo.js';
+import SEO from '../Seo';
 
 import 'assets/scss/material-kit-react.scss?v=1.4.0';
 import 'typeface-roboto';
