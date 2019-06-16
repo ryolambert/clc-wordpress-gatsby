@@ -53,98 +53,91 @@ class SermonIndexPage extends React.Component {
       classes.imgFluid
     );
 
-    console.table({ group });
-    // console.log('Dynamic Blog Object');
-    // console.table(blogParallax);
-    // console.log('Ternary Fallback Object');
-    // console.table(fluid);
-    // console.log('Fallback Object');
-    // console.table(fallBackParallax);
-    // Testing group is being grabbed
-    // console.table({classes});
-
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={10} sm={10} md={6}>
-                <h1
-                  style={{
-                    display: 'inline-block',
-                    position: 'relative',
-                    marginTop: '30px',
-                    minHeight: '32px',
-                    color: '#FFFFFF',
-                    textDecoration: 'none',
-                    zIndex: '12',
-                    fontFamily: 'Roboto Slab',
-                    fontWeight: '700'
-                  }}
-                  className={classes.title}>
-                  Sermons
-                </h1>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter fluid={fluid} post={post} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
+            <GridItem xs={11} sm={10} md={8}>
               <br />
               <SimplePagination
-                route="sermons"
+                route="posts"
                 pageContext={pageContext}
                 color="primary"
               />
             </GridItem>
           </GridContainer>
-          <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
-              {group.map(({ node }) => (
+          <GridContainer justify="center" spacing={2}>
+            {group.map(({ node }) => (
+              <GridItem xs={11} sm={5} md={3}>
                 <Link
-                  to={'/post/' + node.slug}
+                  to={'/sermon/' + node.slug}
                   className={classes.cardTitle}
                   key={node.id}>
                   <Card
-                    key={node.slug}
+                    key={node.id}
                     className={classes.card}
-                    style={{ marginBottom: 50 }}>
-                    {node.featured_media &&
-                      node.featured_media.localFile.childImageSharp.fluid && (
-                        <Img
-                          className={classes.imgCardTop}
-                          style={{ backgroundSize: '100%' }}
-                          fluid={
-                            node.featured_media.localFile.childImageSharp.fluid
-                          }
-                        />
-                      )}
+                    style={{ marginBottom: 50, display: 'flex' }}>
+                    {node.featured_media && (
+                      <Img
+                        className={classes.imgCardTop}
+                        style={{
+                          height: '200px',
+                          maxHeight: '25%',
+                          overflow: 'hidden',
+                          marginRight: 20
+                        }}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
+                    {!node.featured_media && (
+                      <Img
+                        className={classes.imgCardTop}
+                        style={{
+                          height: '200px',
+                          maxHeight: '25%',
+                          overflow: 'hidden',
+                          marginRight: 20
+                        }}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        fluid={fallBackParallax}
+                      />
+                    )}
                     <CardBody>
                       <h4 className={classes.cardTitle}>
-                      <strong
+                        {/* <h4> */}
+                        <strong
                           dangerouslySetInnerHTML={{ __html: node.title }}
                         />
                       </h4>
-                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      <p
+                        className={classes.excerpt}
+                        dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                      />
+                    </CardBody>
+                    <CardFooter className={classes.details}>
                       <p>
                         <small
                           className={classes.textMuted}
                           dangerouslySetInnerHTML={{ __html: node.date }}
                         />
                       </p>
-                    </CardBody>
+                    </CardFooter>
                   </Card>
                 </Link>
-              ))}
-            </GridItem>
+              </GridItem>
+            ))}
           </GridContainer>
-
           <GridContainer justify="center">
-            <GridItem xs={11} sm={11} md={8}>
+            <GridItem xs={11} sm={10} md={8}>
               <br />
               <SimplePagination
-                route="sermons"
+                route="posts"
                 pageContext={pageContext}
                 color="primary"
               />

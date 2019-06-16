@@ -98,18 +98,36 @@ class PostIndexPage extends React.Component {
                     key={node.id}
                     className={classes.card}
                     style={{ marginBottom: 50, display: 'flex' }}>
-                    {node.featured_media &&
-                      node.featured_media.localFile.childImageSharp.fluid && (
-                        <Img
-                          className={classes.imgCardTop}
-                          style={{ height: '200px', maxHeight: '25%', overflow: 'hidden', marginRight: 20 }}
-                          objectFit="cover"
-                          objectPosition="50% 50%"
-                          fluid={
-                            node.featured_media.localFile.childImageSharp.fluid
-                          }
-                        />
-                      )}
+                    {node.featured_media && (
+                      <Img
+                        className={classes.imgCardTop}
+                        style={{
+                          height: '200px',
+                          maxHeight: '25%',
+                          overflow: 'hidden',
+                          marginRight: 20
+                        }}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
+                    {!node.featured_media && (
+                      <Img
+                        className={classes.imgCardTop}
+                        style={{
+                          height: '200px',
+                          maxHeight: '25%',
+                          overflow: 'hidden',
+                          marginRight: 20
+                        }}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        fluid={fallBackParallax}
+                      />
+                    )}
                     <CardBody>
                       <h4 className={classes.cardTitle}>
                         {/* <h4> */}
@@ -117,17 +135,16 @@ class PostIndexPage extends React.Component {
                           dangerouslySetInnerHTML={{ __html: node.title }}
                         />
                       </h4>
-                      <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      <p className={classes.excerpt} dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                    </CardBody>
+                    <CardFooter className={classes.details}>
                       <p>
                         <small
                           className={classes.textMuted}
                           dangerouslySetInnerHTML={{ __html: node.date }}
                         />
                       </p>
-                    </CardBody>
-                    {/* <CardFooter className={classes.details}>
-                      {node.date}
-                    </CardFooter> */}
+                    </CardFooter>
                   </Card>
                 </Link>
               </GridItem>
@@ -159,6 +176,7 @@ export const query = graphql`
           id
           slug
           status
+          excerpt
           template
           format
           title
