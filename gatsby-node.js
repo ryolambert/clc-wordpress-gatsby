@@ -29,6 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
     const pageTemplate = path.resolve('./src/templates/page-template.js');
     const postTemplate = path.resolve('./src/templates/post-template.js');
     const sermonTemplate = path.resolve('./src/templates/sermon-template.js');
+    const eventTemplate = path.resolve('./src/templates/event-template.js');
 
     resolve(
       graphql(queryAll).then(result => {
@@ -110,6 +111,17 @@ exports.createPages = ({ graphql, actions }) => {
           pageLength: 1,
           pathPrefix: 'calendar'
         });
+
+        events.forEach(edge => {
+          createPage({
+            path: `/event/${edge.node.slug}/`,
+            component: slash(eventTemplate),
+            context: {
+              id: edge.node.id
+            }
+          });
+        });
+
       })
     );
   });

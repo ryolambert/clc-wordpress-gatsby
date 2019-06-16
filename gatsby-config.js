@@ -115,12 +115,22 @@ module.exports = {
         icon: 'src/assets/img/favicon.png' // This path is relative to the root of the site.
       }
     },
-    `gatsby-plugin-sitemap`
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        // Setting a color is optional.
+        color: 'white',
+        // Disable the loading spinner.
+        showSpinner: false
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-netlify-cache`
   ]
 };
-
 
 // module.exports = {
 //   siteMetadata: {
@@ -136,8 +146,8 @@ module.exports = {
 //       // If you want to use styled components you should change the injection order.
 //       options: {
 //         stylesProvider: {
-//           injectFirst: true,
-//         },
+//           injectFirst: true
+//         }
 //       }
 //     },
 //     // If you want to use styled components you should add the plugin here.
@@ -157,7 +167,7 @@ module.exports = {
 //         perPage: 100,
 //         searchAndReplaceContentUrls: {
 //           // sourceURL: 'http://longbeach.citylightschurch.org',
-//           sourceUrl: 'http://localhost:8080/',
+//           sourceUrl: 'http://localhost:8080/'
 //           // replacementUrl: 'https://citylightschurch.netlify.com'
 //           // replacementUrl: 'http://localhost:8000/'
 //         },
@@ -185,8 +195,7 @@ module.exports = {
 //           // Only 1 user atm
 //           '**/wordpress__wp_users',
 //           '**/events_categories',
-//           '**/events_tags',
-
+//           '**/events_tags'
 //         ],
 //         normalizer: function({ entities }) {
 //           return entities;
@@ -204,7 +213,8 @@ module.exports = {
 //           wordpress__POST: {
 //             title: node => node.title,
 //             excerpt: node => node.excerpt,
-//             slug: node => node.slug
+//             slug: node => node.slug,
+//             type: node => node.type
 //           }
 //         }
 //       }
@@ -234,8 +244,19 @@ module.exports = {
 //         icon: 'src/assets/img/favicon.png' // This path is relative to the root of the site.
 //       }
 //     },
-//     `gatsby-plugin-sitemap`
+//     {
+//       resolve: 'gatsby-plugin-nprogress',
+//       options: {
+//         // Setting a color is optional.
+//         color: 'white',
+//         // Disable the loading spinner.
+//         showSpinner: false
+//       }
+//     },
 //     // this (optional) plugin enables Progressive Web App + Offline functionality
 //     // To learn more, visit: https://gatsby.dev/offline
+//     `gatsby-plugin-sitemap`,
+//     `gatsby-plugin-netlify`,
+//     `gatsby-plugin-netlify-cache`
 //   ]
 // };
