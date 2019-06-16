@@ -84,7 +84,7 @@ class Parallax extends React.Component {
           ref="parallax"
         />
         <GridContainer className={classes.container}>
-          <GridItem xs={10} sm={10} md={10} className={classes.gridItem}>
+          <GridItem xs={11} sm={10} md={10} className={classes.gridItem}>
             <h1 className={classes.title}>
               <strong dangerouslySetInnerHTML={{ __html: post.title }} />
             </h1>
