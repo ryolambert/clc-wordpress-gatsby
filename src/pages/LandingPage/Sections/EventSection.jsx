@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import GridContainer from 'components/Grid/GridContainer.jsx';
 
 const DisplayCalendar = ({ data }) => {
   const { edges: events } = data.eventsLatest;
@@ -10,14 +11,14 @@ const DisplayCalendar = ({ data }) => {
     event.title = event.node.title;
   });
   return (
-    <div>
-      <h3>Latest Events</h3>
+    <GridContainer justify="center">
+      <h3 className="event-title">Latest Events</h3>
       {events.length ? (
         <ul className="latest-events">
           {events.map(event => (
             <li key={event.title}>
               <Link
-                to={`/post/${event.node.slug}`}
+                to={`/event/${event.node.slug}`}
                 className="title"
                 dangerouslySetInnerHTML={{ __html: event.title }}
               />
@@ -35,7 +36,7 @@ const DisplayCalendar = ({ data }) => {
       ) : (
         'No upcoming events yet.'
       )}
-    </div>
+    </GridContainer>
   );
 };
 
