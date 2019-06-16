@@ -24,6 +24,7 @@ import landingPageStyle from '../../assets/jss/material-kit-react/views/landingP
 // Sections for this page
 import ProductSection from './Sections/ProductSection.jsx';
 import TeamSection from './Sections/TeamSection.jsx';
+import EventSection from './Sections/EventSection.jsx';
 // import WorkSection from './Sections/WorkSection.jsx';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
@@ -70,6 +71,7 @@ class LandingPage extends React.Component {
           <div className={classes.container}>
             <ProductSection />
             <TeamSection />
+            <EventSection />
             {/* <WorkSection /> */}
             <ContactForm />
           </div>
