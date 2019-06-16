@@ -34,6 +34,14 @@ module.exports = `
                     id
                     slug
                     status
+                    excerpt
+                    content
+                    categories {
+                      name
+                    }
+                    tags {
+                      name
+                    }
                     template
                     format
                     title
