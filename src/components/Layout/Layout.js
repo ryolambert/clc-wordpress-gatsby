@@ -8,6 +8,7 @@ import Header from '../Header/Header.jsx';
 import HeaderLinks from '../Header/HeaderLinks.jsx';
 import Footer from '../Footer/Footer.jsx';
 import { graphql } from 'gatsby';
+import SEO from '../Seo.js';
 
 import 'assets/scss/material-kit-react.scss?v=1.4.0';
 import 'typeface-roboto';
@@ -46,6 +47,7 @@ export default class Layout extends React.Component {
           }}
           {...rest}
         />
+        {/* <SEO></SEO> */}
         {/*TODO- Get props setup for query to pass properly */}
         {/* <Helmet>
           <meta name="description" content={data.site.} />
