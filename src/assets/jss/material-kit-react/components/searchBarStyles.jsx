@@ -57,8 +57,6 @@ const DropDownItem = styled.div`
   }
   p {
     color: #000000;
-    text-overflow: ellipsis;
-    overflow: hidden;
     flex: 1 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -68,7 +66,6 @@ const DropDownItem = styled.div`
     line-height: 1rem; /* fallback */
     max-height: 2rem; /* fallback */
   }
-  text-overflow: ellipsis;
 `;
 
 const glow = keyframes`

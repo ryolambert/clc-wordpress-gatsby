@@ -85,6 +85,16 @@ const postsIndexPageStyle = {
   coverImg: {
     height: '100%',
     maxHeight: '250px'
+  },
+  excerpt: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    webkitBoxOrient: 'vertical',
+    webkitLineClamp: '3',
+    lineHeight: '1rem',
+    maxHeight: '3rem',
+    fontSize: '1rem'
   }
 };
 

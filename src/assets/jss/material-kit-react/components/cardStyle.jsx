@@ -16,7 +16,8 @@ const cardStyle = {
     wordWrap: 'break-word',
     fontSize: '.875rem',
     transition: 'all 300ms linear',
-    zIndex: '10'
+    zIndex: '10',
+    
   },
   cardPlain: {
     background: 'transparent',
