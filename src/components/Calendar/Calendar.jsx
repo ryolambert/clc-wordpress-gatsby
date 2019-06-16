@@ -11,20 +11,6 @@ const DisplayCalendar = ({ events }) => {
   }
 
   events.forEach(function(event) {
-    // const startDate = moment(
-    //   `${event.node.acf.event_start}`,
-    //   'DD/MM/YYYY hh:mm a'
-    // ).format('MM/DD/YYYY, hh:mm a');
-    // console.log(startDate);
-    // const endDate = moment(
-    //   `${event.node.acf.event_end}`,
-    //   'DD/MM/YYYY hh:mm a'
-    // ).format('MM/DD/YYYY, hh:mm a');
-    // console.log(endDate);
-    // event.start = new Date(startDate);
-    // event.end = new Date(endDate);
-    // event.title = event.node.title;
-
     event.start = new Date(event.node.acf.event_start);
     event.end = new Date(event.node.acf.event_end);
     event.title = event.node.title;
@@ -45,7 +31,7 @@ const DisplayCalendar = ({ events }) => {
         events={events}
         timeslots={1}
         step={60}
-        onSelectEvent={event => navigate(`/post/${event.node.slug}`)}
+        onSelectEvent={event => navigate(`/event/${event.node.slug}`)}
         formats={{ dayFormat: 'DD/MM/YYYY' }}
       />
     </div>
@@ -69,15 +55,15 @@ export default props => (
                 name
               }
               featured_media {
-                  id
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 1200) {
-                        ...GatsbyImageSharpFluid
-                      }
+                id
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
+              }
               acf {
                 event_start
                 event_end
