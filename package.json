@@ -17,7 +17,8 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "clean": "gatsby clean && yarn dev",
-    "nuke": "yarn rimraf node_modules && yarn install && gatsby clean && yarn develop"
+    "nuke": "yarn rimraf node_modules && yarn install && gatsby clean && yarn develop",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
@@ -51,6 +52,8 @@
     "history": "^4.9.0",
     "node-sass": "^4.12.0",
     "nouislider": "^13.1.5",
+    "patch-package": "^6.1.2",
+    "postinstall-postinstall": "^2.0.0",
     "react": "^16.8.6",
     "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
@@ -58,6 +61,8 @@
     "react-icon": "^1.0.0",
     "react-icons": "^3.7.0",
     "react-images-z-index-fix": "^1.0.3-alpha.5",
+    "react-map-gl": "^5.0.3",
+    "react-map-gl-geocoder": "^2.0.5",
     "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.1",
     "react-slick": "^0.24.0",

@@ -10,11 +10,6 @@ import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 
-// @material-ui/icons
-
-// React icons
-import { FaPlay } from 'react-icons/fa';
-
 // Component Imports
 import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
@@ -25,7 +20,6 @@ import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
-
 
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
@@ -47,42 +41,35 @@ class PostTemplate extends React.Component {
       classes.imgFluid
     );
 
-    console.table(placeHolder);
-    // Testing if featured_media fluid works
-    // console.log(fluid);
-    // console.table(classes.container);
-
     return (
       <div>
         <Layout>
           <ParallaxLazy small filter fluid={fluid} post={post} />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <div>
-              <div className={classes.container}>
-                <GridContainer justify="center">
-                  <GridItem xs={12} sm={12} md={10}>
-                    {fluidContent &&
-                      <div>
-                        <Img
-                          alt="Screenshot of Project"
-                          fluid={post.featured_media.localFile.childImageSharp.fluid}
-                          className={imageClasses}
-                          style={{ marginTop: '20px', marginBottom: '20px' }}
-                        />
-                      </div>
-                    }
-                    <div
-                      className={classes.content}
-                      dangerouslySetInnerHTML={{
-                        __html: post.content
-                      }}
+            <GridContainer justify="center">
+              <GridItem xs={12} sm={12} md={10}>
+                {fluidContent && (
+                  <div>
+                    <Img
+                      alt="Screenshot of Project"
+                      fluid={
+                        post.featured_media.localFile.childImageSharp.fluid
+                      }
+                      className={imageClasses}
+                      style={{ marginTop: '20px', marginBottom: '20px' }}
                     />
-                    <p dangerouslySetInnerHTML={{ __html: post.date }} />
-                    <p dangerouslySetInnerHTML={{ __html: post.slug }} />
-                  </GridItem>
-                </GridContainer>
-              </div>
-            </div>
+                  </div>
+                )}
+                <div
+                  className={classes.content}
+                  dangerouslySetInnerHTML={{
+                    __html: post.content
+                  }}
+                />
+                <p dangerouslySetInnerHTML={{ __html: post.date }} />
+                <p dangerouslySetInnerHTML={{ __html: post.slug }} />
+              </GridItem>
+            </GridContainer>
           </div>
         </Layout>
       </div>

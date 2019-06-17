@@ -1,41 +1,27 @@
 //* Individual Event Template
 // Core Imports
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-
-// nodejs library that concatenates classes
-import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-
-// @material-ui/icons
-
-// React icons
-import { FaPlay } from 'react-icons/fa';
-
-// Component Imports
-import Layout from 'components/Layout/Layout.js';
+import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
+// nodejs library that concatenates classes
+import classNames from 'classnames';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
-import Button from 'components/CustomButtons/Button.jsx';
-import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+// Component Imports
+import Layout from 'components/Layout/Layout.js';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import Card from 'components/Card/Card.jsx';
-import CardBody from 'components/Card/CardBody.jsx';
-import CardFooter from 'components/Card/CardFooter.jsx';
-
-import Image from 'components/image.js';
-import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import moment from 'moment';
+import React from 'react';
+import geocode from '../utils/geocode';
 
 class EventTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     const event = this.props.data.currentEvent;
-    const start = new Date(event.acf.event_start);
-    const end = new Date(event.acf.event_end);
-    const location = event.acf.event_location;
+    const start = moment(event.acf.event_start).format('MM/DD/YYYY h:mm a');
+    const end = moment(event.acf.event_end).format('MM/DD/YYYY h:mm a');
     const eventHolder = this.props.data.eventHolderImg.fluid;
     const fluid = event.featured_media
       ? event.featured_media.localFile.childImageSharp.fluid
@@ -46,82 +32,87 @@ class EventTemplate extends React.Component {
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid
+      classes.imgFluid,
     );
 
-    console.table(eventHolder);
-    // Testing if featured_media fluid works
-    // console.log(fluid);
-    // console.table(classes.container);
+    // const geocoding = geocode(event.acf.event_location).then(
+    //   function(result) {
+    //     return result;
+    //   },
+    //   function(err) {
+    //     return err;
+    //   }
+    // );
 
+    const geocoding = geocode(event.acf.event_location);
+    // const locationData = geoData;
+
+    console.log(geocoding);
     return (
       <div>
         <Layout>
           <ParallaxLazy small filter fluid={fluid} post={event} />
           <div className={classNames(classes.main, classes.mainRaised)}>
-            <div>
-              <div className={classes.container}>
-                <GridContainer justify="center">
-                  <GridItem xs={12} sm={12} md={10}>
-                    {fluidContent && (
-                      <div>
-                        <Img
-                          alt="Screenshot of Project"
-                          fluid={
-                            event.featured_media.localFile.childImageSharp.fluid
-                          }
-                          className={imageClasses}
-                          style={{ marginTop: '20px', marginBottom: '20px' }}
-                        />
-                      </div>
-                    )}
-                    <div
-                      className={classes.content}
-                      dangerouslySetInnerHTML={{
-                        __html: event.content
+            <GridContainer justify="center">
+              <GridItem xs={12} sm={12} md={10} style={{marginTop: '10px'}}>
+                {fluidContent && (
+                  <div>
+                    <Img
+                      alt="Screenshot of Project"
+                      fluid={
+                        event.featured_media.localFile.childImageSharp.fluid
+                      }
+                      className={imageClasses}
+                      style={{
+                        marginTop: '20px',
+                        marginBottom: '20px'
                       }}
                     />
-                    <p dangerouslySetInnerHTML={{ __html: event.date }} />
-                    <p dangerouslySetInnerHTML={{ __html: event.slug }} />
-                  </GridItem>
-                </GridContainer>
-                <GridContainer justify="center">
-                  <GridItem xs={6}>
-                    <h3>Event Details</h3>
-                    <dl>
-                      <dt> Start: </dt>
-                      <dd>
-                        <abbr title={start}>{start.toString()}</abbr>
-                      </dd>
+                  </div>
+                )}
+                <div
+                  className={classes.content}
+                  dangerouslySetInnerHTML={{
+                    __html: event.content
+                  }}
+                />
+                <p dangerouslySetInnerHTML={{ __html: event.date }} />
+                <p dangerouslySetInnerHTML={{ __html: event.slug }} />
+              </GridItem>
+            </GridContainer>
+            <GridContainer justify="center" >
+              <GridItem xs={12} sm={5} md={5}>
+                <h3>Event Details</h3>
+                <dl>
+                  <dt> Start: </dt>
+                  <dd>
+                    <abbr title={start}>{start.toString()}</abbr>
+                  </dd>
 
-                      <dt> End: </dt>
-                      <dd>
-                        <abbr title={end}> {end.toString()} </abbr>
-                      </dd>
+                  <dt> End: </dt>
+                  <dd>
+                    <abbr title={end}> {end.toString()} </abbr>
+                  </dd>
 
-                      <dt>Category:</dt>
-                      <dd>{event.categories.name}</dd>
-                    </dl>
-                  </GridItem>
-                  <GridItem xs={6}>
-                    <h3>Venue Details</h3>
-                    <dl>
-                      <dt> Location: </dt>
-                      <dd>
-                        <abbr title="2016-12-30" >
-                          {location}
-                        </abbr>
-                      </dd>
+                  <dt>Category:</dt>
+                  <dd>{event.categories.name}</dd>
+                </dl>
+              </GridItem>
+              <GridItem xs={12} sm={5} md={5}>
+                <h3>Venue Details</h3>
+                <dl>
+                  <dt> Location: </dt>
+                  <dd>
+                    <abbr title="2016-12-30">{event.acf.event_location}</abbr>
+                  </dd>
 
-                      {/* <dt> Address: </dt>
+                  {/* <dt> Address: </dt>
                       <dd>
                         <abbr title="2017-01-01"> {address} </abbr>
                       </dd> */}
-                    </dl>
-                  </GridItem>
-                </GridContainer>
-              </div>
-            </div>
+                </dl>
+              </GridItem>
+            </GridContainer>
           </div>
         </Layout>
       </div>
