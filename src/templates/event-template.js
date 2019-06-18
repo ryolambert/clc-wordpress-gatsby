@@ -1,22 +1,45 @@
 //* Individual Event Template
 // Core Imports
+import React from 'react';
+import { graphql } from 'gatsby';
+import moment from 'moment';
+import axios from 'axios';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
 // Component Imports
+import Img from 'gatsby-image';
+import Map from 'components/Map/Map.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import GridContainer from 'components/Grid/GridContainer.jsx';
 import Layout from 'components/Layout/Layout.js';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import moment from 'moment';
-import React from 'react';
-import geocode from '../utils/geocode';
 
 class EventTemplate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coords: [39.9528, -75.1638]
+    };
+  }
+  async componentDidMount() {
+    const encodedQuery = encodeURIComponent(
+      this.props.data.currentEvent.acf.event_address
+    );
+    const response = await axios.get(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`
+    );
+    if (response.data.features.length > 0) {
+      this.setState({
+        coords: [
+          response.data.features[0].center[0],
+          response.data.features[0].center[1]
+        ]
+      });
+    }
+  }
   render() {
     const { classes, ...rest } = this.props;
     const event = this.props.data.currentEvent;
@@ -32,29 +55,19 @@ class EventTemplate extends React.Component {
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid,
+      classes.imgFluid
     );
+    console.log(event.acf.event_location);
 
-    // const geocoding = geocode(event.acf.event_location).then(
-    //   function(result) {
-    //     return result;
-    //   },
-    //   function(err) {
-    //     return err;
-    //   }
-    // );
+    console.log(this.state.coords);
 
-    const geocoding = geocode(event.acf.event_location);
-    // const locationData = geoData;
-
-    console.log(geocoding);
     return (
       <div>
         <Layout>
           <ParallaxLazy small filter fluid={fluid} post={event} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={10} style={{marginTop: '10px'}}>
+              <GridItem xs={12} sm={12} md={10} style={{ marginTop: '10px' }}>
                 {fluidContent && (
                   <div>
                     <Img
@@ -80,7 +93,7 @@ class EventTemplate extends React.Component {
                 <p dangerouslySetInnerHTML={{ __html: event.slug }} />
               </GridItem>
             </GridContainer>
-            <GridContainer justify="center" >
+            <GridContainer justify="center">
               <GridItem xs={12} sm={5} md={5}>
                 <h3>Event Details</h3>
                 <dl>
@@ -101,18 +114,23 @@ class EventTemplate extends React.Component {
               <GridItem xs={12} sm={5} md={5}>
                 <h3>Venue Details</h3>
                 <dl>
+                  <dt> Address: </dt>
+                  <dd>
+                    <abbr title="2017-01-01"> {event.acf.event_address} </abbr>
+                  </dd>
                   <dt> Location: </dt>
                   <dd>
-                    <abbr title="2016-12-30">{event.acf.event_location}</abbr>
+                    <abbr title="2017-01-01"> {event.acf.event_location} </abbr>
                   </dd>
-
-                  {/* <dt> Address: </dt>
-                      <dd>
-                        <abbr title="2017-01-01"> {address} </abbr>
-                      </dd> */}
                 </dl>
               </GridItem>
+              <GridItem xs={12}></GridItem>
             </GridContainer>
+            <Map
+              className="leaflet-container"
+              position={this.state.coords}
+              info={event}
+            />
           </div>
         </Layout>
       </div>
@@ -140,6 +158,7 @@ export const query = graphql`
         }
       }
       acf {
+        event_address
         event_start
         event_end
         event_location
@@ -148,6 +167,7 @@ export const query = graphql`
         name
       }
       content
+      excerpt
     }
     eventHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
