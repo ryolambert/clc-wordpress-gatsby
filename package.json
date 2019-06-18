@@ -17,7 +17,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "clean": "gatsby clean && yarn dev",
-    "nuke": "rimraf node_modules && yarn install && gatsby clean && yarn develop"
+    "nuke": "yarn rimraf node_modules && yarn install && gatsby clean && yarn develop"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
