@@ -165,15 +165,15 @@ export const query = graphql`
           format
           title
           date(formatString: "MMMM DD, YYYY")
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
+          # featured_media {
+          #   localFile {
+          #     childImageSharp {
+          #       fluid(maxWidth: 1200) {
+          #         ...GatsbyImageSharpFluid_withWebp
+          #       }
+          #     }
+          #   }
+          # }
         }
       }
     }

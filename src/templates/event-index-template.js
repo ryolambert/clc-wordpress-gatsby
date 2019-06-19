@@ -83,16 +83,16 @@ export const query = graphql`
           tags {
             name
           }
-          featured_media {
-            id
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
+          # featured_media {
+          #   id
+          #   localFile {
+          #     childImageSharp {
+          #       fluid(maxWidth: 1200) {
+          #         ...GatsbyImageSharpFluid
+          #       }
+          #     }
+          #   }
+          # }
           acf {
             event_start
             event_end

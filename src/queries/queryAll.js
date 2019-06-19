@@ -7,7 +7,6 @@ module.exports = `
             edges {
                 node {
                     id
-
                     slug
                     status
                     template
@@ -33,6 +32,20 @@ module.exports = `
                     format
                     title
                     date(formatString: "MMMM DD, YYYY")
+                    featured_media{
+                        localFile {
+                            childImageSharp{
+                                fluid (maxWidth: 1200){
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                    base64
+                                  }
+                                }
+                            }
+                            source_url
+                    }
                 }
             }
         }
@@ -63,7 +76,20 @@ module.exports = `
                 format
                 title
                 date(formatString: "MMMM DD, YYYY")
-
+                featured_media {
+                    localFile {
+                        childImageSharp{
+                            fluid (maxWidth: 1200){
+                                src
+                                srcSet
+                                aspectRatio
+                                sizes
+                                base64
+                              }
+                            }
+                        }
+                        source_url
+                }
               }
             }
           }
@@ -81,6 +107,19 @@ module.exports = `
                 title
                 mime_type
                 media_type
+                localFile {
+                    id
+                  childImageSharp {
+                    fluid(maxWidth: 1200) {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                        base64
+                        originalImg
+                    }
+                  }
+                }
               }
             }
           }

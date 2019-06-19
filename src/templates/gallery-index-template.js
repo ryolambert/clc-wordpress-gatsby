@@ -111,14 +111,14 @@ export const query = graphql`
           description
           mime_type
           media_type
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid_withWebp
-                originalImg
-              }
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     fluid(maxWidth: 1200) {
+          #       ...GatsbyImageSharpFluid_withWebp
+          #       originalImg
+          #     }
+          #   }
+          # }
         }
       }
     }
