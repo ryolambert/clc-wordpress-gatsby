@@ -7,20 +7,7 @@ module.exports = `
             edges {
                 node {
                     id
-                    featured_media {
-                        localFile {
-                            childImageSharp{
-                                fluid (maxHeight:600, quality:75){
-                                    src
-                                    srcSet
-                                    aspectRatio
-                                    sizes
-                                    base64
-                                  }
-                                }
-                            }
-                            source_url
-                    }
+
                     slug
                     status
                     template
@@ -46,20 +33,6 @@ module.exports = `
                     format
                     title
                     date(formatString: "MMMM DD, YYYY")
-                    featured_media{
-                        localFile {
-                            childImageSharp{
-                                fluid (maxHeight:600, quality:75){
-                                    src
-                                    srcSet
-                                    aspectRatio
-                                    sizes
-                                    base64
-                                  }
-                                }
-                            }
-                            source_url
-                    }
                 }
             }
         }
@@ -90,20 +63,7 @@ module.exports = `
                 format
                 title
                 date(formatString: "MMMM DD, YYYY")
-                featured_media {
-                    localFile {
-                        childImageSharp{
-                            fluid (maxWidth: 200, quality:80){
-                                src
-                                srcSet
-                                aspectRatio
-                                sizes
-                                base64
-                              }
-                            }
-                        }
-                        source_url
-                }
+
               }
             }
           }
@@ -121,19 +81,6 @@ module.exports = `
                 title
                 mime_type
                 media_type
-                localFile {
-                    id
-                  childImageSharp {
-                    fluid(maxWidth: 600) {
-                        src
-                        srcSet
-                        aspectRatio
-                        sizes
-                        base64
-                        originalImg
-                    }
-                  }
-                }
               }
             }
           }
