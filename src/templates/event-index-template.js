@@ -30,8 +30,8 @@ class EventIndexPage extends React.Component {
     const fluid = eventIndexParallax ? eventIndexParallax : fallBackParallax;
 
     const post = {
-      title: 'Event',
-      date: "See what we're all about 👍"
+      title: 'Events',
+      date: "See us at our next gathering!"
     };
 
     const imageClasses = classNames(

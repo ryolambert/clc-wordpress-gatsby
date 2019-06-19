@@ -48,19 +48,33 @@ export default class Map extends Component {
     this.setState({ viewport });
   };
 
+  _renderMarker = info => {
+    const { position } = this.props;
+    return (
+      <Marker longitude={position[0]} latitude={position[1]}>
+        <Pin size={25} onClick={() => this.setState({ popupInfo: info })} />
+      </Marker>
+    );
+  };
+
   _renderPopup() {
-    const { position, popupInfo } = this.props;
+    const { popupInfo } = this.state;
+    if (popupInfo === null) {
+      return null;
+    }
+    const { position } = this.props;
+    const info = { position, popupInfo };
 
     return (
       popupInfo && (
         <Popup
-          tipSize={5}
+          tipSize={3}
           anchor="top"
           longitude={position[0]}
           latitude={position[1]}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}>
-          <Info info={popupInfo} />
+          <Info info={info} />
         </Popup>
       )
     );
@@ -69,21 +83,22 @@ export default class Map extends Component {
   render() {
     const { viewport } = this.state;
     const { position, info } = this.props;
+    console.log(info);
     return (
       <section>
         <MapGL
           {...viewport}
-          latitude={this.props.position[1]}
-          longitude={this.props.position[0]}
+          latitude={position[1]}
+          longitude={position[0]}
           width="100%"
-          height="300px"
+          height="30vh"
           mapStyle="mapbox://styles/citylightschurch/cjx13gc3r2uku1cphf8o9natk"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}>
-          <Marker longitude={position[0]} latitude={position[1]}>
+          {/* <Marker longitude={position[0]} latitude={position[1]}>
             <Pin size={20} onClick={() => this.setState({ popupInfo: info })} />
-          </Marker>
-
+          </Marker> */}
+          {this._renderMarker(info)}
           {this._renderPopup()}
 
           <div className="fullscreen" style={fullscreenControlStyle}>
