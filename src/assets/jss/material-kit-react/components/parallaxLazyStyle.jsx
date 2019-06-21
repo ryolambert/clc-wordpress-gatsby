@@ -39,9 +39,9 @@ const parallaxStyle = theme => ({
   },
   //TODO: 📏📐This parallax effect to keep text within the middle of the 📸
   container: {
+    position: 'fixed',
     zIndex: '1',
     color: '#FFFFFF',
-    position: 'absolute',
     padding: 'auto',
     top: '0',
     right: '0',
@@ -59,22 +59,27 @@ const parallaxStyle = theme => ({
   },
   title: {
     ...title,
-    zIndex: '12',
     order: '-1',
     textAlign: 'left',
-    fontSize: '3em',
+    // fontSize: '3em',
     color: '#FFFFFF',
+    marginTop: '30px',
+    minHeight: '12px',
     textDecoration: 'none',
     [theme.breakpoints.down('md')]: {
-      fontSize: '2em',
+      fontSize: '2.25rem',
+      lineHeight: '1.5em',
       '&:after': {
-        fontSize: '2em'
+        fontSize: '2rem',
+        lineHeight: '1.4em'
       }
     },
     [theme.breakpoints.down('sm')]: {
-      fontSize: '1.5em',
+      fontSize: '1.5635rem',
+      lineHeight: '1.4em',
       '&:after': {
-        fontSize: '1em'
+        fontSize: '1.124rem',
+        lineHeight: '1.5em'
       }
     }
   },

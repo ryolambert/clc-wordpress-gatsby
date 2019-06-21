@@ -52,9 +52,7 @@ class Parallax extends React.Component {
       fluid,
       small
     } = this.props;
-    // const fluid = post.featured_media
-    //   ? post.featured_media.localFile.childImageSharp.fluid
-    //   : { Image };
+
     const parallaxClasses = classNames({
       [classes.parallax]: true,
       [classes.filter]: filter,
@@ -69,7 +67,7 @@ class Parallax extends React.Component {
     // });
 
     return (
-      <div>
+      <div style={{ ...this.state }} ref="parallax">
         {/* <div className={classes.container}> */}
         <Img
           className={parallaxClasses}
@@ -78,10 +76,8 @@ class Parallax extends React.Component {
           backgroundColor="#ff6600"
           style={{
             filter: 'brightness(50%)',
-            ...style,
-            ...this.state
+            ...style
           }}
-          ref="parallax"
         />
         <GridContainer className={classes.container}>
           <GridItem xs={11} sm={10} md={10} className={classes.gridItem}>
@@ -93,7 +89,6 @@ class Parallax extends React.Component {
             </h4>
           </GridItem>
         </GridContainer>
-        {/* </div> */}
       </div>
     );
   }

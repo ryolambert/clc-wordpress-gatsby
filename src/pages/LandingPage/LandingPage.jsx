@@ -25,7 +25,7 @@ import landingPageStyle from '../../assets/jss/material-kit-react/views/landingP
 import ProductSection from './Sections/ProductSection.jsx';
 import TeamSection from './Sections/TeamSection.jsx';
 import EventSection from './Sections/EventSection.jsx';
-// import WorkSection from './Sections/WorkSection.jsx';
+import WorkSection from './Sections/WorkSection.jsx';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
 // graphql query access to modify page content
@@ -72,7 +72,6 @@ class LandingPage extends React.Component {
             <ProductSection />
             <TeamSection />
             <EventSection />
-            {/* <WorkSection /> */}
             <ContactForm />
           </div>
         </div>
