@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         // Posts detail
-        const posts = result.data.allWordpressPost.edges;
+        const posts = result.data.allBlogPost.edges;
 
         createPaginatedPages({
           edges: posts,

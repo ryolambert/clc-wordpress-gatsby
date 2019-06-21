@@ -14,7 +14,7 @@ module.exports = `
             }
         }
 
-        allWordpressPost {
+        allBlogPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Uncategorized"}}}}) {
             edges {
                 node {
                     id
