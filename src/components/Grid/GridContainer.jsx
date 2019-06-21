@@ -8,8 +8,8 @@ import React from 'react';
 const style = theme => ({
   container: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(2)
+    gridTemplateColumns: 'repeat(12, 1fr)'
+    // gridGap: theme.spacing(2)
   },
   root: {
     flexGrow: 1

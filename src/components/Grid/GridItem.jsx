@@ -3,17 +3,16 @@ import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-const style = {
+const style = theme => ({
   grid: {
     position: 'relative',
+    width: '100%',
     minHeight: '1px',
     paddingRight: '15px',
     paddingLeft: '15px',
-    marginRight: '15px',
-    marginLeft: '15px'
-    // maxHeight: '10vh'
+    flexBasis: 'auto'
   }
-};
+});
 
 function GridItem({ ...props }) {
   const { classes, children, className, ...rest } = props;

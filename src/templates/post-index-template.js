@@ -87,7 +87,7 @@ class PostIndexPage extends React.Component {
               />
             </GridItem>
           </GridContainer>
-          <GridContainer justify="center" spacing={2}>
+          <GridContainer justify="center">
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3}>
                 <Link

@@ -17,7 +17,13 @@ const cardStyle = {
     fontSize: '.875rem',
     transition: 'all 300ms linear',
     zIndex: '10',
-    
+    // position: 'relative',
+    // minHeight: '1px',
+    // paddingRight: '15px',
+    // paddingLeft: '15px',
+    // marginRight: '15px',
+    // marginLeft: '15px'
+
   },
   cardPlain: {
     background: 'transparent',
