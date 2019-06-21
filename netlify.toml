@@ -4,4 +4,4 @@
 [build.environment]
   YARN_VERSION = "1.9.4"
   YARN_FLAGS = "--no-ignore-optional"
-  TZ = "America/New_York"
+  TZ = "America/California"
