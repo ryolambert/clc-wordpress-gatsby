@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
+import Chat from '@material-ui/icons/Chat';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
+import Fingerprint from '@material-ui/icons/Fingerprint';
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import InfoArea from "components/InfoArea/InfoArea.jsx";
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import InfoArea from 'components/InfoArea/InfoArea.jsx';
 
-import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
+import productStyle from 'assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx';
 
 class ProductSection extends React.Component {
   render() {
