@@ -2,7 +2,7 @@ import { container, title } from 'assets/jss/material-kit-react.jsx';
 
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
 
-const postsPageStyle = {
+const postsPageStyle = theme => ({
   container,
   profile: {
     textAlign: 'center',
@@ -61,6 +61,6 @@ const postsPageStyle = {
     padding: '0.9375rem 1.875rem',
     flex: '1 1 auto'
   }
-};
+});
 
 export default postsPageStyle;

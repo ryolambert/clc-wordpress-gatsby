@@ -37,7 +37,6 @@ const parallaxStyle = theme => ({
   small: {
     height: '340px'
   },
-  //TODO: 📏📐This parallax effect to keep text within the middle of the 📸
   container: {
     position: 'fixed',
     zIndex: '1',

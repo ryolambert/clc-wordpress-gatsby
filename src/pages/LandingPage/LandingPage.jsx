@@ -17,7 +17,8 @@ import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout/Layout.js';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
@@ -29,55 +30,121 @@ import WorkSection from './Sections/WorkSection.jsx';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
 // graphql query access to modify page content
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const dashboardRoutes = [];
 // const LANDING_PAGE_QUERY = graphql
 
-class LandingPage extends React.Component {
-  render() {
-    const { classes, ...rest } = this.props;
-    return (
-      <Layout>
-        <Parallax filter image={require('assets/img/los-angeles-skyline.jpg')}>
-          <div className={classes.container}>
-            <GridContainer>
-              <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>
-                  <strong>Community Through Faith.</strong>
-                </h1>
+function LandingPage(props) {
+  const data = useStaticQuery(graphql`
+    query landingPageQuery {
+      landing: allWordpressPage(filter: { title: { eq: "Landing Page" } }) {
+        edges {
+          node {
+            acf {
+              hero_image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+              hero_content
+              hero_title
+              location
+              values_one
+              values_three
+              values_two
+              contact_form
+              address
+            }
+          }
+        }
+      }
+      galleryIndexParallaxImg: allWordpressWpMedia(
+        sort: { order: DESC, fields: date }
+        filter: { mime_type: { regex: "/image/" } }
+      ) {
+        edges {
+          node {
+            title
+            mime_type
+            media_type
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+      fallBackImg: imageSharp(
+        original: { src: { regex: "/sermons-background/" } }
+      ) {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  `);
+  const { classes, ...rest } = props;
+  const landingParallax =
+    data.landing.edges[0].node.acf.hero_image.localFile.childImageSharp.fluid;
+  const fallBackParallaxImg = data.fallBackImg.fluid;
+  const fluid = landingParallax ? landingParallax : fallBackParallaxImg;
+  const title = data.landing.edges[0].node.acf.hero_title;
+  const subtitle = data.landing.edges[0].node.acf.hero_content;
 
-                <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that's why we added this text here. Add here all
-                  the information that can make you or your product create the
-                  first impression.
-                </h4>
-                <br />
-                <Button
-                  color="warning"
-                  size="lg"
-                  href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <FaPlay />
-                  Watch video
-                </Button>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Parallax>
-        <div className={classNames(classes.main, classes.mainRaised)}>
-          <div className={classes.container}>
-            <ProductSection />
-            <TeamSection />
-            <EventSection />
-            <ContactForm />
-          </div>
+  const post = {
+    title: title,
+    date: subtitle
+  };
+
+  console.log(data.landing.edges.node);
+  return (
+    <Layout>
+      <ParallaxLazy filter fluid={fluid}>
+        <div className={classes.parallaxContainer}>
+          <GridContainer className={classes.parallaxWrapper}>
+            <GridItem xs={12} sm={12} md={6}>
+              <h1 className={classes.parallaxTitle}>
+                <strong>Community Through Faith.</strong>
+              </h1>
+
+              <h4>
+                Every landing page needs a small description after the big bold
+                title, that's why we added this text here. Add here all the
+                information that can make you or your product create the first
+                impression.
+              </h4>
+              <br />
+              <Button
+                color="warning"
+                size="lg"
+                href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
+                target="_blank"
+                rel="noopener noreferrer">
+                <FaPlay />
+                Watch video
+              </Button>
+            </GridItem>
+          </GridContainer>
         </div>
-      </Layout>
-    );
-  }
+      </ParallaxLazy>
+      <div className={classNames(classes.main, classes.mainRaised)}>
+        <div className={classes.container}>
+          <ProductSection />
+          <TeamSection />
+          <EventSection />
+          <ContactForm />
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
 export default withStyles(landingPageStyle)(LandingPage);

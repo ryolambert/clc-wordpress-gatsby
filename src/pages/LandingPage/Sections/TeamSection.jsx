@@ -25,7 +25,7 @@ import team3 from "assets/img/faces/kendall.jpg";
 
 class TeamSection extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, info } = this.props;
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRoundedCircle,

@@ -50,16 +50,7 @@ function SimplePagination({ color, pageContext, ...props }) {
   const nextUrl = (index + 1).toString();
 
   return (
-    <div
-      className={classes.pagination}
-      style={
-        {
-          // display: 'flex',
-          // justifyContent: 'space-between',
-          // position: 'relative',
-          // zIndex: '10'
-        }
-      }>
+    <div className={classes.pagination}>
       <NavLink test={first} url={`/${route}/`} text="<<" />
       <NavLink test={first} url={`/${route}/` + previousUrl} text="<" />
       <h4 className={classes.paginationItem}>
