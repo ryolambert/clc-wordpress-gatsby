@@ -14,7 +14,7 @@ module.exports = `
             }
         }
 
-        allBlogPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Uncategorized"}}}}) {
+        allBlogPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Blog"}}}} limit: 24) {
             edges {
                 node {
                     id
@@ -50,7 +50,7 @@ module.exports = `
             }
         }
 
-        allEventPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Events"}}}}) {
+        allEventPost: allWordpressPost( filter: { categories: {elemMatch: { name: { eq: "Events"}}}} limit: 24) {
           edges {
             node {
               id
@@ -66,7 +66,8 @@ module.exports = `
 
         allSermonPost:  allWordpressPost(
             filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
-          ) {
+            limit: 24
+            ) {
             edges {
               node {
                 id
@@ -94,7 +95,7 @@ module.exports = `
             }
           }
 
-        allGalleryMedia: allWordpressWpMedia(filter: {mime_type: {regex: "/image/"}}) {
+        allGalleryMedia: allWordpressWpMedia(filter: {mime_type: {regex: "/image/"}} limit: 48) {
             edges {
               node {
                 id
