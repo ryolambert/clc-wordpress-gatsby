@@ -26,7 +26,6 @@ import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 
-
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
 
@@ -38,7 +37,7 @@ class SermonTemplate extends React.Component {
     const fluid = post.featured_media
       ? post.featured_media.localFile.childImageSharp.fluid
       : placeHolder;
-    const fluidContent = post.featured_media 
+    const fluidContent = post.featured_media
       ? post.featured_media.localFile.childImageSharp.fluid
       : null;
     const imageClasses = classNames(
@@ -55,23 +54,40 @@ class SermonTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid} post={post} />
+          <ParallaxLazy small filter fluid={fluid}>
+            <div className={classes.parallaxContainer}>
+              <GridContainer
+                justify="center"
+                className={classes.parallaxWrapper}>
+                <GridItem xs={10} sm={10} md={6}>
+                  <h1 className={classes.parallaxTitle}>
+                    <strong>{post.title}</strong>
+                  </h1>
+                  <h5 className={classes.parallaxSubtitle}>
+                    <strong>{post.date}</strong>
+                  </h5>
+                </GridItem>
+              </GridContainer>
+            </div>
+          </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div>
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
-                    {fluidContent && 
+                    {fluidContent && (
                       <div>
                         <Img
                           alt="Screenshot of Project"
-                          fluid={post.featured_media.localFile.childImageSharp.fluid}
+                          fluid={
+                            post.featured_media.localFile.childImageSharp.fluid
+                          }
                           className={imageClasses}
                           style={{ marginTop: '20px', marginBottom: '20px' }}
                         />
                       </div>
-                    }
-                    <div 
+                    )}
+                    <div
                       className={classes.content}
                       dangerouslySetInnerHTML={{
                         __html: post.content
@@ -108,7 +124,9 @@ export const query = graphql`
       id
       date(formatString: "MMMM DD, YYYY")
     }
-    placeHolderImg: imageSharp(original: { src: { regex: "/sermons-background/" } }) {
+    placeHolderImg: imageSharp(
+      original: { src: { regex: "/sermons-background/" } }
+    ) {
       fluid(maxWidth: 1200) {
         ...GatsbyImageSharpFluid
       }

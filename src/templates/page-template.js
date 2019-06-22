@@ -20,8 +20,7 @@ import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-
-import profilePageStyle from 'assets/jss/material-kit-react/views/profilePageStyle.jsx';
+import landingPageStyle from '../assets/jss/material-kit-react/views/landingPageStyle';
 
 class PageTemplate extends React.Component {
   render() {
@@ -40,7 +39,17 @@ class PageTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid} post={post} />
+        <ParallaxLazy small filter fluid={fluid} post={post}>
+          <div className={classes.parallaxContainer}>
+            <GridContainer justify="center" className={classes.parallaxWrapper}>
+              <GridItem xs={10} sm={10} md={6}>
+                <h1 className={classes.parallaxTitle}>
+                  <strong>{post.title}</strong>
+                </h1>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div>
               <div className={classes.container}>
@@ -108,4 +117,4 @@ export const CURRENT_PAGE_QUERY = graphql`
   }
 `;
 
-export default withStyles(profilePageStyle)(PageTemplate);
+export default withStyles(landingPageStyle)(PageTemplate);

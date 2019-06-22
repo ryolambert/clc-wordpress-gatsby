@@ -45,10 +45,15 @@ class EventIndexPage extends React.Component {
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={11} sm={11} md={6}>
-                <h1 className={classes.title}>Events</h1>
+          <div className={classes.parallaxContainer}>
+            <GridContainer justify="center" className={classes.parallaxWrapper}>
+              <GridItem xs={10} sm={10} md={6}>
+                <h1 className={classes.parallaxTitle}>
+                  <strong>{post.title}</strong>
+                </h1>
+                <h5 className={classes.parallaxSubtitle}>
+                  <strong>{post.date}</strong>
+                </h5>
               </GridItem>
             </GridContainer>
           </div>
@@ -109,6 +114,7 @@ export const query = graphql`
     eventIndexParallaxImg: allWordpressWpMedia(
       sort: { order: ASC, fields: date }
       filter: { mime_type: { regex: "/image/" } }
+      limit: 1
     ) {
       edges {
         node {

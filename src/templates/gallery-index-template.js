@@ -50,10 +50,15 @@ class GalleryIndexPage extends React.Component {
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
+          <div className={classes.parallaxContainer}>
+            <GridContainer justify="center" className={classes.parallaxWrapper}>
               <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.title}>Galleries</h1>
+                <h1 className={classes.parallaxTitle}>
+                  <strong>Gallery</strong>
+                </h1>
+                <h5 className={classes.parallaxSubtitle}>
+                  <strong>{post.date}</strong>
+                </h5>
               </GridItem>
             </GridContainer>
           </div>
@@ -103,28 +108,29 @@ export default withStyles(postsIndexPageStyle)(GalleryIndexPage);
 
 export const query = graphql`
   query allGalleriesQuery {
-    allWordpressWpMedia(filter: { mime_type: { regex: "/image/" } }) {
-      edges {
-        node {
-          id
-          title
-          description
-          mime_type
-          media_type
-          # localFile {
-          #   childImageSharp {
-          #     fluid(maxWidth: 1200) {
-          #       ...GatsbyImageSharpFluid_withWebp
-          #       originalImg
-          #     }
-          #   }
-          # }
-        }
-      }
-    }
+    # allWordpressWpMedia(filter: { mime_type: { regex: "/image/" } }) {
+    #   edges {
+    #     node {
+    #       id
+    #       title
+    #       description
+    #       mime_type
+    #       media_type
+    #       # localFile {
+    #       #   childImageSharp {
+    #       #     fluid(maxWidth: 1200) {
+    #       #       ...GatsbyImageSharpFluid_withWebp
+    #       #       originalImg
+    #       #     }
+    #       #   }
+    #       # }
+    #     }
+    #   }
+    # }
     galleryIndexParallaxImg: allWordpressWpMedia(
       sort: { order: DESC, fields: date }
       filter: { mime_type: { regex: "/image/" } }
+      limit: 1
     ) {
       edges {
         node {

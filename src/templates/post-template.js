@@ -44,7 +44,20 @@ class PostTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid} post={post} />
+        <ParallaxLazy small filter fluid={fluid}>
+          <div className={classes.parallaxContainer}>
+            <GridContainer justify="center" className={classes.parallaxWrapper}>
+              <GridItem xs={10} sm={10} md={6}>
+                <h1 className={classes.parallaxTitle}>
+                  <strong>{post.title}</strong>
+                </h1>
+                <h5 className={classes.parallaxSubtitle}>
+                  <strong>{post.date}</strong>
+                </h5>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={10}>

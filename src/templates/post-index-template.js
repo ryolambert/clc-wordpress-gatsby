@@ -75,7 +75,20 @@ class PostIndexPage extends React.Component {
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post} />
+        <ParallaxLazy small filter fluid={fluid} post={post}>
+          <div className={classes.parallaxContainer}>
+            <GridContainer justify="center" className={classes.parallaxWrapper}>
+              <GridItem xs={10} sm={10} md={6}>
+                <h1 className={classes.parallaxTitle}>
+                  <strong>{post.title}</strong>
+                </h1>
+                <h5 className={classes.parallaxSubtitle}>
+                  <strong>{post.date}</strong>
+                </h5>
+              </GridItem>
+            </GridContainer>
+          </div>
+        </ParallaxLazy>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={10} md={8}>
@@ -89,7 +102,7 @@ class PostIndexPage extends React.Component {
           </GridContainer>
           <GridContainer justify="center">
             {group.map(({ node }) => (
-              <GridItem xs={11} sm={5} md={3}>
+              <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
                   to={'/post/' + node.slug}
                   className={classes.cardTitle}
@@ -135,7 +148,10 @@ class PostIndexPage extends React.Component {
                           dangerouslySetInnerHTML={{ __html: node.title }}
                         />
                       </h4>
-                      <p className={classes.excerpt} dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      <p
+                        className={classes.excerpt}
+                        dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                      />
                     </CardBody>
                     <CardFooter className={classes.details}>
                       <p>
@@ -184,21 +200,25 @@ export const query = graphql`
             name
           }
           date(formatString: "MMMM DD, YYYY")
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
+          # featured_media {
+          #   localFile {
+          #     childImageSharp {
+          #       fluid(maxWidth: 1200) {
+          #         ...GatsbyImageSharpFluid
+          #       }
+          #     }
+          #   }
+          # }
         }
       }
     }
     blogParallaxImg: allWordpressPost(
       sort: { order: DESC, fields: date }
-      filter: { featured_media: { id: { regex: "/./" } } }
+      filter: {
+        featured_media: { id: { regex: "/./" } }
+        categories: { elemMatch: { name: { eq: "Blog" } } }
+      }
+      limit: 1
     ) {
       edges {
         node {
