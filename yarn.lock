@@ -11707,6 +11707,21 @@ react-images-z-index-fix@^1.0.3-alpha.5:
     react-transition-group "^2.2.1"
     react-view-pager "^0.6.0"
 
+react-images@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-images/-/react-images-1.0.0.tgz#9dcca9e91137c9ad175ba832a965ca1141e6aea8"
+  integrity sha512-IC9cXdPRSUqqFcr9kzHKv4yQSqvJGoiiHYdzc1xQmVMomtktow+WPG7s6UDWZQLt3q8EJ59Qmg6yJYnkqWs0Jg==
+  dependencies:
+    a11y-focus-store "^1.0.0"
+    glam "^5.0.1"
+    raf-schd "^2.1.0"
+    react "^16.2.0"
+    react-dom "^16.2.0"
+    react-full-screen "^0.2.2"
+    react-scrolllock "^1.0.9"
+    react-transition-group "^2.2.1"
+    react-view-pager "^0.6.0"
+
 react-is@^16.3.2, react-is@^16.5.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
