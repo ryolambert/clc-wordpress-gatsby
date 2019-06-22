@@ -193,6 +193,7 @@ export const query = graphql`
     sermonIndexParallaxImg: allWordpressPost(
       sort: { order: DESC, fields: date }
       filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
+      limit: 1
     ) {
       edges {
         node {
