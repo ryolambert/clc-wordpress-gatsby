@@ -63,7 +63,9 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
               //   '0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)',
               // marginLeft: '10px',
               // marginRight: '10px',
-              '&:hover,&:focus': {
+              '&,&:hover,&:focus': {
+                transform: 'translateY(-8px)',
+                boxShadow: '0 10px 10px -10px rgba(#7f8c8d, 1)',
                 filter: 'brightness(87.5%)'
               }
             }}
