@@ -11692,21 +11692,6 @@ react-icons@^3.7.0:
   dependencies:
     camelcase "^5.0.0"
 
-react-images-z-index-fix@^1.0.3-alpha.5:
-  version "1.0.3-alpha.5"
-  resolved "https://registry.yarnpkg.com/react-images-z-index-fix/-/react-images-z-index-fix-1.0.3-alpha.5.tgz#29f86d96710955427416e654fbf4090143fc4b81"
-  integrity sha512-tUkcG5BpEDqc6DH1jOyUCQwNij6RMRtQc3YVX2/qFI6DFXVqZtx5Mz3WKlHZUJbLxIEvomXKm8RnDTSYoCGSIQ==
-  dependencies:
-    a11y-focus-store "^1.0.0"
-    glam "^5.0.1"
-    raf-schd "^2.1.0"
-    react "^16.2.0"
-    react-dom "^16.2.0"
-    react-full-screen "^0.2.2"
-    react-scrolllock "^1.0.9"
-    react-transition-group "^2.2.1"
-    react-view-pager "^0.6.0"
-
 react-images@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-images/-/react-images-1.0.0.tgz#9dcca9e91137c9ad175ba832a965ca1141e6aea8"
