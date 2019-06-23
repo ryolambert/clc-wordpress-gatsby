@@ -74,7 +74,7 @@ class SermonIndexPage extends React.Component {
             <GridItem xs={11} sm={10} md={8}>
               <br />
               <SimplePagination
-                route="posts"
+                route="sermons"
                 pageContext={pageContext}
                 color="primary"
               />
@@ -82,7 +82,7 @@ class SermonIndexPage extends React.Component {
           </GridContainer>
           <GridContainer justify="center" spacing={2}>
             {group.map(({ node }) => (
-              <GridItem xs={11} sm={5} md={3}>
+              <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
                   to={'/sermon/' + node.slug}
                   className={classes.cardTitle}
@@ -178,6 +178,7 @@ export const query = graphql`
           template
           format
           title
+          excerpt
           date(formatString: "MMMM DD, YYYY")
           # featured_media {
           #   localFile {

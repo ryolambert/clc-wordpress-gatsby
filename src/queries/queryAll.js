@@ -89,7 +89,6 @@ module.exports = `
                               }
                             }
                         }
-                        source_url
                 }
               }
             }
