@@ -2,7 +2,7 @@ import { container, title } from 'assets/jss/material-kit-react.jsx';
 
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
 
-const postsPageStyle = theme => ({
+const postPageStyle = theme => ({
   container,
   description: {
     margin: '1.071rem auto 0',
@@ -88,7 +88,7 @@ const postsPageStyle = theme => ({
     ...title,
     order: '-1',
     textAlign: 'left',
-    // fontSize: '3em',
+    fontSize: '2.5rem',
     color: '#FFFFFF',
     marginTop: '30px',
     minHeight: '12px',
@@ -129,4 +129,4 @@ const postsPageStyle = theme => ({
   }
 });
 
-export default postsPageStyle;
+export default postPageStyle;
