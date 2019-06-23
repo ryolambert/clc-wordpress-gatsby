@@ -34,8 +34,7 @@ class SermonIndexPage extends React.Component {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
 
-    const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0]
-      .node.featured_media.localFile.childImageSharp.fluid;
+    const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0].node.featured_media.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackSermonParallaxImg.fluid;
     const fluid = sermonIndexParallax ? sermonIndexParallax : fallBackParallax;
     // const fluidCardImage = this.props.group.node.featured_media
@@ -168,6 +167,7 @@ export const query = graphql`
   query allSermonsQuery {
     allWordpressPost(
       filter: { categories: { elemMatch: { name: { eq: "Sermons" } } } }
+      limit: 12
     ) {
       edges {
         node {
