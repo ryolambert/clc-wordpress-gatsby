@@ -18,7 +18,7 @@ const headerStyle = {
     display: 'flex',
     border: '0',
     borderRadius: '3px',
-    padding: '0.5rem 0',
+    padding: '0.25rem 0',
     marginBottom: '20px',
     color: '#555',
     width: '100%',
