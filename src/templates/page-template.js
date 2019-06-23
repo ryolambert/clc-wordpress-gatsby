@@ -20,7 +20,7 @@ import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import landingPageStyle from '../assets/jss/material-kit-react/views/landingPageStyle';
+import postPageStyle from '../assets/jss/material-kit-react/views/postPageStyle';
 
 class PageTemplate extends React.Component {
   render() {
@@ -117,4 +117,4 @@ export const CURRENT_PAGE_QUERY = graphql`
   }
 `;
 
-export default withStyles(landingPageStyle)(PageTemplate);
+export default withStyles(postPageStyle)(PageTemplate);
