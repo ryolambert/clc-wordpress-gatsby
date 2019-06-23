@@ -6,8 +6,7 @@ const DisplayCalendar = ({ data }) => {
   const { edges: posts } = data.blogLatest;
 
   posts.forEach(function(post) {
-    post.start = new Date(post.node.acf.post_start);
-    post.end = new Date(post.node.acf.post_end);
+    post.start = post.node.date;
     post.title = post.node.title;
   });
   return (

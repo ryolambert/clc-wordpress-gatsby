@@ -26,6 +26,7 @@ import landingPageStyle from '../../assets/jss/material-kit-react/views/landingP
 import ProductSection from './Sections/ProductSection.jsx';
 import TeamSection from './Sections/TeamSection.jsx';
 import EventSection from './Sections/EventSection.jsx';
+import BlogSection from './Sections/BlogSection.jsx';
 import WorkSection from './Sections/WorkSection.jsx';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
@@ -139,6 +140,7 @@ function LandingPage(props) {
           <ProductSection />
           <TeamSection />
           <EventSection />
+          <BlogSection />
           <ContactForm />
         </div>
       </div>
