@@ -95,8 +95,8 @@ class Header extends React.Component {
             width={30}
             src={logo}
             style={{
-              marginRight: '10px',
-              marginTop: '10px'
+              marginRight: '10px'
+              // marginTop: '10px'
             }}
             alt="City Lights Church Logo"
           />
