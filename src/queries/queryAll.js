@@ -76,6 +76,7 @@ module.exports = `
                 template
                 format
                 title
+                excerpt
                 date(formatString: "MMMM DD, YYYY")
                 featured_media {
                     localFile {
