@@ -44,9 +44,7 @@ class GalleryIndexPage extends React.Component {
       classes.imgRounded,
       classes.imgFluid
     );
-
-    console.table({ group });
-
+    
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>

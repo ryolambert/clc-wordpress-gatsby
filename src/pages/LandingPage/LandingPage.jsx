@@ -104,7 +104,6 @@ function LandingPage(props) {
     date: subtitle
   };
 
-  console.log(data.landing.edges.node);
   return (
     <Layout>
       <ParallaxLazy filter fluid={fluid}>

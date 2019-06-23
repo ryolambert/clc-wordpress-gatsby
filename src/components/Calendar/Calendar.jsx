@@ -5,18 +5,12 @@ import moment from 'moment';
 const localizer = BigCalendar.momentLocalizer(moment);
 
 const DisplayCalendar = ({ events }) => {
-  // const { events } = data;
-  {
-    console.log(events);
-  }
-
   events.forEach(function(event) {
     event.start = new Date(event.node.acf.event_start);
     event.end = new Date(event.node.acf.event_end);
     event.title = event.node.title;
     // console.table(event.start);
   });
-  console.log(events);
   return (
     <div className="calendar">
       <BigCalendar

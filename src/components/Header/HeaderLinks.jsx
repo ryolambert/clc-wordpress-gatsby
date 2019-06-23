@@ -69,6 +69,7 @@ function renderDropMap(item, props) {
       to={`/${child.object_slug}`}
       className={classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: child.title }}
+      key={child.id}
     />
   ));
   //!! Reassignment on mapDrop

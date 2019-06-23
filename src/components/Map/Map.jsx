@@ -83,7 +83,6 @@ export default class Map extends Component {
   render() {
     const { viewport } = this.state;
     const { position, info } = this.props;
-    console.log(info);
     return (
       <section>
         <MapGL

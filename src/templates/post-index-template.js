@@ -71,8 +71,6 @@ class PostIndexPage extends React.Component {
       classes.cover
     );
 
-    console.table({ group });
-
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>

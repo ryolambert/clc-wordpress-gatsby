@@ -57,9 +57,6 @@ class EventTemplate extends React.Component {
       classes.imgRounded,
       classes.imgFluid
     );
-    console.log(event.acf.event_location);
-
-    console.log(this.state.coords);
 
     return (
       <div>
