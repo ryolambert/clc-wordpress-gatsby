@@ -29,7 +29,7 @@ const headerStyle = {
     alignItems: 'center',
     flexFlow: 'row nowrap',
     justifyContent: 'flex-start',
-    position: 'fixed',
+    position: 'sticky',
     zIndex: 'unset'
   },
   absolute: {
