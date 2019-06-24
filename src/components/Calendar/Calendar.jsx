@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql, navigate } from 'gatsby';
+import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -26,10 +27,15 @@ const DisplayCalendar = ({ events }) => {
         timeslots={1}
         step={60}
         onSelectEvent={event => navigate(`/event/${event.node.slug}`)}
-        formats={{ dayFormat: 'DD/MM/YYYY' }}
+        formats={{ dayFormat: 'MM/DD/YYYY' }}
       />
     </div>
   );
+};
+
+DisplayCalendar.propTypes = {
+  events: PropTypes.object.isRequired,
+  className: PropTypes.string
 };
 
 export default props => (

@@ -112,6 +112,11 @@ export default class Map extends Component {
   }
 }
 
+Map.propTypes = {
+  position: PropTypes.array.isRequired,
+  info: PropTypes.object.isRequired
+};
+
 export function renderToDom(container) {
   render(<Map />, container);
 }
