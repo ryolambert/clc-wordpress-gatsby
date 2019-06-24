@@ -52,16 +52,29 @@ const headerStyle = {
   flex: {
     flex: 1
   },
-  title: {
+  button: {
     ...defaultFont,
     lineHeight: '30px',
     fontSize: '18px',
     borderRadius: '3px',
     textTransform: 'none',
     color: 'inherit',
-    padding: '8px 16px',
+    padding: '0px 6px',
     fontFamily: 'Roboto Slab',
     fontWeight: '400',
+    '&:hover,&:focus': {
+      color: 'inherit',
+      background: 'transparent'
+    }
+  },
+  linkTitle: {
+    ...defaultFont,
+    color: 'inherit',
+    fontFamily: 'Roboto Slab',
+    fontWeight: '400',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    alignItems: 'center',
     '&:hover,&:focus': {
       color: 'inherit',
       background: 'transparent'
@@ -71,11 +84,11 @@ const headerStyle = {
     ...defaultFont,
     // lineHeight: '30px',
     fontSize: '18px',
-    // borderRadius: '3px',
+    borderRadius: '3px',
     textTransform: 'none',
     color: 'inherit',
     // padding: '8px 16px',
-    // margin: '10px 10px'
+    margin: '10px 10px',
     fontFamily: 'Roboto Slab',
     fontWeight: '400',
     justifyContent: 'center',

@@ -82,21 +82,14 @@ class Header extends React.Component {
     const logo = require('../../assets/img/clc-logo-svg.svg');
 
     const brandComponent = (
-      <Button className={classes.title}>
-        <Link
-          to="/"
-          className={classes.title}
-          style={{
-            display: 'flex',
-            flexFlow: 'row nowrap',
-            alignItems: 'center'
-          }}>
+      <Button className={classes.button}>
+        <Link to="/" className={classes.linkTitle} style={{}}>
           <img
             width={30}
             src={logo}
             style={{
-              marginRight: '10px'
-              // marginTop: '10px'
+              // marginRight: '10px',
+              marginTop: '5px'
             }}
             alt="City Lights Church Logo"
           />

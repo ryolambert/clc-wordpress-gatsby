@@ -87,7 +87,6 @@ function renderDropMap(item, props) {
 
 function HeaderLinks({ ...props }) {
   const { classes } = props;
-  // console.table(...props);
   return (
     <StaticQuery
       query={HEADERLINK_QUERY}
