@@ -4,8 +4,8 @@ import Img from 'gatsby-image';
 export default class Info extends PureComponent {
   render() {
     const { info } = this.props;
-    const lat = info.position[1];
-    const lng = info.position[0];
+    const address = info.position;
+    const encodedQuery = encodeURIComponent(address);
     const displayName = `${info.popupInfo.title}, ${info.popupInfo.excerpt}`;
     const fluidContent = info.popupInfo.featured_media
       ? info.popupInfo.featured_media.localFile.childImageSharp.fluid
@@ -25,6 +25,8 @@ export default class Info extends PureComponent {
               style={{ fontSize: '1rem', lineHeight: '1rem' }}
               dangerouslySetInnerHTML={{
                 __html: info.popupInfo.acf.event_location
+                  ? info.popupInfo.acf.event_location
+                  : null
               }}
             />
           </h6>
@@ -32,7 +34,7 @@ export default class Info extends PureComponent {
             <a
               style={{ fontSize: '0.75rem' }}
               target="_new"
-              href={`https://www.google.com/maps/dir/?api=1&destination=${lat}, ${lng}`}>
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}>
               👉 Directions
             </a>
           </p>

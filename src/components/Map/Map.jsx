@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import MapGL, {
   Marker,
   Popup,
@@ -38,10 +40,35 @@ export default class Map extends Component {
         longitude: -118.1856821,
         zoom: 14,
         bearing: 0,
-        pitch: 35
+        pitch: 45
       },
+      coords: [39.9528, -75.1638],
+      mapLat: 39.9528,
+      mapLng: -75.1638,
       popupInfo: null
     };
+  }
+
+  async componentDidMount() {
+    const address = this.props.position;
+    const encodedQuery = encodeURIComponent(address);
+    const response = await axios.get(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`
+    );
+    if (response.data.features.length > 0) {
+      this.setState({
+        viewport: {
+          latitude: response.data.features[0].center[1],
+          longitude: response.data.features[0].center[0],
+          zoom: 14,
+          bearing: 0,
+          pitch: 45
+        },
+        coords: response.data.features[0].center,
+        mapLat: response.data.features[0].center[1],
+        mapLng: response.data.features[0].center[0]
+      });
+    }
   }
 
   _updateViewport = viewport => {
@@ -49,9 +76,8 @@ export default class Map extends Component {
   };
 
   _renderMarker = info => {
-    const { position } = this.props;
     return (
-      <Marker longitude={position[0]} latitude={position[1]}>
+      <Marker longitude={this.state.mapLng} latitude={this.state.mapLat}>
         <Pin size={25} onClick={() => this.setState({ popupInfo: info })} />
       </Marker>
     );
@@ -70,8 +96,8 @@ export default class Map extends Component {
         <Popup
           tipSize={3}
           anchor="top"
-          longitude={position[0]}
-          latitude={position[1]}
+          longitude={this.state.mapLng}
+          latitude={this.state.mapLat}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}>
           <Info info={info} />
@@ -87,8 +113,6 @@ export default class Map extends Component {
       <section>
         <MapGL
           {...viewport}
-          latitude={position[1]}
-          longitude={position[0]}
           width="100%"
           height="30vh"
           mapStyle="mapbox://styles/citylightschurch/cjx13gc3r2uku1cphf8o9natk"
@@ -113,7 +137,7 @@ export default class Map extends Component {
 }
 
 Map.propTypes = {
-  position: PropTypes.array.isRequired,
+  position: PropTypes.string.isRequired,
   info: PropTypes.object.isRequired
 };
 

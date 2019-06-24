@@ -3,7 +3,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import moment from 'moment';
-import axios from 'axios';
+
+
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
@@ -24,25 +25,11 @@ class EventTemplate extends React.Component {
       coords: [39.9528, -75.1638]
     };
   }
-  async componentDidMount() {
-    const encodedQuery = encodeURIComponent(
-      this.props.data.currentEvent.acf.event_address
-    );
-    const response = await axios.get(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`
-    );
-    if (response.data.features.length > 0) {
-      this.setState({
-        coords: [
-          response.data.features[0].center[0],
-          response.data.features[0].center[1]
-        ]
-      });
-    }
-  }
+
   render() {
     const { classes, ...rest } = this.props;
     const event = this.props.data.currentEvent;
+    const address = this.props.data.currentEvent.acf.event_address;
     const start = moment(event.acf.event_start).format('MM/DD/YYYY h:mm a');
     const end = moment(event.acf.event_end).format('MM/DD/YYYY h:mm a');
     const eventHolder = this.props.data.eventHolderImg.fluid;
@@ -140,7 +127,7 @@ class EventTemplate extends React.Component {
             </GridContainer>
             <Map
               className="leaflet-container"
-              position={this.state.coords}
+              position={address}
               info={event}
             />
           </div>

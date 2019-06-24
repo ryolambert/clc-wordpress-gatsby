@@ -19,6 +19,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 import Layout from '../../components/Layout/Layout.js';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import Map from 'components/Map/Map.jsx';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
@@ -42,6 +43,8 @@ function LandingPage(props) {
       landing: allWordpressPage(filter: { title: { eq: "Landing Page" } }) {
         edges {
           node {
+            title
+            excerpt
             acf {
               hero_image {
                 localFile {
@@ -93,6 +96,8 @@ function LandingPage(props) {
     }
   `);
   const { classes, ...rest } = props;
+  const pageInfo = data.landing.edges[0].node;
+  const address = pageInfo.acf.address;
   const landingParallax =
     data.landing.edges[0].node.acf.hero_image.localFile.childImageSharp.fluid;
   const fallBackParallaxImg = data.fallBackImg.fluid;
@@ -143,6 +148,7 @@ function LandingPage(props) {
           <BlogSection />
           <ContactForm />
         </div>
+        <Map className="leaflet-container" position={address} info={pageInfo} />
       </div>
     </Layout>
   );
