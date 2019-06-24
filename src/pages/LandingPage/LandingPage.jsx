@@ -145,7 +145,7 @@ function LandingPage(props) {
           <ProductSection />
           <TeamSection />
           <EventSection />
-          <BlogSection props={{ classes }} />
+          <BlogSection />
           <ContactForm />
         </div>
         <Map className="leaflet-container" position={address} info={pageInfo} />

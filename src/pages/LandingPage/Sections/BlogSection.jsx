@@ -4,12 +4,76 @@ import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
 import Img from 'gatsby-image';
-import withStyles from '@material-ui/core/styles/withStyles';
-import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
+import { makeStyles } from '@material-ui/styles';
+import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
+import { cardTitle } from 'assets/jss/material-kit-react.jsx';
+import { container } from 'assets/jss/material-kit-react.jsx';
 
-const BlogSection = ({ data, props }) => {
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
+  },
+  cardTitle,
+  textMuted: {
+    color: '#6c757d'
+  },
+  container,
+  description: {
+    margin: '1.071rem auto 0',
+    maxWidth: '600px',
+    color: '#999',
+    textAlign: 'center !important'
+  },
+  name: {
+    marginTop: '-80px'
+  },
+  ...imagesStyle,
+  card: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    minHeight: '200px'
+  },
+  details: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    minHeight: '100%',
+    paddingLeft: '20px',
+    paddingBottom: '10px',
+    minWidth: '400px',
+    flexGrow: 3,
+    flexBasis: '400px'
+  },
+  cover: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    height: '100%',
+    maxHeight: '250px'
+  },
+  coverImg: {
+    height: '100%',
+    maxHeight: '250px'
+  },
+  excerpt: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    webkitBoxOrient: 'vertical',
+    webkitLineClamp: '3',
+    lineHeight: '1rem',
+    maxHeight: '3rem',
+    fontSize: '1rem'
+  }
+});
+
+const BlogSection = ({ data }) => {
   const { edges: posts } = data.blogLatest;
-  const { classes } = props;
+  const classes = useStyles();
   const fallBack = data.fallBackImg.fluid;
 
   posts.forEach(function(post) {
