@@ -1,4 +1,6 @@
 import { container, title } from 'assets/jss/material-kit-react.jsx';
+import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
+import { cardTitle } from 'assets/jss/material-kit-react.jsx';
 
 const landingPageStyle = theme => ({
   container: {
@@ -100,6 +102,65 @@ const landingPageStyle = theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: '-60px 0px 0px'
     }
+  },
+  root: {
+    flexGrow: 1
+  },
+  cardTitle,
+  textMuted: {
+    color: '#6c757d'
+  },
+  container,
+  description: {
+    margin: '1.071rem auto 0',
+    maxWidth: '600px',
+    color: '#999',
+    textAlign: 'center !important'
+  },
+  name: {
+    marginTop: '-80px'
+  },
+  ...imagesStyle,
+  card: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    minHeight: '200px'
+  },
+  details: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    minHeight: '100%',
+    paddingLeft: '20px',
+    paddingBottom: '10px',
+    minWidth: '400px',
+    flexGrow: 3,
+    flexBasis: '400px'
+  },
+  cover: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    height: '100%',
+    maxHeight: '250px'
+  },
+  coverImg: {
+    height: '100%',
+    maxHeight: '250px'
+  },
+  excerpt: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    webkitBoxOrient: 'vertical',
+    webkitLineClamp: '3',
+    lineHeight: '1rem',
+    maxHeight: '3rem',
+    fontSize: '1rem'
   }
 });
 
