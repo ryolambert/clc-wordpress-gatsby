@@ -29,6 +29,7 @@ import TeamSection from './Sections/TeamSection.jsx';
 import EventSection from './Sections/EventSection.jsx';
 import BlogSection from './Sections/BlogSection.jsx';
 import WorkSection from './Sections/WorkSection.jsx';
+import ContactSection from './Sections/ContactSection.jsx';
 import ContactForm from '../../components/ContactForm/ContactForm';
 
 // graphql query access to modify page content
@@ -117,7 +118,10 @@ function LandingPage(props) {
           <GridContainer className={classes.parallaxWrapper}>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.parallaxTitle}>
-                <strong>Community Through Faith.</strong>
+                <strong>
+                  Building Community Through Faith.
+                  <br /> Find Yours Here.
+                </strong>
               </h1>
 
               <h4>
@@ -146,9 +150,8 @@ function LandingPage(props) {
           <TeamSection />
           <EventSection />
           <BlogSection />
-          <ContactForm />
+          <ContactSection address={address} pageInfo={pageInfo} />
         </div>
-        <Map className="leaflet-container" position={address} info={pageInfo} />
       </div>
     </Layout>
   );

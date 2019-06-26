@@ -110,11 +110,11 @@ export default class Map extends Component {
     const { viewport } = this.state;
     const { position, info } = this.props;
     return (
-      <section>
+      <section style={{ height: '100%', maxHeight: '1000px' }}>
         <MapGL
           {...viewport}
           width="100%"
-          height="30vh"
+          height="100%"
           mapStyle="mapbox://styles/citylightschurch/cjx13gc3r2uku1cphf8o9natk"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}>

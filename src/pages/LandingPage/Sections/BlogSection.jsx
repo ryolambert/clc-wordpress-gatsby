@@ -92,7 +92,7 @@ const BlogSection = ({ data }) => {
             {posts.map(post => (
               <GridItem key={post.title}>
                 <Link to={`/post/${post.node.slug}`}>
-                  <Card className={classes.card} raised={true} carousel>
+                  <Card className={classes.card} raised="true" carousel>
                     {post.node.featured_media && (
                       <Img
                         className={classes.imgCardTop}
