@@ -22,7 +22,9 @@ const headerLinksStyle = theme => ({
       marginBottom: '10vh',
       paddingBottom: '10vh',
       overflow: 'auto',
-      paddingRight: '17px'
+      paddingRight: '17px',
+      position: 'absolute',
+      zIndex: '1200'
     }
   },
   listItem: {
@@ -50,12 +52,23 @@ const headerLinksStyle = theme => ({
     position: 'relative',
     width: 'auto',
     margin: '0',
-    padding: '0',
+    padding: '0.9375rem',
     order: '',
     [theme.breakpoints.down('sm')]: {
       width: '80vw',
       order: '-1',
-      marginLeft: '15px'
+      width: 'calc(100% - 30px)',
+      marginLeft: '15px',
+      marginBottom: '8px',
+      marginTop: '8px',
+      textAlign: 'left',
+      // color: '#fff',
+      fontFamily: 'Roboto Slab',
+      fontWeight: '700',
+      transform: 'translate(0,-.07em)',
+      '& > span:first-child': {
+        justifyContent: 'flex-start'
+      }
     }
   },
   listItemText: {

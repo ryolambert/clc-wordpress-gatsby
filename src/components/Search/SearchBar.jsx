@@ -5,6 +5,7 @@ import { Index } from 'elasticlunr';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import CustomInput from 'components/CustomInput/CustomInput.jsx';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import Input from '@material-ui/core/Input';
 import {
   DropDown,
@@ -51,84 +52,89 @@ class SearchBar extends React.Component {
     const { classes, data } = this.props;
     resetIdCounter();
     return (
-      // <div className={classes.searchStyles}>
-      <SearchStyles>
-        <Downshift onChange={routeToResult}>
-          {({
-            getInputProps,
-            getItemProps,
-            isOpen,
-            inputValue,
-            selectedItem,
-            highlightedIndex
-          }) => (
-            <div>
-              <Input
-                style={{ width: '98%', marginTop: '10px' }}
-                {...getInputProps({
-                  placeholder: '🔍Search',
-                  className: this.state.loading ? 'loading' : '',
-                  onChange: this.search
-                })}
-              />
-              {isOpen ? (
-                <DropDown>
-                  {this.state.items.map((item, index) => {
-                    if (item.type === 'post') {
-                      return (
-                        <DropDownItem
-                          {...getItemProps({ item })}
-                          key={item.id}
-                          highlighted={index === highlightedIndex}>
-                          <Link to={`/post/` + item.slug}>
-                            <h5
-                              dangerouslySetInnerHTML={{ __html: item.title }}
-                            />
-
-                            <p
-                              dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                            />
-                          </Link>
-                        </DropDownItem>
-                      );
-                    }
-                    // TODO: Debug Page Search Feature Breaking IOS Page styling
-                    // else if (item.type === 'page') {
-                    //   return (
-                    //     <DropDownItem
-                    //       {...getItemProps({ item })}
-                    //       key={item.id}
-                    //       highlighted={index === highlightedIndex}>
-                    //       <Link to={`/` + item.slug}>
-                    //         <h5
-                    //           dangerouslySetInnerHTML={{ __html: item.title }}
-                    //         />
-                    //         <p
-                    //           dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                    //         />
-                    //       </Link>
-                    //     </DropDownItem>
-                    //   );
-                    // }
-                    else {
-                      return (
-                        <DropDownItem
-                          {...getItemProps({ item })}
-                          key={Math.random()}
-                          highlighted={index === highlightedIndex}>
-                          <Link to={`/` + item.slug}>
-                            <h6>😭Sorry, it seems we couldn't find that! 🤷‍♂️</h6>
-                          </Link>
-                        </DropDownItem>
-                      );
-                    }
+      <div className={classes}>
+        <SearchStyles style={{ width: '100%' }}>
+          <Downshift onChange={routeToResult}>
+            {({
+              getInputProps,
+              getItemProps,
+              isOpen,
+              inputValue,
+              selectedItem,
+              highlightedIndex
+            }) => (
+              <div style={{ width: '100%' }}>
+                <SearchOutlinedIcon />
+                <Input
+                  {...getInputProps({
+                    placeholder: '',
+                    className: this.state.loading ? 'loading' : '',
+                    onChange: this.search
                   })}
-                </DropDown>
-              ) : null}
-            </div>
-          )}
-        </Downshift>
-      </SearchStyles>
+                />
+                {isOpen ? (
+                  <DropDown style={{ position: 'fixed', zIndex: '100000' }}>
+                    {this.state.items.map((item, index) => {
+                      if (item.type === 'post') {
+                        return (
+                          <DropDownItem
+                            {...getItemProps({ item })}
+                            key={item.id}
+                            highlighted={index === highlightedIndex}>
+                            <Link to={`/post/` + item.slug}>
+                              <h5
+                                dangerouslySetInnerHTML={{ __html: item.title }}
+                              />
+
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html: item.excerpt
+                                }}
+                              />
+                            </Link>
+                          </DropDownItem>
+                        );
+                      }
+                      // TODO: Debug Page Search Feature Breaking IOS Page styling
+                      // else if (item.type === 'page') {
+                      //   return (
+                      //     <DropDownItem
+                      //       {...getItemProps({ item })}
+                      //       key={item.id}
+                      //       highlighted={index === highlightedIndex}>
+                      //       <Link to={`/` + item.slug}>
+                      //         <h5
+                      //           dangerouslySetInnerHTML={{ __html: item.title }}
+                      //         />
+                      //         <p
+                      //           dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                      //         />
+                      //       </Link>
+                      //     </DropDownItem>
+                      //   );
+                      // }
+                      else {
+                        return (
+                          <DropDownItem
+                            {...getItemProps({ item })}
+                            key={Math.random()}
+                            highlighted={index === highlightedIndex}>
+                            <Link to={`/` + item.slug}>
+                              <h6>
+                                😭Sorry, it seems we couldn't find that! 🤷‍♂️
+                              </h6>
+                            </Link>
+                          </DropDownItem>
+                        );
+                      }
+                    })}
+                  </DropDown>
+                ) : null}
+              </div>
+            )}
+          </Downshift>
+        </SearchStyles>
+      </div>
     );
   }
   getOrCreateIndex = () =>

@@ -13,7 +13,7 @@ import {
   warningBoxShadow
 } from 'assets/jss/material-kit-react.jsx';
 
-const headerStyle = {
+const headerStyle = theme => ({
   appBar: {
     display: 'flex',
     border: '0',
@@ -34,11 +34,11 @@ const headerStyle = {
   },
   absolute: {
     position: 'absolute',
-    zIndex: '10000'
+    zIndex: '1000'
   },
   fixed: {
     position: 'fixed',
-    zIndex: '10000'
+    zIndex: '1000'
   },
   container: {
     ...container,
@@ -60,6 +60,9 @@ const headerStyle = {
     textTransform: 'none',
     color: 'inherit',
     padding: '0px 6px',
+    [theme.breakpoints.up('md')]: {
+      marginRight: '10px'
+    },
     fontFamily: 'Roboto Slab',
     fontWeight: '400',
     '&:hover,&:focus': {
@@ -179,6 +182,7 @@ const headerStyle = {
     width: drawerWidth,
     ...boxShadow,
     position: 'fixed',
+    zIndex: '1200',
     display: 'block',
     top: '0',
     height: '100vh',
@@ -193,6 +197,6 @@ const headerStyle = {
     ...transition
   },
   warningBoxShadow
-};
+});
 
 export default headerStyle;

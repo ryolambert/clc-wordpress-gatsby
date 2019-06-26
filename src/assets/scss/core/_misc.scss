@@ -279,3 +279,9 @@ strong::before {
 .mapboxgl-map {
   border-radius: 5px;
 }
+
+.MuiInput-root {
+  position: relative;
+  width: 100%;
+  flex: 1 0 100%;
+}

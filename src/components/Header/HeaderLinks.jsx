@@ -94,7 +94,7 @@ function HeaderLinks({ ...props }) {
         <div>
           <List className={classes.list}>
             <SearchBar
-              className={classes.listItemSearch}
+              classes={classes.listItemSearch}
               key="searchbar"
               searchIndex={data.siteSearchIndex.index}
             />
