@@ -128,13 +128,14 @@ module.exports = `
             index
           }
           wpgraphql {
-        pages {
-          edges {
-            node {
-              id
-              slug
+            pages {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
           }
-          }
-        }
     }
 `;
