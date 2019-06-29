@@ -14,11 +14,11 @@
 // 5️⃣: eventTemplate
 // 6️⃣: eventsTemplate
 
+const queryAll = require(`./queries/queryAll.js`);
 const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
-const queryAll = require(`./queries/queryAll.js`);
 const createPaginatedPages = require('gatsby-paginate');
 
 exports.createPages = ({ graphql, actions }) => {

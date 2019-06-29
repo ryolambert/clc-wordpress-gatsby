@@ -3,23 +3,13 @@
 
 module.exports = `
     {
-
-      wpgraphql {
-        pages {
-          edges {
-            node {
-              id
-              slug
-          }
-          }
-        }
-      }
-
         allWordpressPage {
             edges {
                 node {
                     id
                     slug
+                    status
+                    template
                 }
             }
         }
@@ -137,5 +127,14 @@ module.exports = `
           siteSearchIndex{
             index
           }
+          wpgraphql {
+        pages {
+          edges {
+            node {
+              id
+              slug
+          }
+          }
+        }
     }
 `;
