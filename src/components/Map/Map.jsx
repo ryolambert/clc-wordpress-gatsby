@@ -16,19 +16,22 @@ const fullscreenControlStyle = {
   position: 'absolute',
   top: 0,
   left: 0,
-  padding: '10px'
+  padding: '10px',
+  zIndex: '150'
 };
 
 const navStyle = {
   position: 'absolute',
   top: 36,
   left: 0,
-  padding: '10px'
+  padding: '10px',
+  zIndex: '150'
 };
 
 const mapStyle = {
   borderRadius: '10px',
-  paddingBottom: '10px'
+  paddingBottom: '10px',
+  zIndex: '150'
 };
 
 export default class Map extends Component {
@@ -110,7 +113,7 @@ export default class Map extends Component {
     const { viewport } = this.state;
     const { position, info } = this.props;
     return (
-      <section style={{ height: '100%', maxHeight: '1000px' }}>
+      <div style={{ height: '100%', minHeight: '20vh', maxHeight: '1000px' }}>
         <MapGL
           {...viewport}
           width="100%"
@@ -131,7 +134,7 @@ export default class Map extends Component {
             <NavigationControl />
           </div>
         </MapGL>
-      </section>
+      </div>
     );
   }
 }

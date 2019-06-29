@@ -42,7 +42,7 @@ class WorkSection extends React.Component {
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
-          <GridItem cs={12} sm={12} md={8}>
+          <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Drop us a line! 📝</h2>
             <h4 className={classes.description}>
               We love getting to know our community! We also extend warm

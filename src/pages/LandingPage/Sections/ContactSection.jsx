@@ -10,10 +10,10 @@ const ContactSection = props => {
   return (
     <div>
       <GridContainer justify="center">
-        <GridItem cs={12} sm={12} md={6}>
+        <GridItem xs={12} sm={12} md={6}>
           <ContactForm />
         </GridItem>
-        <GridItem cs={12} sm={12} md={6}>
+        <GridItem xs={12} sm={12} md={6}>
           <Map
             className="leaflet-container"
             position={address}
@@ -26,7 +26,9 @@ const ContactSection = props => {
 };
 
 ContactSection.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  address: PropTypes.string,
+  pageInfo: PropTypes.object
 };
 
 export default ContactSection;

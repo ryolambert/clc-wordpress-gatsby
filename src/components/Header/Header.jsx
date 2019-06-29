@@ -83,7 +83,7 @@ class Header extends React.Component {
 
     const brandComponent = (
       <Button className={classes.button}>
-        <Link to="/" className={classes.linkTitle} style={{}}>
+        <Link to="/" className={classes.linkTitle}>
           <img
             width={30}
             src={logo}

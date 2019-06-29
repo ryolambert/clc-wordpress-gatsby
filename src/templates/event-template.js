@@ -4,7 +4,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import moment from 'moment';
 
-
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
@@ -125,11 +124,9 @@ class EventTemplate extends React.Component {
               </GridItem>
               <GridItem xs={12}></GridItem>
             </GridContainer>
-            <Map
-              className="leaflet-container"
-              position={address}
-              info={event}
-            />
+            <section style={{ height: '30vh' }}>
+              <Map position={address} info={event} />
+            </section>
           </div>
         </Layout>
       </div>

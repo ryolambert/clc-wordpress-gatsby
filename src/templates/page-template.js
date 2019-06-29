@@ -9,11 +9,6 @@ import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 
-// @material-ui/icons
-
-// React icons
-import { FaPlay } from 'react-icons/fa';
-
 // Component Imports
 import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';

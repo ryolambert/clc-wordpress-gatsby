@@ -60,8 +60,7 @@ export default class Info extends PureComponent {
                 style={{
                   width: 'auto',
                   maxWidth: '100%',
-                  height: 'auto',
-                  maxHeight: '30px'
+                  height: 'auto'
                 }}
                 alt="Screenshot of Project"
                 fluid={

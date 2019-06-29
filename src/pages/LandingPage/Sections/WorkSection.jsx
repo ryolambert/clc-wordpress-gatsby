@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // @material-ui/icons
 
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import CustomInput from 'components/CustomInput/CustomInput.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
 
-import workStyle from "assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx";
+import workStyle from 'assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx';
 
 class WorkSection extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class WorkSection extends React.Component {
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
-          <GridItem cs={12} sm={12} md={8}>
+          <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Work with us</h2>
             <h4 className={classes.description}>
               Divide details about your product or agency work into parts. Write
@@ -63,8 +63,7 @@ class WorkSection extends React.Component {
                     xs={12}
                     sm={12}
                     md={4}
-                    className={classes.textCenter}
-                  >
+                    className={classes.textCenter}>
                     <Button color="primary">Send Message</Button>
                   </GridItem>
                 </GridContainer>

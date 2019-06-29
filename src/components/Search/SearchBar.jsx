@@ -64,7 +64,7 @@ class SearchBar extends React.Component {
           }) => (
             <div>
               <Input
-                style={{ width: '98%', marginTop: '10px' }}
+                style={{ width: '90%', marginTop: '10px' }}
                 {...getInputProps({
                   placeholder: '🔍Search',
                   className: this.state.loading ? 'loading' : '',
@@ -72,7 +72,7 @@ class SearchBar extends React.Component {
                 })}
               />
               {isOpen ? (
-                <DropDown>
+                <DropDown style={{ width: '90%' }}>
                   {this.state.items.map((item, index) => {
                     if (item.type === 'post') {
                       return (
