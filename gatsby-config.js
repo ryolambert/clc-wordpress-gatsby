@@ -2,7 +2,6 @@ require('dotenv').config({
   path: `./.env.development`
 });
 
-
 // let activeEnv =
 //   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
@@ -72,8 +71,7 @@ module.exports = {
           // Only 1 user atm
           '**/wordpress__wp_users',
           '**/events_categories',
-          '**/events_tags',
-
+          '**/events_tags'
         ],
         normalizer: function({ entities }) {
           return entities;
@@ -93,6 +91,9 @@ module.exports = {
             excerpt: node => node.excerpt,
             slug: node => node.slug,
             type: node => node.type,
+            author: (node, getNode) => getNode(node.author___NODE).name,
+            categories: (node, getNode) => getNode(node.categories___NODE),
+            tags: (node, getNode) => getNode(node.tag___NODE)
           },
           // TODO: Debug Page Search Feature
           // wordpress__PAGE: {
@@ -138,6 +139,15 @@ module.exports = {
         showSpinner: false
       }
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    //     head: false,
+    //     anonymize: true,
+    //     respectDNT: true,
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-sitemap`,
@@ -228,11 +238,47 @@ module.exports = {
 //             title: node => node.title,
 //             excerpt: node => node.excerpt,
 //             slug: node => node.slug,
-//             type: node => node.type
-//           }
-//         }
+//             type: node => node.type,
+//             author: (node, getNode) => getNode(node.author___NODE).name,
+//             categories: (node, getNode) => getNode(node.categories___NODE),
+//             tags: (node, getNode) => getNode(node.tag___NODE)
+//           //   tags: (node, getNode) => {
+//           //     if(getNode(node.tag___NODE).name === 'undefined') {
+//           //       return node.tags___NODE
+//           //     } else {
+//           //       return getNode(node.tags___NODE).name
+//           //     }
+//           // }
+
+//             // tags: (node, getNode) => getNode(node.tags___NODE).name
+//             // categories: (node, getNode) => getNode(node.categories___NODE).name
+//           },
+//           // WPGraphQL_Post: {
+//           //   title: node => node.title,
+//           //   excerpt: node => node.excerpt,
+//           //   slug: node => node.slug,
+//           //   // categories: (node, getNodes) => getNodes(node.categories___NODE).edges.node.name
+//           //   featuredImage: (node, getNode) => getNode(node.featuredImage___NODE)
+//           // }
+//         },
+//         // filter: (node, getNode) => node.categories___NODE === 'undefined',
 //       }
 //     },
+
+//     {
+//       resolve: 'gatsby-source-graphql',
+//       options: {
+//         typeName: 'WPGraphQL',
+//         fieldName: 'wpgraphql',
+//         url: `http://localhost:8080/graphql`
+//       }
+//     },
+//     // {
+//     //   resolve: 'gatsby-plugin-local-search',
+//     //   options: {
+
+//     //   }
+//     // },
 //     `gatsby-plugin-sass`,
 //     `gatsby-plugin-react-helmet`,
 //     `gatsby-plugin-resolve-src`,
