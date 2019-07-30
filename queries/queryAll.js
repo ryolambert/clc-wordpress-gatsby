@@ -1,4 +1,4 @@
- //GQL Page Templating Queries for WP Pages, Blog Posts, Sermons, Galleries, and Events
+//GQL Page Templating Queries for WP Pages, Blog Posts, Sermons, Galleries, and Events
 'use strict';
 
 module.exports = `
@@ -126,6 +126,6 @@ module.exports = `
           }
           siteSearchIndex{
             index
-         }
+          }
     }
 `;
