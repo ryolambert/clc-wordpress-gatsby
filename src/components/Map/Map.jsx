@@ -30,7 +30,9 @@ const navStyle = {
 
 const panelStyle = {
   position: 'absolute',
-  maxWidth: '320px',
+  minWidth: '35%',
+  minHeight: '50%',
+  maxHeight: '95%',
   background: '#fff',
   boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
   top: 0,
@@ -110,7 +112,7 @@ export default class Map extends Component {
           latitude={this.state.mapLat}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}>
-          <Info info={info} />
+          <Info infoPanel={info} position={position} />
         </Popup>
       )
     );
@@ -119,6 +121,8 @@ export default class Map extends Component {
   render() {
     const { viewport } = this.state;
     const { position, info } = this.props;
+    const infoPanel = { position, info };
+    console.log(infoPanel);
     return (
       <div style={{ height: '100%', minHeight: '20vh', maxHeight: '1000px' }}>
         <MapGL
@@ -141,7 +145,7 @@ export default class Map extends Component {
             <NavigationControl />
           </div>
           <div style={panelStyle}>
-            <Info info={info} />
+            <Info infoPanel={infoPanel} />
           </div>
         </MapGL>
       </div>
@@ -151,7 +155,7 @@ export default class Map extends Component {
 
 Map.propTypes = {
   position: PropTypes.string.isRequired,
-  info: PropTypes.object.isRequired
+  infoPanel: PropTypes.object.isRequired
 };
 
 export function renderToDom(container) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
-import BigCalendar from 'react-big-calendar';
+import Calendar from 'react-big-calendar';
 import moment from 'moment';
-const localizer = BigCalendar.momentLocalizer(moment);
+const localizer = Calendar.momentLocalizer(moment);
 
 const DisplayCalendar = ({ events }) => {
   events.forEach(function(event) {
@@ -14,7 +14,7 @@ const DisplayCalendar = ({ events }) => {
   });
   return (
     <div className="calendar">
-      <BigCalendar
+      <Calendar
         // eventPropGetter={event => ({
         //   className: [
         //     'cat-' + event.node.category.toLowerCase(),

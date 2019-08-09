@@ -3,12 +3,12 @@ import Img from 'gatsby-image';
 
 export default class Info extends PureComponent {
   render() {
-    const { info } = this.props;
-    const address = info.position;
+    const { infoPanel } = this.props;
+    const address = infoPanel.position;
     const encodedQuery = encodeURIComponent(address);
-    const displayName = `${info.title}, ${info.excerpt}`;
-    const fluidContent = info.featured_media
-      ? info.featured_media.localFile.childImageSharp.fluid
+    const displayName = `${infoPanel.info.title}, ${infoPanel.info.excerpt}`;
+    const fluidContent = infoPanel.info.featured_media
+      ? infoPanel.info.featured_media.localFile.childImageSharp.fluid
       : null;
 
     return (
@@ -24,7 +24,9 @@ export default class Info extends PureComponent {
             <strong
               style={{ fontSize: '1rem', lineHeight: '1rem' }}
               dangerouslySetInnerHTML={{
-                __html: info.acf.event_location ? info.acf.event_location : null
+                __html: infoPanel.info.acf.event_location
+                  ? infoPanel.info.acf.event_location
+                  : null
               }}
             />
           </h6>
@@ -39,16 +41,16 @@ export default class Info extends PureComponent {
           <br />
           <p
             style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: info.acf.event_start }}
+            dangerouslySetInnerHTML={{ __html: infoPanel.info.acf.event_start }}
           />
           <p
             style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: info.acf.event_end }}
+            dangerouslySetInnerHTML={{ __html: infoPanel.info.acf.event_end }}
           />
           <p
             style={{ fontSize: '0.5rem' }}
             dangerouslySetInnerHTML={{
-              __html: info.acf.event_address
+              __html: infoPanel.info.acf.event_address
             }}
           />
           <br />
@@ -61,7 +63,9 @@ export default class Info extends PureComponent {
                   height: 'auto'
                 }}
                 alt="Screenshot of Project"
-                fluid={info.featured_media.localFile.childImageSharp.fluid}
+                fluid={
+                  infoPanel.info.featured_media.localFile.childImageSharp.fluid
+                }
               />
             </div>
           )}
