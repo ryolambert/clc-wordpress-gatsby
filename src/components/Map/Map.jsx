@@ -122,7 +122,6 @@ export default class Map extends Component {
     const { viewport } = this.state;
     const { position, info } = this.props;
     const infoPanel = { position, info };
-    console.log(infoPanel);
     return (
       <div style={{ height: '100%', minHeight: '20vh', maxHeight: '1000px' }}>
         <MapGL
