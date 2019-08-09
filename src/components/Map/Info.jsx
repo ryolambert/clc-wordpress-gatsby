@@ -6,9 +6,9 @@ export default class Info extends PureComponent {
     const { info } = this.props;
     const address = info.position;
     const encodedQuery = encodeURIComponent(address);
-    const displayName = `${info.popupInfo.title}, ${info.popupInfo.excerpt}`;
-    const fluidContent = info.popupInfo.featured_media
-      ? info.popupInfo.featured_media.localFile.childImageSharp.fluid
+    const displayName = `${info.title}, ${info.excerpt}`;
+    const fluidContent = info.featured_media
+      ? info.featured_media.localFile.childImageSharp.fluid
       : null;
 
     return (
@@ -24,9 +24,7 @@ export default class Info extends PureComponent {
             <strong
               style={{ fontSize: '1rem', lineHeight: '1rem' }}
               dangerouslySetInnerHTML={{
-                __html: info.popupInfo.acf.event_location
-                  ? info.popupInfo.acf.event_location
-                  : null
+                __html: info.acf.event_location ? info.acf.event_location : null
               }}
             />
           </h6>
@@ -41,16 +39,16 @@ export default class Info extends PureComponent {
           <br />
           <p
             style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: info.popupInfo.acf.event_start }}
+            dangerouslySetInnerHTML={{ __html: info.acf.event_start }}
           />
           <p
             style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: info.popupInfo.acf.event_end }}
+            dangerouslySetInnerHTML={{ __html: info.acf.event_end }}
           />
           <p
             style={{ fontSize: '0.5rem' }}
             dangerouslySetInnerHTML={{
-              __html: info.popupInfo.acf.event_address
+              __html: info.acf.event_address
             }}
           />
           <br />
@@ -63,9 +61,7 @@ export default class Info extends PureComponent {
                   height: 'auto'
                 }}
                 alt="Screenshot of Project"
-                fluid={
-                  info.popupInfo.featured_media.localFile.childImageSharp.fluid
-                }
+                fluid={info.featured_media.localFile.childImageSharp.fluid}
               />
             </div>
           )}

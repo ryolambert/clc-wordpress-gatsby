@@ -28,9 +28,16 @@ const navStyle = {
   zIndex: '150'
 };
 
-const mapStyle = {
-  borderRadius: '10px',
-  paddingBottom: '10px',
+const panelStyle = {
+  position: 'absolute',
+  maxWidth: '320px',
+  background: '#fff',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+  top: 0,
+  right: 0,
+  padding: '10px',
+  margin: '10px',
+  borderRadius: '4px',
   zIndex: '150'
 };
 
@@ -125,13 +132,16 @@ export default class Map extends Component {
             <Pin size={20} onClick={() => this.setState({ popupInfo: info })} />
           </Marker> */}
           {this._renderMarker(info)}
-          {this._renderPopup()}
+          {/* {this._renderPopup()} */}
 
           <div className="fullscreen" style={fullscreenControlStyle}>
             <FullscreenControl />
           </div>
           <div className="nav" style={navStyle}>
             <NavigationControl />
+          </div>
+          <div style={panelStyle}>
+            <Info info={info} />
           </div>
         </MapGL>
       </div>
