@@ -57,6 +57,7 @@
     "patch-package": "^6.1.2",
     "postinstall-postinstall": "^2.0.0",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.22.0",
     "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -94,7 +95,6 @@
     "moment": "^2.24.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.0",
-    "react-big-calendar": "^0.21.0",
     "react-testing-library": "^8.0.1"
   },
   "bugs": {
