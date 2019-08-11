@@ -30,8 +30,8 @@ const navStyle = {
 
 const panelStyle = {
   position: 'absolute',
-  minWidth: '35%',
-  minHeight: '50%',
+  width: '30%',
+  minHeight: '70%',
   maxHeight: '95%',
   background: '#fff',
   boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
@@ -95,28 +95,28 @@ export default class Map extends Component {
     );
   };
 
-  _renderPopup() {
-    const { popupInfo } = this.state;
-    if (popupInfo === null) {
-      return null;
-    }
-    const { position } = this.props;
-    const info = { position, popupInfo };
+  // _renderPopup() {
+  //   const { popupInfo } = this.state;
+  //   if (popupInfo === null) {
+  //     return null;
+  //   }
+  //   const { position } = this.props;
+  //   const info = { position, popupInfo };
 
-    return (
-      popupInfo && (
-        <Popup
-          tipSize={3}
-          anchor="top"
-          longitude={this.state.mapLng}
-          latitude={this.state.mapLat}
-          closeOnClick={false}
-          onClose={() => this.setState({ popupInfo: null })}>
-          <Info infoPanel={info} position={position} />
-        </Popup>
-      )
-    );
-  }
+  //   return (
+  //     popupInfo && (
+  //       <Popup
+  //         tipSize={3}
+  //         anchor="top"
+  //         longitude={this.state.mapLng}
+  //         latitude={this.state.mapLat}
+  //         closeOnClick={false}
+  //         onClose={() => this.setState({ popupInfo: null })}>
+  //         <Info infoPanel={info} position={position} />
+  //       </Popup>
+  //     )
+  //   );
+  // }
 
   render() {
     const { viewport } = this.state;
@@ -144,7 +144,7 @@ export default class Map extends Component {
             <NavigationControl />
           </div>
           <div style={panelStyle}>
-            <Info infoPanel={infoPanel} />
+            <Info infoPanel={info} position={position} />
           </div>
         </MapGL>
       </div>

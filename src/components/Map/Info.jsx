@@ -3,13 +3,13 @@ import Img from 'gatsby-image';
 
 export default class Info extends PureComponent {
   render() {
-    const { infoPanel } = this.props;
-    const address = infoPanel.position;
-    const encodedQuery = encodeURIComponent(address);
-    const displayName = `${infoPanel.info.title}, ${infoPanel.info.excerpt}`;
-    const fluidContent = infoPanel.info.featured_media
-      ? infoPanel.info.featured_media.localFile.childImageSharp.fluid
+    const { infoPanel, position } = this.props;
+    const encodedQuery = encodeURIComponent(position);
+    const displayName = `${infoPanel.title}, ${infoPanel.excerpt}`;
+    const fluidContent = infoPanel.featured_media
+      ? infoPanel.featured_media.localFile.childImageSharp.fluid
       : null;
+    console.log(infoPanel);
 
     return (
       <div
@@ -24,8 +24,10 @@ export default class Info extends PureComponent {
             <strong
               style={{ fontSize: '1rem', lineHeight: '1rem' }}
               dangerouslySetInnerHTML={{
-                __html: infoPanel.info.acf.event_location
-                  ? infoPanel.info.acf.event_location
+                __html: infoPanel.acf.event_location
+                  ? infoPanel.acf.event_location
+                  : infoPanel.acf.location
+                  ? infoPanel.acf.location
                   : null
               }}
             />
@@ -41,16 +43,26 @@ export default class Info extends PureComponent {
           <br />
           <p
             style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: infoPanel.info.acf.event_start }}
-          />
-          <p
-            style={{ fontSize: '0.5rem' }}
-            dangerouslySetInnerHTML={{ __html: infoPanel.info.acf.event_end }}
+            dangerouslySetInnerHTML={{
+              __html: infoPanel.acf.event_start
+                ? infoPanel.acf.event_start
+                : null
+            }}
           />
           <p
             style={{ fontSize: '0.5rem' }}
             dangerouslySetInnerHTML={{
-              __html: infoPanel.info.acf.event_address
+              __html: infoPanel.acf.event_end ? infoPanel.acf.event_end : null
+            }}
+          />
+          <p
+            style={{ fontSize: '0.5rem' }}
+            dangerouslySetInnerHTML={{
+              __html: infoPanel.acf.event_address
+                ? infoPanel.acf.event_address
+                : infoPanel.acf.address
+                ? infoPanel.acf.address
+                : null
             }}
           />
           <br />
@@ -63,9 +75,7 @@ export default class Info extends PureComponent {
                   height: 'auto'
                 }}
                 alt="Screenshot of Project"
-                fluid={
-                  infoPanel.info.featured_media.localFile.childImageSharp.fluid
-                }
+                fluid={infoPanel.featured_media.localFile.childImageSharp.fluid}
               />
             </div>
           )}
