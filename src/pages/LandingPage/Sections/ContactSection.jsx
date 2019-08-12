@@ -7,8 +7,6 @@ import GridItem from 'components/Grid/GridItem.jsx';
 
 const ContactSection = props => {
   const { classes, pageInfo, address, ...rest } = props;
-  console.log(pageInfo);
-  const location = pageInfo.address;
   return (
     <div>
       <GridContainer justify="center">
