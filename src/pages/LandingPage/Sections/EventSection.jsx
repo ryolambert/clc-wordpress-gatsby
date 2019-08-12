@@ -71,6 +71,7 @@ export default props => (
                 event_start
                 event_end
                 event_location
+                event_location_description
               }
               categories {
                 name
