@@ -23,7 +23,6 @@ function SimplePagination({ color, pageContext, ...props }) {
           color={`${color}`}
           className={classes.paginationLink}>
           <Link
-            // className={classes.paginationLink}
             style={{
               color: '#fff',
               textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'

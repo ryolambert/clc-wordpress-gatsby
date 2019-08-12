@@ -22,6 +22,8 @@ const paginationStyle = {
     display: 'inline'
   },
   paginationLink: {
+    color: '#fff',
+    textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
     ':first-of-type': {
       marginleft: '0'
     },
