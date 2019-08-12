@@ -78,12 +78,12 @@ module.exports = {
         }
       }
     },
-  {
-    resolve: 'gatsby-source-anchor',
-    options: {
-      rss: 'https://anchor.fm/s/26das9ce/podcast/rss',
+    {
+      resolve: 'gatsby-source-anchor',
+      options: {
+        rss: 'https://anchor.fm/s/c3da1c4/podcast/rss'
+      }
     },
-  },
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
@@ -100,7 +100,7 @@ module.exports = {
             author: (node, getNode) => getNode(node.author___NODE).name,
             categories: (node, getNode) => getNode(node.categories___NODE),
             tags: (node, getNode) => getNode(node.tag___NODE)
-          },
+          }
           // TODO: Debug Page Search Feature
           // wordpress__PAGE: {
           //   title: node => node.title,
