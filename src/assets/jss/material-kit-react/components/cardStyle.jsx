@@ -1,5 +1,6 @@
 const cardStyle = {
   card: {
+    top: '0px',
     border: '0',
     marginBottom: '30px',
     marginTop: '30px',
@@ -17,13 +18,17 @@ const cardStyle = {
     fontSize: '.875rem',
     transition: 'all 300ms linear',
     zIndex: '10',
+    '&:hover, &:focus': {
+      top: '-10px',
+      boxShadow: 'rgba(0, 0, 0, 0.2) 0px 12px 16px',
+      transition: 'all 0.2s ease 0s'
+    }
     // position: 'relative',
     // minHeight: '1px',
     // paddingRight: '15px',
     // paddingLeft: '15px',
     // marginRight: '15px',
     // marginLeft: '15px'
-
   },
   cardPlain: {
     background: 'transparent',
