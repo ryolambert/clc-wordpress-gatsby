@@ -78,6 +78,12 @@ module.exports = {
         }
       }
     },
+  {
+    resolve: 'gatsby-source-anchor',
+    options: {
+      rss: 'https://anchor.fm/s/26das9ce/podcast/rss',
+    },
+  },
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
@@ -156,6 +162,8 @@ module.exports = {
   ]
 };
 
+/*////////////////////////////////////////////////////////////////////////////*/
+
 // module.exports = {
 //   siteMetadata: {
 //     title: `Longbeach City Lights Church Website`,
@@ -227,6 +235,12 @@ module.exports = {
 //       }
 //     },
 //     {
+//       resolve: 'gatsby-source-anchor',
+//       options: {
+//         rss: 'https://anchor.fm/s/c3da1c4/podcast/rss'
+//       }
+//     },
+//     {
 //       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
 //       options: {
 //         // Fields to index
@@ -242,17 +256,17 @@ module.exports = {
 //             author: (node, getNode) => getNode(node.author___NODE).name,
 //             categories: (node, getNode) => getNode(node.categories___NODE),
 //             tags: (node, getNode) => getNode(node.tag___NODE)
-//           //   tags: (node, getNode) => {
-//           //     if(getNode(node.tag___NODE).name === 'undefined') {
-//           //       return node.tags___NODE
-//           //     } else {
-//           //       return getNode(node.tags___NODE).name
-//           //     }
-//           // }
+//             //   tags: (node, getNode) => {
+//             //     if(getNode(node.tag___NODE).name === 'undefined') {
+//             //       return node.tags___NODE
+//             //     } else {
+//             //       return getNode(node.tags___NODE).name
+//             //     }
+//             // }
 
 //             // tags: (node, getNode) => getNode(node.tags___NODE).name
 //             // categories: (node, getNode) => getNode(node.categories___NODE).name
-//           },
+//           }
 //           // WPGraphQL_Post: {
 //           //   title: node => node.title,
 //           //   excerpt: node => node.excerpt,
@@ -260,19 +274,19 @@ module.exports = {
 //           //   // categories: (node, getNodes) => getNodes(node.categories___NODE).edges.node.name
 //           //   featuredImage: (node, getNode) => getNode(node.featuredImage___NODE)
 //           // }
-//         },
+//         }
 //         // filter: (node, getNode) => node.categories___NODE === 'undefined',
 //       }
 //     },
 
-//     {
-//       resolve: 'gatsby-source-graphql',
-//       options: {
-//         typeName: 'WPGraphQL',
-//         fieldName: 'wpgraphql',
-//         url: `http://localhost:8080/graphql`
-//       }
-//     },
+//     // {
+//     //   resolve: 'gatsby-source-graphql',
+//     //   options: {
+//     //     typeName: 'WPGraphQL',
+//     //     fieldName: 'wpgraphql',
+//     //     url: `http://localhost:8080/graphql`
+//     //   }
+//     // },
 //     // {
 //     //   resolve: 'gatsby-plugin-local-search',
 //     //   options: {
