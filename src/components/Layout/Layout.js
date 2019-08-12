@@ -14,8 +14,8 @@ import 'assets/scss/material-kit-react.scss?v=1.4.0';
 import 'typeface-roboto';
 import 'typeface-roboto-slab';
 
-const LANDING_PAGE_QUERY = graphql`
-  query landingPageQuery {
+const LAYOUT_PAGE_QUERY = graphql`
+  query layoutPageQuery {
     site {
       id
       siteMetadata {
