@@ -8,42 +8,11 @@ import MapGL, {
   NavigationControl,
   FullscreenControl
 } from 'react-map-gl';
-
-import Info from './Info';
+import InfoPanel from './InfoPanel';
 import Pin from './Pin';
-
-const fullscreenControlStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  padding: '10px',
-  zIndex: '150'
-};
-
-const navStyle = {
-  position: 'absolute',
-  top: 36,
-  left: 0,
-  padding: '10px',
-  zIndex: '150'
-};
-
-const panelStyle = {
-  position: 'absolute',
-  width: '30%',
-  minHeight: '70%',
-  maxHeight: '95%',
-  background: '#fff',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
-  top: 0,
-  right: 0,
-  padding: '10px',
-  margin: '10px',
-  borderRadius: '4px',
-  zIndex: '150'
-};
-
-export default class Map extends Component {
+import withStyles from '@material-ui/core/styles/withStyles';
+import mapStyle from 'assets/jss/material-kit-react/components/mapStyle.jsx';
+class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,6 +36,8 @@ export default class Map extends Component {
     const response = await axios.get(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`
     );
+    console.log(this.props);
+    // console.log(response);
     if (response.data.features.length > 0) {
       this.setState({
         viewport: {
@@ -74,7 +45,7 @@ export default class Map extends Component {
           longitude: response.data.features[0].center[0],
           zoom: 14,
           bearing: 0,
-          pitch: 45
+          pitch: 35
         },
         coords: response.data.features[0].center,
         mapLat: response.data.features[0].center[1],
@@ -90,40 +61,16 @@ export default class Map extends Component {
   _renderMarker = info => {
     return (
       <Marker longitude={this.state.mapLng} latitude={this.state.mapLat}>
-        <Pin size={25} onClick={() => this.setState({ popupInfo: info })} />
+        <Pin size={25} />
       </Marker>
     );
   };
 
-  // _renderPopup() {
-  //   const { popupInfo } = this.state;
-  //   if (popupInfo === null) {
-  //     return null;
-  //   }
-  //   const { position } = this.props;
-  //   const info = { position, popupInfo };
-
-  //   return (
-  //     popupInfo && (
-  //       <Popup
-  //         tipSize={3}
-  //         anchor="top"
-  //         longitude={this.state.mapLng}
-  //         latitude={this.state.mapLat}
-  //         closeOnClick={false}
-  //         onClose={() => this.setState({ popupInfo: null })}>
-  //         <Info infoPanel={info} position={position} />
-  //       </Popup>
-  //     )
-  //   );
-  // }
-
   render() {
     const { viewport } = this.state;
-    const { position, info } = this.props;
-    const infoPanel = { position, info };
+    const { classes, position, info } = this.props;
     return (
-      <div style={{ height: '100%', minHeight: '20vh', maxHeight: '1000px' }}>
+      <div className={classes.mapContainer}>
         <MapGL
           {...viewport}
           width="100%"
@@ -131,20 +78,15 @@ export default class Map extends Component {
           mapStyle="mapbox://styles/citylightschurch/cjx13gc3r2uku1cphf8o9natk"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}>
-          {/* <Marker longitude={position[0]} latitude={position[1]}>
-            <Pin size={20} onClick={() => this.setState({ popupInfo: info })} />
-          </Marker> */}
           {this._renderMarker(info)}
-          {/* {this._renderPopup()} */}
-
-          <div className="fullscreen" style={fullscreenControlStyle}>
+          <div className="fullscreen" className={classes.fullscreenControl}>
             <FullscreenControl />
           </div>
-          <div className="nav" style={navStyle}>
+          <div className="nav" className={classes.navControl}>
             <NavigationControl />
           </div>
-          <div style={panelStyle}>
-            <Info infoPanel={info} position={position} />
+          <div className={classes.infoPanel}>
+            <InfoPanel info={info} position={position} />
           </div>
         </MapGL>
       </div>
@@ -154,8 +96,10 @@ export default class Map extends Component {
 
 Map.propTypes = {
   position: PropTypes.string.isRequired,
-  infoPanel: PropTypes.object.isRequired
+  info: PropTypes.object.isRequired
 };
+
+export default withStyles(mapStyle)(Map);
 
 export function renderToDom(container) {
   render(<Map />, container);
