@@ -16,6 +16,7 @@ import GridItem from 'components/Grid/GridItem.jsx';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import Layout from 'components/Layout/Layout.js';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import { DiscussionEmbed } from 'disqus-react';
 
 class EventTemplate extends React.Component {
   constructor(props) {
@@ -43,6 +44,10 @@ class EventTemplate extends React.Component {
       classes.imgRounded,
       classes.imgFluid
     );
+    const disqusConfig = {
+      shortname: process.env.GATSBY_DISQUS_NAME,
+      config: { identifier: event.id, title: event.title }
+    };
 
     return (
       <div>
@@ -67,7 +72,7 @@ class EventTemplate extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={10} style={{ marginTop: '10px' }}>
                 {fluidContent && (
-                  <div>
+                  <div className="wpg-blocks">
                     <Img
                       alt="Screenshot of Project"
                       fluid={
@@ -79,6 +84,12 @@ class EventTemplate extends React.Component {
                         marginBottom: '20px'
                       }}
                     />
+                    <figcaption
+                      className="wp-caption-text"
+                      dangerouslySetInnerHTML={{
+                        __html: event.featured_media.caption
+                      }}
+                    />
                   </div>
                 )}
                 <div
@@ -87,8 +98,6 @@ class EventTemplate extends React.Component {
                     __html: event.content
                   }}
                 />
-                <p dangerouslySetInnerHTML={{ __html: event.date }} />
-                <p dangerouslySetInnerHTML={{ __html: event.slug }} />
               </GridItem>
             </GridContainer>
             <GridContainer justify="center">
@@ -122,11 +131,14 @@ class EventTemplate extends React.Component {
                   </dd>
                 </dl>
               </GridItem>
-              <GridItem xs={12}></GridItem>
+              <GridItem xs={12} sm={12} md={10}>
+                <section style={{ height: '300px' }}>
+                  <Map position={address} info={event} />
+                </section>
+                <br />
+                <DiscussionEmbed {...disqusConfig} />
+              </GridItem>
             </GridContainer>
-            <section style={{ height: '30vh' }}>
-              <Map position={address} info={event} />
-            </section>
           </div>
         </Layout>
       </div>
@@ -145,6 +157,7 @@ export const query = graphql`
       }
       featured_media {
         id
+        caption
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {
