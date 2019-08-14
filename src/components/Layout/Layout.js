@@ -11,8 +11,6 @@ import { graphql } from 'gatsby';
 // import SEO from '../Seo';
 
 import 'assets/scss/material-kit-react.scss?v=1.4.0';
-import 'typeface-roboto';
-import 'typeface-roboto-slab';
 
 const LAYOUT_PAGE_QUERY = graphql`
   query layoutPageQuery {

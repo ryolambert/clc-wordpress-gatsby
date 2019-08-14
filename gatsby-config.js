@@ -19,7 +19,6 @@ module.exports = {
     siteUrl: `https://citylightschurch.netlify.com`
   },
   plugins: [
-    `gatsby-plugin-top-layout`,
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
@@ -27,6 +26,20 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: `Roboto`
+          },
+          {
+            family: `Roboto Slab`,
+            variants: [`300`, `400`, `500`, `700`]
+          }
+        ]
       }
     },
     // If you want to use styled components you should add the plugin here.

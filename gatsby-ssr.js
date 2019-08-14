@@ -5,8 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-import 'typeface-roboto';
-import 'typeface-roboto-slab';
 import React from "react";
 import Transition from "./src/components/Transitions/Transition.jsx";
 
