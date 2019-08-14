@@ -44,7 +44,7 @@ class GalleryIndexPage extends React.Component {
       classes.imgRounded,
       classes.imgFluid
     );
-    
+
     return (
       <Layout>
         <ParallaxLazy small filter fluid={fluid} post={post}>
@@ -52,10 +52,10 @@ class GalleryIndexPage extends React.Component {
             <GridContainer justify="center" className={classes.parallaxWrapper}>
               <GridItem xs={10} sm={10} md={6}>
                 <h1 className={classes.parallaxTitle}>
-                  <strong>Gallery</strong>
+                  <strong dangerouslySetInnerHTML={{ __html: post.title }} />
                 </h1>
                 <h5 className={classes.parallaxSubtitle}>
-                  <strong>{post.date}</strong>
+                  <strong dangerouslySetInnerHTML={{ __html: post.date }} />
                 </h5>
               </GridItem>
             </GridContainer>

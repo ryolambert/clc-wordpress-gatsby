@@ -34,24 +34,27 @@ class PageTemplate extends React.Component {
     return (
       <div>
         <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.parallaxContainer}>
-            <GridContainer justify="center" className={classes.parallaxWrapper}>
-              <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.parallaxTitle}>
-                  <strong>{post.title}</strong>
-                </h1>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+          <ParallaxLazy small filter fluid={fluid} post={post}>
+            <div className={classes.parallaxContainer}>
+              <GridContainer
+                justify="center"
+                className={classes.parallaxWrapper}>
+                <GridItem xs={10} sm={10} md={6}>
+                  <h1 className={classes.parallaxTitle}>
+                    <strong dangerouslySetInnerHTML={{ __html: post.title }} />
+                  </h1>
+                </GridItem>
+              </GridContainer>
+            </div>
+          </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div>
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
                     {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
-                    <div style={{ marginTop: '2vh'}}
+                    <div
+                      style={{ marginTop: '2vh' }}
                       dangerouslySetInnerHTML={{
                         __html: page.content
                       }}

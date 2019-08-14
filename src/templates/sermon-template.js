@@ -61,10 +61,10 @@ class SermonTemplate extends React.Component {
                 className={classes.parallaxWrapper}>
                 <GridItem xs={10} sm={10} md={6}>
                   <h1 className={classes.parallaxTitle}>
-                    <strong>{post.title}</strong>
+                    <strong dangerouslySetInnerHTML={{ __html: post.title }} />
                   </h1>
                   <h5 className={classes.parallaxSubtitle}>
-                    <strong>{post.date}</strong>
+                    <strong dangerouslySetInnerHTML={{ __html: post.date }} />
                   </h5>
                 </GridItem>
               </GridContainer>
