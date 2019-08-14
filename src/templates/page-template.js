@@ -52,7 +52,6 @@ class PageTemplate extends React.Component {
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
-                    {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
                     <div
                       style={{ marginTop: '2vh' }}
                       dangerouslySetInnerHTML={{
