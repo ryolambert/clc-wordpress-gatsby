@@ -20,9 +20,6 @@ const mapStyle = theme => ({
     zIndex: '150'
   },
   infoPanel: {
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-    webkitOverflowScrolling: 'touch',
     position: 'absolute',
     width: '35%',
     minHeight: '40%',

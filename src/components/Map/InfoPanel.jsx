@@ -12,10 +12,7 @@ class InfoPanel extends PureComponent {
   render() {
     const { classes, info, position } = this.props;
     const encodedQuery = encodeURIComponent(position);
-    const fluidContent = info.featured_media
-      ? info.featured_media.localFile.childImageSharp.fluid
-      : null;
-    console.log(info);
+
     return (
       <div className={classes.infoPanelContainer}>
         <h6 style={{ margin: '0px' }}>
@@ -40,20 +37,20 @@ class InfoPanel extends PureComponent {
               : null
           }}
         />
-        <p
-          style={{ fontSize: '0.5rem' }}
+        {/* <p
+          style={{ fontSize: '0.75rem' }}
           dangerouslySetInnerHTML={{
             __html: info.acf.event_start ? info.acf.event_start : null
           }}
         />
         <p
-          style={{ fontSize: '0.5rem' }}
+          style={{ fontSize: '0.75rem' }}
           dangerouslySetInnerHTML={{
             __html: info.acf.event_end ? info.acf.event_end : null
           }}
-        />
+        /> */}
         <p
-          style={{ fontSize: '0.5rem' }}
+          style={{ fontSize: '0.75rem', lineHeight: '0.75rem' }}
           dangerouslySetInnerHTML={{
             __html: info.acf.event_address
               ? info.acf.event_address
@@ -71,28 +68,13 @@ class InfoPanel extends PureComponent {
             className={classes.directionsLink}
             color="warning">
             <a
-              style={{ fontSize: '0.5rem', color: 'white' }}
+              style={{ fontSize: '0.75rem', color: 'white' }}
               target="_new"
               href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}>
               👉 Directions
             </a>
           </Button>
         </div>
-        {fluidContent && (
-          <div>
-            <Img
-              style={{
-                width: 'auto',
-                maxWidth: '100%',
-                maxHeight: '5vh',
-                overflow: 'hidden',
-                borderRadius: '5px'
-              }}
-              alt="Screenshot of Project"
-              fluid={info.featured_media.localFile.childImageSharp.fluid}
-            />
-          </div>
-        )}
       </div>
     );
   }
