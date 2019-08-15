@@ -10,7 +10,10 @@ const style = theme => ({
     minHeight: '1px',
     paddingRight: '15px',
     paddingLeft: '15px',
-    flexBasis: 'auto'
+    flexBasis: 'auto',
+    [theme.breakpoints.down('md')]: {
+      padding: '0px'
+    }
   }
 });
 
