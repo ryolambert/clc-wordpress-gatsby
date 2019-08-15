@@ -11,10 +11,10 @@ const ContactSection = props => {
   return (
     <div>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={6}>
+        <GridItem xs={11} sm={11} md={6}>
           <ContactForm />
         </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
+        <GridItem xs={11} sm={11} md={6}>
           <Map position={address} info={pageInfo} />
         </GridItem>
       </GridContainer>

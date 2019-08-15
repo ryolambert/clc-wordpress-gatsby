@@ -18,7 +18,7 @@ class WorkSection extends React.Component {
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={8}>
+          <GridItem xs={11} sm={11} md={8}>
             <h2 className={classes.title}>Work with us</h2>
             <h4 className={classes.description}>
               Divide details about your product or agency work into parts. Write
@@ -28,7 +28,7 @@ class WorkSection extends React.Component {
             </h4>
             <form>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={11} sm={11} md={6}>
                   <CustomInput
                     labelText="Your Name"
                     id="name"
@@ -37,7 +37,7 @@ class WorkSection extends React.Component {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={11} sm={11} md={6}>
                   <CustomInput
                     labelText="Your Email"
                     id="email"
@@ -60,8 +60,8 @@ class WorkSection extends React.Component {
                 />
                 <GridContainer justify="center">
                   <GridItem
-                    xs={12}
-                    sm={12}
+                    xs={11}
+                    sm={11}
                     md={4}
                     className={classes.textCenter}>
                     <Button color="primary">Send Message</Button>

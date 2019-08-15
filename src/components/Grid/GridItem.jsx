@@ -12,7 +12,7 @@ const style = theme => ({
     paddingLeft: '15px',
     flexBasis: 'auto',
     [theme.breakpoints.down('md')]: {
-      padding: '0px'
+      padding: '8px'
     }
   }
 });
@@ -20,7 +20,7 @@ const style = theme => ({
 function GridItem({ ...props }) {
   const { classes, children, className, ...rest } = props;
   return (
-    <Grid item {...rest} className={classes.grid + ' ' + className}>
+    <Grid item {...rest} className={classes.grid + ' ' + className} spacing={2}>
       {children}
     </Grid>
   );
