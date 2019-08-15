@@ -46,11 +46,6 @@ class SermonTemplate extends React.Component {
       classes.imgFluid
     );
 
-    console.table(placeHolder);
-    // Testing if featured_media fluid works
-    // console.log(fluid);
-    // console.table(classes.container);
-
     return (
       <div>
         <Layout>
@@ -74,7 +69,7 @@ class SermonTemplate extends React.Component {
             <div>
               <div className={classes.container}>
                 <GridContainer justify="center">
-                  <GridItem xs={12} sm={12} md={10}>
+                  <GridItem xs={11} sm={11} md={10}>
                     {fluidContent && (
                       <div>
                         <Img
@@ -114,7 +109,7 @@ export const query = graphql`
       featured_media {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1200) {
+            fluid(maxWidth: 1100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -127,7 +122,7 @@ export const query = graphql`
     placeHolderImg: imageSharp(
       original: { src: { regex: "/sermons-background/" } }
     ) {
-      fluid(maxWidth: 1200) {
+      fluid(maxWidth: 1100) {
         ...GatsbyImageSharpFluid
       }
     }

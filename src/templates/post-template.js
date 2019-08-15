@@ -67,7 +67,7 @@ class PostTemplate extends React.Component {
           </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={10}>
+              <GridItem xs={11} sm={11} md={10}>
                 {fluidContent && (
                   <div className="wpg-blocks">
                     <Img
@@ -113,7 +113,7 @@ export const query = graphql`
         caption
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1200) {
+            fluid(maxWidth: 1100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -124,7 +124,7 @@ export const query = graphql`
       date(formatString: "MMMM DD, YYYY")
     }
     placeHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
-      fluid(maxWidth: 1200) {
+      fluid(maxWidth: 1100) {
         src
         ...GatsbyImageSharpFluid
       }
