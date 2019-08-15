@@ -39,6 +39,7 @@ class EventTemplate extends React.Component {
     const fluidContent = event.featured_media
       ? event.featured_media.localFile.childImageSharp.fluid
       : null;
+
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
@@ -52,7 +53,7 @@ class EventTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid}>
+          <ParallaxLazy small color fluid={fluid}>
             <div className={classes.parallaxContainer}>
               <GridContainer
                 justify="center"

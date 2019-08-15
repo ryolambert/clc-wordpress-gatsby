@@ -21,7 +21,46 @@ const parallaxStyle = theme => ({
   },
   filter: {
     '&:before': {
-      background: 'rgba(0, 0, 0, 0.3)'
+      '&:before': {
+        background: 'rgba(0,0,0,0.3)'
+      },
+      '&:after,&:before': {
+        position: 'absolute',
+        zIndex: '1',
+        width: '100%',
+        height: '100%',
+        display: 'block',
+        left: '0',
+        top: '0',
+        content: "''"
+      }
+    },
+    '&:after,&:before': {
+      position: 'absolute',
+      zIndex: '1',
+      width: '100%',
+      height: '100%',
+      display: 'block',
+      left: '0',
+      top: '0',
+      content: "''"
+    }
+  },
+  color: {
+    '&:before': {
+      background: 'rgba(41,159,255,0.4)',
+      background:
+        '-moz-linear-gradient(25deg, rgba(103,215,249,0.5) 0%, rgba(54,54,247,0.5) 53%, rgba(83,27,250,0.2) 100%)',
+      background:
+        '-webkit-gradient(left bottom, right top, color-stop(0%, rgba(41,159,255,0.4)), color-stop(50%, rgba(115,15,255,0.3)), color-stop(50%, rgba(115,15,255,0.3)), color-stop(100%, rgba(195,39,230,0.23)))',
+      background:
+        '-webkit-linear-gradient(25deg, rgba(103,215,249,0.5) 0%, rgba(54,54,247,0.5) 53%, rgba(83,27,250,0.2) 100%)',
+      background:
+        '-o-linear-gradient(25deg, rgba(103,215,249,0.5) 0%, rgba(54,54,247,0.5) 53%, rgba(83,27,250,0.2) 100%)',
+      background:
+        '-ms-linear-gradient(25deg, rgba(103,215,249,0.5) 0%, rgba(54,54,247,0.5) 53%, rgba(83,27,250,0.2) 100%)',
+      background:
+        'linear-gradient(190deg, rgba(149,0,251,0.3) 0%, rgba(25,25,187,0.3) 47%, rgba(0,212,255,0.3) 86%)'
     },
     '&:after,&:before': {
       position: 'absolute',

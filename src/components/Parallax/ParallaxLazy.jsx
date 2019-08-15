@@ -43,19 +43,21 @@ class Parallax extends React.Component {
   }
   render() {
     const {
-      classes,
-      filter,
-      className,
       children,
-      style,
-      post,
+      classes,
+      className,
+      color,
+      filter,
       fluid,
-      small
+      post,
+      small,
+      style
     } = this.props;
 
     const parallaxClasses = classNames({
-      [classes.parallax]: true,
+      [classes.color]: color,
       [classes.filter]: filter,
+      [classes.parallax]: true,
       [classes.small]: small,
       [className]: className !== undefined
     });
@@ -88,6 +90,7 @@ class Parallax extends React.Component {
 Parallax.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  colorFilter: PropTypes.bool,
   filter: PropTypes.bool,
   children: PropTypes.node,
   style: PropTypes.string,

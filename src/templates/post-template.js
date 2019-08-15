@@ -49,7 +49,7 @@ class PostTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid}>
+          <ParallaxLazy small color fluid={fluid}>
             <div className={classes.parallaxContainer}>
               <GridContainer
                 justify="center"
