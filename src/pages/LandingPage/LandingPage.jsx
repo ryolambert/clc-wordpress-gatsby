@@ -126,7 +126,7 @@ function LandingPage(props) {
       <ParallaxLazy filter fluid={fluid}>
         <div className={classes.parallaxContainer}>
           <GridContainer className={classes.parallaxWrapper}>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={11} sm={11} md={6}>
               <h1 className={classes.parallaxTitle}>
                 <strong
                   dangerouslySetInnerHTML={{ __html: title ? title : null }}

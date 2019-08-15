@@ -23,7 +23,11 @@ const landingPageStyle = theme => ({
   },
   parallaxWrapper: {
     height: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: '15px',
+      paddingRight: '15px'
+    }
   },
   // gridItem: {
   //   top: '0%',
