@@ -1,11 +1,15 @@
 {
   "editor.fontFamily": "Operator Mono, monospace",
   "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#fff",
-    "titleBar.activeBackground": "#ff8801"
+    // "titleBar.activeForeground": "#161616",
+    // "titleBar.activeBackground": "#ffee00"
     // "titleBar.inactiveBackground": "#fff",
     // "titleBar.inactiveForeground": "#026ddf"
   },
+  // "eslint.options": {
+  //   "configFile": "C:/Users/ryola/Documents/git/clc-wordpress-gatsby/.eslintrc.json"
+  // },
+  "eslint.packageManager": "yarn",
   "cSpell.enabledLanguageIds": [
     "asciidoc",
     "c",
@@ -19,6 +23,7 @@
     "javascript",
     "javascriptreact",
     "json",
+    "jsonc",
     "latex",
     "less",
     "markdown",
@@ -34,5 +39,8 @@
     "typescriptreact",
     "yml"
   ],
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "editor.fontLigatures": true,
+  "editor.formatOnType": true,
+  "eslint.enable": true
 }
