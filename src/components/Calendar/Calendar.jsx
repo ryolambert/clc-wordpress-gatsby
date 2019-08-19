@@ -1,9 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
-import Calendar from 'react-big-calendar';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-const localizer = Calendar.momentLocalizer(moment);
+const localizer = momentLocalizer(moment);
 
 const DisplayCalendar = ({ events }) => {
   events.forEach(function(event) {
