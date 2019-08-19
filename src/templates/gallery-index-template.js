@@ -34,9 +34,9 @@ class GalleryIndexPage extends React.Component {
       ? galleryIndexParallax
       : fallBackParallax;
 
-    const post = {
+    const banner = {
       title: 'Gallery',
-      date: "See what we're all about 👍"
+      subTitle: "See what we're all about 👍"
     };
 
     const imageClasses = classNames(
@@ -47,7 +47,7 @@ class GalleryIndexPage extends React.Component {
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
+        <ParallaxLazy small filter fluid={fluid} banner={banner}>
           <div className={classes.parallaxContainer}>
             <GridContainer justify="center" className={classes.parallaxWrapper}>
               <GridItem xs={10} sm={10} md={6}>

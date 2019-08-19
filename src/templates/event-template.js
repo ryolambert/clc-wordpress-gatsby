@@ -29,8 +29,8 @@ class EventTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     const event = this.props.data.currentEvent;
-    const address = this.props.data.currentEvent.acf.event_address;
     const start = moment(event.acf.event_start).format('MM/DD/YYYY h:mm a');
+    const address = this.props.data.currentEvent.acf.event_address;
     const end = moment(event.acf.event_end).format('MM/DD/YYYY h:mm a');
     const eventHolder = this.props.data.eventHolderImg.fluid;
     const fluid = event.featured_media
@@ -49,26 +49,16 @@ class EventTemplate extends React.Component {
       shortname: process.env.GATSBY_DISQUS_NAME,
       config: { identifier: event.id, title: event.title }
     };
+    const banner = {
+      title: event.title,
+      subTitle: '',
+      styledSubTitle: `${start}`
+    };
 
     return (
       <div>
         <Layout>
-          <ParallaxLazy small color fluid={fluid}>
-            <div className={classes.parallaxContainer}>
-              <GridContainer
-                justify="center"
-                className={classes.parallaxWrapper}>
-                <GridItem xs={10} sm={10} md={6}>
-                  <h1 className={classes.parallaxTitle}>
-                    <strong dangerouslySetInnerHTML={{ __html: event.title }} />
-                  </h1>
-                  <h5 className={classes.parallaxSubtitle}>
-                    <strong>@ {start}</strong>
-                  </h5>
-                </GridItem>
-              </GridContainer>
-            </div>
-          </ParallaxLazy>
+          <ParallaxLazy small color banner={banner} fluid={fluid} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
               <GridItem xs={11} sm={11} md={10} style={{ marginTop: '10px' }}>

@@ -49,7 +49,7 @@ class Parallax extends React.Component {
       color,
       filter,
       fluid,
-      post,
+      banner,
       small,
       style
     } = this.props;
@@ -61,7 +61,7 @@ class Parallax extends React.Component {
       [classes.small]: small,
       [className]: className !== undefined
     });
-    // console.info(post);
+    // console.info(banner);
 
     // const titleClasses = classNames({
     //   [classes.container]: true,
@@ -74,14 +74,38 @@ class Parallax extends React.Component {
         <Img
           className={parallaxClasses}
           fluid={fluid}
-          post={post}
           backgroundColor="#ff6600"
           style={{
             filter: 'brightness(50%)',
             ...style
           }}
         />
-        {children}
+        <div className={classes.parallaxContainer}>
+          <GridContainer className={classes.parallaxWrapper}>
+            <GridItem xs={11} sm={11} md={6}>
+              <h1 className={classes.parallaxTitle}>
+                <strong
+                  dangerouslySetInnerHTML={{
+                    __html: banner.title ? banner.title : null
+                  }}
+                />
+              </h1>
+              <h4
+                dangerouslySetInnerHTML={{
+                  __html: banner.subTitle ? banner.subTitle : null
+                }}
+              />
+              <h5 className={classes.parallaxSubtitle}>
+                <strong
+                  dangerouslySetInnerHTML={{
+                    __html: banner.styledSubTitle ? banner.styledSubTitle : null
+                  }}
+                />
+              </h5>
+              {children}
+            </GridItem>
+          </GridContainer>
+        </div>
       </div>
     );
   }
@@ -95,7 +119,7 @@ Parallax.propTypes = {
   children: PropTypes.node,
   style: PropTypes.string,
   fluid: PropTypes.object,
-  post: PropTypes.object
+  banner: PropTypes.object
 };
 
 export default withStyles(parallaxLazyStyle)(Parallax);

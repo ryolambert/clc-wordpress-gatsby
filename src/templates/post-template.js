@@ -45,26 +45,15 @@ class PostTemplate extends React.Component {
       shortname: process.env.GATSBY_DISQUS_NAME,
       config: { identifier: post.id, title: post.title }
     };
+    const banner = {
+      title: post.title,
+      subTitle: post.date
+    };
 
     return (
       <div>
         <Layout>
-          <ParallaxLazy small color fluid={fluid}>
-            <div className={classes.parallaxContainer}>
-              <GridContainer
-                justify="center"
-                className={classes.parallaxWrapper}>
-                <GridItem xs={10} sm={10} md={6}>
-                  <h1 className={classes.parallaxTitle}>
-                    <strong dangerouslySetInnerHTML={{ __html: post.title }} />
-                  </h1>
-                  <h5 className={classes.parallaxSubtitle}>
-                    <strong dangerouslySetInnerHTML={{ __html: post.date }} />
-                  </h5>
-                </GridItem>
-              </GridContainer>
-            </div>
-          </ParallaxLazy>
+          <ParallaxLazy small color banner={banner} fluid={fluid} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
               <GridItem xs={11} sm={11} md={10}>

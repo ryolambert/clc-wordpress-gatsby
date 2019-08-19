@@ -26,27 +26,15 @@ class PageTemplate extends React.Component {
     const fluid = page.featured_media
       ? page.featured_media.localFile.childImageSharp.fluid
       : placeHolder;
-    const post = {
+    const banner = {
       title: pageTitle,
-      date: ''
+      subTitle: ''
     };
 
     return (
       <div>
         <Layout>
-          <ParallaxLazy small filter fluid={fluid} post={post}>
-            <div className={classes.parallaxContainer}>
-              <GridContainer
-                justify="center"
-                className={classes.parallaxWrapper}>
-                <GridItem xs={10} sm={10} md={6}>
-                  <h1 className={classes.parallaxTitle}>
-                    <strong dangerouslySetInnerHTML={{ __html: post.title }} />
-                  </h1>
-                </GridItem>
-              </GridContainer>
-            </div>
-          </ParallaxLazy>
+          <ParallaxLazy small filter fluid={fluid} banner={banner} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div>
               <div className={classes.container}>

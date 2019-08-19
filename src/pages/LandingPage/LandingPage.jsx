@@ -113,52 +113,27 @@ function LandingPage(props) {
   const fallBackParallaxImg = data.fallBackImg.fluid;
   const fluid = landingParallax ? landingParallax : fallBackParallaxImg;
   const title = data.landing.edges[0].node.acf.hero_title;
-  const subtitle = data.landing.edges[0].node.acf.hero_content;
+  const subTitle = data.landing.edges[0].node.acf.hero_content;
   const team = data.team.edges[0].node;
 
-  const post = {
+  const banner = {
     title: title,
-    date: subtitle
+    subTitle: subTitle
   };
 
   return (
     <Layout>
-      <ParallaxLazy filter fluid={fluid}>
-        <div className={classes.parallaxContainer}>
-          <GridContainer className={classes.parallaxWrapper}>
-            <GridItem xs={11} sm={11} md={6}>
-              <h1 className={classes.parallaxTitle}>
-                <strong
-                  dangerouslySetInnerHTML={{ __html: title ? title : null }}
-                />
-                {/* <strong>
-                  Building Community Through Faith.
-                  <br /> Find Yours Here.
-                </strong> */}
-              </h1>
-
-              {/* <h4>
-                Every landing page needs a small description after the big bold
-                title, that's why we added this text here. Add here all the
-                information that can make you or your product create the first
-                impression.
-              </h4> */}
-              <h4
-                dangerouslySetInnerHTML={{ __html: subtitle ? subtitle : null }}
-              />
-              <br />
-              <Button
-                color="warning"
-                size="lg"
-                href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FaPlay />
-                Watch video
-              </Button>
-            </GridItem>
-          </GridContainer>
-        </div>
+      <ParallaxLazy filter banner={banner} fluid={fluid}>
+        <br />
+        <Button
+          color="warning"
+          size="lg"
+          href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
+          target="_blank"
+          rel="noopener noreferrer">
+          <FaPlay />
+          Watch video
+        </Button>
       </ParallaxLazy>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>

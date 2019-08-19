@@ -8,10 +8,6 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
-// @material-ui/icons
-
-// React icons
-import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
 import Layout from 'components/Layout/Layout.js';
@@ -27,26 +23,19 @@ import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
-import { Grid } from '@material-ui/core';
-
-const NavLink = props => {
-  if (!props.test) {
-    return (
-      <Link
-        style={{
-          color: '#fff',
-          textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
-        }}
-        to={props.url}>
-        {props.text}
-      </Link>
-    );
-  } else {
-    return <span>{props.text}</span>;
-  }
-};
 
 class PostIndexPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      search: '',
+      pickedFilter: 'all',
+      allPosts: [...this.props.posts]
+    };
+  }
+
+
+
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
     const { group, index, first, last, pageCount } = pageContext;
@@ -59,9 +48,9 @@ class PostIndexPage extends React.Component {
     const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
     const fluid = blogParallax ? blogParallax : fallBackParallax;
 
-    const post = {
+    const banner = {
       title: 'Blog',
-      date: 'Bless Up 🙏 Read or Listen to our latest! 🙌'
+      subTitle: 'Bless Up 🙏 Read or Listen to our latest! 🙌'
     };
 
     const imageClasses = classNames(
@@ -73,20 +62,7 @@ class PostIndexPage extends React.Component {
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.parallaxContainer}>
-            <GridContainer justify="center" className={classes.parallaxWrapper}>
-              <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.parallaxTitle}>
-                  <strong dangerouslySetInnerHTML={{ __html: post.title }} />
-                </h1>
-                <h5 className={classes.parallaxSubtitle}>
-                <strong dangerouslySetInnerHTML={{ __html: post.date }} />
-                </h5>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={10} md={8}>
@@ -194,6 +170,9 @@ export const query = graphql`
           template
           format
           title
+          categories {
+            name
+          }
           tags {
             name
           }
@@ -232,21 +211,6 @@ export const query = graphql`
         }
       }
     }
-    # }
-    # blogParallaxImg: allWordpressWpMedia(sort: {fields: date, order: DESC}, limit: 1) {
-    #   edges {
-    #     node {
-    #       localFile {
-    #         childImageSharp {
-    #           fluid(maxWidth: 1200) {
-    #             src
-    #             ...GatsbyImageSharpFluid
-    #           }
-    #         }
-    #       }
-    #     }
-    #   }
-    # }
     fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
         src

@@ -29,9 +29,9 @@ class EventIndexPage extends React.Component {
     const fallBackParallax = this.props.data.fallBackEventParallaxImg.fluid;
     const fluid = eventIndexParallax ? eventIndexParallax : fallBackParallax;
 
-    const post = {
+    const banner = {
       title: 'Events',
-      date: "See us at our next gathering!"
+      subTitle: 'See us at our next gathering!'
     };
 
     const imageClasses = classNames(
@@ -42,20 +42,7 @@ class EventIndexPage extends React.Component {
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
-          <div className={classes.parallaxContainer}>
-            <GridContainer justify="center" className={classes.parallaxWrapper}>
-              <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.parallaxTitle}>
-                  <strong>{post.title}</strong>
-                </h1>
-                <h5 className={classes.parallaxSubtitle}>
-                  <strong>{post.date}</strong>
-                </h5>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter banner={banner} fluid={fluid} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>

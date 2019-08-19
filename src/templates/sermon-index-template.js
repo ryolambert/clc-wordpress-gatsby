@@ -44,7 +44,7 @@ class SermonIndexPage extends React.Component {
 
     const post = {
       title: 'Sermons',
-      date: 'Take a listen 👂 to our latest Sermons⛪'
+      subTitle: 'Take a listen 👂 to our latest Sermons⛪'
     };
 
     const imageClasses = classNames(
