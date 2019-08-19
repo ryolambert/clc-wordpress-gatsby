@@ -90,7 +90,6 @@
     "eslint": "^6.2.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-config-wesbos": "^0.0.19",
     "eslint-plugin-cypress": "^2.6.1",
     "eslint-plugin-graphql": "3.0.3",
     "eslint-plugin-html": "6.0.0",
@@ -108,5 +107,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "peerDependencies": {
+    "eslint-config-wesbos": "^0.0.19"
   }
 }
