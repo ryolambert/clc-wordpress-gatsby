@@ -42,7 +42,7 @@ class SermonIndexPage extends React.Component {
     //   ? this.props.group.node.featured_media.localFile.childImageSharp.fluid
     //   : null;
 
-    const post = {
+    const banner = {
       title: 'Sermons',
       subTitle: 'Take a listen 👂 to our latest Sermons⛪'
     };
@@ -55,15 +55,15 @@ class SermonIndexPage extends React.Component {
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} post={post}>
+        <ParallaxLazy small filter fluid={fluid} banner={banner}>
           <div className={classes.parallaxContainer}>
             <GridContainer justify="center" className={classes.parallaxWrapper}>
               <GridItem xs={10} sm={10} md={6}>
                 <h1 className={classes.parallaxTitle}>
-                <strong dangerouslySetInnerHTML={{ __html: post.title }} />
+                <strong dangerouslySetInnerHTML={{ __html: banner.title }} />
                 </h1>
                 <h5 className={classes.parallaxSubtitle}>
-                <strong dangerouslySetInnerHTML={{ __html: post.date }} />
+                <strong dangerouslySetInnerHTML={{ __html: banner.subTitle }} />
                 </h5>
               </GridItem>
             </GridContainer>
@@ -84,7 +84,7 @@ class SermonIndexPage extends React.Component {
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
-                  to={'/sermon/' + node.slug}
+                  to={`/sermon/${  node.slug}`}
                   className={classes.cardTitle}
                   key={node.id}>
                   <Card
