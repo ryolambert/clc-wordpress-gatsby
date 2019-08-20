@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import Link from 'gatsby-link';
-import { graphql } from 'gatsby';
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-
-
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
-import Card from 'components/Card/Card.jsx';
-import CardBody from 'components/Card/CardBody.jsx';
+import Layout from 'components/Layout/Layout';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
+import Card from 'components/Card/Card';
+import CardBody from 'components/Card/CardBody';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardHeader from 'components/Card/CardHeader.jsx';
-import CardFooter from 'components/Card/CardFooter.jsx';
-import Button from 'components/CustomButtons/Button.jsx';
-import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import SimplePagination from 'components/Pagination/SimplePagination.jsx';
+import CardHeader from 'components/Card/CardHeader';
+import CardFooter from 'components/Card/CardFooter';
+import Button from 'components/CustomButtons/Button';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy';
+import SimplePagination from 'components/Pagination/SimplePagination';
 
-import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
+import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle';
 
 class PostIndexPage extends React.Component {
   constructor(props) {
@@ -78,7 +75,7 @@ class PostIndexPage extends React.Component {
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
-                  to={'/post/' + node.slug}
+                  to={`/post/${  node.slug}`}
                   className={classes.cardTitle}
                   key={node.id}>
                   <Card

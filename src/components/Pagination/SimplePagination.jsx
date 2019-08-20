@@ -1,3 +1,4 @@
+/* eslint-disable no-negated-condition */
 //
 import React from 'react';
 // nodejs library to set properties for components
@@ -7,9 +8,9 @@ import classNames from 'classnames';
 
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-import Button from 'components/CustomButtons/Button.jsx';
-import Link from 'gatsby-link';
-import simplePaginationStyle from 'assets/jss/material-kit-react/components/simplePaginationStyle.jsx';
+import Button from 'components/CustomButtons/Button';
+import Link from 'gatsby';
+import simplePaginationStyle from 'assets/jss/material-kit-react/components/simplePaginationStyle';
 
 function SimplePagination({ color, pageContext, ...props }) {
   const { classes, route } = props;
@@ -51,12 +52,12 @@ function SimplePagination({ color, pageContext, ...props }) {
   return (
     <div className={classes.pagination}>
       <NavLink test={first} url={`/${route}/`} text="<<" />
-      <NavLink test={first} url={`/${route}/` + previousUrl} text="<" />
+      <NavLink test={first} url={`/${route}/${  previousUrl}`} text="<" />
       <h4 className={classes.paginationItem}>
         Page {index} of {pageCount}
       </h4>
-      <NavLink test={last} url={`/${route}/` + nextUrl} text=">" />
-      <NavLink test={last} url={`/${route}/` + pageCount} text=">>" />
+      <NavLink test={last} url={`/${route}/${  nextUrl}`} text=">" />
+      <NavLink test={last} url={`/${route}/${  pageCount}`} text=">>" />
     </div>
   );
 }

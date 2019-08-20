@@ -6,9 +6,6 @@
     // "titleBar.inactiveBackground": "#fff",
     // "titleBar.inactiveForeground": "#026ddf"
   },
-  // "eslint.options": {
-  //   "configFile": "C:/Users/ryola/Documents/git/clc-wordpress-gatsby/.eslintrc.json"
-  // },
   "eslint.packageManager": "yarn",
   "cSpell.enabledLanguageIds": [
     "asciidoc",
@@ -40,7 +37,5 @@
     "yml"
   ],
   "cSpell.enabled": true,
-  "editor.fontLigatures": true,
-  "editor.formatOnType": true,
   "eslint.enable": true
 }

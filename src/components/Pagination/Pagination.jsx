@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 
-import paginationStyle from 'assets/jss/material-kit-react/components/paginationStyle.jsx';
+import paginationStyle from 'assets/jss/material-kit-react/components/paginationStyle';
 
 function Pagination({ ...props }) {
   const { classes, pages, color } = props;
@@ -28,7 +28,7 @@ function Pagination({ ...props }) {
               </Button>
             ) : (
               <Button
-                onClick={() => console.log("you've clicked " + prop.text)}
+                onClick={() => console.log(`you've clicked ${  prop.text}`)}
                 className={paginationLink}>
                 {prop.text}
               </Button>

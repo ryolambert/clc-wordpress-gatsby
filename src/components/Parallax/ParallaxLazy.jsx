@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -7,26 +8,26 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
-import parallaxLazyStyle from 'assets/jss/material-kit-react/components/parallaxLazyStyle.jsx';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+import parallaxLazyStyle from 'assets/jss/material-kit-react/components/parallaxLazyStyle';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
 import Img from 'gatsby-image';
 
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
-    var windowScrollTop =
+    let windowScrollTop =
       typeof window !== 'undefined' && window.pageYOffset / 3;
     this.state = {
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${  windowScrollTop  }px,0)`
     };
     this.resetTransform = this.resetTransform.bind(this);
   }
   componentDidMount() {
-    var windowScrollTop = window.pageYOffset / 3;
+    let windowScrollTop = window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${  windowScrollTop  }px,0)`
     });
     window.addEventListener('scroll', this.resetTransform);
   }
@@ -35,10 +36,10 @@ class Parallax extends React.Component {
       window.removeEventListener('scroll', this.resetTransform);
   }
   resetTransform() {
-    var windowScrollTop =
+    let windowScrollTop =
       typeof window !== 'undefined' && window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${  windowScrollTop  }px,0)`
     });
   }
   render() {

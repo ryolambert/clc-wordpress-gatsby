@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Button from 'components/CustomButtons/Button.jsx';
 import withStyles from '@material-ui/core/styles/withStyles';
 // styling
-import infoPanelStyle from 'assets/jss/material-kit-react/components/infoPanelStyle';
+import infoPanelStyle from 'assets/jss/material-kit-react/components/infoPanelStyle.jsx';
 
 class InfoPanel extends PureComponent {
   render() {
@@ -22,8 +22,8 @@ class InfoPanel extends PureComponent {
               __html: info.acf.event_location
                 ? info.acf.event_location
                 : info.acf.landing_location
-                ? info.acf.landing_location
-                : null
+                  ? info.acf.landing_location
+                  : null,
             }}
           />
         </h6>
@@ -33,8 +33,8 @@ class InfoPanel extends PureComponent {
             __html: info.acf.event_location_description
               ? info.acf.event_location_description
               : info.acf.landing_location_description
-              ? info.acf.landing_location_description
-              : null
+                ? info.acf.landing_location_description
+                : null,
           }}
         />
         {/* <p
@@ -55,8 +55,8 @@ class InfoPanel extends PureComponent {
             __html: info.acf.event_address
               ? info.acf.event_address
               : info.acf.landing_address
-              ? info.acf.landing_address
-              : null
+                ? info.acf.landing_address
+                : null,
           }}
         />
         <br />
@@ -66,11 +66,13 @@ class InfoPanel extends PureComponent {
             round
             style={{ textAlign: 'center' }}
             className={classes.directionsLink}
-            color="warning">
+            color="warning"
+          >
             <a
               style={{ fontSize: '0.75rem', color: 'white' }}
               target="_new"
-              href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}>
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}
+            >
               👉 Directions
             </a>
           </Button>

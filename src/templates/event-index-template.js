@@ -11,12 +11,12 @@ import PropTypes from 'prop-types';
 // @material-ui/icons
 // Component Imports
 import Layout from 'components/Layout/Layout.js';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
-import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import SimplePagination from 'components/Pagination/SimplePagination.jsx';
-import Calendar from 'components/Calendar/Calendar.jsx';
-import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
+import GridContainer from 'components/Grid/GridContainer  ';
+import GridItem from 'components/Grid/GridItem  ';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy';
+import SimplePagination from 'components/Pagination/SimplePagination';
+import Calendar from 'components/Calendar/Calendar';
+import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle';
 
 class EventIndexPage extends React.Component {
   render() {
