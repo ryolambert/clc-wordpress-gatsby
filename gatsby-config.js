@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: `./.env.development`
+  path: `./.env.development`,
 });
 
 // let activeEnv =
@@ -16,7 +16,7 @@ module.exports = {
     title: `Longbeach City Lights Church Website`,
     description: `🙏Community through faith! Techstack: Wordpress Headless CMS data source, Decoupled Gatsby frontend, Custom Material UI theme with fully editable graphQL queries connected to the WP REST API, and utilizes Netlify build triggers after every WP update.`,
     author: `@ryolambert`,
-    siteUrl: `https://citylightschurch.netlify.com`
+    siteUrl: `https://citylightschurch.netlify.com`,
   },
   plugins: [
     `gatsby-plugin-top-layout`,
@@ -27,7 +27,7 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
-      }
+      },
     },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
@@ -45,7 +45,7 @@ module.exports = {
         perPage: 100,
         searchAndReplaceContentUrls: {
           sourceURL: 'http://longbeach.citylightschurch.org',
-          replacementUrl: 'https://citylightschurch.netlify.com'
+          replacementUrl: 'https://citylightschurch.netlify.com',
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 15,
@@ -56,9 +56,8 @@ module.exports = {
           '**/media',
           '**/tags',
           '**/taxonomies',
-          '**/users',
           '**/events',
-          '**/menus'
+          '**/menus',
         ],
         excludedRoutes: [
           '**/wordpress__tribe/events',
@@ -71,18 +70,18 @@ module.exports = {
           // Only 1 user atm
           '**/wordpress__wp_users',
           '**/events_categories',
-          '**/events_tags'
+          '**/events_tags',
         ],
-        normalizer: function({ entities }) {
+        normalizer({ entities }) {
           return entities;
-        }
-      }
+        },
+      },
     },
     {
       resolve: 'gatsby-source-anchor',
       options: {
-        rss: 'https://anchor.fm/s/c3da1c4/podcast/rss'
-      }
+        rss: 'https://anchor.fm/s/c3da1c4/podcast/rss',
+      },
     },
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
@@ -99,8 +98,8 @@ module.exports = {
             type: node => node.type,
             author: (node, getNode) => getNode(node.author___NODE).name,
             categories: (node, getNode) => getNode(node.categories___NODE),
-            tags: (node, getNode) => getNode(node.tag___NODE)
-          }
+            tags: (node, getNode) => getNode(node.tag___NODE),
+          },
           // TODO: Debug Page Search Feature
           // wordpress__PAGE: {
           //   title: node => node.title,
@@ -108,8 +107,8 @@ module.exports = {
           //   slug: node => node.slug,
           //   type: node => node.type,
           // },
-        }
-      }
+        },
+      },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
@@ -118,8 +117,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/img`
-      }
+        path: `${__dirname}/src/assets/img`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -133,8 +132,8 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `minimal-ui`,
-        icon: 'src/assets/img/favicon.png' // This path is relative to the root of the site.
-      }
+        icon: 'src/assets/img/favicon.png', // This path is relative to the root of the site.
+      },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
@@ -142,8 +141,8 @@ module.exports = {
         // Setting a color is optional.
         color: 'white',
         // Disable the loading spinner.
-        showSpinner: false
-      }
+        showSpinner: false,
+      },
     },
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
@@ -158,11 +157,11 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-netlify-cache`
-  ]
+    `gatsby-plugin-netlify-cache`,
+  ],
 };
 
-/*////////////////////////////////////////////////////////////////////////////*/
+/* //////////////////////////////////////////////////////////////////////////// */
 
 // module.exports = {
 //   siteMetadata: {

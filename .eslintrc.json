@@ -1,6 +1,7 @@
 {
   "extends": [
     "airbnb",
+    "kentcdodds",
     "prettier",
     "prettier/react",
     "plugin:security/recommended",
@@ -8,7 +9,7 @@
   ],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2018,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "impliedStrict": true,
@@ -106,14 +107,13 @@
       {
         "aspects": ["invalidHref"]
       }
-    ],
-    "jsx-ally/accessible-emoji": "warn"
+    ]
   },
   "plugins": [
     "html",
     "prettier",
     "security",
-    "jsx-ally",
+    "jsx-a11y",
     "import",
     "graphql",
     "react"
