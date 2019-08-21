@@ -20,7 +20,7 @@
     "dev:functions": "dotenv -e ./netlify/.env netlify-lambda serve netlify/functions",
     "start port": "gatsby serve --port 5020",
     "setup": "yarn && yarn validate",
-    "netlify": "rm -rf node_modules && npm run build",
+    "netlify": "npm run build",
     "prod:netlify": "npm-run-all --parallel functions:build lint test netlify:cypress",
     "functions:build": "netlify-lambda build netlify/functions",
     "netlify:cypress": "npm-run-all --parallel install:cypress build && yarn test:e2e",
