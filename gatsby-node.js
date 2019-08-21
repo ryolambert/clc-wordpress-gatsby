@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -43,8 +44,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/${edge.node.slug}/`,
             component: slash(pageTemplate),
             context: {
-              id: edge.node.id
-            }
+              id: edge.node.id,
+            },
           });
         });
 
@@ -56,7 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage: createPage,
           pageTemplate: 'src/templates/post-index-template.js',
           pageLength: 12,
-          pathPrefix: 'posts'
+          pathPrefix: 'posts',
         });
 
         posts.forEach(edge => {
@@ -64,8 +65,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/post/${edge.node.slug}/`,
             component: slash(postTemplate),
             context: {
-              id: edge.node.id
-            }
+              id: edge.node.id,
+            },
           });
         });
 
@@ -77,7 +78,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage: createPage,
           pageTemplate: 'src/templates/sermon-index-template.js',
           pageLength: 12,
-          pathPrefix: 'sermons'
+          pathPrefix: 'sermons',
         });
 
         sermons.forEach(edge => {
@@ -85,8 +86,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/sermon/${edge.node.slug}/`,
             component: slash(sermonTemplate),
             context: {
-              id: edge.node.id
-            }
+              id: edge.node.id,
+            },
           });
         });
 
@@ -98,7 +99,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage: createPage,
           pageTemplate: 'src/templates/gallery-index-template.js',
           pageLength: 24,
-          pathPrefix: 'galleries'
+          pathPrefix: 'galleries',
         });
 
         //Events detail
@@ -109,7 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
           createPage: createPage,
           pageTemplate: 'src/templates/event-index-template.js',
           pageLength: 1,
-          pathPrefix: 'calendar'
+          pathPrefix: 'calendar',
         });
 
         events.forEach(edge => {
@@ -117,12 +118,11 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/event/${edge.node.slug}/`,
             component: slash(eventTemplate),
             context: {
-              id: edge.node.id
-            }
+              id: edge.node.id,
+            },
           });
         });
-
-      })
+      }),
     );
   });
 };

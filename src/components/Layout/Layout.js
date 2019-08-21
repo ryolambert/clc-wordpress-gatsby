@@ -4,12 +4,13 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import Header from '../Header/Header.jsx';
 import HeaderLinks from '../Header/HeaderLinks.jsx';
 import Footer from '../Footer/Footer.jsx';
-import { graphql } from 'gatsby';
 // import SEO from '../Seo';
 
+// eslint-disable-next-line import/extensions
 import 'assets/scss/material-kit-react.scss?v=1.4.0';
 
 const LAYOUT_PAGE_QUERY = graphql`
@@ -41,7 +42,7 @@ export default class Layout extends React.Component {
           fixed
           changeColorOnScroll={{
             height: 400,
-            color: 'white'
+            color: 'white',
           }}
           {...rest}
         />

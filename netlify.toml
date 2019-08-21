@@ -1,6 +1,10 @@
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
 [build]
   publish = "public/"
-  command = "npm run build"
+  command = "npm run netlify"
 [build.environment]
   YARN_VERSION = "1.9.4"
   YARN_FLAGS = "--no-ignore-optional"

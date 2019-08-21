@@ -1,3 +1,4 @@
+/* eslint-disable strict */
 //GQL Page Templating Queries for WP Pages, Blog Posts, Sermons, Galleries, and Events
 'use strict';
 
