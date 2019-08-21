@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import { graphql } from 'gatsby';
-import Link from 'gatsby-link';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -10,18 +10,16 @@ import PropTypes from 'prop-types';
 
 // @material-ui/icons
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
-import GridContainer from 'components/Grid/GridContainer  ';
-import GridItem from 'components/Grid/GridItem  ';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy';
-import SimplePagination from 'components/Pagination/SimplePagination';
 import Calendar from 'components/Calendar/Calendar';
+import Layout from 'components/Layout/Layout';
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
 class EventIndexPage extends React.Component {
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
-    // const { group, index, first, last, pageCount } = pageContext;
     const events = this.props.data.eventsIndex.edges;
 
     const eventIndexParallax = this.props.data.eventIndexParallaxImg.edges[0]
@@ -31,13 +29,13 @@ class EventIndexPage extends React.Component {
 
     const banner = {
       title: 'Events',
-      subTitle: 'See us at our next gathering!'
+      subTitle: 'See us at our next gathering!',
     };
 
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid
+      classes.imgFluid,
     );
 
     return (

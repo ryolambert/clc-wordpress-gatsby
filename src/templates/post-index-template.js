@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
@@ -6,39 +8,35 @@ import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-// Component Imports
-import Layout from 'components/Layout/Layout';
-import GridContainer from 'components/Grid/GridContainer';
-import GridItem from 'components/Grid/GridItem';
-import Card from 'components/Card/Card';
-import CardBody from 'components/Card/CardBody';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardHeader from 'components/Card/CardHeader';
-import CardFooter from 'components/Card/CardFooter';
-import Button from 'components/CustomButtons/Button';
-import ParallaxLazy from 'components/Parallax/ParallaxLazy';
-import SimplePagination from 'components/Pagination/SimplePagination';
 
-import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle';
+// Component Imports
+import Layout from 'components/Layout/Layout.js';
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import Card from 'components/Card/Card.jsx';
+import CardBody from 'components/Card/CardBody.jsx';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from 'components/Card/CardHeader.jsx';
+import CardFooter from 'components/Card/CardFooter.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import SimplePagination from 'components/Pagination/SimplePagination.jsx';
+
+import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class PostIndexPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state= {
-      search: '',
-      pickedFilter: 'all',
-      allPosts: [...this.props.posts]
-    };
-  }
-
-
+  // constructor(props) {
+  //   super(props);
+  //   this.state= {
+  //     search: '',
+  //     pickedFilter: 'all',
+  //     allPosts: [...this.props.posts]
+  //   };
+  // }
 
   render() {
     const { data, pageContext, classes, ...rest } = this.props;
-    const { group, index, first, last, pageCount } = pageContext;
-
-    const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
-    const nextUrl = (index + 1).toString();
+    const { group, index } = pageContext;
 
     const blogParallax = this.props.data.blogParallaxImg.edges[0].node
       .featured_media.localFile.childImageSharp.fluid;
@@ -47,14 +45,14 @@ class PostIndexPage extends React.Component {
 
     const banner = {
       title: 'Blog',
-      subTitle: 'Bless Up 🙏 Read or Listen to our latest! 🙌'
+      subTitle: 'Bless Up 🙏 Read or Listen to our latest! 🙌',
     };
 
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
       classes.imgFluid,
-      classes.cover
+      classes.cover,
     );
 
     return (
@@ -75,13 +73,15 @@ class PostIndexPage extends React.Component {
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
-                  to={`/post/${  node.slug}`}
+                  to={`/post/${node.slug}`}
                   className={classes.cardTitle}
-                  key={node.id}>
+                  key={node.id}
+                >
                   <Card
                     key={node.id}
                     className={classes.card}
-                    style={{ marginBottom: 50, display: 'flex' }}>
+                    style={{ marginBottom: 50, display: 'flex' }}
+                  >
                     {node.featured_media && (
                       <Img
                         className={classes.imgCardTop}
@@ -89,7 +89,7 @@ class PostIndexPage extends React.Component {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"
@@ -105,7 +105,7 @@ class PostIndexPage extends React.Component {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"
