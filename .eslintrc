@@ -1,4 +1,5 @@
 {
+  // "root": true,
   "extends": ["ryo", "ryo/react", "ryo/jsx-a11y", "ryo/jest"],
   "rules": {
     "babel/camelcase": "off",
