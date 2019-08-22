@@ -12,7 +12,7 @@ import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from 'components/CustomButtons/Button';
-import Link from 'gatsby';
+import Link from 'gatsby-link';
 import simplePaginationStyle from 'assets/jss/material-kit-react/components/simplePaginationStyle';
 
 function SimplePagination({ color, pageContext, ...props }) {

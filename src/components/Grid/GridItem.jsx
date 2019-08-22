@@ -20,7 +20,7 @@ const style = theme => ({
 function GridItem({ ...props }) {
   const { classes, children, className, ...rest } = props;
   return (
-    <Grid item {...rest} className={classes.grid + ' ' + className} spacing={2}>
+    <Grid item {...rest} className={classes.grid + ' ' + className}>
       {children}
     </Grid>
   );
