@@ -1,10 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -117,7 +112,17 @@
     "react/jsx-pascal-case": "off",
     "react/prop-types": "off",
     "react/no-unused-prop-types": "warn",
-    "import/no-extraneous-dependencies": "warn"
+    "import/no-extraneous-dependencies": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
-  "plugins": ["html", "prettier", "security", "jsx-a11y", "import", "react"]
+  "plugins": [
+    "html",
+    "prettier",
+    "security",
+    "jsx-a11y",
+    "import",
+    "react",
+    "react-hooks"
+  ]
 }

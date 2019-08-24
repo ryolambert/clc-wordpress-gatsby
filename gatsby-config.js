@@ -61,23 +61,23 @@ module.exports = {
           sourceURL: 'http://longbeach.citylightschurch.org',
           replacementUrl: 'https://citylightschurch.netlify.com',
         },
-      // options: {
-      //   // Longbeach City Lights Church WP Demo from Matt
-      //   // baseUrl: 'longbeach.citylightschurch.org',
-      //   baseUrl: 'localhost:8080',
-      //   protocol: 'http',
-      //   hostingWPCOM: false,
-      //   // We will be using some advanced custom fields
-      //   useACF: true,
-      //   acfOptionPageIds: [],
-      //   verboseOutput: false,
-      //   perPage: 100,
-      //   searchAndReplaceContentUrls: {
-      //     // sourceURL: 'http://longbeach.citylightschurch.org',
-      //     sourceUrl: 'http://localhost:8080/',
-      //     // replacementUrl: 'https://citylightschurch.netlify.com'
-      //     // replacementUrl: 'http://localhost:8000/'
-      //   },
+        // options: {
+        //   // Longbeach City Lights Church WP Demo from Matt
+        //   // baseUrl: 'longbeach.citylightschurch.org',
+        //   baseUrl: 'localhost:8080',
+        //   protocol: 'http',
+        //   hostingWPCOM: false,
+        //   // We will be using some advanced custom fields
+        //   useACF: true,
+        //   acfOptionPageIds: [],
+        //   verboseOutput: false,
+        //   perPage: 100,
+        //   searchAndReplaceContentUrls: {
+        //     // sourceURL: 'http://longbeach.citylightschurch.org',
+        //     sourceUrl: 'http://localhost:8080/',
+        //     // replacementUrl: 'https://citylightschurch.netlify.com'
+        //     // replacementUrl: 'http://localhost:8000/'
+        //   },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 15,
         includedRoutes: [
@@ -118,7 +118,15 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: [`title`, `excerpt`, `slug`, `type`],
+        fields: [
+          `title`,
+          `excerpt`,
+          `slug`,
+          `type`,
+          `author`,
+          `categories`,
+          `tags`,
+        ],
         // How to resolve each field's value for a supported node type
         resolvers: {
           // For any node of type wordPressPost,
@@ -127,9 +135,8 @@ module.exports = {
             excerpt: node => node.excerpt,
             slug: node => node.slug,
             type: node => node.type,
-            author: (node, getNode) => getNode(node.author___NODE).name,
-            categories: (node, getNode) => getNode(node.categories___NODE),
-            tags: (node, getNode) => getNode(node.tag___NODE),
+            categories: node => node.category__NODE,
+            tags: node => node.tag__NODE,
           },
           // TODO: Debug Page Search Feature
           // wordpress__PAGE: {
@@ -184,6 +191,7 @@ module.exports = {
     //     respectDNT: true,
     //   },
     // },
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-sitemap`,

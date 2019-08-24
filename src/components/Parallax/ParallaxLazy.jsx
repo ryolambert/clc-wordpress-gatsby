@@ -1,26 +1,27 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/no-did-mount-set-state */
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
-import parallaxLazyStyle from "assets/jss/material-kit-react/components/parallaxLazyStyle";
-import GridContainer from "components/Grid/GridContainer";
-import GridItem from "components/Grid/GridItem";
+import parallaxLazyStyle from 'assets/jss/material-kit-react/components/parallaxLazyStyle.jsx';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
-import Img from "gatsby-image";
+import Img from 'gatsby-image';
 
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
     const windowScrollTop =
-      typeof window !== "undefined" && window.pageYOffset / 3;
+      typeof window !== 'undefined' && window.pageYOffset / 3;
     this.state = {
-      transform: `translate3d(0,${windowScrollTop}px,0)`
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     };
     this.resetTransform = this.resetTransform.bind(this);
   }
@@ -28,21 +29,21 @@ class Parallax extends React.Component {
   componentDidMount() {
     const windowScrollTop = window.pageYOffset / 3;
     this.setState({
-      transform: `translate3d(0,${windowScrollTop}px,0)`
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     });
-    window.addEventListener("scroll", this.resetTransform);
+    window.addEventListener('scroll', this.resetTransform);
   }
 
   componentWillUnmount() {
-    typeof window !== "undefined" &&
-      window.removeEventListener("scroll", this.resetTransform);
+    typeof window !== 'undefined' &&
+      window.removeEventListener('scroll', this.resetTransform);
   }
 
   resetTransform() {
     const windowScrollTop =
-      typeof window !== "undefined" && window.pageYOffset / 3;
+      typeof window !== 'undefined' && window.pageYOffset / 3;
     this.setState({
-      transform: `translate3d(0,${windowScrollTop}px,0)`
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     });
   }
 
@@ -53,7 +54,7 @@ class Parallax extends React.Component {
       [classes.parallax]: true,
       [classes.filter]: filter,
       [classes.small]: small,
-      [className]: className !== undefined
+      [className]: className !== undefined,
     });
     // console.info(banner);
 
@@ -70,8 +71,8 @@ class Parallax extends React.Component {
           fluid={fluid}
           backgroundColor="#ff6600"
           style={{
-            filter: "brightness(50%)",
-            ...style
+            filter: 'brightness(50%)',
+            ...style,
           }}
         />
         <div className={classes.parallaxContainer}>
@@ -80,19 +81,21 @@ class Parallax extends React.Component {
               <h1 className={classes.parallaxTitle}>
                 <strong
                   dangerouslySetInnerHTML={{
-                    __html: banner.title ? banner.title : null
+                    __html: banner.title ? banner.title : null,
                   }}
                 />
               </h1>
               <h4
                 dangerouslySetInnerHTML={{
-                  __html: banner.subTitle ? banner.subTitle : null
+                  __html: banner.subTitle ? banner.subTitle : null,
                 }}
               />
               <h5 className={classes.parallaxSubtitle}>
                 <strong
                   dangerouslySetInnerHTML={{
-                    __html: banner.styledSubTitle ? banner.styledSubTitle : null
+                    __html: banner.styledSubTitle
+                      ? banner.styledSubTitle
+                      : null,
                   }}
                 />
               </h5>
@@ -112,7 +115,7 @@ Parallax.propTypes = {
   children: PropTypes.node,
   style: PropTypes.string,
   fluid: PropTypes.object,
-  banner: PropTypes.object
+  banner: PropTypes.object,
 };
 
 export default withStyles(parallaxLazyStyle)(Parallax);

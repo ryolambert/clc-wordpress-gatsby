@@ -1,62 +1,66 @@
-import React from "react";
+import React from 'react';
 // plugin that creates slider
-import nouislider from "nouislider";
+import nouislider from 'nouislider';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Radio from "@material-ui/core/Radio";
-import Switch from "@material-ui/core/Switch";
+import withStyles from '@material-ui/core/styles/withStyles';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Radio from '@material-ui/core/Radio';
+import Switch from '@material-ui/core/Switch';
 // @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
-import People from "@material-ui/icons/People";
-import Check from "@material-ui/icons/Check";
-import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
+import Favorite from '@material-ui/icons/Favorite';
+import People from '@material-ui/icons/People';
+import Check from '@material-ui/icons/Check';
+import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 // React icons
 import { FaUsers } from 'react-icons/fa';
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.jsx";
-import Paginations from "components/Pagination/Pagination.jsx";
-import Badge from "components/Badge/Badge.jsx";
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
+import CustomInput from 'components/CustomInput/CustomInput.jsx';
+import CustomLinearProgress from 'components/CustomLinearProgress/CustomLinearProgress.jsx';
+import Paginations from 'components/Pagination/Pagination.jsx';
+import Badge from 'components/Badge/Badge.jsx';
 
-import basicsStyle from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.jsx";
+import basicsStyle from 'assets/jss/material-kit-react/views/componentsSections/basicsStyle.jsx';
 
 class SectionBasics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       checked: [24, 22],
-      selectedEnabled: "b",
+      selectedEnabled: 'b',
       checkedA: true,
-      checkedB: false
+      checkedB: false,
     };
     this.handleChangeEnabled = this.handleChangeEnabled.bind(this);
   }
+
   componentDidMount() {
     nouislider.create(this.refs.slider1, {
       start: [40],
       connect: [true, false],
       step: 1,
-      range: { min: 0, max: 100 }
+      range: { min: 0, max: 100 },
     });
     nouislider.create(this.refs.slider2, {
       start: [20, 60],
       connect: [false, true, false],
       step: 1,
-      range: { min: 0, max: 100 }
+      range: { min: 0, max: 100 },
     });
   }
+
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
+
   handleChangeEnabled(event) {
     this.setState({ selectedEnabled: event.target.value });
   }
+
   handleToggle(value) {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
@@ -69,9 +73,10 @@ class SectionBasics extends React.Component {
     }
 
     this.setState({
-      checked: newChecked
+      checked: newChecked,
     });
   }
+
   render() {
     const { classes } = this.props;
     return (
@@ -148,10 +153,10 @@ class SectionBasics extends React.Component {
                 <CustomInput
                   id="regular"
                   inputProps={{
-                    placeholder: "Regular"
+                    placeholder: 'Regular',
                   }}
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -160,7 +165,7 @@ class SectionBasics extends React.Component {
                   labelText="With floating label"
                   id="float"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -170,7 +175,7 @@ class SectionBasics extends React.Component {
                   id="success"
                   success
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -180,7 +185,7 @@ class SectionBasics extends React.Component {
                   id="error"
                   error
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -189,14 +194,14 @@ class SectionBasics extends React.Component {
                   labelText="With material Icons"
                   id="material"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
                         <People />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </GridItem>
@@ -205,14 +210,14 @@ class SectionBasics extends React.Component {
                   labelText="With Font Awesome Icons"
                   id="font-awesome"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <FaUsers/>
+                        <FaUsers />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </GridItem>
@@ -226,11 +231,7 @@ class SectionBasics extends React.Component {
                   <h3>Checkboxes</h3>
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     control={
@@ -247,20 +248,14 @@ class SectionBasics extends React.Component {
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     control={
                       <Checkbox
                         tabIndex={-1}
                         onClick={() => this.handleToggle(22)}
-                        checked={
-                          this.state.checked.indexOf(22) !== -1 ? true : false
-                        }
+                        checked={this.state.checked.indexOf(22) !== -1}
                         checkedIcon={<Check className={classes.checkedIcon} />}
                         icon={<Check className={classes.uncheckedIcon} />}
                         classes={{ checked: classes.checked }}
@@ -271,11 +266,7 @@ class SectionBasics extends React.Component {
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     disabled
@@ -289,26 +280,20 @@ class SectionBasics extends React.Component {
                     }
                     classes={{
                       label: classes.label,
-                      disabled: classes.disabledCheckboxAndRadio
+                      disabled: classes.disabledCheckboxAndRadio,
                     }}
                     label="Disabled Unchecked"
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     disabled
                     control={
                       <Checkbox
                         tabIndex={-1}
-                        checked={
-                          this.state.checked.indexOf(24) !== -1 ? true : false
-                        }
+                        checked={this.state.checked.indexOf(24) !== -1}
                         checkedIcon={<Check className={classes.checkedIcon} />}
                         icon={<Check className={classes.uncheckedIcon} />}
                         classes={{ checked: classes.checked }}
@@ -316,7 +301,7 @@ class SectionBasics extends React.Component {
                     }
                     classes={{
                       label: classes.label,
-                      disabled: classes.disabledCheckboxAndRadio
+                      disabled: classes.disabledCheckboxAndRadio,
                     }}
                     label="Disabled Checked"
                   />
@@ -327,16 +312,12 @@ class SectionBasics extends React.Component {
                   <h3>Radio Buttons</h3>
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     control={
                       <Radio
-                        checked={this.state.selectedEnabled === "a"}
+                        checked={this.state.selectedEnabled === 'a'}
                         onChange={this.handleChangeEnabled}
                         value="a"
                         name="radio button enabled"
@@ -350,27 +331,23 @@ class SectionBasics extends React.Component {
                           <FiberManualRecord className={classes.radioChecked} />
                         }
                         classes={{
-                          checked: classes.radio
+                          checked: classes.radio,
                         }}
                       />
                     }
                     classes={{
-                      label: classes.label
+                      label: classes.label,
                     }}
                     label="First Radio"
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     control={
                       <Radio
-                        checked={this.state.selectedEnabled === "b"}
+                        checked={this.state.selectedEnabled === 'b'}
                         onChange={this.handleChangeEnabled}
                         value="b"
                         name="radio button enabled"
@@ -384,22 +361,18 @@ class SectionBasics extends React.Component {
                           <FiberManualRecord className={classes.radioChecked} />
                         }
                         classes={{
-                          checked: classes.radio
+                          checked: classes.radio,
                         }}
                       />
                     }
                     classes={{
-                      label: classes.label
+                      label: classes.label,
                     }}
                     label="Second Radio"
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     disabled
@@ -419,28 +392,24 @@ class SectionBasics extends React.Component {
                         }
                         classes={{
                           checked: classes.radio,
-                          disabled: classes.disabledCheckboxAndRadio
+                          disabled: classes.disabledCheckboxAndRadio,
                         }}
                       />
                     }
                     classes={{
-                      label: classes.label
+                      label: classes.label,
                     }}
                     label="Disabled Unchecked Radio"
                   />
                 </div>
                 <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+                  className={`${classes.checkboxAndRadio} ${classes.checkboxAndRadioHorizontal}`}
                 >
                   <FormControlLabel
                     disabled
                     control={
                       <Radio
-                        checked={true}
+                        checked
                         value="b"
                         name="radio button disabled"
                         aria-label="B"
@@ -454,7 +423,7 @@ class SectionBasics extends React.Component {
                         }
                         classes={{
                           checked: classes.radio,
-                          disabled: classes.disabledCheckboxAndRadio
+                          disabled: classes.disabledCheckboxAndRadio,
                         }}
                       />
                     }
@@ -472,19 +441,19 @@ class SectionBasics extends React.Component {
                     control={
                       <Switch
                         checked={this.state.checkedA}
-                        onChange={this.handleChange("checkedA")}
+                        onChange={this.handleChange('checkedA')}
                         value="checkedA"
                         classes={{
                           switchBase: classes.switchBase,
                           checked: classes.switchChecked,
                           icon: classes.switchIcon,
                           iconChecked: classes.switchIconChecked,
-                          bar: classes.switchBar
+                          bar: classes.switchBar,
                         }}
                       />
                     }
                     classes={{
-                      label: classes.label
+                      label: classes.label,
                     }}
                     label="Toggle is on"
                   />
@@ -494,19 +463,19 @@ class SectionBasics extends React.Component {
                     control={
                       <Switch
                         checked={this.state.checkedB}
-                        onChange={this.handleChange("checkedB")}
+                        onChange={this.handleChange('checkedB')}
                         value="checkedB"
                         classes={{
                           switchBase: classes.switchBase,
                           checked: classes.switchChecked,
                           icon: classes.switchIcon,
                           iconChecked: classes.switchIconChecked,
-                          bar: classes.switchBar
+                          bar: classes.switchBar,
                         }}
                       />
                     }
                     classes={{
-                      label: classes.label
+                      label: classes.label,
                     }}
                     label="Toggle is off"
                   />
@@ -535,19 +504,19 @@ class SectionBasics extends React.Component {
                   variant="determinate"
                   color="success"
                   value={100}
-                  style={{ width: "35%", display: "inline-block" }}
+                  style={{ width: '35%', display: 'inline-block' }}
                 />
                 <CustomLinearProgress
                   variant="determinate"
                   color="warning"
                   value={100}
-                  style={{ width: "20%", display: "inline-block" }}
+                  style={{ width: '20%', display: 'inline-block' }}
                 />
                 <CustomLinearProgress
                   variant="determinate"
                   color="danger"
                   value={25}
-                  style={{ width: "45%", display: "inline-block" }}
+                  style={{ width: '45%', display: 'inline-block' }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
@@ -557,25 +526,25 @@ class SectionBasics extends React.Component {
                 <Paginations
                   pages={[
                     { text: 1 },
-                    { text: "..." },
+                    { text: '...' },
                     { text: 5 },
                     { text: 6 },
                     { active: true, text: 7 },
                     { text: 8 },
                     { text: 9 },
-                    { text: "..." },
-                    { text: 12 }
+                    { text: '...' },
+                    { text: 12 },
                   ]}
                 />
                 <Paginations
                   pages={[
-                    { text: "PREV" },
+                    { text: 'PREV' },
                     { text: 1 },
                     { text: 2 },
                     { active: true, text: 3 },
                     { text: 4 },
                     { text: 5 },
-                    { text: "NEXT" }
+                    { text: 'NEXT' },
                   ]}
                   color="info"
                 />
