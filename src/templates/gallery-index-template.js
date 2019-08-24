@@ -24,43 +24,41 @@ import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexP
 
 class GalleryIndexPage extends React.Component {
   render() {
-    const { data, pageContext, classes, ...rest } = this.props;
-    const { group, index, first, last, pageCount } = pageContext;
+    const { data, pageContext, classes } = this.props;
+    const { group } = pageContext;
 
-    const galleryIndexParallax = this.props.data.galleryIndexParallaxImg
-      .edges[0].node.localFile.childImageSharp.fluid;
-    const fallBackParallax = this.props.data.fallBackGalleryParallaxImg.fluid;
-    const fluid = galleryIndexParallax
-      ? galleryIndexParallax
-      : fallBackParallax;
+    const galleryIndexParallax =
+      data.galleryIndexParallaxImg.edges[0].node.localFile.childImageSharp
+        .fluid;
+    const fallBackParallax = data.fallBackGalleryParallaxImg.fluid;
+    const fluid = galleryIndexParallax || fallBackParallax;
 
     const banner = {
       title: 'Gallery',
-      subTitle: "See what we're all about 👍"
+      subTitle: "See what we're all about 👍",
     };
 
-    const imageClasses = classNames(
-      classes.imgRaised,
-      classes.imgRounded,
-      classes.imgFluid
-    );
+    const galleryImageInfo = group.map(({ node }) => ({
+      id: node.id,
+      title: node.title,
+      caption: `${node.title} – ${node.caption} - ${node.date}`,
+    }));
+    const galleryFluid = group.map(({ node }) => ({
+      ...node.localFile.childImageSharp.fluid,
+    }));
+    const galleryTotal = group.map(({ node }) => ({
+      ...node.localFile.childImageSharp.fluid,
+      id: node.id,
+      title: node.title,
+      caption: `${node.title} – ${node.caption} - ${node.date}`,
+    }));
+
+    // console.log(fluid);
+    // console.log(group[0].node.localFile.childImageSharp.fluid);
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} banner={banner}>
-          <div className={classes.parallaxContainer}>
-            <GridContainer justify="center" className={classes.parallaxWrapper}>
-              <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.parallaxTitle}>
-                  <strong dangerouslySetInnerHTML={{ __html: post.title }} />
-                </h1>
-                <h5 className={classes.parallaxSubtitle}>
-                  <strong dangerouslySetInnerHTML={{ __html: post.date }} />
-                </h5>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>
@@ -75,12 +73,9 @@ class GalleryIndexPage extends React.Component {
           <GridContainer justify="center">
             <GridItem xs={11} sm={11} md={8}>
               <Gallery
-                images={group.map(({ node }) => ({
-                  id: node.id,
-                  ...node.localFile.childImageSharp.fluid,
-                  //!! Figure out html entities decoding...
-                  caption: `${node.title} – ${node.caption} - ${node.date}`
-                }))}
+                info={galleryImageInfo}
+                fluid={galleryFluid}
+                images={galleryTotal}
                 itemsPerRow={[2, 3]}
               />
             </GridItem>

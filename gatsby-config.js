@@ -19,6 +19,7 @@ module.exports = {
     siteUrl: `https://citylightschurch.netlify.com`,
   },
   plugins: [
+    `gatsby-plugin-top-layout`,
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
@@ -46,9 +47,24 @@ module.exports = {
     // 'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-wordpress',
+      // options: {
+      //   // Longbeach City Lights Church WP Demo from Matt
+      //   baseUrl: 'longbeach.citylightschurch.org',
+      //   protocol: 'http',
+      //   hostingWPCOM: false,
+      //   // We will be using some advanced custom fields
+      //   useACF: true,
+      //   acfOptionPageIds: [],
+      //   verboseOutput: false,
+      //   perPage: 100,
+      //   searchAndReplaceContentUrls: {
+      //     sourceURL: 'http://longbeach.citylightschurch.org',
+      //     replacementUrl: 'https://citylightschurch.netlify.com',
+      //   },
       options: {
         // Longbeach City Lights Church WP Demo from Matt
-        baseUrl: 'longbeach.citylightschurch.org',
+        // baseUrl: 'longbeach.citylightschurch.org',
+        baseUrl: 'localhost:8080',
         protocol: 'http',
         hostingWPCOM: false,
         // We will be using some advanced custom fields
@@ -57,26 +73,11 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceURL: 'http://longbeach.citylightschurch.org',
-          replacementUrl: 'https://citylightschurch.netlify.com',
+          // sourceURL: 'http://longbeach.citylightschurch.org',
+          sourceUrl: 'http://localhost:8080/',
+          // replacementUrl: 'https://citylightschurch.netlify.com'
+          // replacementUrl: 'http://localhost:8000/'
         },
-        // options: {
-        //   // Longbeach City Lights Church WP Demo from Matt
-        //   // baseUrl: 'longbeach.citylightschurch.org',
-        //   baseUrl: 'localhost:8080',
-        //   protocol: 'http',
-        //   hostingWPCOM: false,
-        //   // We will be using some advanced custom fields
-        //   useACF: true,
-        //   acfOptionPageIds: [],
-        //   verboseOutput: false,
-        //   perPage: 100,
-        //   searchAndReplaceContentUrls: {
-        //     // sourceURL: 'http://longbeach.citylightschurch.org',
-        //     sourceUrl: 'http://localhost:8080/',
-        //     // replacementUrl: 'https://citylightschurch.netlify.com'
-        //     // replacementUrl: 'http://localhost:8000/'
-        //   },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 15,
         includedRoutes: [
@@ -86,7 +87,6 @@ module.exports = {
           '**/media',
           '**/tags',
           '**/taxonomies',
-          '**/users',
           '**/events',
           '**/menus',
         ],
@@ -103,7 +103,7 @@ module.exports = {
           '**/events_categories',
           '**/events_tags',
         ],
-        normalizer: function({ entities }) {
+        normalizer({ entities }) {
           return entities;
         },
       },

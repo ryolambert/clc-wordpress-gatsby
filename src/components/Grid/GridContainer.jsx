@@ -8,36 +8,31 @@ import React from 'react';
 const style = theme => ({
   container: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    // gridGap: theme.spacing(1)
+    gridTemplateColumns: 'repeat(12, 1fr)'
+    // gridGap: theme.spacing(2)
   },
   root: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 });
 
 function GridContainer({ ...props }) {
   const { classes, children, className, ...rest } = props;
   return (
-    <Grid
-      container
-      {...rest}
-      className={classes.grid + ' ' + className}
-      spacing={2}
-    >
+    <Grid container {...rest} className={classes.grid + ' ' + className}>
       {children}
     </Grid>
   );
 }
 
 GridContainer.defaultProps = {
-  className: '',
+  className: ''
 };
 
 GridContainer.propTypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default withStyles(style)(GridContainer);

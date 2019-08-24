@@ -25,7 +25,7 @@ class EventIndexPage extends React.Component {
     const eventIndexParallax = this.props.data.eventIndexParallaxImg.edges[0]
       .node.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackEventParallaxImg.fluid;
-    const fluid = eventIndexParallax ? eventIndexParallax : fallBackParallax;
+    const fluid = eventIndexParallax || fallBackParallax;
 
     const banner = {
       title: 'Events',
@@ -35,7 +35,7 @@ class EventIndexPage extends React.Component {
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid,
+      classes.imgFluid
     );
 
     return (

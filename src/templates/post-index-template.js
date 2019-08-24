@@ -41,19 +41,12 @@ class PostIndexPage extends React.Component {
     const blogParallax = this.props.data.blogParallaxImg.edges[0].node
       .featured_media.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackParallaxImg.fluid;
-    const fluid = blogParallax ? blogParallax : fallBackParallax;
+    const fluid = blogParallax || fallBackParallax;
 
     const banner = {
       title: 'Blog',
       subTitle: 'Bless Up 🙏 Read or Listen to our latest! 🙌',
     };
-
-    const imageClasses = classNames(
-      classes.imgRaised,
-      classes.imgRounded,
-      classes.imgFluid,
-      classes.cover,
-    );
 
     return (
       <Layout>

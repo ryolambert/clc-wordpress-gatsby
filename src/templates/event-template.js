@@ -16,13 +16,12 @@ import GridItem from 'components/Grid/GridItem.jsx';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import Layout from 'components/Layout/Layout.js';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
-import { DiscussionEmbed } from 'disqus-react';
 
 class EventTemplate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coords: [39.9528, -75.1638]
+      coords: [39.9528, -75.1638],
     };
   }
 
@@ -39,7 +38,6 @@ class EventTemplate extends React.Component {
     const fluidContent = event.featured_media
       ? event.featured_media.localFile.childImageSharp.fluid
       : null;
-
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRounded,
@@ -47,12 +45,12 @@ class EventTemplate extends React.Component {
     );
     const disqusConfig = {
       shortname: process.env.GATSBY_DISQUS_NAME,
-      config: { identifier: event.id, title: event.title }
+      config: { identifier: event.id, title: event.title },
     };
     const banner = {
       title: event.title,
       subTitle: '',
-      styledSubTitle: `${start}`
+      styledSubTitle: `${start}`,
     };
 
     return (
@@ -61,9 +59,9 @@ class EventTemplate extends React.Component {
           <ParallaxLazy small color banner={banner} fluid={fluid} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
-              <GridItem xs={11} sm={11} md={10} style={{ marginTop: '10px' }}>
+              <GridItem xs={12} sm={12} md={10} style={{ marginTop: '10px' }}>
                 {fluidContent && (
-                  <div className="wpg-blocks">
+                  <div>
                     <Img
                       alt="Screenshot of Project"
                       fluid={
@@ -72,13 +70,7 @@ class EventTemplate extends React.Component {
                       className={imageClasses}
                       style={{
                         marginTop: '20px',
-                        marginBottom: '20px'
-                      }}
-                    />
-                    <figcaption
-                      className="wp-caption-text"
-                      dangerouslySetInnerHTML={{
-                        __html: event.featured_media.caption
+                        marginBottom: '20px',
                       }}
                     />
                   </div>
@@ -86,13 +78,15 @@ class EventTemplate extends React.Component {
                 <div
                   className={classes.content}
                   dangerouslySetInnerHTML={{
-                    __html: event.content
+                    __html: event.content,
                   }}
                 />
+                <p dangerouslySetInnerHTML={{ __html: event.date }} />
+                <p dangerouslySetInnerHTML={{ __html: event.slug }} />
               </GridItem>
             </GridContainer>
             <GridContainer justify="center">
-              <GridItem xs={11} sm={5} md={5}>
+              <GridItem xs={12} sm={5} md={5}>
                 <h3>Event Details</h3>
                 <dl>
                   <dt> Start: </dt>
@@ -109,7 +103,7 @@ class EventTemplate extends React.Component {
                   <dd>{event.categories.name}</dd>
                 </dl>
               </GridItem>
-              <GridItem xs={11} sm={5} md={5}>
+              <GridItem xs={12} sm={5} md={5}>
                 <h3>Venue Details</h3>
                 <dl>
                   <dt> Address: </dt>
@@ -122,13 +116,11 @@ class EventTemplate extends React.Component {
                   </dd>
                 </dl>
               </GridItem>
-              <GridItem xs={11} sm={11} md={10}>
-                <section style={{ height: '300px', margin: '3vh 0px' }}>
-                  <Map position={address} info={event} />
-                </section>
-                <DiscussionEmbed {...disqusConfig} />
-              </GridItem>
+              <GridItem xs={12}></GridItem>
             </GridContainer>
+            <section style={{ height: '30vh' }}>
+              <Map position={address} info={event} />
+            </section>
           </div>
         </Layout>
       </div>
@@ -147,10 +139,9 @@ export const query = graphql`
       }
       featured_media {
         id
-        caption
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1100) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -170,7 +161,7 @@ export const query = graphql`
       excerpt
     }
     eventHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
-      fluid(maxWidth: 1100) {
+      fluid(maxWidth: 1200) {
         src
         ...GatsbyImageSharpFluid
       }

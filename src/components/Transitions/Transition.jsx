@@ -12,8 +12,8 @@ class Transition extends React.PureComponent {
         opacity: 1,
         filter: 'blur(0px)',
         x: 0,
-        delay: 50,
-        delayChildren: 100
+        delay: 150,
+        delayChildren: 250
       },
       exit: {
         opacity: 0,

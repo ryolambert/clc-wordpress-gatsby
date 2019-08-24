@@ -37,38 +37,19 @@ class SermonIndexPage extends React.Component {
     const sermonIndexParallax = this.props.data.sermonIndexParallaxImg.edges[0]
       .node.featured_media.localFile.childImageSharp.fluid;
     const fallBackParallax = this.props.data.fallBackSermonParallaxImg.fluid;
-    const fluid = sermonIndexParallax ? sermonIndexParallax : fallBackParallax;
+    const fluid = sermonIndexParallax || fallBackParallax;
     // const fluidCardImage = this.props.group.node.featured_media
     //   ? this.props.group.node.featured_media.localFile.childImageSharp.fluid
     //   : null;
 
     const banner = {
       title: 'Sermons',
-      subTitle: 'Take a listen 👂 to our latest Sermons⛪'
+      subTitle: 'Take a listen 👂 to our latest Sermons⛪',
     };
-
-    const imageClasses = classNames(
-      classes.imgRaised,
-      classes.imgRounded,
-      classes.imgFluid
-    );
 
     return (
       <Layout>
-        <ParallaxLazy small filter fluid={fluid} banner={banner}>
-          <div className={classes.parallaxContainer}>
-            <GridContainer justify="center" className={classes.parallaxWrapper}>
-              <GridItem xs={10} sm={10} md={6}>
-                <h1 className={classes.parallaxTitle}>
-                <strong dangerouslySetInnerHTML={{ __html: banner.title }} />
-                </h1>
-                <h5 className={classes.parallaxSubtitle}>
-                <strong dangerouslySetInnerHTML={{ __html: banner.subTitle }} />
-                </h5>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </ParallaxLazy>
+        <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
             <GridItem xs={11} sm={10} md={8}>
@@ -84,13 +65,15 @@ class SermonIndexPage extends React.Component {
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3} key={node.id}>
                 <Link
-                  to={`/sermon/${  node.slug}`}
+                  to={`/sermon/${node.slug}`}
                   className={classes.cardTitle}
-                  key={node.id}>
+                  key={node.id}
+                >
                   <Card
                     key={node.id}
                     className={classes.card}
-                    style={{ marginBottom: 50, display: 'flex' }}>
+                    style={{ marginBottom: 50, display: 'flex' }}
+                  >
                     {node.featured_media && (
                       <Img
                         className={classes.imgCardTop}
@@ -98,7 +81,7 @@ class SermonIndexPage extends React.Component {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"
@@ -114,7 +97,7 @@ class SermonIndexPage extends React.Component {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"

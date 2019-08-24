@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link, navigate } from 'gatsby';
-import PropTypes from 'prop-types';
-import { Button, Card, CardBody, CardFooter } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
-import ArrowForwardRound from '@material-ui/icons';
-import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle';
+import React from "react";
+import { Link, navigate } from "gatsby";
+import PropTypes from "prop-types";
+import { Button, Card, CardBody, CardFooter } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
+import ArrowForwardRound from "@material-ui/icons";
+import postsIndexPageStyle from "assets/jss/material-kit-react/views/postsIndexPageStyle";
 
-import { GridItem } from './Grid/GridItem';
+import { GridItem } from "./Grid/GridItem";
 
 const Post = ({
   post,
@@ -14,7 +14,7 @@ const Post = ({
   showArrow,
   showImage,
   handleTagCLick,
-  handleCategoryClick,
+  handleCategoryClick
 }) => {
   // ms(sec)*sec(min)*min(hr)*hour(day)*days(4weeks)
   const latestDuration = 1000 * 60 * 60 * 24 * 28; // 4weeks total
@@ -34,17 +34,17 @@ const Post = ({
           <Card
             key={post.node.id}
             className={classes.card}
-            style={{ marginBottom: 50, display: 'flex' }}
+            style={{ marginBottom: 50, display: "flex" }}
           >
             {post.node.featured_media && (
               <Img
                 className={classes.imgCardTop}
                 alt={post.node.title}
                 style={{
-                  height: '200px',
-                  maxHeight: '25%',
-                  overflow: 'hidden',
-                  marginRight: 20,
+                  height: "200px",
+                  maxHeight: "25%",
+                  overflow: "hidden",
+                  marginRight: 20
                 }}
                 objectFit="cover"
                 objectPosition="50% 50%"
@@ -56,10 +56,10 @@ const Post = ({
                 className={classes.imgCardTop}
                 alt="fallback image"
                 style={{
-                  height: '200px',
-                  maxHeight: '25%',
-                  overflow: 'hidden',
-                  marginRight: 20,
+                  height: "200px",
+                  maxHeight: "25%",
+                  overflow: "hidden",
+                  marginRight: 20
                 }}
                 objectFit="cover"
                 objectPosition="50% 50%"
@@ -98,7 +98,7 @@ componentName.propTypes = {
   showArrow: PropTypes.bool,
   showImage: PropTypes.bool,
   handleTagClick: PropTypes.func,
-  handleCategoryClick: PropTypes.func,
+  handleCategoryClick: PropTypes.func
 };
 
 export default withStyles(postsIndexPageStyle)(Post());

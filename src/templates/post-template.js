@@ -20,7 +20,6 @@ import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
-import { DiscussionEmbed } from 'disqus-react';
 
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
@@ -43,11 +42,11 @@ class PostTemplate extends React.Component {
     );
     const disqusConfig = {
       shortname: process.env.GATSBY_DISQUS_NAME,
-      config: { identifier: post.id, title: post.title }
+      config: { identifier: post.id, title: post.title },
     };
     const banner = {
       title: post.title,
-      subTitle: post.date
+      subTitle: post.date,
     };
 
     return (
@@ -56,9 +55,9 @@ class PostTemplate extends React.Component {
           <ParallaxLazy small color banner={banner} fluid={fluid} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
-              <GridItem xs={11} sm={11} md={10}>
+              <GridItem xs={12} sm={12} md={10}>
                 {fluidContent && (
-                  <div className="wpg-blocks">
+                  <div>
                     <Img
                       alt="Screenshot of Project"
                       fluid={
@@ -70,7 +69,7 @@ class PostTemplate extends React.Component {
                     <figcaption
                       className="wp-caption-text"
                       dangerouslySetInnerHTML={{
-                        __html: post.featured_media.caption
+                        __html: post.featured_media.caption,
                       }}
                     />
                   </div>
@@ -78,12 +77,11 @@ class PostTemplate extends React.Component {
                 <div
                   className={classes.content}
                   dangerouslySetInnerHTML={{
-                    __html: post.content
+                    __html: post.content,
                   }}
                 />
                 <p dangerouslySetInnerHTML={{ __html: post.date }} />
                 <p dangerouslySetInnerHTML={{ __html: post.slug }} />
-                <DiscussionEmbed {...disqusConfig} />
               </GridItem>
             </GridContainer>
           </div>
@@ -99,10 +97,9 @@ export const query = graphql`
       title
       content
       featured_media {
-        caption
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1100) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -113,7 +110,7 @@ export const query = graphql`
       date(formatString: "MMMM DD, YYYY")
     }
     placeHolderImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
-      fluid(maxWidth: 1100) {
+      fluid(maxWidth: 1200) {
         src
         ...GatsbyImageSharpFluid
       }

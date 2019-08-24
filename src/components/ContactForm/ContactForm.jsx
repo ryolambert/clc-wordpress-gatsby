@@ -42,7 +42,7 @@ class WorkSection extends React.Component {
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
-          <GridItem xs={11} sm={11} md={8}>
+          <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Drop us a line! 📝</h2>
             <h4 className={classes.description}>
               We love getting to know our community! We also extend warm
@@ -64,7 +64,7 @@ class WorkSection extends React.Component {
                     <input name="bot-field" onChange={this.handleChange} />
                   </label>
                 </p>
-                <GridItem xs={11} sm={11} md={6}>
+                <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
                     labelText="Your Name"
                     id="name"
@@ -74,7 +74,7 @@ class WorkSection extends React.Component {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={11} sm={11} md={6}>
+                <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
                     labelText="Your Email"
                     id="email"
@@ -99,8 +99,8 @@ class WorkSection extends React.Component {
                 />
                 <GridContainer justify="center">
                   <GridItem
-                    xs={11}
-                    sm={11}
+                    xs={12}
+                    sm={12}
                     md={4}
                     className={classes.textCenter}>
                     <Button

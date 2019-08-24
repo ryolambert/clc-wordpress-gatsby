@@ -12,11 +12,9 @@ const infoPanelStyle = theme => ({
     height: 'auto',
     overflow: 'hidden',
     lineHeight: '0.5rem',
-    margin: '5px',
-    verticalAlign: 'center'
+    margin: '5px'
   },
   title: {
-    fontFamily: 'Roboto Slab',
     fontSize: '1.25rem',
     lineHeight: '1rem',
     margin: '5px 0px 5px',
@@ -27,13 +25,11 @@ const infoPanelStyle = theme => ({
   },
   subtitle: {
     fontSize: '1rem',
-    fontWeight: '600',
-    fontStyle: 'Italic',
     lineHeight: '0.75rem',
     margin: '5px 0px 5px',
     [theme.breakpoints.down('md')]: {
-      fontSize: '0.75rem',
-      linHeight: '0.75rem'
+      fontSize: '0.5rem',
+      linHeight: '0.5rem'
     }
   },
   directionsLink: {

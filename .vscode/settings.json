@@ -1,12 +1,11 @@
 {
   "editor.fontFamily": "Operator Mono, monospace",
   "workbench.colorCustomizations": {
-    // "titleBar.activeForeground": "#161616",
-    // "titleBar.activeBackground": "#ffee00"
+    "titleBar.activeForeground": "#fff",
+    "titleBar.activeBackground": "#ff8801"
     // "titleBar.inactiveBackground": "#fff",
     // "titleBar.inactiveForeground": "#026ddf"
   },
-  "eslint.packageManager": "yarn",
   "cSpell.enabledLanguageIds": [
     "asciidoc",
     "c",
@@ -20,7 +19,6 @@
     "javascript",
     "javascriptreact",
     "json",
-    "jsonc",
     "latex",
     "less",
     "markdown",
@@ -36,6 +34,5 @@
     "typescriptreact",
     "yml"
   ],
-  "cSpell.enabled": true,
-  "eslint.enable": true
+  "cSpell.enabled": true
 }

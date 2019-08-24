@@ -1,6 +1,6 @@
 import { defaultFont } from 'assets/jss/material-kit-react.jsx';
 
-import tooltip from 'assets/jss/material-kit-react/tooltipsStyle.jsx';
+import tooltip from 'assets/jss/material-kit-react/tooltipsStyle';
 
 const headerLinksStyle = theme => ({
   list: {
@@ -22,8 +22,8 @@ const headerLinksStyle = theme => ({
       marginBottom: '10vh',
       paddingBottom: '10vh',
       overflow: 'auto',
-      paddingRight: '17px'
-    }
+      paddingRight: '17px',
+    },
   },
   listItem: {
     float: 'left',
@@ -36,13 +36,13 @@ const headerLinksStyle = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       marginTop: '5px',
-      order: '1'
+      order: '1',
     },
     '&:hover, &:focus': {
       color: 'inherit',
       textDecoration: 'none',
-      textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
-    }
+      textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)',
+    },
   },
   listItemSearch: {
     float: 'left',
@@ -55,11 +55,11 @@ const headerLinksStyle = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '80vw',
       order: '-1',
-      marginLeft: '15px'
-    }
+      marginLeft: '15px',
+    },
   },
   listItemText: {
-    padding: '0 !important'
+    padding: '0 !important',
   },
   navLink: {
     color: 'inherit',
@@ -74,14 +74,14 @@ const headerLinksStyle = theme => ({
     margin: '0px',
     display: 'inline-block',
     '&:strong': {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     '&:hover,&:focus': {
       color: 'white',
       background: 'rgba(200, 200, 200, 0.2)',
       background: 'linear-gradient(25deg, #ff6600 0%, #ffc526 110%)',
       color: 'inherit',
-      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)'
+      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)',
       // textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
     },
     [theme.breakpoints.down('sm')]: {
@@ -95,13 +95,13 @@ const headerLinksStyle = theme => ({
       fontWeight: '700',
       transform: 'translate(0,-.07em)',
       '& > span:first-child': {
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
       },
       '&:hover, &:focus': {
         color: 'inherit',
-        textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)'
-      }
-    }
+        textShadow: '0.05em 0.08em 0.2em rgba(255,255,255,.85)',
+      },
+    },
   },
   searchNavLink: {
     color: 'inherit',
@@ -117,10 +117,10 @@ const headerLinksStyle = theme => ({
     display: 'inline-block',
     '&:hover,&:focus': {
       color: 'inherit',
-      background: 'rgba(200, 200, 200, 0.2)'
+      background: 'rgba(200, 200, 200, 0.2)',
     },
     '& > span:first-child': {
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     },
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 30px)',
@@ -129,9 +129,9 @@ const headerLinksStyle = theme => ({
       marginTop: '8px',
       textAlign: 'left',
       '& > span:first-child': {
-        justifyContent: 'flex-start'
-      }
-    }
+        justifyContent: 'flex-start',
+      },
+    },
   },
   notificationNavLink: {
     color: 'inherit',
@@ -143,7 +143,7 @@ const headerLinksStyle = theme => ({
     textDecoration: 'none',
     margin: '0px',
     display: 'inline-block',
-    top: '4px'
+    top: '4px',
   },
   registerNavLink: {
     top: '3px',
@@ -154,21 +154,21 @@ const headerLinksStyle = theme => ({
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    display: ''
+    display: '',
   },
   navLinkActive: {
     color: 'inherit',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
   icons: {
     width: '20px',
     height: '20px',
-    marginRight: '3px'
+    marginRight: '3px',
   },
   socialIcons: {
     position: 'relative',
     fontSize: '20px !important',
-    marginRight: '4px'
+    marginRight: '4px',
   },
   dropdownLink: {
     textDecoration: 'none',
@@ -181,13 +181,13 @@ const headerLinksStyle = theme => ({
       textDecoration: 'none',
       display: 'block',
       padding: '10px 20px',
-      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)'
-    }
+      textShadow: '0.1em 0.1em 0.1em rgba(0,0,0,.85)',
+    },
   },
   ...tooltip,
   marginRight5: {
-    marginRight: '5px'
-  }
+    marginRight: '5px',
+  },
 });
 
 export default headerLinksStyle;

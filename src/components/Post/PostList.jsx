@@ -1,18 +1,18 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 
 export default class componentName extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
-      currentFilter: 'all',
+      search: "",
+      currentFilter: "all",
       allPosts: [...this.props.posts],
       postsByCategory: [],
       renderCategories: false,
       allCategories: {},
       postsByTag: [],
       allTags: {},
-      renderTags: false,
+      renderTags: false
     };
   }
 
@@ -25,9 +25,7 @@ export default class componentName extends PureComponent {
         allCategories[category]++;
       }
     }
-    pages.forEach(page => {
-
-    })
+    pages.forEach(page => {});
 
     let tags = page.node.tags.name;
     for (let tag of tags) {

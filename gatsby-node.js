@@ -1,4 +1,3 @@
-/* eslint-disable object-shorthand */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -7,7 +6,7 @@
 
 // You can delete this file if you're not using it
 
-//TODO-
+// TODO-
 // 1️⃣: sermonTemplate
 // 2️⃣: sermonsTemplate
 // 3️⃣: albumTemplate
@@ -54,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         createPaginatedPages({
           edges: posts,
-          createPage: createPage,
+          createPage,
           pageTemplate: 'src/templates/post-index-template.js',
           pageLength: 12,
           pathPrefix: 'posts',
@@ -70,12 +69,12 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
 
-        //Sermons detail
+        // Sermons detail
         const sermons = result.data.allSermonPost.edges;
 
         createPaginatedPages({
           edges: sermons,
-          createPage: createPage,
+          createPage,
           pageTemplate: 'src/templates/sermon-index-template.js',
           pageLength: 12,
           pathPrefix: 'sermons',
@@ -91,23 +90,23 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
 
-        //Galleries detail
+        // Galleries detail
         const galleries = result.data.allGalleryMedia.edges;
 
         createPaginatedPages({
           edges: galleries,
-          createPage: createPage,
+          createPage,
           pageTemplate: 'src/templates/gallery-index-template.js',
           pageLength: 24,
           pathPrefix: 'galleries',
         });
 
-        //Events detail
+        // Events detail
         const events = result.data.allEventPost.edges;
 
         createPaginatedPages({
           edges: events,
-          createPage: createPage,
+          createPage,
           pageTemplate: 'src/templates/event-index-template.js',
           pageLength: 1,
           pathPrefix: 'calendar',
@@ -122,7 +121,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
-      }),
+      })
     );
   });
 };

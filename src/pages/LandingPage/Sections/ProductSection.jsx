@@ -19,7 +19,7 @@ class ProductSection extends React.Component {
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
-          <GridItem xs={11} sm={11} md={8}>
+          <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Let's talk product</h2>
             <h5 className={classes.description}>
               This is the paragraph where you can write more details about your
@@ -32,7 +32,7 @@ class ProductSection extends React.Component {
         </GridContainer>
         <div>
           <GridContainer>
-            <GridItem xs={11} sm={11} md={4}>
+            <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="Free Chat"
                 description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
@@ -41,7 +41,7 @@ class ProductSection extends React.Component {
                 vertical
               />
             </GridItem>
-            <GridItem xs={11} sm={11} md={4}>
+            <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="Verified Users"
                 description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
@@ -50,7 +50,7 @@ class ProductSection extends React.Component {
                 vertical
               />
             </GridItem>
-            <GridItem xs={11} sm={11} md={4}>
+            <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="Fingerprint"
                 description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."

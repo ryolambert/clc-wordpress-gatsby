@@ -86,7 +86,7 @@ const BlogSection = ({ data }) => {
   return (
     <GridContainer justify="center">
       <h3 className="post-title">Latest Blog</h3>
-      <GridItem >
+      <GridItem>
         {posts.length ? (
           <GridItem>
             {posts.map(post => (

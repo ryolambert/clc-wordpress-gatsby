@@ -1,12 +1,13 @@
-import Img from 'gatsby-image';
-import { chunk, sum } from 'lodash';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import Carousel, { Modal, ModalGateway } from 'react-images';
-import { Box, Link } from 'rebass';
-import carouselFormatters from '../../utils/carouselFormatters';
+/* eslint-disable import/no-extraneous-dependencies */
+import Img from "gatsby-image";
+import { chunk, sum } from "lodash";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import Carousel, { Modal, ModalGateway } from "react-images";
+import { Box, Link } from "rebass";
+import carouselFormatters from "../../utils/carouselFormatters";
 
-const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
+const Gallery = ({ info, images, itemsPerRow: itemsPerRowByBreakpoints }) => {
   const aspectRatios = images.map(image => image.aspectRatio);
 
   // For each breakpoint, calculate the aspect ratio sum of each row's images
@@ -26,9 +27,11 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
   const openModal = imageIndex => {
     setModalCurrentIndex(imageIndex);
     setModalIsOpen(true);
-    console.log('Opened');
+    console.log("Opened");
   };
 
+  console.log(images.map((image, i) => image));
+  console.log(info);
   return (
     <Box>
       {images.map((image, i) => (
@@ -39,10 +42,18 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
             e.preventDefault();
             openModal(i);
           }}
-          style={{ position: 'relative', zIndex: '10' }}>
+          style={{ position: "relative", zIndex: "10" }}
+        >
           <Box
             as={Img}
-            fluid={image}
+            fluid={{
+              aspectRatio: image.aspectRatio,
+              base64: image.base64,
+              originalImg: image.originalImg,
+              sizes: image.sizes,
+              src: image.src,
+              srcSet: image.srcSet
+            }}
             title={image.title}
             width={rowAspectRatioSumsByBreakpoints.map(
               (rowAspectRatioSums, j) => {
@@ -53,20 +64,20 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints }) => {
               }
             )}
             style={{
-              zIndex: '30',
-              position: 'relative',
-              display: 'inline-block',
-              verticalAlign: 'middle',
-              transition: 'filter 0.3s',
+              zIndex: "30",
+              position: "relative",
+              display: "inline-block",
+              verticalAlign: "middle",
+              transition: "filter 0.3s",
               // borderRadius: '5px',
               // boxShadow:
               //   '0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)',
               // marginLeft: '10px',
               // marginRight: '10px',
-              '&,&:hover,&:focus': {
-                transform: 'translateY(-8px)',
-                boxShadow: '0 10px 10px -10px rgba(#7f8c8d, 1)',
-                filter: 'brightness(87.5%)'
+              "&,&:hover,&:focus": {
+                transform: "translateY(-8px)",
+                boxShadow: "0 10px 10px -10px rgba(#7f8c8d, 1)",
+                filter: "brightness(87.5%)"
               }
             }}
           />

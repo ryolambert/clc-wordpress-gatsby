@@ -28,7 +28,7 @@ class PageTemplate extends React.Component {
       : placeHolder;
     const banner = {
       title: pageTitle,
-      subTitle: ''
+      subTitle: '',
     };
 
     return (
@@ -40,20 +40,21 @@ class PageTemplate extends React.Component {
               <div className={classes.container}>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={10}>
+                    {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
                     <div
                       style={{ marginTop: '2vh' }}
                       dangerouslySetInnerHTML={{
-                        __html: page.content
+                        __html: page.content,
                       }}
                     />
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: page.date
+                        __html: page.date,
                       }}
                     />
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: page.slug
+                        __html: page.slug,
                       }}
                     />
                   </GridItem>

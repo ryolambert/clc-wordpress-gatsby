@@ -5,9 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-import React from "react";
-import Transition from "./src/components/Transitions/Transition.jsx";
+import 'typeface-roboto';
+import 'typeface-roboto-slab';
+import React from 'react';
+import Transition from './src/components/Transitions/Transition.jsx';
 
-export const wrapPageElement = ({ element, props }) => {
-  return <Transition {...props}>{element}</Transition>;
-};
+export const wrapPageElement = ({ element, props }) => (
+  <Transition {...props}>{element}</Transition>
+);
