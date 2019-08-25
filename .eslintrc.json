@@ -25,6 +25,7 @@
         "argsIgnorePattern": "res|next|^err"
       }
     ],
+    "no-undef": "off",
     "prefer-const": [
       "error",
       {

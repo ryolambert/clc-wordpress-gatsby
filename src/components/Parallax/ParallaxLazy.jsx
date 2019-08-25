@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/no-did-mount-set-state */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -10,8 +8,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
 import parallaxLazyStyle from 'assets/jss/material-kit-react/components/parallaxLazyStyle.jsx';
-import GridContainer from 'components/Grid/GridContainer';
-import GridItem from 'components/Grid/GridItem';
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
 
 import Img from 'gatsby-image';
 
@@ -48,11 +46,22 @@ class Parallax extends React.Component {
   }
 
   render() {
-    const { classes, filter, fluid, banner, small, style } = this.props;
+    const {
+      children,
+      classes,
+      className,
+      color,
+      filter,
+      fluid,
+      banner,
+      small,
+      style,
+    } = this.props;
 
     const parallaxClasses = classNames({
-      [classes.parallax]: true,
+      [classes.color]: color,
       [classes.filter]: filter,
+      [classes.parallax]: true,
       [classes.small]: small,
       [className]: className !== undefined,
     });
@@ -111,6 +120,7 @@ class Parallax extends React.Component {
 Parallax.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  colorFilter: PropTypes.bool,
   filter: PropTypes.bool,
   children: PropTypes.node,
   style: PropTypes.string,
