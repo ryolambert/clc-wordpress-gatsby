@@ -1,18 +1,19 @@
-import React, { PureComponent } from "react";
+/* eslint-disable prefer-const */
+import React, { PureComponent } from 'react';
 
 export default class componentName extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      search: "",
-      currentFilter: "all",
+      search: '',
+      currentFilter: 'all',
       allPosts: [...this.props.posts],
       postsByCategory: [],
       renderCategories: false,
       allCategories: {},
       postsByTag: [],
       allTags: {},
-      renderTags: false
+      renderTags: false,
     };
   }
 
@@ -36,6 +37,7 @@ export default class componentName extends PureComponent {
       }
     }
   };
+
   render() {
     return <div></div>;
   }

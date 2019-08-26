@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 //* __________________________Layout Wrapper Component_________________________*/
 // ⚛ Component wraps up header, headerLinks, footer, and children for Appbar
 // TODO: Get react-helmet setup for gql to inject siteMetadata

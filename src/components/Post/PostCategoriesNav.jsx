@@ -7,7 +7,7 @@ import postCategoriesNavStyle from '../../assets/jss/material-kit-react/componen
 
 const PostCategoriesNav = ({ categories, enableSearch }) => (
   <div className="PostCategoriesNav">
-    <Link className="NavLink" exact="true" to={`/posts/`}>
+    <Link className="NavLink" exact="true" to="/posts/">
       All
     </Link>
     {categories.map((category, index) => (
@@ -15,7 +15,8 @@ const PostCategoriesNav = ({ categories, enableSearch }) => (
         exact="true"
         className="NavLink"
         key={category.title + index}
-        to={category.slug}>
+        to={category.slug}
+      >
         {category.title}
       </Link>
     ))}
