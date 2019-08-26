@@ -19,7 +19,6 @@ module.exports = {
     siteUrl: `https://citylightschurch.netlify.com`,
   },
   plugins: [
-    `gatsby-plugin-top-layout`,
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
