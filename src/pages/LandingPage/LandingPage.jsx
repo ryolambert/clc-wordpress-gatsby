@@ -1,35 +1,35 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // React icons
-import { FaPlay } from "react-icons/fa";
+import { FaPlay } from 'react-icons/fa';
 
 // core components
-import Header from "components/Header/Header.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
-import ParallaxLazy from "components/Parallax/ParallaxLazy.jsx";
-import Map from "components/Map/Map.jsx";
-import { graphql, useStaticQuery } from "gatsby";
-import Layout from "../../components/Layout/Layout.js";
+import Header from 'components/Header/Header.jsx';
+import Footer from 'components/Footer/Footer.jsx';
+import GridContainer from 'components/Grid/GridContainer.jsx';
+import GridItem from 'components/Grid/GridItem.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
+import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import Parallax from 'components/Parallax/Parallax.jsx';
+import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
+import Map from 'components/Map/Map.jsx';
+import { graphql, useStaticQuery } from 'gatsby';
+import Layout from '../../components/Layout/Layout.js';
 
-import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPageStyle.jsx";
+import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
 // Sections for this page
-import ProductSection from "./Sections/ProductSection.jsx";
-import TeamSection from "./Sections/TeamSection.jsx";
-import EventSection from "./Sections/EventSection.jsx";
-import BlogSection from "./Sections/BlogSection.jsx";
-import WorkSection from "./Sections/WorkSection.jsx";
-import ContactSection from "./Sections/ContactSection.jsx";
-import ContactForm from "../../components/ContactForm/ContactForm";
+import ProductSection from './Sections/ProductSection.jsx';
+import TeamSection from './Sections/TeamSection.jsx';
+import EventSection from './Sections/EventSection.jsx';
+import BlogSection from './Sections/BlogSection.jsx';
+import WorkSection from './Sections/WorkSection.jsx';
+import ContactSection from './Sections/ContactSection.jsx';
+import ContactForm from '../../components/ContactForm/ContactForm';
 
 // graphql query access to modify page content
 
@@ -116,7 +116,7 @@ function LandingPage(props) {
 
   const banner = {
     title,
-    subTitle
+    subTitle,
   };
 
   return (

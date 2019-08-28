@@ -6,36 +6,35 @@ import Card from 'components/Card/Card.jsx';
 import Img from 'gatsby-image';
 import { makeStyles } from '@material-ui/styles';
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.jsx';
-import { cardTitle } from 'assets/jss/material-kit-react.jsx';
-import { container } from 'assets/jss/material-kit-react.jsx';
+import { cardTitle, container } from 'assets/jss/material-kit-react.jsx';
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   cardTitle,
   textMuted: {
-    color: '#6c757d'
+    color: '#6c757d',
   },
   container,
   description: {
     margin: '1.071rem auto 0',
     maxWidth: '600px',
     color: '#999',
-    textAlign: 'center !important'
+    textAlign: 'center !important',
   },
   name: {
-    marginTop: '-80px'
+    marginTop: '-80px',
   },
   ...imagesStyle,
   card: {
     display: 'flex',
     flexWrap: 'wrap',
-    minHeight: '200px'
+    minHeight: '200px',
   },
   details: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   content: {
     display: 'flex',
@@ -46,18 +45,18 @@ const useStyles = makeStyles({
     paddingBottom: '10px',
     minWidth: '400px',
     flexGrow: 3,
-    flexBasis: '400px'
+    flexBasis: '400px',
   },
   cover: {
     display: 'flex',
     flex: 1,
     justifyContent: 'center',
     height: '100%',
-    maxHeight: '250px'
+    maxHeight: '250px',
   },
   coverImg: {
     height: '100%',
-    maxHeight: '250px'
+    maxHeight: '250px',
   },
   excerpt: {
     overflow: 'hidden',
@@ -67,8 +66,8 @@ const useStyles = makeStyles({
     webkitLineClamp: '3',
     lineHeight: '1rem',
     maxHeight: '3rem',
-    fontSize: '1rem'
-  }
+    fontSize: '1rem',
+  },
 });
 
 const BlogSection = ({ data }) => {
@@ -100,7 +99,7 @@ const BlogSection = ({ data }) => {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"
@@ -117,7 +116,7 @@ const BlogSection = ({ data }) => {
                           height: '200px',
                           maxHeight: '25%',
                           overflow: 'hidden',
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         objectFit="cover"
                         objectPosition="50% 50%"
@@ -129,7 +128,7 @@ const BlogSection = ({ data }) => {
                         weekday: 'long',
                         month: 'long',
                         day: 'numeric',
-                        year: 'numeric'
+                        year: 'numeric',
                       })}
                     </p>
                   </Card>

@@ -25,7 +25,7 @@ const ContactSection = props => {
 ContactSection.propTypes = {
   classes: PropTypes.object,
   address: PropTypes.string,
-  pageInfo: PropTypes.object
+  pageInfo: PropTypes.object,
 };
 
 export default ContactSection;
