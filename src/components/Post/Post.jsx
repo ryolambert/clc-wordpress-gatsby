@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, navigate } from 'gatsby';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button, Card, CardBody, CardFooter } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ArrowForwardRound from '@material-ui/icons';
@@ -85,6 +85,41 @@ const Post = ({
                   dangerouslySetInnerHTML={{ __html: post.node.date }}
                 />
               </p>
+              {post.node.tags.name && post.node.tags.name.length >= 1 && (
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: '0.8rem',
+                    display: 'flex',
+                    flexFlow: 'row wrap',
+                  }}
+                >
+                  {post.node.tags.name.map(tag => (
+                    <React.Fragment key={post.node.id + tag}>
+                      <span
+                        onClick={handleTagClick}
+                        data-filter={tag}
+                        className={classes.cardTag}
+                      >
+                        {`#${tag}`}
+                      </span>
+                    </React.Fragment>
+                  ))}
+                </p>
+              )}
+              {showArrow === true && (
+                <Link
+                  to={`/post/${post.node.slug}`}
+                  className={classes.cardTitle}
+                  key={node.id}
+                >
+                  <img
+                    style={{ height: '24pc', justifySelf: 'flex-end' }}
+                    src={ArrowForwardRound}
+                    alt="Next or more information arrow (rounded arrow pointing right)"
+                  />
+                </Link>
+              )}
             </CardFooter>
           </Card>
         </Link>
