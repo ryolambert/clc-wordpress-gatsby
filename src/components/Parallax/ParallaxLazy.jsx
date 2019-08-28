@@ -120,7 +120,7 @@ class Parallax extends React.Component {
 Parallax.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  colorFilter: PropTypes.bool,
+  color: PropTypes.bool,
   filter: PropTypes.bool,
   children: PropTypes.node,
   style: PropTypes.string,
