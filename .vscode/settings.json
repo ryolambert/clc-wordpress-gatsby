@@ -34,5 +34,9 @@
     "typescriptreact",
     "yml"
   ],
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "eslint.workingDirectories": [
+    { "directory": ".", "changeProcessCWD": true },
+    { "directory": "./cypress", "changeProcessCWD": true }
+  ]
 }

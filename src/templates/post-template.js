@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-danger */
+/* eslint-disable react/jsx-props-no-spreading */
 //* Individual Post Template
 // Core Imports
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -20,6 +23,7 @@ import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
+import { DiscussionEmbed } from 'disqus-react';
 
 import Image from 'components/image.js';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle.jsx';
@@ -82,6 +86,7 @@ class PostTemplate extends React.Component {
                 />
                 <p dangerouslySetInnerHTML={{ __html: post.date }} />
                 <p dangerouslySetInnerHTML={{ __html: post.slug }} />
+                <DiscussionEmbed {...disqusConfig} />
               </GridItem>
             </GridContainer>
           </div>
@@ -97,6 +102,7 @@ export const query = graphql`
       title
       content
       featured_media {
+        caption
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {

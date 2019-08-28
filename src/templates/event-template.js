@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-danger */
+/* eslint-disable react/jsx-props-no-spreading */
 //* Individual Event Template
 // Core Imports
 import React from 'react';
@@ -12,9 +15,11 @@ import classNames from 'classnames';
 // Component Imports
 import Img from 'gatsby-image';
 import Map from 'components/Map/Map.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import Layout from 'components/Layout/Layout.js';
+import { DiscussionEmbed } from 'disqus-react';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 
 class EventTemplate extends React.Component {
@@ -56,10 +61,31 @@ class EventTemplate extends React.Component {
     return (
       <div>
         <Layout>
-          <ParallaxLazy small color banner={banner} fluid={fluid} />
+          <ParallaxLazy small color banner={banner} fluid={fluid}>
+            <GridItem xs={11} sm={11} md={11}>
+              {event.tags.name &&
+                event.tags.name(({ tag }) => (
+                  <Button color="info" size="sm">
+                    {`#${tag}`}
+                  </Button>
+                ))}
+              {!event.tags.name && (
+                <Button color="info" size="sm">
+                  {`#${event.tags.name}`}
+                </Button>
+              )}
+            </GridItem>
+          </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={10} style={{ marginTop: '10px' }}>
+              <GridItem xs={12} sm={12} md={5} style={{ marginTop: '10px' }}>
+                <p>
+                  <strong>
+                    <u>Social Links Place Holder</u>
+                  </strong>
+                </p>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={10}>
                 {fluidContent && (
                   <div>
                     <Img
@@ -71,6 +97,12 @@ class EventTemplate extends React.Component {
                       style={{
                         marginTop: '20px',
                         marginBottom: '20px',
+                      }}
+                    />
+                    <figcaption
+                      className="wp-caption-text"
+                      dangerouslySetInnerHTML={{
+                        __html: event.featured_media.caption,
                       }}
                     />
                   </div>
@@ -87,40 +119,66 @@ class EventTemplate extends React.Component {
             </GridContainer>
             <GridContainer justify="center">
               <GridItem xs={12} sm={5} md={5}>
-                <h3>Event Details</h3>
+                <h3>
+                  <strong>Event Details</strong>
+                </h3>
                 <dl>
-                  <dt> Start: </dt>
+                  <dt>
+                    <em>
+                      <b>Start:</b>
+                    </em>
+                  </dt>
                   <dd>
-                    <abbr title={start}>{start.toString()}</abbr>
+                    <p title={start}>
+                      <mark
+                        dangerouslySetInnerHTML={{ __html: start.toString() }}
+                      />
+                    </p>
                   </dd>
 
-                  <dt> End: </dt>
+                  <dt>
+                    <em>
+                      <b>End:</b>
+                    </em>
+                  </dt>
                   <dd>
-                    <abbr title={end}> {end.toString()} </abbr>
+                    <p title={end}>
+                      <mark>{end.toString()}</mark>
+                    </p>
                   </dd>
-
-                  <dt>Category:</dt>
-                  <dd>{event.categories.name}</dd>
                 </dl>
               </GridItem>
               <GridItem xs={12} sm={5} md={5}>
-                <h3>Venue Details</h3>
+                <h3>
+                  <strong>Venue Details</strong>
+                </h3>
                 <dl>
                   <dt> Address: </dt>
                   <dd>
-                    <abbr title="2017-01-01"> {event.acf.event_address} </abbr>
+                    <p title={event.acf.event_address}>
+                      <mark>{event.acf.event_address}</mark>
+                    </p>
                   </dd>
-                  <dt> Location: </dt>
+                  <dt>
+                    <em>
+                      <b>Location:</b>
+                    </em>
+                  </dt>
                   <dd>
-                    <abbr title="2017-01-01"> {event.acf.event_location} </abbr>
+                    <p title={event.acf.event_location}>
+                      <mark>{event.acf.event_location}</mark>
+                    </p>
                   </dd>
                 </dl>
               </GridItem>
-              <GridItem xs={12}></GridItem>
+              <GridItem xs={12} sm={12} md={10}>
+                <section style={{ height: '30vh' }}>
+                  <Map position={address} info={event} />
+                </section>
+                <br />
+                <DiscussionEmbed {...disqusConfig} />
+              </GridItem>
             </GridContainer>
-            <section style={{ height: '30vh' }}>
-              <Map position={address} info={event} />
-            </section>
           </div>
         </Layout>
       </div>
@@ -139,6 +197,7 @@ export const query = graphql`
       }
       featured_media {
         id
+        caption
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {
