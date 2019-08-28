@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import MapGL, {
   Marker,
-  Popup,
+  StaticMap,
   NavigationControl,
-  FullscreenControl
+  FullscreenControl,
 } from 'react-map-gl';
-import InfoPanel from './InfoPanel';
-import Pin from './Pin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import mapStyle from 'assets/jss/material-kit-react/components/mapStyle.jsx';
+import InfoPanel from './InfoPanel';
+import Pin from './Pin';
+
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +22,12 @@ class Map extends Component {
         longitude: -118.1856821,
         zoom: 14,
         bearing: 0,
-        pitch: 45
+        pitch: 45,
       },
       coords: [39.9528, -75.1638],
       mapLat: 39.9528,
       mapLng: -75.1638,
-      popupInfo: null
+      popupInfo: null,
     };
   }
 
@@ -34,7 +35,7 @@ class Map extends Component {
     const address = this.props.position;
     const encodedQuery = encodeURIComponent(address);
     const response = await axios.get(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${process.env.GATSBY_MAPBOX_TOKEN}`,
     );
     console.log(this.props);
     // console.log(response);
@@ -45,11 +46,11 @@ class Map extends Component {
           longitude: response.data.features[0].center[0],
           zoom: 14,
           bearing: 0,
-          pitch: 35
+          pitch: 35,
         },
         coords: response.data.features[0].center,
         mapLat: response.data.features[0].center[1],
-        mapLng: response.data.features[0].center[0]
+        mapLng: response.data.features[0].center[0],
       });
     }
   }
@@ -58,26 +59,25 @@ class Map extends Component {
     this.setState({ viewport });
   };
 
-  _renderMarker = info => {
-    return (
-      <Marker longitude={this.state.mapLng} latitude={this.state.mapLat}>
-        <Pin size={25} />
-      </Marker>
-    );
-  };
+  _renderMarker = info => (
+    <Marker longitude={this.state.mapLng} latitude={this.state.mapLat}>
+      <Pin size={25} />
+    </Marker>
+  );
 
   render() {
     const { viewport } = this.state;
     const { classes, position, info } = this.props;
     return (
       <div className={classes.mapContainer}>
-        <MapGL
+        <StaticMap
           {...viewport}
           width="100%"
           height="100%"
           mapStyle="mapbox://styles/citylightschurch/cjx13gc3r2uku1cphf8o9natk"
           onViewportChange={this._updateViewport}
-          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}>
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_TOKEN}
+        >
           {this._renderMarker(info)}
           <div className="fullscreen" className={classes.fullscreenControl}>
             <FullscreenControl />
@@ -88,7 +88,7 @@ class Map extends Component {
           <div className={classes.infoPanel}>
             <InfoPanel info={info} position={position} />
           </div>
-        </MapGL>
+        </StaticMap>
       </div>
     );
   }
@@ -96,7 +96,7 @@ class Map extends Component {
 
 Map.propTypes = {
   position: PropTypes.string.isRequired,
-  info: PropTypes.object.isRequired
+  info: PropTypes.object.isRequired,
 };
 
 export default withStyles(mapStyle)(Map);
