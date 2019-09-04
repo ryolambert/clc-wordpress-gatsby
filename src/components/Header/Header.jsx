@@ -24,19 +24,22 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileOpen: false
+      mobileOpen: false,
     };
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
     this.headerColorChange = this.headerColorChange.bind(this);
   }
+
   handleDrawerToggle() {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   }
+
   componentDidMount() {
     if (this.props.changeColorOnScroll) {
       window.addEventListener('scroll', this.headerColorChange);
     }
   }
+
   headerColorChange() {
     const { classes, color, changeColorOnScroll } = this.props;
     const windowsScrollTop =
@@ -57,12 +60,14 @@ class Header extends React.Component {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   }
+
   componentWillUnmount() {
     if (this.props.changeColorOnScroll) {
       typeof window !== 'undefined' &&
         window.removeEventListener('scroll', this.headerColorChange);
     }
   }
+
   render() {
     const {
       classes,
@@ -71,13 +76,13 @@ class Header extends React.Component {
       leftLinks,
       brand,
       fixed,
-      absolute
+      absolute,
     } = this.props;
     const appBarClasses = classNames({
       [classes.appBar]: true,
       [classes[color]]: color,
       [classes.absolute]: absolute,
-      [classes.fixed]: fixed
+      [classes.fixed]: fixed,
     });
     const logo = require('../../assets/img/clc-logo-svg.svg');
 
@@ -89,7 +94,7 @@ class Header extends React.Component {
             src={logo}
             style={{
               // marginRight: '10px',
-              marginTop: '5px'
+              marginTop: '5px',
             }}
             alt="City Lights Church Logo"
           />
@@ -119,7 +124,8 @@ class Header extends React.Component {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={this.handleDrawerToggle}>
+              onClick={this.handleDrawerToggle}
+            >
               <Menu />
             </IconButton>
           </Hidden>
@@ -127,17 +133,19 @@ class Header extends React.Component {
         <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
-            anchor={'right'}
+            anchor="right"
             open={this.state.mobileOpen}
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
-            onClose={this.handleDrawerToggle}>
+            onClose={this.handleDrawerToggle}
+          >
             <div className={classes.appResponsive}>
               <IconButton
                 color="inherit"
                 aria-label="close drawer"
-                onClick={this.handleDrawerToggle}>
+                onClick={this.handleDrawerToggle}
+              >
                 <Close />
               </IconButton>
               {leftLinks}
@@ -151,7 +159,7 @@ class Header extends React.Component {
 }
 
 Header.defaultProp = {
-  color: 'white'
+  color: 'white',
 };
 
 Header.propTypes = {
@@ -165,7 +173,7 @@ Header.propTypes = {
     'transparent',
     'white',
     'rose',
-    'dark'
+    'dark',
   ]),
   rightLinks: PropTypes.node,
   leftLinks: PropTypes.node,
@@ -189,9 +197,9 @@ Header.propTypes = {
       'transparent',
       'white',
       'rose',
-      'dark'
-    ]).isRequired
-  })
+      'dark',
+    ]).isRequired,
+  }),
 };
 
 export default withStyles(headerStyle)(Header);

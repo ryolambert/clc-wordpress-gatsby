@@ -14,31 +14,35 @@ import Img from 'gatsby-image';
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
-    var windowScrollTop =
+    const windowScrollTop =
       typeof window !== 'undefined' && window.pageYOffset / 3;
     this.state = {
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     };
     this.resetTransform = this.resetTransform.bind(this);
   }
+
   componentDidMount() {
-    var windowScrollTop = window.pageYOffset / 3;
+    const windowScrollTop = window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     });
     window.addEventListener('scroll', this.resetTransform);
   }
+
   componentWillUnmount() {
     typeof window !== 'undefined' &&
       window.removeEventListener('scroll', this.resetTransform);
   }
+
   resetTransform() {
-    var windowScrollTop =
+    const windowScrollTop =
       typeof window !== 'undefined' && window.pageYOffset / 3;
     this.setState({
-      transform: 'translate3d(0,' + windowScrollTop + 'px,0)'
+      transform: `translate3d(0,${windowScrollTop}px,0)`,
     });
   }
+
   render() {
     const {
       classes,
@@ -47,23 +51,24 @@ class Parallax extends React.Component {
       children,
       style,
       image,
-      small
+      small,
     } = this.props;
     const parallaxClasses = classNames({
       [classes.parallax]: true,
       [classes.filter]: filter,
       [classes.small]: small,
-      [className]: className !== undefined
+      [className]: className !== undefined,
     });
     return (
       <div
         className={parallaxClasses}
         style={{
           ...style,
-          backgroundImage: 'url(' + image + ')',
-          ...this.state
+          backgroundImage: `url(${image})`,
+          ...this.state,
         }}
-        ref="parallax">
+        ref="parallax"
+      >
         {children}
       </div>
     );
@@ -76,7 +81,7 @@ Parallax.propTypes = {
   filter: PropTypes.bool,
   children: PropTypes.node,
   style: PropTypes.string,
-  image: PropTypes.string
+  image: PropTypes.string,
 };
 
 export default withStyles(parallaxStyle)(Parallax);
