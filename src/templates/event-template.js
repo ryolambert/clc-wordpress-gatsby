@@ -58,22 +58,24 @@ class EventTemplate extends React.Component {
       styledSubTitle: `${start}`,
     };
 
+    // event.tags.map(({ name }) => console.log(name));
+
     return (
       <div>
         <Layout>
           <ParallaxLazy small color banner={banner} fluid={fluid}>
-            <GridItem xs={11} sm={11} md={11}>
-              {event.tags.name &&
-                event.tags.name(({ tag }) => (
-                  <Button color="info" size="sm">
-                    {`#${tag}`}
+            <GridItem xs={6} sm={6} md={6}>
+              {event.tags &&
+                event.tags.map(({ name }) => (
+                  <Button color="warning" size="sm" round>
+                    {`#${name}`}
                   </Button>
                 ))}
-              {!event.tags.name && (
+              {/* {!event.tags && (
                 <Button color="info" size="sm">
-                  {`#${event.tags.name}`}
+                  Empty
                 </Button>
-              )}
+              )} */}
             </GridItem>
           </ParallaxLazy>
           <div className={classNames(classes.main, classes.mainRaised)}>
@@ -153,7 +155,11 @@ class EventTemplate extends React.Component {
                   <strong>Venue Details</strong>
                 </h3>
                 <dl>
-                  <dt> Address: </dt>
+                  <dt>
+                    <em>
+                      <b>Address:</b>
+                    </em>
+                  </dt>
                   <dd>
                     <p title={event.acf.event_address}>
                       <mark>{event.acf.event_address}</mark>
