@@ -82,7 +82,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         sermons.forEach(edge => {
           createPage({
-            path: `/sermon/${edge.node.slug}/`,
+            path: `/post/${edge.node.slug}/`,
             component: slash(sermonTemplate),
             context: {
               id: edge.node.id,
@@ -114,7 +114,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         events.forEach(edge => {
           createPage({
-            path: `/event/${edge.node.slug}/`,
+            path: `/post/${edge.node.slug}/`,
             component: slash(eventTemplate),
             context: {
               id: edge.node.id,

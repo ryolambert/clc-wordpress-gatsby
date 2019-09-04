@@ -138,12 +138,12 @@ module.exports = {
             tags: node => node.tag__NODE,
           },
           // TODO: Debug Page Search Feature
-          // wordpress__PAGE: {
-          //   title: node => node.title,
-          //   excerpt: node => node.excerpt,
-          //   slug: node => node.slug,
-          //   type: node => node.type,
-          // },
+          wordpress__PAGE: {
+            title: node => node.title,
+            excerpt: node => node.excerpt,
+            slug: node => node.slug,
+            type: node => node.type,
+          },
         },
       },
     },

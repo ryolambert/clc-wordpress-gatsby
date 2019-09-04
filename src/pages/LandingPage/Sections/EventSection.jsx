@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import GridContainer from 'components/Grid/GridContainer.jsx';
@@ -18,7 +20,7 @@ const DisplayCalendar = ({ data }) => {
           {events.map(event => (
             <li key={event.title}>
               <Link
-                to={`/event/${event.node.slug}`}
+                to={`/post/${event.node.slug}`}
                 className="title"
                 dangerouslySetInnerHTML={{ __html: event.title }}
               />
@@ -27,7 +29,7 @@ const DisplayCalendar = ({ data }) => {
                   weekday: 'long',
                   month: 'long',
                   day: 'numeric',
-                  year: 'numeric'
+                  year: 'numeric',
                 })}
               </p>
             </li>
