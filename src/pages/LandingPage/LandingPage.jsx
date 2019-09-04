@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -121,19 +122,36 @@ function LandingPage(props) {
 
   return (
     <Layout>
-      <ParallaxLazy filter banner={banner} fluid={fluid}>
-        <br />
-        <Button
-          color="warning"
-          size="lg"
-          href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaPlay />
-          Watch video
-        </Button>
-      </ParallaxLazy>
+      <ParallaxLazy
+        filter
+        fluid={fluid}
+        landingPage={
+          <GridItem xs={12} sm={12} md={12}>
+            <h1 className={classes.parallaxTitle}>
+              <strong
+                dangerouslySetInnerHTML={{
+                  __html: banner.title ? banner.title : null,
+                }}
+              />
+            </h1>
+            <h4
+              dangerouslySetInnerHTML={{
+                __html: banner.subTitle ? banner.subTitle : null,
+              }}
+            />
+            <Button
+              color="warning"
+              size="lg"
+              href="https://www.youtube.com/watch?v=YfRlP2VEDEI"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaPlay />
+              Watch video
+            </Button>
+          </GridItem>
+        }
+      />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />

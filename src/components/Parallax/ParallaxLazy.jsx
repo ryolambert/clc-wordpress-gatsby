@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-danger */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -47,13 +49,16 @@ class Parallax extends React.Component {
 
   render() {
     const {
+      banner,
       children,
       classes,
       className,
       color,
       filter,
       fluid,
-      banner,
+      landingPage,
+      leftSide,
+      rightSide,
       small,
       style,
     } = this.props;
@@ -65,16 +70,9 @@ class Parallax extends React.Component {
       [classes.small]: small,
       [className]: className !== undefined,
     });
-    // console.info(banner);
-
-    // const titleClasses = classNames({
-    //   [classes.container]: true,
-    //   [classes.title]: true
-    // });
 
     return (
       <div style={{ ...this.state }} ref="parallax">
-        {/* <div className={classes.container}> */}
         <Img
           className={parallaxClasses}
           fluid={fluid}
@@ -86,30 +84,35 @@ class Parallax extends React.Component {
         />
         <div className={classes.parallaxContainer}>
           <GridContainer className={classes.parallaxWrapper}>
-            <GridItem xs={11} sm={11} md={6}>
-              <h1 className={classes.parallaxTitle}>
-                <strong
+            {landingPage}
+            {banner && (
+              <GridItem xs={6} sm={6} md={6}>
+                <h1 className={classes.parallaxTitle}>
+                  <strong
+                    dangerouslySetInnerHTML={{
+                      __html: banner.title ? banner.title : null,
+                    }}
+                  />
+                </h1>
+                <h4
                   dangerouslySetInnerHTML={{
-                    __html: banner.title ? banner.title : null,
+                    __html: banner.subTitle ? banner.subTitle : null,
                   }}
                 />
-              </h1>
-              <h4
-                dangerouslySetInnerHTML={{
-                  __html: banner.subTitle ? banner.subTitle : null,
-                }}
-              />
-              <h5 className={classes.parallaxSubtitle}>
-                <strong
-                  dangerouslySetInnerHTML={{
-                    __html: banner.styledSubTitle
-                      ? banner.styledSubTitle
-                      : null,
-                  }}
-                />
-              </h5>
-              {children}
-            </GridItem>
+                <h5 className={classes.parallaxSubtitle}>
+                  <strong
+                    dangerouslySetInnerHTML={{
+                      __html: banner.styledSubTitle
+                        ? banner.styledSubTitle
+                        : null,
+                    }}
+                  />
+                </h5>
+                {leftSide}
+              </GridItem>
+            )}
+            {rightSide}
+            {children}
           </GridContainer>
         </div>
       </div>
@@ -118,14 +121,17 @@ class Parallax extends React.Component {
 }
 
 Parallax.propTypes = {
+  banner: PropTypes.object,
+  children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   color: PropTypes.bool,
   filter: PropTypes.bool,
-  children: PropTypes.node,
-  style: PropTypes.string,
   fluid: PropTypes.object,
-  banner: PropTypes.object,
+  landingPage: PropTypes.node,
+  leftSide: PropTypes.node,
+  rightSide: PropTypes.node,
+  style: PropTypes.string,
 };
 
 export default withStyles(parallaxLazyStyle)(Parallax);
