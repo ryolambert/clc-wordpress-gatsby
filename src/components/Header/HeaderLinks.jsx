@@ -153,7 +153,7 @@ function HeaderLinks({ ...props }) {
               </Link>
             </ListItem>
             <ListItem className={classes.listItem} key="blog">
-              <Link to="/posts/" className={classes.navLink}>
+              <Link to="/blog-page/" className={classes.navLink}>
                 Blog
               </Link>
             </ListItem>
