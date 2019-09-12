@@ -21,28 +21,30 @@ function SimplePagination({ color, pageContext, ...props }) {
           size="sm"
           round
           color={`${color}`}
-          className={classes.paginationLink}>
+          className={classes.paginationLink}
+        >
           <Link
             style={{
               color: '#fff',
-              textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)'
+              textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
             }}
-            to={props.url}>
+            to={props.url}
+          >
             {props.text}
           </Link>
         </Button>
       );
-    } else {
-      return (
-        <Button
-          size="sm"
-          round
-          color={`${color}`}
-          className={classes.paginationLink}>
-          <span style={{ filter: 'brightness(50%)' }}>{props.text}</span>
-        </Button>
-      );
     }
+    return (
+      <Button
+        size="sm"
+        round
+        color={`${color}`}
+        className={classes.paginationLink}
+      >
+        <span style={{ filter: 'brightness(50%)' }}>{props.text}</span>
+      </Button>
+    );
   };
 
   const previousUrl = index - 1 == 1 ? '' : (index - 1).toString();
@@ -62,14 +64,14 @@ function SimplePagination({ color, pageContext, ...props }) {
 }
 
 SimplePagination.defaultProps = {
-  color: 'primary'
+  color: 'primary',
 };
 
 SimplePagination.propTypes = {
   classes: PropTypes.object.isRequired,
   route: PropTypes.string.isRequired,
   pageContext: PropTypes.object.isRequired,
-  color: PropTypes.oneOf(['primary', 'info', 'success', 'warning', 'danger'])
+  color: PropTypes.oneOf(['primary', 'info', 'success', 'warning', 'danger']),
 };
 
 export default withStyles(simplePaginationStyle)(SimplePagination);
