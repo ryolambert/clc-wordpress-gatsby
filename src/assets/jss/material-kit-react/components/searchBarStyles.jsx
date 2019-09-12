@@ -8,13 +8,34 @@ const DropDown = styled.div`
   width: 100%;
   max-height: 35vh;
   z-index: 100;
-  border: 1px solid ${props => props.theme.lightgrey};
+  /* border: 1px solid ${props => props.theme.lightgrey}; */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; */
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#0080ff),
+      to(#00d2d2)
+    );
+    background-image: linear-gradient(120deg, #0080ff 0%, #00d2d2 100%);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  ::-webkit-scrollbar-track {
+    /* background-color: #fff; */
+    opacity: 0.8;
+    background-color: lightgray;
+  }
 `;
 
 const DropDownItem = styled.div`
@@ -23,6 +44,8 @@ const DropDownItem = styled.div`
     props.highlighted
       ? 'linear-gradient(25deg,  #ffc526 0%, #ff6600 130%)'
       : 'white'};
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   transition: background-size 0.25s ease-in;
   background-color: white;
   padding: 1rem;
@@ -102,14 +125,3 @@ const SearchStyles = styled.div`
 `;
 
 export { DropDown, DropDownItem, SearchStyles };
-
-// background: ${props =>
-//   props.highlighted
-//     ? 'linear-gradient(25deg, #ff6600 0%, #ffc526 130%)'
-//     : 'white'};
-// background-color: ${props.theme.warningColor};
-// box-shadow: '0 2px 2px 0 rgba(255, 152, 0, 0.14), 0 3px 1px -2px rgba(255, 152, 0, 0.2), 0 1px 5px 0 rgba(255, 152, 0, 0.12)';
-// &:hover,&:focus: {
-//   background-color: ${props.theme.warningColor};
-//   box-shadow: '0 14px 26px -12px rgba(255, 152, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2)';
-// }

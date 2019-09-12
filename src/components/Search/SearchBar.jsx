@@ -5,7 +5,6 @@ import Downshift, { resetIdCounter } from 'downshift';
 import { Index } from 'elasticlunr';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
-import CustomInput from 'components/CustomInput/CustomInput.jsx';
 import Input from '@material-ui/core/Input';
 import {
   DropDown,
