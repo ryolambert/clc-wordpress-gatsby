@@ -12,14 +12,14 @@ import Button from '@material-ui/core/Button';
 
 import buttonStyle from 'assets/jss/material-kit-react/components/buttonStyle.jsx';
 
-function RegularButton({ ...props }) {
+function CustomButton({ ...props }) {
   const {
     classes,
     color,
     round,
     children,
-    fullWidth,
     disabled,
+    fullWidth,
     simple,
     size,
     block,
@@ -28,6 +28,7 @@ function RegularButton({ ...props }) {
     className,
     ...rest
   } = props;
+
   const btnClasses = classNames({
     [classes.button]: true,
     [classes[size]]: size,
@@ -42,13 +43,13 @@ function RegularButton({ ...props }) {
     [className]: className,
   });
   return (
-    <Button {...rest} className={btnClasses}>
+    <Button {...rest} size={size} className={btnClasses}>
       {children}
     </Button>
   );
 }
 
-RegularButton.propTypes = {
+CustomButton.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.oneOf([
     'primary',
@@ -64,7 +65,8 @@ RegularButton.propTypes = {
     'github',
     'transparent',
   ]),
-  size: PropTypes.oneOf(['sm', 'lg']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'sm', 'lg']),
+  // sizeClass: PropTypes.oneOf(['sm', 'lg'])
   simple: PropTypes.bool,
   round: PropTypes.bool,
   fullWidth: PropTypes.bool,
@@ -74,4 +76,4 @@ RegularButton.propTypes = {
   justIcon: PropTypes.bool,
 };
 
-export default withStyles(buttonStyle)(RegularButton);
+export default withStyles(buttonStyle)(CustomButton);
