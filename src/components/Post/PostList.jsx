@@ -179,31 +179,10 @@ class PostList extends PureComponent {
   handleSearch = e => {
     let value = e && e.target ? e.target.value : this.state.search;
     let { posts } = this.props;
-    // let filteredPosts = posts.filter(post => {
-    //   if (post.node.tags !== null) {
-    //     /**
-    //      * @param {{ name: any; }} tag
-    //      */
-    //     const tagsFilter = post.node.tags.filter(tag => tag.name);
-    //     const filtered = tagsFilter.map(tag => tag.name);
-    //     // console.log(filtered);
-    //     return filtered;
-    //   } else {
-    //     return;
-    //   }
-    // });
-    // const filteredTagPosts = filteredPosts.map(post =>
-    //   post.node.tags.map(tag => tag.name)
-    // );
+
     if (typeof value === 'undefined') return;
 
     const searchResults = posts.filter(post => {
-      // const filteredTags =
-      //   post.node.tags !== null
-      //     ? post.node.tags.filter(tag => tag.name)
-      //     : 'untagged';
-      // const tagPosts = filteredTags.map(tag => tag.name);
-      // TODO : Remap tags from Array of Objects [{name: "tag name"}] to Array of key values ["tag 1", "tag 2", "tag 3"]
       // Match search in title, excerpt, category, tag, slug
       const query = value.toLowerCase();
       const tagNameArr =
@@ -394,12 +373,6 @@ class PostList extends PureComponent {
                     ))}
                 </div>
               )}
-              {/* <>
-                <em style={{ borderBottom: '1px solid black' }}>
-                  {banner.subTitle}
-                </em>
-                <hr />
-              </> */}
               {showTags === true && (
                 <div>
                   <a
