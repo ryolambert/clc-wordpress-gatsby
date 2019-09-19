@@ -1,12 +1,13 @@
 {
-  "extends": ["airbnb", "eslint:recommended", "plugin:prettier/recommended", "prettier/react", "plugin:react/recommended"],
+  "extends": ["airbnb", "eslint:recommended", "plugin:prettier/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "impliedStrict": true,
-      "classes": true
+      "classes": true,
+      "jsx": true
     }
   },
   "env": {
@@ -110,12 +111,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "prettier/prettier":
       [
-        "error",
-        {
-          "singleQuote": true,
-          "parser": "babel",
-          // "trailingComma": "es5"
-        },
+        "error"
       ]
   },
   "plugins": [
