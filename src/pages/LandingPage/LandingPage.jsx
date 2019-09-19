@@ -19,7 +19,6 @@ import Parallax from 'components/Parallax/Parallax.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import Map from 'components/Map/Map.jsx';
 import { graphql, useStaticQuery } from 'gatsby';
-import Layout from '../../components/Layout/Layout.js';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
@@ -121,7 +120,7 @@ function LandingPage(props) {
   };
 
   return (
-    <Layout>
+    <div>
       <ParallaxLazy
         filter
         fluid={fluid}
@@ -161,7 +160,7 @@ function LandingPage(props) {
           <ContactSection address={address} pageInfo={pageInfo} />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }
 

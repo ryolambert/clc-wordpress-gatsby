@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
@@ -48,7 +47,7 @@ class SermonIndexPage extends React.Component {
     };
 
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -140,7 +139,7 @@ class SermonIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-      </Layout>
+      </div>
     );
   }
 }
@@ -163,15 +162,15 @@ export const query = graphql`
           title
           excerpt
           date(formatString: "MMMM DD, YYYY")
-          # featured_media {
-          #   localFile {
-          #     childImageSharp {
-          #       fluid(maxWidth: 1200) {
-          #         ...GatsbyImageSharpFluid_withWebp
-          #       }
-          #     }
-          #   }
-          # }
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -190,7 +189,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1200) {
-                  src
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

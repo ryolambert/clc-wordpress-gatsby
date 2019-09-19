@@ -103,6 +103,7 @@
     "jsx-a11y/label-has-for": "off",
     "max-lines-per-function": "off",
     "react/display-names": "off",
+    "react/no-danger": "off",
     "react/jsx-pascal-case": "off",
     "react/prop-types": "off",
     "react/no-unused-prop-types": "warn",

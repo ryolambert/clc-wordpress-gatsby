@@ -10,7 +10,6 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
@@ -20,6 +19,7 @@ import postPageStyle from '../assets/jss/material-kit-react/views/postPageStyle'
 class PageTemplate extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
+
     const page = this.props.data.wordpressPage;
     const pageTitle = this.props.data.wordpressPage.title;
     const placeHolder = this.props.data.placeHolderImg.fluid;
@@ -33,36 +33,34 @@ class PageTemplate extends React.Component {
 
     return (
       <div>
-        <Layout>
-          <ParallaxLazy small filter fluid={fluid} banner={banner} />
-          <div className={classNames(classes.main, classes.mainRaised)}>
-            <div>
-              <div className={classes.container}>
-                <GridContainer justify="center">
-                  <GridItem xs={12} sm={12} md={10}>
-                    {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
-                    <div
-                      style={{ marginTop: '2vh' }}
-                      dangerouslySetInnerHTML={{
-                        __html: page.content,
-                      }}
-                    />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: page.date,
-                      }}
-                    />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: page.slug,
-                      }}
-                    />
-                  </GridItem>
-                </GridContainer>
-              </div>
+        <ParallaxLazy small filter fluid={fluid} banner={banner} />
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div>
+            <div className={classes.container}>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={10}>
+                  {/* <h1 dangerouslySetInnerHTML={{ __html: page.title}}/> */}
+                  <div
+                    style={{ marginTop: '2vh' }}
+                    dangerouslySetInnerHTML={{
+                      __html: page.content,
+                    }}
+                  />
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: page.date,
+                    }}
+                  />
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: page.slug,
+                    }}
+                  />
+                </GridItem>
+              </GridContainer>
             </div>
           </div>
-        </Layout>
+        </div>
       </div>
     );
   }

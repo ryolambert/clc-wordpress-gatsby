@@ -14,7 +14,6 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
@@ -55,42 +54,38 @@ class PostTemplate extends React.Component {
 
     return (
       <div>
-        <Layout>
-          <ParallaxLazy small color banner={banner} fluid={fluid} />
-          <div className={classNames(classes.main, classes.mainRaised)}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={10}>
-                {fluidContent && (
-                  <div>
-                    <Img
-                      alt="Screenshot of Project"
-                      fluid={
-                        post.featured_media.localFile.childImageSharp.fluid
-                      }
-                      className={imageClasses}
-                      style={{ marginTop: '20px', marginBottom: '20px' }}
-                    />
-                    <figcaption
-                      className="wp-caption-text"
-                      dangerouslySetInnerHTML={{
-                        __html: post.featured_media.caption,
-                      }}
-                    />
-                  </div>
-                )}
-                <div
-                  className={classes.content}
-                  dangerouslySetInnerHTML={{
-                    __html: post.content,
-                  }}
-                />
-                <p dangerouslySetInnerHTML={{ __html: post.date }} />
-                <p dangerouslySetInnerHTML={{ __html: post.slug }} />
-                <DiscussionEmbed {...disqusConfig} />
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Layout>
+        <ParallaxLazy small color banner={banner} fluid={fluid} />
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={10}>
+              {fluidContent && (
+                <div>
+                  <Img
+                    alt="Screenshot of Project"
+                    fluid={post.featured_media.localFile.childImageSharp.fluid}
+                    className={imageClasses}
+                    style={{ marginTop: '20px', marginBottom: '20px' }}
+                  />
+                  <figcaption
+                    className="wp-caption-text"
+                    dangerouslySetInnerHTML={{
+                      __html: post.featured_media.caption,
+                    }}
+                  />
+                </div>
+              )}
+              <div
+                className={classes.content}
+                dangerouslySetInnerHTML={{
+                  __html: post.content,
+                }}
+              />
+              <p dangerouslySetInnerHTML={{ __html: post.date }} />
+              <p dangerouslySetInnerHTML={{ __html: post.slug }} />
+              <DiscussionEmbed {...disqusConfig} />
+            </GridItem>
+          </GridContainer>
+        </div>
       </div>
     );
   }

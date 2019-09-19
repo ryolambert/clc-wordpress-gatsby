@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
 import PostsList from '../components/Post/PostList';
 // import TinyLetterSignup from '../../components/TinyLetterSignUp';
 
@@ -13,7 +12,7 @@ const PostsPage = ({ data }) => {
   const fluid = blogParallax || fallBackParallax;
 
   return (
-    <Layout>
+    <div>
       <PostsList
         showArrow
         showImage
@@ -31,7 +30,7 @@ const PostsPage = ({ data }) => {
       {/* <div>
       <h1>Test</h1>
     </div> */}
-    </Layout>
+    </div>
   );
 };
 
@@ -92,7 +91,7 @@ export const PostsPageQuery = graphql`
             localFile {
               childImageSharp {
                 fluid(maxWidth: 640) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -114,7 +113,7 @@ export const PostsPageQuery = graphql`
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -125,7 +124,7 @@ export const PostsPageQuery = graphql`
     fallBackParallaxImg: imageSharp(original: { src: { regex: "/skyline/" } }) {
       fluid(maxWidth: 1200) {
         src
-        ...GatsbyImageSharpFluid
+        ...GatsbyImageSharpFluid_withWebp
       }
     }
   }

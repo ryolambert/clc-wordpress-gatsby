@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContactForm from 'components/ContactForm/ContactForm.jsx';
-import Map from 'components/Map/Map.jsx';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+import ContactForm from 'components/ContactForm/ContactForm';
+import Map from 'components/Map/Map';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
 const ContactSection = props => {
   const { classes, pageInfo, address, ...rest } = props;
@@ -15,7 +15,7 @@ const ContactSection = props => {
           <ContactForm />
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
-          <Map position={address} info={pageInfo} />
+          {/* <Map position={address} info={pageInfo} /> */}
         </GridItem>
       </GridContainer>
     </div>

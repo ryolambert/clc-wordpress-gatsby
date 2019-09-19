@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import GridContainer from 'components/Grid/GridContainer.jsx';

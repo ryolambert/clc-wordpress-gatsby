@@ -11,6 +11,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import SearchBar from '../Search/SearchBar.jsx';
+import PropTypes from 'prop-types';
 
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 
@@ -50,25 +51,27 @@ const HEADERLINK_QUERY = graphql`
 `;
 
 function renderHeaderLink(item, props) {
-  const { classes } = props;
+  // const { classes } = props;
   return (
-    <ListItem className={classes.listItem} key={item.object_slug}>
+    <ListItem className={props.classes.listItem} key={item.object_slug}>
       <Link
         to={`/${item.object_slug}`}
-        className={classes.navLink}
+        className={props.classes.navLink}
         dangerouslySetInnerHTML={{ __html: item.title }}
+        onClick={props.handleDrawerToggle}
       />
     </ListItem>
   );
 }
 
 function renderDropMap(item, props) {
-  const { classes } = props;
+  // const { classes } = props;
   let mapDrop = item.wordpress_children.map(child => (
     <Link
       to={`/${child.object_slug}`}
-      className={classes.dropdownLink}
+      className={props.classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: child.title }}
+      onClick={props.handleDrawerToggle}
       key={child.id}
     />
   ));
@@ -78,42 +81,55 @@ function renderDropMap(item, props) {
     0,
     <Link
       to={`/${item.object_slug}`}
-      className={classes.dropdownLink}
+      className={props.classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: item.title }}
+      onClick={props.handleDrawerToggle}
     />
   );
   return mapDrop;
 }
 
 function HeaderLinks({ ...props }) {
-  const { classes } = props;
+  // const { classes } = props;
+  console.log(
+    '%c HEADERLINKS PROPS TEST ',
+    'background: pink; color: black; font-weight: bold;'
+  );
+  console.log(props);
   return (
     <StaticQuery
       query={HEADERLINK_QUERY}
       render={data => (
         <div>
-          <List className={classes.list}>
+          <List className={props.classes.list}>
             <SearchBar
-              className={classes.listItemSearch}
+              className={props.classes.listItemSearch}
               key="searchbar"
               searchIndex={data.siteSearchIndex.index}
             />
-            <ListItem className={classes.listItem} key="home">
-              <Link to="/" className={classes.navLink}>
+            <ListItem className={props.classes.listItem} key="home">
+              <Link
+                to="/"
+                className={props.classes.navLink}
+                onClick={props.handleDrawerToggle}
+              >
                 Home
               </Link>
             </ListItem>
             {data.wordpressWpApiMenusMenusItems.items.map(item => {
               if (item.wordpress_children) {
                 return (
-                  <ListItem className={classes.listItem} key={item.object_slug}>
+                  <ListItem
+                    className={props.classes.listItem}
+                    key={item.object_slug}
+                  >
                     <CustomDropdown
-                      className={classes.listItem}
+                      className={props.classes.listItem}
                       noLiPadding
                       buttonText={item.title}
                       buttonProps={{
-                        className: classes.navLink,
-                        color: 'transparent'
+                        className: props.classes.navLink,
+                        color: 'transparent',
                       }}
                       dropdownList={renderDropMap(item, props)}
                     />
@@ -123,37 +139,49 @@ function HeaderLinks({ ...props }) {
                 return renderHeaderLink(item, props);
               }
             })}
-            <ListItem className={classes.listItem} key="media-deadlink">
+            <ListItem className={props.classes.listItem} key="media-deadlink">
               <CustomDropdown
                 noLiPadding
                 buttonText={'Media'}
                 buttonProps={{
-                  className: classes.navLink,
-                  color: 'transparent'
+                  className: props.classes.navLink,
+                  color: 'transparent',
                 }}
                 dropdownList={[
                   <Link
                     to="/sermons/"
-                    className={classes.dropdownLink}
-                    key="sermons">
+                    className={props.classes.dropdownLink}
+                    onClick={props.handleDrawerToggle}
+                    key="sermons"
+                  >
                     Sermons
                   </Link>,
                   <Link
                     to="/galleries/"
-                    className={classes.dropdownLink}
-                    key="galleries">
+                    className={props.classes.dropdownLink}
+                    onClick={props.handleDrawerToggle}
+                    key="galleries"
+                  >
                     Gallery
-                  </Link>
+                  </Link>,
                 ]}
               />
             </ListItem>
-            <ListItem className={classes.listItem} key="calendar">
-              <Link to="/calendar/" className={classes.navLink}>
+            <ListItem className={props.classes.listItem} key="calendar">
+              <Link
+                to="/calendar/"
+                className={props.classes.navLink}
+                onClick={props.handleDrawerToggle}
+              >
                 Calendar
               </Link>
             </ListItem>
-            <ListItem className={classes.listItem} key="blog">
-              <Link to="/blog-page/" className={classes.navLink}>
+            <ListItem className={props.classes.listItem} key="blog">
+              <Link
+                to="/blog-page/"
+                className={props.classes.navLink}
+                onClick={props.handleDrawerToggle}
+              >
                 Blog
               </Link>
             </ListItem>
@@ -163,5 +191,9 @@ function HeaderLinks({ ...props }) {
     />
   );
 }
+
+HeaderLinks.propTypes = {
+  toggleDrawer: PropTypes.func,
+};
 
 export default withStyles(headerLinksStyle)(HeaderLinks);

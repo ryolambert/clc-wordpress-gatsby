@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable prefer-const */
 // @ts-check
 import React, { PureComponent } from 'react';
@@ -10,7 +12,6 @@ import classNames from 'classnames';
 import Input from '@material-ui/core/Input';
 import withStyles from '@material-ui/core/styles/withStyles';
 import postsIndexPageStyle from '../../assets/jss/material-kit-react/views/postsIndexPageStyle';
-import Layout from '../Layout/Layout.js';
 import GridContainer from '../Grid/GridContainer.jsx';
 import GridItem from '../Grid/GridItem.jsx';
 import Button from '../CustomButtons/Button.jsx';
@@ -108,7 +109,6 @@ class PostList extends PureComponent {
     });
   };
 
-  // i6~ks$F:LB\Hb)ry7)R8j3R+HFz,
   /**
    * @param {any} tag
    */
@@ -220,7 +220,7 @@ class PostList extends PureComponent {
     const categoriesArr =
       /**
        * @param {any} i Category being iterated
-       * @param {number} index Of iterated index
+       * @param {number} index Of iterated category
        */
       categories
         .filter((i, index) => index < 3)
@@ -307,7 +307,7 @@ class PostList extends PureComponent {
     );
     console.log(this.state);
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -366,9 +366,9 @@ class PostList extends PureComponent {
                         data-filter={category.node.name.toLowerCase()}
                         onClick={this.handleCategoryClick}
                       >
-                        <span
-                          data-filter={category.node.name.toLowerCase()}
-                        >{`${category.node.name}`}</span>
+                        <span data-filter={category.node.name.toLowerCase()}>
+                          {`${category.node.name}`}
+                        </span>
                       </Button>
                     ))}
                 </div>
@@ -469,7 +469,7 @@ class PostList extends PureComponent {
             <GridItem xs={11} sm={10} md={8}></GridItem>
           </GridContainer> */}
         </div>
-      </Layout>
+      </div>
     );
   }
 }

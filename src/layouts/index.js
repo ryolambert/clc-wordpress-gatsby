@@ -4,11 +4,13 @@
 // TODO: Get react-helmet setup for gql to inject siteMetadata
 
 import React from 'react';
-import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+// import Helmet from './node_modules/react-helmet';
 import { graphql } from 'gatsby';
-import Header from '../Header/Header.jsx';
-import HeaderLinks from '../Header/HeaderLinks.jsx';
-import Footer from '../Footer/Footer.jsx';
+import Transition from '../components/Transition/Transition';
+import Header from '../components/Header/Header';
+import HeaderLinks from '../components/Header/HeaderLinks';
+import Footer from '../components/Footer/Footer';
 // import SEO from '../Seo';
 
 import 'assets/scss/material-kit-react.scss?v=1.4.0';
@@ -28,9 +30,9 @@ const LAYOUT_PAGE_QUERY = graphql`
   }
 `;
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
   render() {
-    const { children, ...rest } = this.props;
+    const { children, location, ...rest } = this.props;
     const dashboardRoutes = [];
     return (
       <div>
@@ -51,9 +53,15 @@ export default class Layout extends React.Component {
         {/* <Helmet>
           <meta name="description" content={data.site.} />
         </Helmet> */}
-        {children}
+        <Transition location={location}>{children}</Transition>
         <Footer />
       </div>
     );
   }
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Layout;

@@ -10,7 +10,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
@@ -49,7 +48,7 @@ class PostIndexPage extends React.Component {
     };
 
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -141,7 +140,7 @@ class PostIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-      </Layout>
+      </div>
     );
   }
 }

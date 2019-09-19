@@ -149,6 +149,12 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/index.js`),
+      },
+    },
     `gatsby-plugin-resolve-src`,
     {
       resolve: `gatsby-source-filesystem`,
