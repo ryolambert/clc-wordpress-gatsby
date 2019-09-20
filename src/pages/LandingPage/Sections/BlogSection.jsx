@@ -1,5 +1,6 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
@@ -90,7 +91,7 @@ const BlogSection = ({ data }) => {
           <GridItem>
             {posts.map(post => (
               <GridItem key={post.title}>
-                <Link to={`/post/${post.node.slug}`}>
+                <AniLink fade to={`/post/${post.node.slug}`}>
                   <Card className={classes.card} raised="true" carousel>
                     {post.node.featured_media && (
                       <Img
@@ -132,7 +133,7 @@ const BlogSection = ({ data }) => {
                       })}
                     </p>
                   </Card>
-                </Link>
+                </AniLink>
               </GridItem>
             ))}
           </GridItem>

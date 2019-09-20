@@ -19,7 +19,6 @@ import Parallax from 'components/Parallax/Parallax.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import Map from 'components/Map/Map.jsx';
 import { graphql, useStaticQuery } from 'gatsby';
-import Layout from '../../components/Layout/Layout.js';
 
 import landingPageStyle from '../../assets/jss/material-kit-react/views/landingPageStyle.jsx';
 
@@ -60,6 +59,8 @@ function LandingPage(props) {
               landing_location
               landing_address
               landing_location_description
+              values_overview
+              values_overview_excerpt
               values_one
               values_three
               values_two
@@ -68,11 +69,53 @@ function LandingPage(props) {
           }
         }
       }
-      team: allWordpressPage(filter: { title: { eq: "Staff" } }) {
+      team: allWordpressPage(filter: { title: { eq: "Landing Page" } }) {
         edges {
           node {
-            title
-            content
+            acf {
+              team_one_image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 360) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+              team_one_name
+              team_one_position
+              team_one_excerpt
+              team_one_phone
+              team_one_email
+              team_two_image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 360) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+              team_two_name
+              team_two_position
+              team_two_excerpt
+              team_two_phone
+              team_two_email
+              team_three_image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 360) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+              team_three_name
+              team_three_position
+              team_three_excerpt
+              team_three_phone
+              team_three_email
+            }
           }
         }
       }
@@ -121,7 +164,7 @@ function LandingPage(props) {
   };
 
   return (
-    <Layout>
+    <div>
       <ParallaxLazy
         filter
         fluid={fluid}
@@ -155,13 +198,14 @@ function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <TeamSection teamInfo={team} />
+          <TeamSection fallBack={fallBackParallaxImg} teamInfo={team} />
           <EventSection />
           <BlogSection />
           <ContactSection address={address} pageInfo={pageInfo} />
         </div>
       </div>
-    </Layout>
+      <Footer />
+    </div>
   );
 }
 
