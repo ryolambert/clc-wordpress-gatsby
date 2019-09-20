@@ -15,14 +15,14 @@ function Footer({ ...props }) {
   const { classes, whiteFont } = props;
   const footerClasses = classNames({
     [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   const aClasses = classNames({
     [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   return (
-    <footer className={footerClasses}>
+    <footer className={footerClasses} style={{ position: 'relative', zIndex: '1' }}>
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
@@ -30,7 +30,8 @@ function Footer({ ...props }) {
               <a
                 href="https://www.relevantdesign.org/"
                 className={classes.block}
-                target="_blank">
+                target="_blank"
+              >
                 Relevant Design
               </a>
             </ListItem>
@@ -38,7 +39,8 @@ function Footer({ ...props }) {
               <a
                 href="https://relevantdesign.org/#2"
                 className={classes.block}
-                target="_blank">
+                target="_blank"
+              >
                 About
               </a>
             </ListItem>
@@ -66,7 +68,8 @@ function Footer({ ...props }) {
           <a
             href="https://relevantdesign.org"
             className={aClasses}
-            target="_blank">
+            target="_blank"
+          >
             Relevant Design
           </a>{' '}
           for a better web.
@@ -78,7 +81,7 @@ function Footer({ ...props }) {
 
 Footer.propTypes = {
   classes: PropTypes.object.isRequired,
-  whiteFont: PropTypes.bool
+  whiteFont: PropTypes.bool,
 };
 
 export default withStyles(footerStyle)(Footer);

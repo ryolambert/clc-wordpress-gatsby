@@ -4,7 +4,8 @@ import { navigate } from '@reach/router';
 import Downshift, { resetIdCounter } from 'downshift';
 import { Index } from 'elasticlunr';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Input from '@material-ui/core/Input';
 import {
   DropDown,
@@ -100,7 +101,7 @@ class SearchBar extends React.Component {
                           key={item.id}
                           highlighted={index === highlightedIndex}
                         >
-                          <Link to={`/post/${item.slug}`}>
+                          <AniLink fade duration={0.4} to={`/post/${item.slug}`}>
                             <h5
                               dangerouslySetInnerHTML={{ __html: item.title }}
                             />
@@ -108,7 +109,7 @@ class SearchBar extends React.Component {
                             <p
                               dangerouslySetInnerHTML={{ __html: item.excerpt }}
                             />
-                          </Link>
+                          </AniLink>
                         </DropDownItem>
                       );
                     }
@@ -123,14 +124,14 @@ class SearchBar extends React.Component {
                             // eslint-disable-next-line react/jsx-curly-newline
                           }
                         >
-                          <Link to={`/${item.slug}`}>
+                          <AniLink fade duration={0.4} to={`/${item.slug}`}>
                             <h5
                               dangerouslySetInnerHTML={{ __html: item.title }}
                             />
                             <p
                               dangerouslySetInnerHTML={{ __html: item.excerpt }}
                             />
-                          </Link>
+                          </AniLink>
                         </DropDownItem>
                       );
                     }
@@ -141,9 +142,9 @@ class SearchBar extends React.Component {
                         key={Math.random()}
                         highlighted={index === highlightedIndex}
                       >
-                        <Link to={`/${item.slug}`}>
+                        <AniLink fade duration={0.4} to={`/${item.slug}`}>
                           <h6>😭Sorry, it seems we couldn't find that! 🤷‍♂️</h6>
-                        </Link>
+                        </AniLink>
                       </DropDownItem>
                     );
                   })}

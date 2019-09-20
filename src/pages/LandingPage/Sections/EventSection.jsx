@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 
 const DisplayCalendar = ({ data }) => {
@@ -19,7 +20,9 @@ const DisplayCalendar = ({ data }) => {
         <ul className="latest-events">
           {events.map(event => (
             <li key={event.title}>
-              <Link
+              <AniLink
+                fade
+                duration={0.4}
                 to={`/post/${event.node.slug}`}
                 className="title"
                 dangerouslySetInnerHTML={{ __html: event.title }}

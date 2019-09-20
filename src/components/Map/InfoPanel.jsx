@@ -15,7 +15,6 @@ class InfoPanel extends PureComponent {
     const fluidContent = info.featured_media
       ? info.featured_media.localFile.childImageSharp.fluid
       : null;
-    console.log(info);
     return (
       <div className={classes.infoPanelContainer}>
         <h6 style={{ margin: '0px' }}>
@@ -26,7 +25,7 @@ class InfoPanel extends PureComponent {
                 ? info.acf.event_location
                 : info.acf.landing_location
                 ? info.acf.landing_location
-                : null
+                : null,
             }}
           />
         </h6>
@@ -37,19 +36,19 @@ class InfoPanel extends PureComponent {
               ? info.acf.event_location_description
               : info.acf.landing_location_description
               ? info.acf.landing_location_description
-              : null
+              : null,
           }}
         />
         <p
           style={{ fontSize: '0.5rem' }}
           dangerouslySetInnerHTML={{
-            __html: info.acf.event_start ? info.acf.event_start : null
+            __html: info.acf.event_start ? info.acf.event_start : null,
           }}
         />
         <p
           style={{ fontSize: '0.5rem' }}
           dangerouslySetInnerHTML={{
-            __html: info.acf.event_end ? info.acf.event_end : null
+            __html: info.acf.event_end ? info.acf.event_end : null,
           }}
         />
         <p
@@ -59,7 +58,7 @@ class InfoPanel extends PureComponent {
               ? info.acf.event_address
               : info.acf.landing_address
               ? info.acf.landing_address
-              : null
+              : null,
           }}
         />
         <br />
@@ -69,11 +68,13 @@ class InfoPanel extends PureComponent {
             round
             style={{ textAlign: 'center' }}
             className={classes.directionsLink}
-            color="warning">
+            color="warning"
+          >
             <a
               style={{ fontSize: '0.5rem', color: 'white' }}
               target="_new"
-              href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}>
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`}
+            >
               👉 Directions
             </a>
           </Button>
@@ -86,10 +87,10 @@ class InfoPanel extends PureComponent {
                 maxWidth: '100%',
                 maxHeight: '5vh',
                 overflow: 'hidden',
-                borderRadius: '5px'
+                borderRadius: '5px',
               }}
               alt="Screenshot of Project"
-              fluid={info.featured_media.localFile.childImageSharp.fluid}
+              fluid={fluidContent}
             />
           </div>
         )}

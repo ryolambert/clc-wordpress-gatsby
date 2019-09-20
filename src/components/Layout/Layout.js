@@ -52,7 +52,7 @@ export default class Layout extends React.Component {
           <meta name="description" content={data.site.} />
         </Helmet> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

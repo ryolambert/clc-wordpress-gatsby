@@ -51,13 +51,13 @@ exports.createPages = ({ graphql, actions }) => {
         // Posts detail
         const posts = result.data.allBlogPost.edges;
 
-        createPaginatedPages({
-          edges: posts,
-          createPage,
-          pageTemplate: 'src/templates/post-index-template.js',
-          pageLength: 12,
-          pathPrefix: 'posts',
-        });
+        // createPaginatedPages({
+        //   edges: posts,
+        //   createPage,
+        //   pageTemplate: 'src/templates/post-index-template.js',
+        //   pageLength: 12,
+        //   pathPrefix: 'posts',
+        // });
 
         posts.forEach(edge => {
           createPage({

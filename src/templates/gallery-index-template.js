@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -14,12 +14,12 @@ import PropTypes from 'prop-types';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
 import Gallery from 'components/Gallery/Gallery.jsx';
+import Footer from 'components/Footer/Footer';
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
 class GalleryIndexPage extends React.Component {
@@ -57,7 +57,7 @@ class GalleryIndexPage extends React.Component {
     // console.log(group[0].node.localFile.childImageSharp.fluid);
 
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -92,7 +92,8 @@ class GalleryIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-      </Layout>
+        <Footer />
+      </div>
     );
   }
 }

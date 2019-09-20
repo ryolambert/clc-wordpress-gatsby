@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -12,10 +12,10 @@ import PropTypes from 'prop-types';
 // Component Imports
 import ParallaxLazy from '../components/Parallax/ParallaxLazy';
 import Calendar from '../components/Calendar/Calendar';
-import Layout from '../components/Layout/Layout.js';
 import postsIndexPageStyle from '../assets/jss/material-kit-react/views/postsIndexPageStyle';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
+import Footer from 'components/Footer/Footer';
 
 class EventIndexPage extends React.Component {
   render() {
@@ -39,7 +39,7 @@ class EventIndexPage extends React.Component {
     );
 
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter banner={banner} fluid={fluid} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -50,7 +50,8 @@ class EventIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-      </Layout>
+        <Footer />
+      </div>
     );
   }
 }

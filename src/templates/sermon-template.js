@@ -14,7 +14,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Layout from 'components/Layout/Layout';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from 'components/CustomButtons/Button';
@@ -23,8 +22,8 @@ import ParallaxLazy from 'components/Parallax/ParallaxLazy';
 import Card from 'components/Card/Card';
 import CardBody from 'components/Card/CardBody';
 import CardFooter from 'components/Card/CardFooter';
+import Footer from 'components/Footer/Footer';
 
-import Image from 'components/image';
 import postPageStyle from 'assets/jss/material-kit-react/views/postPageStyle';
 
 class SermonTemplate extends React.Component {
@@ -48,46 +47,40 @@ class SermonTemplate extends React.Component {
       subTitle: post.date,
     };
 
-    console.table(placeHolder);
-    // Testing if featured_media fluid works
-    // console.log(fluid);
-    // console.table(classes.container);
-
     return (
       <div>
-        <Layout>
-          <ParallaxLazy small color fluid={fluid} banner={banner} />
-          <div className={classNames(classes.main, classes.mainRaised)}>
-            <div>
-              <div className={classes.container}>
-                <GridContainer justify="center">
-                  <GridItem xs={12} sm={12} md={10}>
-                    {fluidContent && (
-                      <div>
-                        <Img
-                          alt="Screenshot of Project"
-                          fluid={
-                            post.featured_media.localFile.childImageSharp.fluid
-                          }
-                          className={imageClasses}
-                          style={{ marginTop: '20px', marginBottom: '20px' }}
-                        />
-                      </div>
-                    )}
-                    <div
-                      className={classes.content}
-                      dangerouslySetInnerHTML={{
-                        __html: post.content,
-                      }}
-                    />
-                    <p dangerouslySetInnerHTML={{ __html: post.date }} />
-                    <p dangerouslySetInnerHTML={{ __html: post.slug }} />
-                  </GridItem>
-                </GridContainer>
-              </div>
+        <ParallaxLazy small color fluid={fluid} banner={banner} />
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div>
+            <div className={classes.container}>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={10}>
+                  {fluidContent && (
+                    <div>
+                      <Img
+                        alt="Screenshot of Project"
+                        fluid={
+                          post.featured_media.localFile.childImageSharp.fluid
+                        }
+                        className={imageClasses}
+                        style={{ marginTop: '20px', marginBottom: '20px' }}
+                      />
+                    </div>
+                  )}
+                  <div
+                    className={classes.content}
+                    dangerouslySetInnerHTML={{
+                      __html: post.content,
+                    }}
+                  />
+                  <p dangerouslySetInnerHTML={{ __html: post.date }} />
+                  <p dangerouslySetInnerHTML={{ __html: post.slug }} />
+                </GridItem>
+              </GridContainer>
             </div>
           </div>
-        </Layout>
+        </div>
+        <Footer />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
-import Link from 'gatsby-link';
+// import AniLink fade  from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -14,7 +15,6 @@ import PropTypes from 'prop-types';
 import { FaPlay } from 'react-icons/fa';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Card from 'components/Card/Card.jsx';
@@ -26,6 +26,7 @@ import CardFooter from 'components/Card/CardFooter.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 import ParallaxLazy from 'components/Parallax/ParallaxLazy.jsx';
 import SimplePagination from 'components/Pagination/SimplePagination.jsx';
+import Footer from 'components/Footer/Footer';
 
 import postsIndexPageStyle from 'assets/jss/material-kit-react/views/postsIndexPageStyle.jsx';
 
@@ -48,7 +49,7 @@ class SermonIndexPage extends React.Component {
     };
 
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -64,7 +65,8 @@ class SermonIndexPage extends React.Component {
           <GridContainer justify="center">
             {group.map(({ node }) => (
               <GridItem xs={11} sm={5} md={3} key={node.id}>
-                <Link
+                <AniLink
+                  fade
                   to={`/post/${node.slug}`}
                   className={classes.cardTitle}
                   key={node.id}
@@ -125,7 +127,7 @@ class SermonIndexPage extends React.Component {
                       </p>
                     </CardFooter>
                   </Card>
-                </Link>
+                </AniLink>
               </GridItem>
             ))}
           </GridContainer>
@@ -140,7 +142,8 @@ class SermonIndexPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
-      </Layout>
+        <Footer />
+      </div>
     );
   }
 }

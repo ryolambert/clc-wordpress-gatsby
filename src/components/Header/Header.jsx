@@ -18,7 +18,7 @@ import Close from '@material-ui/icons/Close';
 // core components
 import SearchBar from 'components/Search/SearchBar.jsx';
 import headerStyle from 'assets/jss/material-kit-react/components/headerStyle.jsx';
-import { Link } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 class Header extends React.Component {
   constructor(props) {
@@ -88,7 +88,7 @@ class Header extends React.Component {
 
     const brandComponent = (
       <Button className={classes.button}>
-        <Link to="/" className={classes.linkTitle}>
+        <AniLink fade to="/" className={classes.linkTitle}>
           <img
             width={30}
             src={logo}
@@ -101,7 +101,7 @@ class Header extends React.Component {
           <h3 className={classes.brandTitle}>
             <strong>Citylights Church</strong>
           </h3>
-        </Link>
+        </AniLink>
       </Button>
     );
     return (

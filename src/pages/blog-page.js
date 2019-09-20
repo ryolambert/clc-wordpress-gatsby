@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
 import PostsList from '../components/Post/PostList';
 // import TinyLetterSignup from '../../components/TinyLetterSignUp';
+import Footer from 'components/Footer/Footer';
 
 const PostsPage = ({ data }) => {
   // console.log(data.posts);
@@ -13,7 +13,7 @@ const PostsPage = ({ data }) => {
   const fluid = blogParallax || fallBackParallax;
 
   return (
-    <Layout>
+    <div>
       <PostsList
         showArrow
         showImage
@@ -31,7 +31,8 @@ const PostsPage = ({ data }) => {
       {/* <div>
       <h1>Test</h1>
     </div> */}
-    </Layout>
+    <Footer />
+    </div>
   );
 };
 

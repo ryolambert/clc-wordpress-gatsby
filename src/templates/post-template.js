@@ -14,7 +14,6 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // Component Imports
-import Layout from 'components/Layout/Layout.js';
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
@@ -55,7 +54,7 @@ class PostTemplate extends React.Component {
 
     return (
       <div>
-        <Layout>
+        <div>
           <ParallaxLazy small color banner={banner} fluid={fluid} />
           <div className={classNames(classes.main, classes.mainRaised)}>
             <GridContainer justify="center">
@@ -90,7 +89,7 @@ class PostTemplate extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-        </Layout>
+        </div>
       </div>
     );
   }

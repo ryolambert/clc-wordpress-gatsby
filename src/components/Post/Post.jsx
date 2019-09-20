@@ -1,8 +1,9 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -33,18 +34,11 @@ const Post = ({
   const fluid = post.node.featured_media
     ? post.node.featured_media.localFile.childImageSharp.fluid
     : fallBack;
-  // console.log(
-  //   '%c Post Prop Check',
-  //   'color: black; font-weight: bold; font-style: italic; background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);'
-  // );
-  // // console.log(post.node.featured_media);
-  // console.log(classes.cardTitle);
-  // // console.log(fallBack);
-  // console.log(fluid);
 
   return (
     <GridItem xs={11} sm={5} md={3} key={post.node.id}>
-      <Link
+      <AniLink
+        fade
         to={`/post/${post.node.slug}`}
         className={classes.cardTitle}
         key={post.node.id}
@@ -102,19 +96,6 @@ const Post = ({
                 dangerouslySetInnerHTML={{ __html: post.node.date }}
               />
             </p>
-            {/* {post.node.tags === null && (
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: '0.8rem',
-                    display: 'flex',
-                    flexFlow: 'row wrap',
-                  }}
-                >
-                  <span className={classes.cardTag}>#untagged</span>
-                  ))}
-                </p>
-              )} */}
             {post.node.tags !== null && (
               <p
                 style={{
@@ -138,7 +119,8 @@ const Post = ({
               </p>
             )}
             {showArrow === true && (
-              <Link
+              <AniLink
+                fade
                 to={`/post/${post.node.slug}`}
                 className={classes.cardTitle}
                 key={post.node.id}
@@ -146,11 +128,11 @@ const Post = ({
                 <ArrowForwardRounded
                   style={{ height: '24px', justifySelf: 'flex-end' }}
                 />
-              </Link>
+              </AniLink>
             )}
           </CardFooter>
         </Card>
-      </Link>
+      </AniLink>
     </GridItem>
   );
 };

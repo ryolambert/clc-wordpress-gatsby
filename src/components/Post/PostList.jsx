@@ -1,8 +1,9 @@
 /* eslint-disable prefer-const */
 // @ts-check
 import React, { PureComponent } from 'react';
-import { Link, navigate } from 'gatsby';
-import Img from 'gatsby-image';
+import { navigate } from 'gatsby';
+// import AniLink from 'gatsby-plugin-transition-link/AniLink';
+// import Img from 'gatsby-image';
 
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -10,7 +11,6 @@ import classNames from 'classnames';
 import Input from '@material-ui/core/Input';
 import withStyles from '@material-ui/core/styles/withStyles';
 import postsIndexPageStyle from '../../assets/jss/material-kit-react/views/postsIndexPageStyle';
-import Layout from '../Layout/Layout.js';
 import GridContainer from '../Grid/GridContainer.jsx';
 import GridItem from '../Grid/GridItem.jsx';
 import Button from '../CustomButtons/Button.jsx';
@@ -307,7 +307,7 @@ class PostList extends PureComponent {
     );
     console.log(this.state);
     return (
-      <Layout>
+      <div>
         <ParallaxLazy small filter fluid={fluid} banner={banner} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <GridContainer justify="center">
@@ -469,7 +469,7 @@ class PostList extends PureComponent {
             <GridItem xs={11} sm={10} md={8}></GridItem>
           </GridContainer> */}
         </div>
-      </Layout>
+      </div>
     );
   }
 }

@@ -8,7 +8,7 @@ import classNames from 'classnames';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from 'components/CustomButtons/Button.jsx';
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import simplePaginationStyle from 'assets/jss/material-kit-react/components/simplePaginationStyle.jsx';
 
 function SimplePagination({ color, pageContext, ...props }) {
@@ -17,22 +17,23 @@ function SimplePagination({ color, pageContext, ...props }) {
   const NavLink = props => {
     if (!props.test) {
       return (
-        <Button
-          size="sm"
-          round
-          color={`${color}`}
-          className={classes.paginationLink}
+        <AniLink
+          fade
+          style={{
+            color: '#fff',
+            textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
+          }}
+          to={props.url}
         >
-          <Link
-            style={{
-              color: '#fff',
-              textShadow: '0.05em 0.08em 0.2em rgba(0,0,0,.85)',
-            }}
-            to={props.url}
+          <Button
+            size="sm"
+            round
+            color={`${color}`}
+            className={classes.paginationLink}
           >
             {props.text}
-          </Link>
-        </Button>
+          </Button>
+        </AniLink>
       );
     }
     return (

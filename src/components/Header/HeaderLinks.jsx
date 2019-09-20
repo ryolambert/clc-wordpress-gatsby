@@ -1,7 +1,8 @@
 /*eslint-disable*/
 import React from 'react';
 // react components for routing our app without refresh
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 // @material-ui/core components
 import List from '@material-ui/core/List';
@@ -53,7 +54,8 @@ function renderHeaderLink(item, props) {
   const { classes } = props;
   return (
     <ListItem className={classes.listItem} key={item.object_slug}>
-      <Link
+      <AniLink
+        fade
         to={`/${item.object_slug}`}
         className={classes.navLink}
         dangerouslySetInnerHTML={{ __html: item.title }}
@@ -65,7 +67,8 @@ function renderHeaderLink(item, props) {
 function renderDropMap(item, props) {
   const { classes } = props;
   let mapDrop = item.wordpress_children.map(child => (
-    <Link
+    <AniLink
+      fade
       to={`/${child.object_slug}`}
       className={classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: child.title }}
@@ -76,7 +79,8 @@ function renderDropMap(item, props) {
   let splicedMapDrop = mapDrop.splice(
     0,
     0,
-    <Link
+    <AniLink
+      fade
       to={`/${item.object_slug}`}
       className={classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: item.title }}
@@ -99,9 +103,9 @@ function HeaderLinks({ ...props }) {
               searchIndex={data.siteSearchIndex.index}
             />
             <ListItem className={classes.listItem} key="home">
-              <Link to="/" className={classes.navLink}>
+              <AniLink fade to="/" className={classes.navLink}>
                 Home
-              </Link>
+              </AniLink>
             </ListItem>
             {data.wordpressWpApiMenusMenusItems.items.map(item => {
               if (item.wordpress_children) {
@@ -113,7 +117,7 @@ function HeaderLinks({ ...props }) {
                       buttonText={item.title}
                       buttonProps={{
                         className: classes.navLink,
-                        color: 'transparent'
+                        color: 'transparent',
                       }}
                       dropdownList={renderDropMap(item, props)}
                     />
@@ -129,33 +133,37 @@ function HeaderLinks({ ...props }) {
                 buttonText={'Media'}
                 buttonProps={{
                   className: classes.navLink,
-                  color: 'transparent'
+                  color: 'transparent',
                 }}
                 dropdownList={[
-                  <Link
+                  <AniLink
+                    fade
                     to="/sermons/"
                     className={classes.dropdownLink}
-                    key="sermons">
+                    key="sermons"
+                  >
                     Sermons
-                  </Link>,
-                  <Link
+                  </AniLink>,
+                  <AniLink
+                    fade
                     to="/galleries/"
                     className={classes.dropdownLink}
-                    key="galleries">
+                    key="galleries"
+                  >
                     Gallery
-                  </Link>
+                  </AniLink>,
                 ]}
               />
             </ListItem>
             <ListItem className={classes.listItem} key="calendar">
-              <Link to="/calendar/" className={classes.navLink}>
+              <AniLink fade to="/calendar/" className={classes.navLink}>
                 Calendar
-              </Link>
+              </AniLink>
             </ListItem>
             <ListItem className={classes.listItem} key="blog">
-              <Link to="/blog-page/" className={classes.navLink}>
+              <AniLink fade to="/blog-page/" className={classes.navLink}>
                 Blog
-              </Link>
+              </AniLink>
             </ListItem>
           </List>
         </div>
