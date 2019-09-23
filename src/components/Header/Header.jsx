@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // nodejs library to set properties for components
@@ -20,7 +20,7 @@ import HeaderLinks from 'components/Header/HeaderLinks';
 import headerStyle from 'assets/jss/material-kit-react/components/headerStyle.jsx';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
-class Header extends React.Component {
+class Header extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,10 +28,6 @@ class Header extends React.Component {
     };
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
     this.headerColorChange = this.headerColorChange.bind(this);
-  }
-
-  handleDrawerToggle() {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
   }
 
   componentDidMount() {
@@ -59,6 +55,10 @@ class Header extends React.Component {
         .getElementsByTagName('header')[0]
         .classList.remove(classes[changeColorOnScroll.color]);
     }
+  }
+
+  handleDrawerToggle() {
+    this.setState({ mobileOpen: !this.state.mobileOpen });
   }
 
   componentWillUnmount() {
@@ -118,7 +118,7 @@ class Header extends React.Component {
             )}
           </div>
           <Hidden smDown implementation="css">
-            <HeaderLinks handleDrawerToggle={this.handleDrawerToggle} />
+            <HeaderLinks />
           </Hidden>
           <Hidden mdUp>
             <IconButton
