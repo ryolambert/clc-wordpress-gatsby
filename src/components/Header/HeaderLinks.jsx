@@ -50,7 +50,7 @@ const HEADERLINK_QUERY = graphql`
   }
 `;
 
-function renderHeaderLink(item, props) {
+function renderHeaderLink(item, handleDrawerToggle, props) {
   const { classes } = props;
   return (
     <ListItem className={classes.listItem} key={item.object_slug}>
@@ -59,12 +59,13 @@ function renderHeaderLink(item, props) {
         to={`/${item.object_slug}`}
         className={classes.navLink}
         dangerouslySetInnerHTML={{ __html: item.title }}
+        onClick={handleDrawerToggle}
       />
     </ListItem>
   );
 }
 
-function renderDropMap(item, props) {
+function renderDropMap(item, handleDrawerToggle, props) {
   const { classes } = props;
   let mapDrop = item.wordpress_children.map(child => (
     <AniLink
@@ -73,6 +74,7 @@ function renderDropMap(item, props) {
       className={classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: child.title }}
       key={child.id}
+      onClick={handleDrawerToggle}
     />
   ));
   //!! Reassignment on mapDrop
@@ -84,12 +86,13 @@ function renderDropMap(item, props) {
       to={`/${item.object_slug}`}
       className={classes.dropdownLink}
       dangerouslySetInnerHTML={{ __html: item.title }}
+      onClick={handleDrawerToggle}
     />
   );
   return mapDrop;
 }
 
-function HeaderLinks({ ...props }) {
+function HeaderLinks({ handleDrawerToggle, ...props }) {
   const { classes } = props;
   return (
     <StaticQuery
@@ -103,7 +106,12 @@ function HeaderLinks({ ...props }) {
               searchIndex={data.siteSearchIndex.index}
             />
             <ListItem className={classes.listItem} key="home">
-              <AniLink fade to="/" className={classes.navLink}>
+              <AniLink
+                fade
+                to="/"
+                className={classes.navLink}
+                onClick={handleDrawerToggle}
+              >
                 Home
               </AniLink>
             </ListItem>
@@ -119,12 +127,16 @@ function HeaderLinks({ ...props }) {
                         className: classes.navLink,
                         color: 'transparent',
                       }}
-                      dropdownList={renderDropMap(item, props)}
+                      dropdownList={renderDropMap(
+                        item,
+                        handleDrawerToggle,
+                        props
+                      )}
                     />
                   </ListItem>
                 );
               } else {
-                return renderHeaderLink(item, props);
+                return renderHeaderLink(item, handleDrawerToggle, props);
               }
             })}
             <ListItem className={classes.listItem} key="media-deadlink">
@@ -141,6 +153,7 @@ function HeaderLinks({ ...props }) {
                     to="/sermons/"
                     className={classes.dropdownLink}
                     key="sermons"
+                    onClick={handleDrawerToggle}
                   >
                     Sermons
                   </AniLink>,
@@ -149,6 +162,7 @@ function HeaderLinks({ ...props }) {
                     to="/galleries/"
                     className={classes.dropdownLink}
                     key="galleries"
+                    onClick={handleDrawerToggle}
                   >
                     Gallery
                   </AniLink>,
@@ -156,12 +170,22 @@ function HeaderLinks({ ...props }) {
               />
             </ListItem>
             <ListItem className={classes.listItem} key="calendar">
-              <AniLink fade to="/calendar/" className={classes.navLink}>
+              <AniLink
+                fade
+                to="/calendar/"
+                className={classes.navLink}
+                onClick={handleDrawerToggle}
+              >
                 Calendar
               </AniLink>
             </ListItem>
             <ListItem className={classes.listItem} key="blog">
-              <AniLink fade to="/blog-page/" className={classes.navLink}>
+              <AniLink
+                fade
+                to="/blog-page/"
+                className={classes.navLink}
+                onClick={handleDrawerToggle}
+              >
                 Blog
               </AniLink>
             </ListItem>

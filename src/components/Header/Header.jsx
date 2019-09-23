@@ -16,7 +16,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Menu from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 // core components
-import SearchBar from 'components/Search/SearchBar.jsx';
+import HeaderLinks from 'components/Header/HeaderLinks';
 import headerStyle from 'assets/jss/material-kit-react/components/headerStyle.jsx';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
@@ -93,7 +93,7 @@ class Header extends React.Component {
             width={30}
             src={logo}
             style={{
-              // marginRight: '10px',
+              marginRight: '10px',
               marginTop: '5px',
             }}
             alt="City Lights Church Logo"
@@ -118,7 +118,7 @@ class Header extends React.Component {
             )}
           </div>
           <Hidden smDown implementation="css">
-            {rightLinks}
+            <HeaderLinks handleDrawerToggle={this.handleDrawerToggle} />
           </Hidden>
           <Hidden mdUp>
             <IconButton
@@ -149,7 +149,7 @@ class Header extends React.Component {
                 <Close />
               </IconButton>
               {leftLinks}
-              {rightLinks}
+              <HeaderLinks handleDrawerToggle={this.handleDrawerToggle} />
             </div>
           </Drawer>
         </Hidden>
