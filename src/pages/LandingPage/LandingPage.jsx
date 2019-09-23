@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable react/no-danger */
 import React from 'react';
 // nodejs library that concatenates classes
@@ -69,56 +70,6 @@ function LandingPage(props) {
           }
         }
       }
-      team: allWordpressPage(filter: { title: { eq: "Landing Page" } }) {
-        edges {
-          node {
-            acf {
-              team_one_image {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 360) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-              team_one_name
-              team_one_position
-              team_one_excerpt
-              team_one_phone
-              team_one_email
-              team_two_image {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 360) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-              team_two_name
-              team_two_position
-              team_two_excerpt
-              team_two_phone
-              team_two_email
-              team_three_image {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 360) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-              team_three_name
-              team_three_position
-              team_three_excerpt
-              team_three_phone
-              team_three_email
-            }
-          }
-        }
-      }
       galleryIndexParallaxImg: allWordpressWpMedia(
         sort: { order: DESC, fields: date }
         filter: { mime_type: { regex: "/image/" } }
@@ -156,7 +107,6 @@ function LandingPage(props) {
   const fluid = landingParallax || fallBackParallaxImg;
   const title = data.landing.edges[0].node.acf.hero_title;
   const subTitle = data.landing.edges[0].node.acf.hero_content;
-  const team = data.team.edges[0].node;
 
   const banner = {
     title,
@@ -198,7 +148,7 @@ function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <TeamSection fallBack={fallBackParallaxImg} teamInfo={team} />
+          <TeamSection fallBack={fallBackParallaxImg}/>
           <EventSection />
           <BlogSection />
           <ContactSection address={address} pageInfo={pageInfo} />
